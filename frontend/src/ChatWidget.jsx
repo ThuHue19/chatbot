@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import './ChatWidget.css';
 
@@ -11,6 +11,12 @@ const ChatWidget = () => {
   const [expandedMsgs, setExpandedMsgs] = useState(new Set());
   const [isIndependent, setIsIndependent] = useState(true);
   const [visible, setVisible] = useState(true); // nút ẩn hoàn toàn
+  useEffect(() => {
+  endOfMessagesRef.current?.scrollIntoView({ behavior: 'smooth' });
+}, [messages]);
+
+  const endOfMessagesRef = useRef(null);
+
 
   const toggleChat = () => setIsOpen(!isOpen);
   const closeChat = () => setVisible(false);
@@ -57,7 +63,15 @@ const ChatWidget = () => {
           })
           .join('\n\n');
       } else {
-        answer = data.answer || '❌ Không có câu trả lời phù hợp.';
+        const rawAnswer = data.answer || '';
+        const isError =
+          rawAnswer.toLowerCase().includes('lỗi') ||
+          rawAnswer.toLowerCase().includes('error') ||
+          rawAnswer.toLowerCase().includes('ora-');
+
+        answer = isError
+          ? 'Tôi chưa có thông tin, bạn liên hệ tổng đài nhé.'
+          : rawAnswer || 'Tôi chưa có thông tin, bạn liên hệ tổng đài nhé.';
       }
 
       setMessages((prev) => [...prev, { sender: 'bot', text: answer }]);
@@ -65,7 +79,7 @@ const ChatWidget = () => {
       console.error('Lỗi khi gửi câu hỏi:', err);
       setMessages((prev) => [
         ...prev,
-        { sender: 'bot', text: '❌ Lỗi khi gửi câu hỏi. Vui lòng thử lại.' },
+        { sender: 'bot', text: 'Tôi chưa có thông tin, bạn liên hệ tổng đài nhé.' },
       ]);
     }
   };
@@ -130,6 +144,8 @@ const ChatWidget = () => {
                 </div>
               );
             })}
+            <div ref={endOfMessagesRef} />
+
           </div>
 
           <div className="chat-input">
