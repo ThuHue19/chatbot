@@ -52,7 +52,7 @@ const ChatWidget = () => {
               const rows = result.rows.map((row) => row.join(' | ')).join('\n');
               return `**Kết quả truy vấn #${idx + 1}:**\n${header}\n${rows}`;
             } else {
-              return '⚠️ Không có dữ liệu.';
+              return 'Tôi chưa có thông tin, bạn liên hệ tổng đài nhé.';
             }
           })
           .join('\n\n');
