@@ -1,0 +1,8 @@
+TABLE: PAKH_DANH_GIA_DV_TMP
+DESCRIPTION: Bảng tạm thời phục vụ xử lý đánh giá dịch vụ, cấu trúc tương tự PAKH_DANH_GIA_DV
+COLUMNS:
+
+- Giống PAKH_DANH_GIA_DV
+
+RELATIONS:
+- Tạm thời, không có khóa ngoại

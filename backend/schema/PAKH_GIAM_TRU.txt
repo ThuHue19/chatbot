@@ -1,0 +1,8 @@
+TABLE: PAKH_GIAM_TRU
+DESCRIPTION: Danh sách phản ánh được giảm trừ (không tính SLA)
+
+COLUMNS:
+- FB_ID: Mã phản ánh được miễn/giảm trừ
+
+RELATIONS:
+- FB_ID → PAKH.ID

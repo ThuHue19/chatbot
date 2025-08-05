@@ -1,0 +1,18 @@
+TABLE: PAKH_THONG_TIN_XU_LY
+
+DESCRIPTION:
+Lưu trữ lịch sử xử lý các phản ánh từ nhân viên kỹ thuật hoặc bộ phận liên quan. Mỗi dòng tương ứng với một lần cập nhật xử lý được ghi nhận từ nội dung trong cột `THONG_TIN_XU_LY` của bảng `PAKH`.
+
+COLUMNS:
+- ID (NUMBER, PK): Khóa chính tự động tăng. Đại diện cho một dòng xử lý cụ thể.
+- ID_PAKH (NUMBER, FK → PAKH.ID): Khóa ngoại liên kết với phản ánh gốc trong bảng `PAKH`.
+- NGUOI_XU_LY (VARCHAR2(100)): Tên hoặc username của người xử lý (ví dụ: `tuan.nguyen`, `noc_hcm`, `liem.ngotung`).
+- THOI_GIAN (VARCHAR2(100)): Thời điểm thực hiện xử lý, có thể ở dạng `dd/mm/yyyy hh:mm:ss` hoặc `ISO 8601`.
+- NOI_DUNG_XU_LY (VARCHAR2(4000)): Mô tả chi tiết nội dung xử lý (gửi hướng dẫn, reset thiết bị, gọi điện KH, phối hợp đơn vị khác...).
+
+NOTES:
+- Một phản ánh (`PAKH`) có thể có nhiều lần xử lý → quan hệ 1-N giữa `PAKH` và `PAKH_THONG_TIN_XU_LY`.
+- Dữ liệu này được trích xuất từ cột bán cấu trúc `THONG_TIN_XU_LY` trong bảng `PAKH`, với phân tách theo người xử lý - thời gian - nội dung.
+- Phù hợp để phân tích **thời gian phản hồi**, **số bước xử lý**, **người xử lý nhiều nhất**, **tỷ lệ xử lý hoàn tất theo người**,...
+- Nếu muốn tính thời gian xử lý chính xác nên kết hợp với bảng `PAKH_SLA_CA_NHAN`.
+

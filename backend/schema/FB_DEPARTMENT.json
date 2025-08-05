@@ -1,0 +1,13 @@
+{
+  "table": "FB_DEPARTMENT",
+  "description": "Bảng chứa thông tin các đơn vị đang xử lý",
+  "columns": {
+    "DEP_ID": { "type": "NUMBER", "description": "Mã đơn vị đang xử lý (khóa chính, không được để trống)" },
+    "NAME": { "type": "VARCHAR2(200 BYTE)", "description": "Tên đơn vị đang xử lý" },
+    "DESCRIPTION": { "type": "VARCHAR2(200 BYTE)", "description": "Mô tả chi tiết về đơn vị đang xử lý" },
+    "CENTER": { "type": "NUMBER", "description": "Mã trung tâm liên kết với đơn vị đang xử lý" },
+    "ORDERING": { "type": "NUMBER", "description": "Thứ tự hiển thị của đơn vị đang xử lý trong danh sách" }
+  },
+  "note": "Bảng này hỗ trợ việc tổ chức và phân loại các đơn vị đang xử lý trong hệ thống quản lý. Trường ORDERING giúp xác định vị trí của đơn vị trong danh sách đơn vị đang xử lý hiển thị.",
+  "select_instructions": "Để truy xuất danh sách đơn vị đang xử lý theo thứ tự, sử dụng: SELECT * FROM FB_DEPARTMENT ORDER BY ORDERING ASC."
+}

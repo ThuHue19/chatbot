@@ -1,0 +1,16 @@
+TABLE: REMIND_PAKH_CORNY
+
+DESCRIPTION: Bảng nhắc nhở xử lý phản ánh (Corny).
+
+COLUMNS:
+- KHACH_HANG: Mã khách hàng.
+- TIME_CHUYEN_XL_1090: Thời gian xử lý tại tổng đài 1090 (phút).
+- TIME_CHUYENTIEP_XL_TTML: Thời gian chuyển tiếp xử lý tại trung tâm.
+- TIME_XL_KYTHUAT: Thời gian xử lý tại đơn vị kỹ thuật.
+- TONG_TIME_XL: Tổng thời gian xử lý.
+- QUA_HAN: Cảnh báo quá hạn.
+- CANH_BAO_A1, A2, A3: Các cấp độ cảnh báo.
+- ID: Khóa chính.
+- DON_VI: Đơn vị phụ trách.
+
+RELATIONS: Có thể liên kết đến khách hàng hoặc bảng PAKH qua logic KHACH_HANG.

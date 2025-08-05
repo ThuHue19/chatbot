@@ -1,0 +1,12 @@
+{
+  "table": "FB_TYPE_NOC",
+  "description": "Danh mục loại phản ánh thuộc hệ thống NOC, dùng để phân loại các phản ánh theo nhóm và loại.",
+  "columns": {
+    "COMP_TYPE_ID": { "type": "NUMBER", "description": "Mã loại phản ánh" },
+    "GROUP_ID": { "type": "NUMBER", "description": "Mã nhóm phản ánh" },
+    "NAME": { "type": "VARCHAR2", "description": "Tên loại phản ánh" },
+    "CLASSIFICATION": { "type": "VARCHAR2", "description": "Phân loại phản ánh, mặc định là 'OTHERS'" }
+  },
+  "note": "Dữ liệu trong bảng này là danh mục tĩnh, không chứa số liệu thống kê. Có thể dùng để tham chiếu khi cần gán hoặc hiển thị tên loại phản ánh tương ứng với mã `COMP_TYPE_ID`",
+  "select_instructions": "Sử dụng bảng này để tra cứu tên loại phản ánh từ `NAME` hoặc xác định nhóm phản ánh qua `GROUP_ID`. Không sử dụng bảng này để thống kê số lượng phản ánh. Luôn ưu tiên trả ra tên thay vì mã, khi cần lọc theo loại phản ánh, có thể dùng `NAME LIKE '%<từ khóa>%'`."
+}

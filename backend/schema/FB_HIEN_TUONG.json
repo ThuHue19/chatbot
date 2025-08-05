@@ -1,0 +1,11 @@
+{
+  "table": "FB_HIEN_TUONG",
+  "description": "Danh mục hiện tượng trong phản ánh, dùng để mô tả hiện tượng gặp phải của khách hàng. Mỗi CODE là một loại hiện tượng, thường được ánh xạ từ PAKH hoặc các bảng nội dung phản ánh.",
+  "columns": {
+    "CODE": { "type": "NUMBER", "description": "Mã hiện tượng (khóa chính)" },
+    "NAME": { "type": "VARCHAR2(200 BYTE)", "description": "Tên hiện tượng" },
+    "VALUE": { "type": "NUMBER", "description": "mã loại phản ánh" }
+  },
+  "note": "Bảng này là bảng danh mục, dùng để tra cứu tên hiện tượng từ mã (CODE). Thường JOIN với các bảng như PAKH, PAKH_NOI_DUNG_PHAN_ANH thông qua trường HIEN_TUONG = CODE.",
+  "select_instructions": "Khi cần lấy tên hiện tượng từ mã, JOIN bảng này thông qua CODE và dùng cột tên hiện tượng để hiển thị. Ví dụ: JOIN FB_HIEN_TUONG ON p.HIEN_TUONG = FB_HIEN_TUONG.CODE"
+}

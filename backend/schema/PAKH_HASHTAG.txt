@@ -1,0 +1,9 @@
+TABLE: PAKH_HASHTAG
+DESCRIPTION: Danh sách các hashtag có thể gắn vào phản ánh để phân loại.
+COLUMNS:
+- ID NUMBER NOT NULL ENABLE, 
+- 	NAME VARCHAR2(100 BYTE): tên hashtag.
+- 	NGUOI_TAO VARCHAR2(200 BYTE), NGUOI_SUA VARCHAR2(20 BYTE), NGAY_TAO DATE, NGAY_SUA DATE, : thông tin người tạo/sửa.
+- 	TU_KHOA VARCHAR2(1000 BYTE): từ khóa liên quan
+- 	MO_TA VARCHAR2(500 BYTE): mô tả chi tiết.
+   

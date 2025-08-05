@@ -1,0 +1,108 @@
+{
+  "base_url": "http://14.160.91.174:8180/smartw/feedback/list.htm",
+  "default_tab": "day",
+  "tab_keywords": {
+    "xuLy": ["xử lý","đã xử lý", "đã hoàn thành", "đã giải quyết"],
+    "quaHan": ["quá hạn", "chưa xử lý quá hạn", "đã quá hạn"],
+    "dong": ["cần đóng"],
+    "day": ["ngày"],
+    "month": ["tháng"],
+    "week": ["tuần"],
+    "quarter": ["quý"],
+    "year": ["năm"]
+  },
+  "params": {
+    "tab": {},
+    "id": {},
+    "startDate": {},
+    "caTruc": {},
+    "tinhThanhPho": {},
+    "quanHuyen": {},
+    "is_ticket": {},
+    "phong": {},
+    "endDate": {},
+    "dept_xuly": {},
+    "dept": {},
+    "is_dongpa": {},
+    "ttTicket": {},
+    "to": {},
+    "loaiThueBao": {},
+    "nhomPa": {},
+    "loaiPa": {},
+    "fo_bo": {},
+    "ctdv": {}
+  },
+   "complex_rules": [
+    {
+      "trigger_keywords": ["quá hạn"],
+      "set_params": {
+        "tab": "quaHan",
+        "is_dongpa": "DANG_XU_LY%2CDA_XU_LY",
+        "is_ticket": "Y%2CN"
+      }
+    },
+    {
+      "trigger_keywords": ["đang xử lý", "chưa đóng"],
+      "set_params": {
+        "is_dongpa": "DANG_XU_LY"
+      }
+    },
+    {
+      "trigger_keywords": ["đã xử lý", "đã đóng"],
+      "set_params": {
+        "is_dongpa": "DA_XU_LY"
+      }
+    }
+  ],
+  "sql_to_url_param_mapping": {
+    "PAKH": {
+      "LOAI_THUE_BAO": "loaiThueBao",
+      "TO_NHOM": "to",
+      "PHONG_BAN": "phong",
+      "DON_VI_XU_LY": "dept_xuly",
+      "DON_VI_GHI_NHAN": "dept",
+      "TINH_TP": "tinhThanhPho",
+      "QUAN_HUYEN": "quanHuyen",
+      "PHUONG_XA": "phuongXa",
+      "NHOM_PA": "nhomPa",
+      "LOAI_PA": "loaiPa",
+      "CA_TRUC": "caTruc",
+      "IS_TICKET": "is_ticket",
+      "TRANG_THAI": "tab_from_status",
+      "TINH_TRANG_DONG_PA": "is_dongpa",
+      "TRANG_THAI_TICKET": "ttTicket",
+      "THOI_GIAN_GHI_NHAN": {
+        "start": "startDate",
+        "end": "endDate"
+      }
+    }
+  },
+  "sql_value_to_url_value_mapping": {
+    "tab_from_status": {
+      "QUA_HAN": "quaHan",
+      "DANG_XU_LY": "dangXuLy",
+      "DA_XU_LY": "daXuLy",
+      "CHUA_TIEP_NHAN": "chuaTiepNhan",
+      "DA_TIEP_NHAN": "daTiepNhan",
+      "DA_CHUYEN_DI": "daChuyenDi",
+      "DA_HUY": "daHuy",
+      "DA_TU_CHOI": "daTuChoi"
+    },
+    "is_dongpa": {
+      "DANG_XU_LY": "DANG_XU_LY",
+      "DA_XU_LY": "DA_XU_LY",
+      "DONG": "DONG"
+    },
+    "is_ticket": {
+      "Y": "Y",
+      "N": "N"
+    },
+    "ttTicket": {
+      "MOI_GIAO": "MOI_GIAO",
+      "DA_TIEP_NHAN": "DA_TIEP_NHAN",
+      "CHO_GIAO_VIEC": "CHO_GIAO_VIEC",
+      "DANG_THUC_HIEN": "DANG_THUC_HIEN",
+      "HOAN_THANH": "HOAN_THANH"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+TABLE: PAKH_PROBABILITY_TMP
+DESCRIPTION: Bảng tạm lưu thông tin xác suất bất thường theo loại.
+
+COLUMNS:
+
+- TYPE VARCHAR2(20): Loại thông tin.
+- LAST_TIME DATE: Thời gian cuối ghi nhận.
+- ABNORMAL VARCHAR2(20): Trạng thái bất thường.
+
+RELATIONS: Không có quan hệ khóa ngoại rõ ràng.
+

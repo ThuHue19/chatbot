@@ -1,0 +1,16 @@
+{
+  "table": "FB_LOCALITY",
+  "description": "Chứa thông tin chi tiết về các khu vực, bao gồm mã khu vực và tên đầy đủ.",
+  "columns": {
+    "PAY_AREA_CODE": { "type": "VARCHAR2", "description": "Mã khu vực thanh toán, được ghép từ mã tỉnh, huyện và xã" },
+    "PARENT_CODE": { "type": "VARCHAR2", "description": "Mã cấp cha, được ghép từ mã tỉnh và mã huyện" },
+    "PROVINCE": { "type": "VARCHAR2", "description": "Mã tỉnh/thành phố (ví dụ: 'BG')" },
+    "DISTRICT": { "type": "VARCHAR2", "description": "Mã quận/huyện (ví dụ: 'TY')" },
+    "PRECINCT": { "type": "VARCHAR2", "description": "Mã phường/xã (ví dụ: 'XLG')" },
+    "NAME": { "type": "VARCHAR2", "description": "Tên phường/xã (ví dụ: 'Xã Phúc Sơn')" },
+    "FULL_NAME": { "type": "VARCHAR2", "description": "Tên đầy đủ của khu vực, bao gồm xã, huyện và tỉnh (ví dụ: 'Xã Lan Giới H.Tân Yên T.Bắc Giang')" },
+    "CEN_CODE": { "type": "NUMBER", "description": "Mã trung tâm kỹ thuật tương ứng" }
+  },
+  "note": "Chỉ nên sử dụng cột FULL_NAME để lọc theo địa danh vì các cột PROVINCE, DISTRICT, PRECINCT chỉ chứa mã. Ví dụ, để lọc địa danh 'Tân Yên, Bắc Giang', hãy dùng điều kiện: `FULL_NAME LIKE '%Tân Yên%' AND FULL_NAME LIKE '%Bắc Giang%'`. Không JOIN bảng này với các bảng phản ánh để truy vấn thống kê, trừ khi có liên kết rõ ràng qua mã khu vực.",
+  "select_instructions": "Khi lọc theo tên địa danh, LUÔN sử dụng điều kiện trên cột `FULL_NAME`. Ví dụ: `WHERE FULL_NAME LIKE '%Tân Yên%' AND FULL_NAME LIKE '%Bắc Giang%'`. Không sử dụng các cột mã (PROVINCE, DISTRICT, PRECINCT) để lọc theo tên địa phương vì đây là mã hóa, không phải tên thật."
+}

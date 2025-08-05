@@ -1,0 +1,18 @@
+TABLE: PAKH_DANH_GIA_DV
+DESCRIPTION: Ghi nhận đánh giá về chất lượng dịch vụ (có suy giảm hay không, thiết bị lỗi,...)
+
+COLUMNS:
+- ID: Khóa chính
+- PA_DICH_VU, SUY_GIAM_LLDV, SUY_GIAM_KPI: Đánh giá về dịch vụ/suy giảm KPI
+- NGAY, GIO: Ngày giờ xảy ra
+- THOI_DIEM_BAT_DAU, THOI_DIEM_KET_THUC: Khoảng thời gian xảy ra lỗi
+- DICH_VU: Tên dịch vụ (Data, Voice,...)
+- THOI_DIEM_LOI: Thời điểm lỗi bắt đầu
+- THIET_BI_LOI: Thiết bị gây lỗi
+- TAC_DONG_CR: Có ảnh hưởng nghiêm trọng (CRITICAL) không
+- XAC_SUAT: Xác suất lỗi
+- MIEN: Miền (Bắc, Trung, Nam)
+- ABNORMAL_SIGN_START / CLEAR: Dấu hiệu bất thường từ hệ thống
+
+RELATIONS:
+- Không rõ foreign key với bảng khác

@@ -1,0 +1,63 @@
+[
+  {
+    "question": "thông tin phản ánh của số thuê bao 0906689650",
+    "sql": "SELECT SO_THUE_BAO, NOI_DUNG_PHAN_ANH FROM PAKH WHERE SO_THUE_BAO IN('906689650','0906689650');"
+  },
+  {
+    "question": "Khu vực bị lỗi của thuê bao 0765206236 là gì?",
+    "sql": "SELECL pn.KHU_VUC_BI_LOI FROM PAKH p JOIN PAKH_NOI_DUNG_PHAN_ANH pn ON p.ID = pn.ID_PAKH WHERE p.SO_THUE_BAO IN ('765206236','0765206236')"
+  },
+  {
+    "question":"thuê bao 0765206236 gặp tình trạng lỗi gì?",
+    "sql": "SELECT pn.TINH_TRANG_LOI FROM PAKH p JOIN PAKH_NOI_DUNG_PHAN_ANH pn ON p.ID = pn.ID_PAKH WHERE p.SO_THUE_BAO IN ('765206236', '0765206236');"
+  },
+  {
+    "question": "có bao nhiêu phản ánh được gửi từ khách hàng ở địa chỉ Nông Sơn, Quảng Nam gửi phản ánh?",
+    "sql" : "SELECT COUNT(*) AS SO_KHACH_HANG FROM PAKH JOIN FB_LOCALITY ON PAKH.TINH_THANH_PHO = FB_LOCALITY.PROVINCE AND PAKH.QUAN_HUYEN = FB_LOCALITY.DISTRICT AND PAKH.PHUONG_XA = FB_LOCALITY.PRECINCT WHERE FB_LOCALITY.FULL_NAME LIKE '%Nông Sơn%' AND FB_LOCALITY.FULL_NAME LIKE '%Quảng Nam%'"
+  },
+  {
+    "question": "số lượng phản ánh ở Yên Hòa?",
+    "sql" : "SELECT COUNT(*) AS SO_KHACH_HANG FROM PAKH JOIN FB_LOCALITY ON PAKH.TINH_THANH_PHO = FB_LOCALITY.PROVINCE AND PAKH.QUAN_HUYEN = FB_LOCALITY.DISTRICT AND PAKH.PHUONG_XA = FB_LOCALITY.PRECINCT WHERE FB_LOCALITY.FULL_NAME LIKE '%Yên Hòa%'"
+  },
+  
+  {
+    "question": "số phản ánh mà mỗi tổ của phòng DVT_Vinh_Phuc nhận được là bao nhiêu?",
+    "sql": "SELECT TO_NHOM, SUM(SO_PA_NHAN) AS SO_PHAN_ANH FROM PAKH_SLA_TO_NHOM WHERE PHONG_BAN = 'DVT_Vinh_Phuc' GROUP BY TO_NHOM;"
+  },
+  {
+    "question": "tổng số phản ánh của phòng DVT_Vinh_Phuc?",
+    "sql": "SELECT SUM(SO_PA_NHAN) FROM PAKH_SLA_PHONG_BAN WHERE PHONG_BAN = 'DVT_Vinh_Phuc';"
+  },
+  {
+    "question": "tổng số phản ánh đã nhận của phòng NOCMN trong tháng 1 với các ca trực buổi sáng là bao nhiêu?",
+    "sql": "SELECT SUM(SO_PA_NHAN) FROM PAKH_SLA_PHONG_BAN WHERE PHONG_BAN = 'NOCMN' AND THANG = '01' AND CA_TRUC = 'SANG';"
+  },
+    {
+    "question": "tổng số phản ánh đã nhận của phòng NOCMN trong tháng 1 với các ca trực chiều là bao nhiêu?",
+    "sql": "SELECT SUM(SO_PA_NHAN) FROM PAKH_SLA_PHONG_BAN WHERE PHONG_BAN = 'NOCMN' AND THANG = '01' AND CA_TRUC = 'CHIEU';"
+  },
+     {
+    "question": "tổng số phản ánh đã nhận của phòng NOCMN trong tháng 1 với các ca trực tối là bao nhiêu?",
+    "sql": "SELECT SUM(SO_PA_NHAN) FROM PAKH_SLA_PHONG_BAN WHERE PHONG_BAN = 'NOCMN' AND THANG = '01' AND CA_TRUC = 'TOI';"
+  },
+  {
+    "question": "thời gian xử lý trung bình của mỗi tổ trong trung tâm DVT_mien_Bac?",
+    "sql": "SELECT TO_NHOM, AVG(TONG_TG_XL) AS Thoi_Gian_Xu_Ly_Trung_Binh FROM PAKH_SLA_TO_NHOM WHERE TRUNG_TAM = 'DVT_mien_Bac' GROUP BY TO_NHOM;"
+  },
+  {
+    "question": "số phản ánh mà mỗi cá nhân duc.vole và tuan.pham.ctv nhận được là?",
+    "sql": "SELECT CA_NHAN, SUM(SO_PA_NHAN) FROM PAKH_SLA_CA_NHAN WHERE CA_NHAN IN ('duc.vole', 'tuan.pham.ctv') GROUP BY CA_NHAN;"
+  },
+  {
+    "question": "mỗi cá nhân duc.vole và khainx từ chối bao nhiêu phản ánh",
+    "sql": "SELECT CA_NHAN, SUM(SO_PA_TU_CHOI) FROM PAKH_SLA_CA_NHAN WHERE CA_NHAN IN ('duc.vole', 'khainx') GROUP BY CA_NHAN;"
+  },
+  {
+    "question": "Đơn vị xử lý phản ánh của thuê bao 0765206236 là đơn vị nào?" ,
+    "sql": "SELECT SO_THUE_BAO, FD.NAME AS DON_VI_DANG_XU_LY FROM PAKH P JOIN FB_DEPARTMENT FD ON P.DON_VI = FD.DEP_ID WHERE P.SO_THUE_BAO IN ('765206236','0765206236')"
+  },
+
+{ "question": "Đơn vị nhận phản ánh của thuê bao 0765206236 là đơn vị nào?" ,
+    "sql": "SELECT SO_THUE_BAO, FD.NAME AS DON_VI_NHAN FROM PAKH P JOIN FB_DEPARTMENT FD ON P.DON_VI_NHAN = FD.DEP_ID WHERE P.SO_THUE_BAO IN ('765206236','0765206236')"
+  }
+]

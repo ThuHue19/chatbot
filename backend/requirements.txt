@@ -1,0 +1,7 @@
+fastapi 
+uvicorn 
+oracledb 
+pandas 
+numpy 
+requests 
+python-dotenv

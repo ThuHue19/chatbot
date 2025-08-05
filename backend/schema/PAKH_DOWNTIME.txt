@@ -1,0 +1,18 @@
+TABLE: PAKH_DOWNTIME
+DESCRIPTION: Ghi nhận phản ánh mất dịch vụ (downtime), bao gồm nội dung lỗi, xử lý, thời gian,...
+
+COLUMNS:
+- ID: Khóa chính
+- SO_THUE_BAO: Thuê bao phản ánh
+- NOI_DUNG_PHAN_ANH: Nội dung phản ánh (semi-structured)
+- TINH_THANH_PHO, QUAN_HUYEN, PHUONG_XA: Địa điểm
+- THONG_TIN_XU_LY: Diễn giải xử lý (semi-structured)
+- THOI_GIAN_GHI_NHAN, TG_TAO_WO, TG_KETTHUC: Mốc thời gian
+- TONG_THOI_GIAN_XU_LY: SLA xử lý
+- NOC_STATUS, MUC_CANH_BAO, IS_TICKET: Thông tin hệ thống
+- NGUYEN_NHAN, CHI_TIET_NN: Nguyên nhân xử lý
+- LAT, LNG: Tọa độ sự cố
+
+RELATIONS:
+- Dữ liệu semi-structured cần trích xuất thông tin
+- Có thể liên kết logic tới `PAKH`, `FB_REASON_TECHNIQUE`, `FB_LOCALITY`,...

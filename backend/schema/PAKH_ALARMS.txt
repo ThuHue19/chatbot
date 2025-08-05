@@ -1,0 +1,21 @@
+TABLE: PAKH_ALARMS
+DESCRIPTION: Lưu thông tin các cảnh báo (alarm) kỹ thuật liên quan đến phản ánh người dùng.
+
+COLUMNS:
+- ID (NUMBER, PK): Mã định danh duy nhất cho mỗi cảnh báo.
+- MIEN VARCHAR2(20 BYTE): tương ứng với các khu vực "MB", "MN", "MT"
+- TINH VARCHAR2(200 BYTE) 
+- HUYEN VARCHAR2(200 BYTE) 
+- ALARM_TYPE VARCHAR2(20 BYTE) 
+- FB_ID NUMBER, 
+- SEVERITY VARCHAR2(20 BYTE), 
+- ALARM_NAME VARCHAR2(1000 BYTE): TÊN CẢNH BÁO 
+- START_TIME DATE : ngày bắt đầu
+- END_TIME DATE : ngày kết thúc
+- CREATED_DATE DATE DEFAULT sysdate, 
+- ACK_STATUS NUMBER DEFAULT 0 : Trạng thái xác nhận (số lần quét)
+- FB_TYPE VARCHAR2(20 BYTE): loại phản ánh
+
+RELATIONS:
+- `PAKH.ID = PAKH_ALARMS.FB_ID` (quan hệ 1-n với bảng cảnh báo).
+

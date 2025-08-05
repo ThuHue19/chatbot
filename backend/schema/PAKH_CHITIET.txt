@@ -1,0 +1,14 @@
+TABLE: PAKH_CHITIET
+DESCRIPTION: Ghi lại chi tiết xử lý từng phản ánh (nhân viên xử lý, thời gian, nội dung,...)
+
+COLUMNS:
+- ID: Khóa chính
+- FB_ID: Mã phản ánh, liên kết đến bảng PAKH
+- USER_XU_LY: Tên người xử lý
+- TG_XU_LY: Thời gian xử lý
+- ND_XU_LY: Nội dung xử lý
+- TT_TAO_TICKET: Trạng thái tạo ticket (có/không)
+- TT_PAKH: Trạng thái phản ánh tại thời điểm xử lý
+- TG_NHAN: Thời điểm nhận xử lý
+
+

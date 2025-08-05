@@ -1,0 +1,23 @@
+{
+  "table": "PAKH_NOI_DUNG_PHAN_ANH",
+  "description": "Chứa thông tin chi tiết được tách từ nội dung phản ánh của khách hàng trong bảng PAKH. Mỗi dòng tương ứng với một phần nội dung phản ánh có cấu trúc (đơn vị nhập, khu vực lỗi, dịch vụ, gói cước,...).",
+  "columns": {
+    "ID": { "type": "NUMBER", "description": "Khóa chính tự động tăng. Mỗi bản ghi phản ánh tách riêng." },
+    "ID_PAKH": { "type": "NUMBER", "description": "Khóa ngoại liên kết với bảng PAKH." },
+    "DON_VI_NHAP": { "type": "VARCHAR2(4000)", "description": "Tên đơn vị hoặc bộ phận nhập phản ánh." },
+    "KHU_VUC_BI_LOI": { "type": "VARCHAR2(4000)", "description": "Khu vực, địa chỉ, hoặc vùng mà khách hàng phản ánh lỗi dịch vụ." },
+    "TINH_TRANG_LOI": { "type": "VARCHAR2(4000)", "description": "Miêu tả trạng thái hoặc sự cố xảy ra (ví dụ: mất sóng, mạng chậm, không gọi được)." },
+    "THOI_GIAN_XAY_RA_LOI": { "type": "VARCHAR2(4000)", "description": "Khoảng thời gian xảy ra lỗi, có thể là chuỗi mô tả như \"từ tối qua\", \"thường xuyên\", \"sáng ngày 5/6\"..." },
+    "DICH_VU_PHAN_ANH": { "type": "VARCHAR2(4000)", "description": "Loại dịch vụ bị ảnh hưởng (data, thoại, SMS, FTTH...)." },
+    "GOI_CUOC_DANG_DUNG": { "type": "VARCHAR2(4000)", "description": "Gói cước mà khách hàng đang sử dụng tại thời điểm lỗi (VD90, ST150, C150K...)." },
+    "DUNG_LUONG_GOI_CON_LAI": { "type": "VARCHAR2(4000)", "description": "Dung lượng còn lại trong gói cước (số MB, GB, hoặc dạng chuỗi mô tả)." },
+    "MAY_KH_DANG_DUNG": { "type": "VARCHAR2(1000)", "description": "Thiết bị mà khách hàng đang sử dụng (iPhone, Samsung, Xiaomi...)." },
+    "LOAI_SONG": { "type": "VARCHAR2(1000)", "description": "Loại sóng hiển thị hoặc phản ánh (3G, 4G, 5G...)." },
+    "KTRA_LOI_MAY_SIM": { "type": "VARCHAR2(1000)", "description": "Ghi nhận kết quả kiểm tra thiết bị và SIM (đã thử đổi máy, thử lại SIM, lắp sang máy khác...)." },
+    "CHON_SIM": { "type": "VARCHAR2(1000)", "description": "Thông tin về việc chọn đúng SIM truy cập (đặc biệt với máy 2 SIM)." },
+    "THONG_TIN_KHAC": { "type": "VARCHAR2(4000)", "description": "Thông tin bổ sung không thuộc các nhóm trên, ví dụ: yêu cầu kỹ thuật, lịch sử lỗi cũ, mô tả thêm từ KH." }
+  },
+  "note": "Bảng này là bảng trung gian giúp chuẩn hóa nội dung phản ánh dạng bán cấu trúc từ bảng `PAKH`. Một bản ghi trong `PAKH` có thể sinh ra nhiều dòng trong `PAKH_NOI_DUNG_PHAN_ANH` nếu có nhiều phần phản ánh.",
+  "select_instructions": "Khi truy vấn thông tin chi tiết về phản ánh (như Dịch vụ, Gói cước, Loại sóng,...) cùng với thông tin từ bảng PAKH (ví dụ: Số thuê bao), LUÔN LUÔN JOIN bảng này với bảng PAKH thông qua khóa ngoại PAKH_NOI_DUNG_PHAN_ANH.ID_PAKH = PAKH.ID. Cụ thể, khi hỏi về 'Dịch vụ phản ánh', hãy sử dụng cột DICH_VU_PHAN_ANH."
+}
+

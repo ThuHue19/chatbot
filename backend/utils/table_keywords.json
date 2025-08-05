@@ -1,0 +1,138 @@
+{
+  "PAKH": {
+    "keywords": ["thông tin phản ánh", "chi tiết phản ánh", "thuê bao", "sdt", "khách hàng", "trạng thái xử lý"],
+    "columns": {
+      "SO_THUE_BAO": { "keywords": ["số điện thoại", "sdt", "số thuê bao", "thuê bao","số"] },
+      "LOAI_THUE_BAO": { "keywords": ["loại thuê bao"] },
+      "NOI_DUNG_PHAN_ANH": { "keywords": ["nội dung phản ánh", "mô tả phản ánh"] },
+      "TINH_THANH_PHO": { "keywords": ["mã tỉnh thành phố"] },
+      "QUAN_HUYEN": { "keywords": ["mã quận huyện"] },
+      "PHUONG_XA": { "keywords": ["mã phường xã"] },
+      "TRANG_THAI": { "keywords": ["trạng thái xử lý", "status", "tình trạng"] },
+      "THOI_GIAN_GHI_NHAN": { "keywords": ["thời gian ghi nhận", "ngày ghi nhận"] },
+      "DON_VI_NHAN": { "keywords": ["đơn vị nhận"] },
+      "DON_VI":{"keywords": ["đơn vị đang xử lý"]},
+      "PAKH_SERVICE": { "keywords": ["gọi","data","sms"] },
+      "NETWORK_TYPE": { "keywords": ["loại mạng","3G", "4G", "5G", "FTTH", "ADSL"] },
+      "FB_GROUP": { "keywords": ["mã nhóm phản ánh", "nhóm phản ánh"] },
+      "NGUYEN_NHAN": { "keywords": ["nguyên nhân"] },
+      "CHI_TIET_NN": {"keywords" : ["Mô tả chi tiết nguyên nhân"]}
+    }
+  },
+  "FB_TYPE_NOC": {
+    "keywords": ["loại phản ánh"],
+    "columns": {
+      "NAME": { "keywords": ["tên loại phản ánh"] }
+    }
+  },
+  "FB_GROUP": {
+    "keywords": ["nhóm phản ánh"],
+    "columns": {
+      "NAME": { "keywords": ["tên nhóm phản ánh"] }
+    }
+  },
+  "FB_LOCALITY": {
+    "keywords": ["địa chỉ"],
+    "columns": {
+      "FULL_NAME": { "keywords": ["địa điểm", "địa chỉ đầy đủ", "tên tỉnh thành phố", "tên quận huyện", "tên phường xã"] }
+    }
+  },
+  "FB_HIEN_TUONG": {
+    "keywords": ["hiện tượng phản ánh", "hiện tượng"],
+    "columns": {
+      "NAME": { "keywords": ["tên hiện tượng"] }
+    }
+  },
+  "FB_DEPARTMENT": {
+    "keywords": ["tên đơn vị xử lý", "tên đơn vị nhận"],
+    "columns": {
+      "NAME": { "keywords": ["tên đơn vị"] }
+    }
+  },
+  "PAKH_NOI_DUNG_PHAN_ANH": {
+    "keywords": ["nội dung chi tiết", "dữ liệu phản ánh", "nội dung phản ánh"],
+    "columns": {
+      "DON_VI_NHAP": {"keywords" : ["đơn vị hoặc bộ phận nhập phản ánh"]},
+      "CHON_SIM": { "keywords": ["loại sim", "sim", "chọn sim"] },
+      "GOI_CUOC_DANG_DUNG": { "keywords": ["gói cước sử dụng", "gói cước đang dùng"]}, 
+      "DICH_VU_PHAN_ANH": {"keywords": ["dịch vụ phản ánh", "Loại dịch vụ bị ảnh hưởng (data, thoại, SMS, FTTH...)"]},
+      "DUNG_LUONG_GOI_CON_LAI": {"keywords": ["dung lượng gói cước còn lại"] },
+      "THOI_GIAN_XAY_RA_LOI": { "keywords": ["Khoảng thời gian xảy ra lỗi"] },
+      "KHU_VUC_BI_LOI": { "keywords": ["khu vực bị lỗi"] },
+      "TINH_TRANG_LOI": { "keywords": ["tình trạng lỗi"] },
+      "LOAI_SONG": { "keywords": ["loại sóng"] },
+      "MAY_KH_DANG_DUNG": { "keywords": ["thiết bị","máy khách hàng đang dùng", "máy"] }
+
+    }
+  },
+  "PAKH_SLA_PHONG_BAN": {
+    "keywords": ["phòng ban", "hiệu suất phòng ban"],
+    "columns": {
+      "SO_PA_NHAN": { "keywords": ["phản ánh đã nhận", "bao nhiêu phản ánh", "số lượng phản ánh"] },
+      "SO_PA_DA_XL": { "keywords": ["phản ánh đã xử lý", "số đã xử lý phòng ban"] },
+      "SO_PA_QH": { "keywords": ["phản ánh quá hạn", "PA quá hạn"] },
+      "SO_PA_TU_CHOI": { "keywords": ["phản ánh đã từ chối", "số từ chối phòng ban"] },
+      "SO_PA_DA_XL_DH": { "keywords": ["phản ánh xử lý đúng hạn", "số phản ánh đã xử lý đúng hạn"] },
+      "TONG_TG_XL": { "keywords": ["tổng thời gian xử lý phòng ban"] },
+      "PHONG_BAN": { "keywords": ["phòng ban", "tên phòng ban"], "note": "Chứa tên phòng ban trực tiếp, không cần JOIN với bảng khác" }
+
+    }
+  },
+  "PAKH_SLA_TO_NHOM": {
+    "keywords": ["tổ nhóm", "hiệu suất tổ nhóm", "nhóm kỹ thuật"],
+    "columns": {
+      "SO_PA_NHAN": { "keywords": ["phản ánh đã nhận", "số lượng phản ánh tổ nhóm"] },
+      "SO_PA_DA_XL": { "keywords": ["đã xử lý tổ nhóm"] },
+      "SO_PA_QH": { "keywords": ["phản ánh quá hạn"] },
+      "TONG_TG_XL": { "keywords": ["tổng thời gian xử lý tổ nhóm"] },
+      "SO_PA_TU_CHOI": { "keywords": ["phản ảnh đã từ chối", "số từ chối tổ nhóm"] },
+      "TO_NHOM": { "keywords": ["tên tổ nhóm", "tổ kỹ thuật"], "note": "Chứa tên tổ nhóm trực tiếp, không cần JOIN với bảng khác" },
+      "PHONG_BAN": { "keywords": ["phòng ban", "tên phòng ban"], "note": "Chứa tên phòng ban trực tiếp, không cần JOIN với bảng khác" }
+    }
+  },
+  "PAKH_SLA_TRUNG_TAM": {
+    "keywords": ["trung tâm","hiệu suất trung tâm"],
+    "columns": {
+      "SO_PA_NHAN": { "keywords": ["phản ánh đã nhận", "số lượng phản ánh trung tâm"] },
+      "SO_PA_DA_XL": { "keywords": ["đã xử lý trung tâm"] },
+      "SO_PA_QH": { "keywords": ["phản ánh quá hạn"] },
+      "TONG_TG_XL": { "keywords": ["tổng thời gian xử lý trung tâm"] },
+      "SO_PA_TU_CHOI": { "keywords": ["phản ánh đã từ chối", "số từ chối trung tâm"] }
+
+    }
+  },
+  "PAKH_SLA_CA_NHAN": {
+    "keywords": ["cá nhân", "người xử lý", "hiệu suất cá nhân"],
+    "columns": {
+      "SO_PA_DA_XL_DH": { "keywords": ["xử lý đúng hạn", "số phản ánh đã xử lý đúng hạn"] },
+      "SO_PA_DANG_XL_DH": { "keywords": ["đang xử lý đúng hạn"] },
+      "SO_PA_NHAN": { "keywords": ["bao nhiêu phản ánh", "tổng phản ánh nhận", "số lượng nhận"] },
+      "TONG_TG_XL": { "keywords": ["tổng thời gian xử lý"] }
+    }
+  },
+  "PAKH_CA_NHAN": {
+    "keywords": ["nhân viên xử lý", "liệt kê"],
+    "columns": {
+      "TRANG_THAI": { "keywords": ["trạng thái", "tình trạng xử lý"] }
+    }
+  },
+  "PAKH_PHONG_BAN": {
+    "keywords": ["phòng ban", "liệt kê phòng ban"],
+    "columns": {
+      "TEN_PHONG_BAN": { "keywords": ["tên phòng ban"] }
+    }
+  },
+  "PAKH_TO_NHOM": {
+    "keywords": ["tổ nhóm", "liệt kê tổ nhóm"],
+    "columns": {
+      "TEN_TO_NHOM": { "keywords": ["tên tổ nhóm", "nhóm kỹ thuật"] }
+    }
+  },
+  "PAKH_TRUNG_TAM": {
+    "keywords": ["trung tâm xử lý", "vùng điều phối"],
+    "columns": {
+      "TEN_TRUNG_TAM": { "keywords": ["tên trung tâm"] }
+    }
+  }
+
+}
