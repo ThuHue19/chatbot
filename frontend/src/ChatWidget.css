@@ -201,3 +201,8 @@
   color: var(--primary-color-dark);
   text-decoration: underline;
 }
+.chat-messages {
+  max-height: 400px; /* hoặc chiều cao tùy bạn */
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
