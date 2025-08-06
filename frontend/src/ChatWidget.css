@@ -206,3 +206,12 @@
   overflow-y: auto;
   scroll-behavior: smooth;
 }
+.bot-msg a {
+  color: #007bff;
+  text-decoration: underline;
+  word-break: break-word;
+}
+
+.bot-msg a:hover {
+  color: #0056b3;
+}
