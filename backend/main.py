@@ -1,17 +1,20 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from hybrid_sqlcoder import HybridSQLCoder
-from db_utils import execute_sql, get_filter_link_by_keywords
+from db_utils import execute_sql, get_detail_link_by_question
 import logging
 import re
 from pydantic import BaseModel
-
+from db_utils import get_connection
+from db_utils import execute_sql, get_detail_link_by_question, fetch_one
+...
+sqlcoder = HybridSQLCoder(db_conn=get_connection())
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = FastAPI()
 logger.info("Initializing LLM with LangChain or Gemini...")
-sqlcoder = HybridSQLCoder()
+
 logger.info("Server initialization complete.")
 
 from fastapi.middleware.cors import CORSMiddleware
@@ -65,15 +68,17 @@ async def process_query(query: QueryRequest):
             logger.info(f"Executing SQL #{idx}: {sql_clean}")
 
             # ✅ Dùng generate_and_execute_sql để chỉ cache khi execute thành công
+            # ⚠️ sửa lại đoạn lambda để nhận đúng sql cần thực thi
             result = sqlcoder.generate_and_execute_sql(
                 question=query.question,
-                execute_fn=lambda sql: execute_sql(sql_clean),  # Hàm execute_sql từ db_utils
+                execute_fn=lambda _: execute_sql(sql_clean),  # _ đại diện cho sql nhưng mình dùng sẵn sql_clean rồi
                 force_no_cache=query.force_no_cache
             )
-            logger.info(f"SQL #{idx} execution result: {result}")
+
+            logger.info(f"Type of result: {type(result)}")
 
             # ✅ Lấy filter link nếu có
-            filter_link = get_filter_link_by_keywords(query.question)
+            filter_link = get_detail_link_by_question(query.question)
 
             results.append({
                 "sql": sql_clean,
