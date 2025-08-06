@@ -10,6 +10,62 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 load_dotenv()
+import re
+import urllib.parse
+
+KPI_KEYWORDS_MAP = {
+    "pa nhận": "soPaNhan",
+    "pa quá hạn": "soPaQh",
+    "pa đúng hạn": "soPaDungHan",
+    "tiền xl đúng hạn": "soTienXLDungHan",
+    "tiền xl quá hạn": "soTienXLQh",
+    "pa đã xl đúng hạn": "soDaXLDungHan",
+    "pa đã xl quá hạn": "soDaXLQh",
+    "pa đang xl đúng hạn": "soDangXLDungHan",
+    "pa đang xl quá hạn": "soDangXLQh",
+    "pa đã từ chối": "soDaTuChoi",
+    "pa đóng đúng hạn": "soDongDungHan",
+    "pa cần đóng": "soCanDong",
+    "pa không đạt chất lượng": "soPaKhongDatCL",
+}
+
+def get_detail_link_by_question(question: str) -> str:
+    match = re.search(r"cá nhân\s+([a-z0-9_.]+)", question, re.IGNORECASE)
+    if not match:
+        return None
+
+    ca_nhan = match.group(1)
+
+    # Tìm kpiName dựa trên từ khóa trong câu hỏi
+    question_lower = question.lower()
+    kpi_name = None
+    for keyword, kpi in KPI_KEYWORDS_MAP.items():
+        if keyword in question_lower:
+            kpi_name = kpi
+            break
+
+    if not kpi_name:
+        return None  # Không tìm thấy KPI phù hợp
+
+    base_url = "http://14.160.91.174:8180/smartw/feedback/form/detail.htm"
+    params = {
+        "type": "year",
+        "trungTam": "TTML_MB",
+        "phongBan": "DVT_Ha_Noi_1",
+        "toNhom": "DVT_HN1_TVT1",
+        "caNhan": ca_nhan,
+        "kpiName": kpi_name,
+        "level": "ca_nhan",
+        "year": "2024",
+        "nhomNguyenNhan": "716",
+        # Các tham số mặc định khác:
+        "loaiPa": "", "loaiThueBao": "", "nguyenNhan": "", "caTruc": "",
+        "fo_bo": "", "tinh": "", "ctdv": "", "day": "", "today": "undefined",
+        "week": "undefined", "month": "undefined", "quarter": "undefined"
+    }
+
+    return f"{base_url}?{urllib.parse.urlencode(params)}"
+
 
 def get_connection():
     try:
@@ -120,3 +176,16 @@ def get_filter_link_by_keywords(keywords: list):
     cursor.close()
     conn.close()
     return result
+def fetch_one(sql: str, params: list) -> dict:
+    try:
+        with get_connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute(sql, params)
+                row = cur.fetchone()
+                if row and cur.description:
+                    columns = [desc[0] for desc in cur.description]
+                    return dict(zip(columns, row))
+                return None
+    except Exception as e:
+        logger.error(f"Lỗi trong fetch_one: {e}")
+        return None
