@@ -200,7 +200,7 @@ class HybridSQLCoder:
 
         api_key = os.getenv("GEMINI_API_KEY")
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel("models/gemini-2.5-flash", generation_config={"temperature": 0})
+        self.model = genai.GenerativeModel("models/gemini-1.5-flash", generation_config={"temperature": 0})
         self.memory = []  # list of (user_message, ai_message)
 
     def _fallback_to_gemini(self):
@@ -242,45 +242,38 @@ class HybridSQLCoder:
                 context[key] = m.group(1)
         if context:
             self.last_context.update(context)
-    def get_ma_dia_chi_fuzzy(self, dia_chi_full):
+    def get_ma_dia_chi_fuzzy(self, dia_chi_text: str) -> dict:
         if not self.db_conn:
+            logger.warning("[WARN] DB connection is None. Không thể truy vấn mã địa lý.")
+            return {}
+        # Chuẩn hóa địa chỉ
+        text = dia_chi_text.lower()
+        text = re.sub(r"[^\w\s]", " ", text)
+        keywords = [kw.strip() for kw in re.split(r"[\n,]", text) if kw.strip()]
+        if not keywords:
             return {}
 
-        cursor = self.db_conn.cursor()
+        # Tìm tỉnh và huyện
+        province = next((kw for kw in keywords if any(p in kw for p in ["quảng nam", "quang nam"])), None)
+        district = next((kw for kw in keywords if "nông sơn" in kw), None)
 
-        # 🔍 Trích tỉnh và huyện từ chuỗi (từ dạng: X.Hoài Thanh H.Hoài Nhơn T.Bình Định)
-        tinh_match = re.search(r"T\\.?([\\w\\s]+)", dia_chi_full, re.IGNORECASE)
-        huyen_match = re.search(r"H\\.?([\\w\\s]+)", dia_chi_full, re.IGNORECASE)
-
-        ten_tinh = tinh_match.group(1).strip() if tinh_match else ""
-        ten_huyen = huyen_match.group(1).strip() if huyen_match else ""
-
-        logger.info(f"[DEBUG] Trích xuất: Tỉnh = {ten_tinh}, Huyện = {ten_huyen}")
-
-        if not ten_tinh or not ten_huyen:
-            cursor.close()
-            return {}
-
-        # ✅ Truy vấn bằng FULL_NAME chứa cả huyện và tỉnh
-        sql = '''
-            SELECT DISTINCT PROVINCE, DISTRICT
-            FROM FB_LOCALITY
-            WHERE LOWER(FULL_NAME) LIKE :tinh AND LOWER(FULL_NAME) LIKE :huyen
-        '''
-        cursor.execute(sql, tinh=f"%t.{ten_tinh.lower()}%", huyen=f"%h.{ten_huyen.lower()}%")
-        row = cursor.fetchone()
-        cursor.close()
-
-        logger.info(f"[DEBUG] Ket qua dia chi fuzzy: {row}")
-
-        if row:
-            ma_tinh, ma_huyen = row
-            return {
-                "tinhThanhPho": ma_tinh,
-                "quanHuyen": ma_huyen,
-            }
-
+        if province and district:
+            query = """
+                SELECT DISTINCT province, district
+                FROM FB_LOCALITY
+                WHERE LOWER(full_name) LIKE %s
+                AND LOWER(full_name) LIKE %s
+                LIMIT 1
+            """
+            params = [f"%{province}%", f"%{district}%"]
+            result = self.db_conn.fetch_one(query, params)
+            if result:
+                return {
+                    "tinhThanhPho": result["province"],
+                    "quanHuyen": result["district"]
+                }
         return {}
+
 
     def _extract_dia_chi_from_question(self, question: str) -> str:
         # Lấy cụm từ sau các từ khóa "tại", "ở", "địa chỉ", "địa bàn", "tỉnh", "huyện",...
@@ -684,6 +677,7 @@ SQL:
                     base_url = "http://14.160.91.174:8180/smartw/feedback/list.htm"
                     link = build_filter_url(base_url, params)
                     lines.append(f"{nhom_col}: {nhom_val}\n🔗 [Xem chi tiết]({link})")
+                    print(f"[DEBUG] Link chi tiết được tạo: {link}")
                 return os.linesep.join(lines)
 
          # Thống kê tổng hợp: không có link
@@ -705,10 +699,12 @@ SQL:
                 context_common = {
                     "year": self._extract_year_from_question() or "2024",
                 }
-                has_xuly = any(re.search(key, self.last_sql, re.IGNORECASE) for key in ["trungTam", "phongBan", "toNhom", "caNhan", "level"])
-                
+                has_xuly = any(keyword in self.last_sql.lower() for keyword in [
+                        'ca_nhan', 'phong_ban', 'to_nhom', 'trung_tam'
+                    ])
+                    
                 has_diachi = (
-                any(re.search(key, self.last_sql, re.IGNORECASE) for key in ["tinhThanhPho", "quanHuyen"]) or
+                any(re.search(key, self.last_sql, re.IGNORECASE) for key in ["tỉnh_thanh_pho", "quan_huyen"]) or
                 "FB_LOCALITY" in self.last_sql.upper()
                 )
 
@@ -722,9 +718,10 @@ SQL:
                     base_url = "http://14.160.91.174:8180/smartw/feedback/form/detail.htm"
                 else:
                     full_name_idx = next(
-                        (i for i, col in enumerate(result["columns"]) if col.upper() in ["FULL_NAME", "DIA_CHI"]),
+                        (i for i, col in enumerate(columns) if col.upper() in ["FULL_NAME", "DIA_DIEM_PHAN_ANH"]),
                         None
-                    )
+)
+
                     if full_name_idx is not None:
                         dia_chi = result["rows"][0][full_name_idx]
                         logger.info(f"[DEBUG] Dia chi trong ket qua (col index {full_name_idx}): {dia_chi}")
@@ -733,9 +730,65 @@ SQL:
                         dia_chi = ""
 
                     # ✅ Nếu có địa chỉ và DB, cố gắng mapping sang mã tỉnh/huyện
-                    if has_diachi and dia_chi and self.db_conn:
-                        ma_diachi = self.get_ma_dia_chi_fuzzy(dia_chi)
+                    ma_diachi = {}
+
+                # Ưu tiên lấy trực tiếp mã từ kết quả nếu có
+                ma_col_mapping = {
+                    "tinhThanhPho": ["ma_tinh", "PROVINCE", "tinh_thanh_pho"],
+                    "quanHuyen": ["ma_huyen", "district", "quan_huyen"],
+                }
+
+                for key, aliases in ma_col_mapping.items():
+                    for alias in aliases:
+                        if alias in map(str.lower, columns):
+                            idx = next(i for i, col in enumerate(columns) if col.lower() == alias)
+                            ma_diachi[key] = rows[0][idx]
+                            logger.info(f"[DEBUG] Dùng trực tiếp mã {key} = {ma_diachi[key]} từ kết quả truy vấn")
+                            break
+
+                # Nếu không có mã => fallback sang fuzzy match
+                # Trong hàm format_result_for_user
+                # ❌ Chỉ fallback sang query mã địa lý từ địa chỉ nếu KHÔNG tìm thấy cả 2 mã từ kết quả SQL
+                if has_diachi and (not ma_diachi.get("tinhThanhPho") or not ma_diachi.get("quanHuyen")):
+                    if full_name_idx is not None:
+                        dia_chi = rows[0][full_name_idx]
+                        logger.info(f"[DEBUG] Địa chỉ trong kết quả (full_name): {dia_chi}")
+                        
+                        # ✅ Chủ động truy vấn DB để tìm mã tỉnh/huyện
+                        if self.db_conn:
+                            query = """
+                                SELECT ma_tinh AS tinhThanhPho, ma_huyen AS quanHuyen 
+                                FROM FB_LOCALITY 
+                                WHERE LOWER(full_name) LIKE %s 
+                                LIMIT 1
+                            """
+                            dia_chi_clean = re.sub(r"[^\w\s]", " ", dia_chi.lower())
+                            params = [f"%{kw.strip()}%" for kw in dia_chi_clean.split() if kw.strip()]
+                            where_clause = " AND ".join(["LOWER(full_name) LIKE %s"] * len(params))
+                            query = f"""
+                                SELECT ma_tinh AS tinhThanhPho, ma_huyen AS quanHuyen 
+                                FROM FB_LOCALITY 
+                                WHERE {where_clause} 
+                                LIMIT 1
+                            """
+                            try:
+                                result_fine = self.db_conn.fetch_one(query, params)
+                                if result_fine:
+                                    logger.info(f"[DEBUG] Mapping từ địa chỉ -> mã địa lý (từ SQL): {result_fine}")
+                                    for key in ["tinhThanhPho", "quanHuyen"]:
+                                        if not ma_diachi.get(key) and result_fine.get(key):
+                                            ma_diachi[key] = result_fine[key]
+                                else:
+                                    logger.warning("[DEBUG] Không tìm thấy mã địa lý từ địa chỉ (từ SQL)")
+                            except Exception as e:
+                                logger.error(f"[ERROR] Lỗi truy vấn mã địa lý từ địa chỉ: {e}")
+                        else:
+                            logger.warning("[WARN] DB connection is None. Không thể truy vấn mã địa lý.")
+
+                    # Cập nhật context_common với ma_diachi
+                    if ma_diachi:
                         context_common.update(ma_diachi)
+
 
                     params = extract_list_params_from_sql(self.last_sql, context_common)
                     logger.info(f"[DEBUG] context_common: {context_common}")
