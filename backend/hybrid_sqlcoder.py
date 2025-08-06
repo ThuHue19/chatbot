@@ -249,29 +249,31 @@ class HybridSQLCoder:
             logger.warning("[WARN] DB connection is None. Không thể truy vấn mã địa lý.")
             return {}
         
-        # Chuẩn hóa địa chỉ: chuyển lowercase, loại bỏ ký tự đặc biệt
+        import unidecode
+
+        # Bỏ dấu, lowercase, loại bỏ ký tự đặc biệt
         text = unidecode.unidecode(dia_chi_text).lower()
         text = re.sub(r"[^\w\s]", " ", text)
         keywords = [kw.strip() for kw in text.split() if kw.strip()]
         if not keywords:
             return {}
 
-        # Tạo điều kiện WHERE động
+        # Tạo điều kiện WHERE bằng LIKE
         conditions = []
         params = []
         for i, kw in enumerate(keywords):
-            # Thay thế unaccent(LOWER(full_name)) bằng LOWER(full_name) để tránh lỗi ORA-00904
             conditions.append(f"LOWER(full_name) LIKE :{i+1}")
             params.append(f"%{kw}%")
         
         where_clause = " AND ".join(conditions)
         query = f"""
-            SELECT ma_tinh AS tinhThanhPho, ma_huyen AS quanHuyen 
-            FROM FB_LOCALITY 
-            WHERE {where_clause}
-            ORDER BY LENGTH(full_name) DESC
-            FETCH FIRST 1 ROWS ONLY
-        """
+    SELECT province AS tinhThanhPho, district AS quanHuyen 
+    FROM FB_LOCALITY 
+    WHERE {where_clause}
+    ORDER BY LENGTH(full_name) DESC
+    FETCH FIRST 1 ROWS ONLY
+"""
+
 
         try:
             with self.db_conn.cursor() as cursor:
@@ -289,20 +291,23 @@ class HybridSQLCoder:
         return {}
 
     def _extract_dia_chi_from_question(self, question: str) -> str:
-        # Mở rộng pattern bắt địa chỉ
+        if not question:
+            return ""
+
         patterns = [
-            r"(?:tại|ở|địa chỉ|địa bàn|tại khu vực|tại)\s*([^,.;?]+)",
-            r"(\b(?:quận|huyện|thị xã|tp\.?|tỉnh)\s+[\w\s]+)",
-            r"([\w\s]+(?:,\s*[\w\s]+){1,2})"
+            r"(?:tại|ở|thuộc|địa bàn|khu vực|tỉnh|thành phố|quận|huyện|xã|phường)\s+([^\.,;?\n]+)",  # sau từ khóa
+            r"(quận|huyện|phường|xã|thị xã|tp\.?|tp|tỉnh)\s+\w+(?:\s+\w+)?",  # cụm hành chính
+            r"([A-ZĐ][\w\s]+(?:\s+(quận|huyện|tỉnh|tp|thành phố))?)"  # cụm có thể là tên địa phương
         ]
-        
+
         for pattern in patterns:
             match = re.search(pattern, question, re.IGNORECASE)
             if match:
-                return match.group(1).strip()
-        
-        # Fallback: lấy cụm cuối cùng nếu không khớp pattern
-        return " ".join(question.split()[-3:])
+                return match.group(0).strip()
+
+        # Fallback: lấy cụm cuối cùng (3 từ)
+        return " ".join(question.strip().split()[-3:])
+
     def _detect_new_filter(self, question: str) -> bool:
         # Nếu câu hỏi có từ khóa về phòng ban, tổ nhóm, trung tâm, địa bàn, nhóm, loại...
         keywords = [
