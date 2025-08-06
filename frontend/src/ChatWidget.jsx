@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import './ChatWidget.css';
+import remarkGfm from 'remark-gfm';
+
 
 const MAX_LINES = 3;
 
@@ -30,59 +32,43 @@ const ChatWidget = () => {
   };
 
   const sendQuestion = async () => {
-    const question = input.trim();
-    if (!question) return;
+  const question = input.trim();
+  if (!question) return;
 
-    setMessages((prev) => [...prev, { sender: 'user', text: question }]);
-    setInput('');
+  setMessages((prev) => [...prev, { sender: 'user', text: question }]);
+  setInput('');
 
-    try {
-      const res = await fetch('http://localhost:8000/query', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          question,
-          is_independent: isIndependent,
-          force_no_cache: false,
-        }),
-      });
+  try {
+    const res = await fetch('http://localhost:8000/query', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        question,
+        is_independent: isIndependent,
+        force_no_cache: false,
+      }),
+    });
 
-      const data = await res.json();
-      let answer = '';
-
-      if (data.results) {
-        answer = data.results
-          .map((result, idx) => {
-            if (result && result.rows && result.rows.length > 0) {
-              const header = result.columns.join(' | ');
-              const rows = result.rows.map((row) => row.join(' | ')).join('\n');
-              return `**Kết quả truy vấn #${idx + 1}:**\n${header}\n${rows}`;
-            } else {
-              return 'Tôi chưa có thông tin, bạn liên hệ tổng đài nhé.';
-            }
-          })
-          .join('\n\n');
-      } else {
-        const rawAnswer = data.answer || '';
-        const isError =
-          rawAnswer.toLowerCase().includes('lỗi') ||
-          rawAnswer.toLowerCase().includes('error') ||
-          rawAnswer.toLowerCase().includes('ora-');
-
-        answer = isError
-          ? 'Tôi chưa có thông tin, bạn liên hệ tổng đài nhé.'
-          : rawAnswer || 'Tôi chưa có thông tin, bạn liên hệ tổng đài nhé.';
-      }
-
-      setMessages((prev) => [...prev, { sender: 'bot', text: answer }]);
-    } catch (err) {
-      console.error('Lỗi khi gửi câu hỏi:', err);
-      setMessages((prev) => [
-        ...prev,
-        { sender: 'bot', text: 'Tôi chưa có thông tin, bạn liên hệ tổng đài nhé.' },
-      ]);
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
     }
-  };
+
+    const data = await res.json();
+
+    // ✅ Hiển thị trực tiếp câu trả lời nếu có
+    const answer = data.answer || 'Tôi chưa có thông tin, bạn liên hệ tổng đài nhé.';
+
+    setMessages((prev) => [...prev, { sender: 'bot', text: answer }]);
+  } catch (err) {
+    console.error('❌ Lỗi khi gửi câu hỏi:', err);
+    setMessages((prev) => [
+      ...prev,
+      { sender: 'bot', text: 'Tôi chưa có thông tin, bạn liên hệ tổng đài nhé.' },
+    ]);
+  }
+};
+
+
 
   if (!visible) return null;
 
@@ -121,16 +107,20 @@ const ChatWidget = () => {
                   </div>
                   <div className={msg.sender === 'user' ? 'user-msg' : 'bot-msg'}>
                     <ReactMarkdown
-                      components={{
-                        a: ({ node, ...props }) => (
-                          <a {...props} target="_blank" rel="noopener noreferrer" />
-                        ),
-                        ul: ({ children }) => <>{children}</>,
-                        li: ({ children }) => <div style={{ marginLeft: '1em' }}>{children}</div>,
-                      }}
-                    >
-                      {displayText}
-                    </ReactMarkdown>
+  remarkPlugins={[remarkGfm]}
+  components={{
+    a: ({ node, ...props }) => (
+      <a {...props} target="_blank" rel="noopener noreferrer">
+        {props.children}
+      </a>
+    ),
+    ul: ({ children }) => <>{children}</>,
+    li: ({ children }) => <div style={{ marginLeft: '1em' }}>{children}</div>,
+  }}
+>
+  {displayText}
+</ReactMarkdown>
+
 
                     {shouldTruncate && (
                       <button
