@@ -242,10 +242,16 @@ class HybridSQLCoder:
                 context[key] = m.group(1)
         if context:
             self.last_context.update(context)
+<<<<<<< HEAD
+=======
+    # File: hybrid_sqlcoder.py
+
+>>>>>>> 50047d6ac5c1ba29c791b53720c548db93e614bd
     def get_ma_dia_chi_fuzzy(self, dia_chi_text: str) -> dict:
         if not self.db_conn:
             logger.warning("[WARN] DB connection is None. Không thể truy vấn mã địa lý.")
             return {}
+<<<<<<< HEAD
         # Chuẩn hóa địa chỉ
         text = dia_chi_text.lower()
         text = re.sub(r"[^\w\s]", " ", text)
@@ -272,19 +278,69 @@ class HybridSQLCoder:
                     "tinhThanhPho": result["province"],
                     "quanHuyen": result["district"]
                 }
+=======
+        
+        import unidecode
+
+        # Bỏ dấu, lowercase, loại bỏ ký tự đặc biệt
+        text = unidecode.unidecode(dia_chi_text).lower()
+        text = re.sub(r"[^\w\s]", " ", text)
+        keywords = [kw.strip() for kw in text.split() if kw.strip()]
+        if not keywords:
+            return {}
+
+        # Tạo điều kiện WHERE bằng LIKE
+        conditions = []
+        params = []
+        for i, kw in enumerate(keywords):
+            conditions.append(f"LOWER(full_name) LIKE :{i+1}")
+            params.append(f"%{kw}%")
+        
+        where_clause = " AND ".join(conditions)
+        query = f"""
+    SELECT province AS tinhThanhPho, district AS quanHuyen 
+    FROM FB_LOCALITY 
+    WHERE {where_clause}
+    ORDER BY LENGTH(full_name) DESC
+    FETCH FIRST 1 ROWS ONLY
+"""
+
+
+        try:
+            with self.db_conn.cursor() as cursor:
+                cursor.execute(query, params)
+                row = cursor.fetchone()
+                if row:
+                    result = {
+                        "tinhThanhPho": row[0],
+                        "quanHuyen": row[1]
+                    }
+                    logger.info(f"[DEBUG] Mapping địa chỉ '{dia_chi_text}' -> {result}")
+                    return result
+        except Exception as e:
+            logger.error(f"Lỗi truy vấn mã địa lý: {e}")
+>>>>>>> 50047d6ac5c1ba29c791b53720c548db93e614bd
         return {}
 
 
     def _extract_dia_chi_from_question(self, question: str) -> str:
-        # Lấy cụm từ sau các từ khóa "tại", "ở", "địa chỉ", "địa bàn", "tỉnh", "huyện",...
-        match = re.search(r"(?:tại|ở|địa chỉ|địa bàn|tỉnh|huyện)\s*([A-Za-zÀ-ỹ0-9\s,/-]+)", question, re.IGNORECASE)
-        if match:
-            return match.group(1).strip()
-        # fallback: lấy cụm cuối câu nếu có dấu phẩy
-        match = re.search(r'([A-Za-zÀ-ỹ0-9\s\-]+,\s*[A-Za-zÀ-ỹ0-9\s\-]+)$', question)
-        if match:
-            return match.group(1).strip()
-        return ""
+        if not question:
+            return ""
+
+        patterns = [
+            r"(?:tại|ở|thuộc|địa bàn|khu vực|tỉnh|thành phố|quận|huyện|xã|phường)\s+([^\.,;?\n]+)",  # sau từ khóa
+            r"(quận|huyện|phường|xã|thị xã|tp\.?|tp|tỉnh)\s+\w+(?:\s+\w+)?",  # cụm hành chính
+            r"([A-ZĐ][\w\s]+(?:\s+(quận|huyện|tỉnh|tp|thành phố))?)"  # cụm có thể là tên địa phương
+        ]
+
+        for pattern in patterns:
+            match = re.search(pattern, question, re.IGNORECASE)
+            if match:
+                return match.group(0).strip()
+
+        # Fallback: lấy cụm cuối cùng (3 từ)
+        return " ".join(question.strip().split()[-3:])
+
     def _detect_new_filter(self, question: str) -> bool:
         # Nếu câu hỏi có từ khóa về phòng ban, tổ nhóm, trung tâm, địa bàn, nhóm, loại...
         keywords = [
@@ -643,6 +699,7 @@ SQL:
         columns = target["columns"]
         rows = target["rows"]
         q = (self.last_question or "").lower()
+
         is_list_query = any(kw in q for kw in [
             "liệt kê", "danh sách", "list", "show", "các pa", "các phản ánh", "xem chi tiết", "chi tiết các phản ánh"
         ])
@@ -650,7 +707,7 @@ SQL:
             "theo từng nhóm", "theo từng loại", "thống kê", "group by", "từng nhóm", "từng loại", "mỗi nhóm", "mỗi loại"
         ])
 
-        # Liệt kê theo nhóm
+        # ✅ Xử lý thống kê nhóm
         nhom_keys = [
             "nhom_pa", "ten_nhom_pa", "nhomphananh", "tennhomphananh",
             "nhom_nguyen_nhan", "ten_nhom_nguyen_nhan"
@@ -674,40 +731,35 @@ SQL:
                         "nhomNguyenNhan": nhom_val if "nguyen_nhan" in nhom_col.lower() else "",
                     }
                     params = extract_list_params_from_sql(self.last_sql, context_nhom)
-                    base_url = "http://14.160.91.174:8180/smartw/feedback/list.htm"
-                    link = build_filter_url(base_url, params)
+                    link = build_filter_url("http://14.160.91.174:8180/smartw/feedback/list.htm", params)
                     lines.append(f"{nhom_col}: {nhom_val}\n🔗 [Xem chi tiết]({link})")
                     print(f"[DEBUG] Link chi tiết được tạo: {link}")
                 return os.linesep.join(lines)
 
-         # Thống kê tổng hợp: không có link
+        # ✅ Thống kê tổng hợp (không có link)
         if is_statistical:
-            lines = [
+            return os.linesep.join(
                 "- " + ", ".join(f"{col}: {val}" for col, val in zip(columns, row))
                 for row in rows
-            ]
-            return os.linesep.join(lines)
+            )
 
-        # Liệt kê chi tiết: 1 bản ghi đầu + link
+        # ✅ Liệt kê chi tiết
         if is_list_query:
             row_limit = 1
             lines = [
                 "- " + ", ".join(f"{col}: {val}" for col, val in zip(columns, row))
                 for row in rows[:row_limit]
             ]
-            if not filter_link and self.last_sql and result and "rows" in result and result["rows"]:
-                context_common = {
-                    "year": self._extract_year_from_question() or "2024",
-                }
+            if not filter_link:
+                context_common = {"year": self._extract_year_from_question() or "2024"}
                 has_xuly = any(keyword in self.last_sql.lower() for keyword in [
-                        'ca_nhan', 'phong_ban', 'to_nhom', 'trung_tam'
-                    ])
-                    
+                    'ca_nhan', 'phong_ban', 'to_nhom', 'trung_tam'
+                ])
                 has_diachi = (
-                any(re.search(key, self.last_sql, re.IGNORECASE) for key in ["tỉnh_thanh_pho", "quan_huyen"]) or
-                "FB_LOCALITY" in self.last_sql.upper()
+                    any(re.search(rf"\b{key}\b", self.last_sql, re.IGNORECASE)
+                        for key in ["TINH_THANH_PHO", "QUAN_HUYEN", "MA_TINH", "MA_HUYEN"]) or
+                    "FB_LOCALITY" in self.last_sql.upper()
                 )
-
 
                 if has_xuly:
                     context_form = {
@@ -717,9 +769,27 @@ SQL:
                     params = extract_form_detail_params_from_sql(self.last_sql, context_form)
                     base_url = "http://14.160.91.174:8180/smartw/feedback/form/detail.htm"
                 else:
+                    base_url = "http://14.160.91.174:8180/smartw/feedback/list.htm"
+                    ma_diachi = {}
+
+                    # Ưu tiên lấy mã từ kết quả truy vấn
+                    ma_col_mapping = {
+                        "tinhThanhPho": ["ma_tinh", "province", "tinh_thanh_pho"],
+                        "quanHuyen": ["ma_huyen", "district", "quan_huyen"],
+                    }
+
+                    for key, aliases in ma_col_mapping.items():
+                        for alias in aliases:
+                            if alias in map(str.lower, columns):
+                                idx = next(i for i, col in enumerate(columns) if col.lower() == alias)
+                                ma_diachi[key] = rows[0][idx]
+                                logger.info(f"[DEBUG] Dùng trực tiếp mã {key} = {ma_diachi[key]} từ kết quả truy vấn")
+                                break
+
                     full_name_idx = next(
                         (i for i, col in enumerate(columns) if col.upper() in ["FULL_NAME", "DIA_DIEM_PHAN_ANH"]),
                         None
+<<<<<<< HEAD
 )
 
                     if full_name_idx is not None:
@@ -786,31 +856,65 @@ SQL:
                             logger.warning("[WARN] DB connection is None. Không thể truy vấn mã địa lý.")
 
                     # Cập nhật context_common với ma_diachi
+=======
+                    )
+
+                    # Truy vấn địa chỉ từ full_name nếu cần
+                    if not ma_diachi.get("tinhThanhPho") or not ma_diachi.get("quanHuyen"):
+                        if full_name_idx is not None:
+                            dia_chi = rows[0][full_name_idx]
+                            logger.info(f"[DEBUG] Địa chỉ trong kết quả (full_name): {dia_chi}")
+                            try:
+                                query = """
+                                    SELECT province AS tinhThanhPho, district AS quanHuyen
+                                    FROM FB_LOCALITY
+                                    WHERE full_name = :1
+                                    FETCH FIRST 1 ROWS ONLY
+                                """
+                                with self.db_conn.cursor() as cursor:
+                                    cursor.execute(query, [dia_chi])
+                                    result_fine = cursor.fetchone()
+                                    if result_fine:
+                                        col_names = [desc[0].lower() for desc in cursor.description]
+                                        for idx, col in enumerate(col_names):
+                                            if col in ["tinhthanhpho", "quanhuyen"]:
+                                                ma_diachi[col] = result_fine[idx]
+                                        logger.info(f"[DEBUG] Mapping FULL_NAME → mã địa lý: {ma_diachi}")
+                            except Exception as e:
+                                logger.error(f"[ERROR] Truy vấn mã địa lý từ FULL_NAME lỗi: {e}")
+                        else:
+                            logger.warning("[DEBUG] Không tìm thấy cột địa chỉ phù hợp trong kết quả.")
+
+                    # Fallback: từ câu hỏi
+                    if not ma_diachi.get("tinhThanhPho") or not ma_diachi.get("quanHuyen"):
+                        dia_chi_cau_hoi = self._extract_dia_chi_from_question(self.last_question or "")
+                        logger.info(f"[DEBUG] Địa chỉ từ câu hỏi: {dia_chi_cau_hoi}")
+                        fuzzy_result = self.get_ma_dia_chi_fuzzy(dia_chi_cau_hoi)
+                        if fuzzy_result:
+                            logger.info(f"[DEBUG] Mapping địa chỉ từ câu hỏi → mã địa lý: {fuzzy_result}")
+                            ma_diachi.update(fuzzy_result)
+
+>>>>>>> 50047d6ac5c1ba29c791b53720c548db93e614bd
                     if ma_diachi:
                         context_common.update(ma_diachi)
+                        # 🔁 Normalize key trước khi truyền
+                    if "tinhthanhpho" in context_common:
+                        context_common["tinhThanhPho"] = context_common.pop("tinhthanhpho")
+                    if "quanhuyen" in context_common:
+                        context_common["quanHuyen"] = context_common.pop("quanhuyen")
+
 
 
                     params = extract_list_params_from_sql(self.last_sql, context_common)
                     logger.info(f"[DEBUG] context_common: {context_common}")
                     logger.info(f"[DEBUG] params for build_filter_url: {params}")
-                    base_url = "http://14.160.91.174:8180/smartw/feedback/list.htm"
+                    filter_link = build_filter_url(base_url, params)
 
-                filter_link = build_filter_url(base_url, params)
-
-                
             if filter_link:
                 lines.append(f"\n🔗 [Xem toàn bộ danh sách tại đây]({filter_link})")
             return os.linesep.join(lines)
 
-         # Mặc định: trả về 2 bản ghi đầu (nếu có filter link)
-        row_limit = 2 if filter_link else len(rows)
-        lines = [
-            "- " + ", ".join(f"{col}: {val}" for col, val in zip(columns, row))
-            for row in rows[:row_limit]
-        ]
-        if filter_link:
-            lines.append(f"{os.linesep}🔗 [Xem toàn bộ danh sách tại đây]{filter_link}")
-        return os.linesep.join(lines)
+
  
     def clear_memory(self):
         if self.engine == "openai":
