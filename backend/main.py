@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from hybrid_sqlcoder import HybridSQLCoder
+from hybrid_sqlcoder import HybridSQLCoder 
 from db_utils import execute_sql, get_detail_link_by_question
 import logging
 import re
@@ -44,14 +44,16 @@ async def process_query(query: QueryRequest):
     try:
         # ✅ Reset memory nếu là câu hỏi độc lập
         if query.is_independent:
-            sqlcoder.clear_memory()
+            sqlcoder.reset_context()
 
         # Bước 1: LLM sinh câu lệnh SQL và thực thi luôn (chỉ lưu cache nếu execute thành công)
         logger.info("Generating and executing SQL...")
 
         sql_raw = sqlcoder.generate_sql(
             question=query.question,
-            force_no_cache=query.force_no_cache
+            is_follow_up=not query.is_independent,  # ✅ follow-up khi không tick hỏi mới
+            force_no_cache=query.force_no_cache,
+            reset=query.is_independent              # ✅ chỉ reset khi câu hỏi mới
         )
         logger.info(f"Generated SQL:\n{sql_raw}")
 
@@ -67,29 +69,27 @@ async def process_query(query: QueryRequest):
             sql_clean = sql_block.strip()
             logger.info(f"Executing SQL #{idx}: {sql_clean}")
 
-            # ✅ Dùng generate_and_execute_sql để chỉ cache khi execute thành công
-            # ⚠️ sửa lại đoạn lambda để nhận đúng sql cần thực thi
             result = sqlcoder.generate_and_execute_sql(
                 question=query.question,
-                execute_fn=lambda _: execute_sql(sql_clean),  # _ đại diện cho sql nhưng mình dùng sẵn sql_clean rồi
-                force_no_cache=query.force_no_cache
+                is_follow_up=not query.is_independent,
+                execute_fn=lambda _: execute_sql(sql_clean),
+                force_no_cache=query.force_no_cache,
+                reset=query.is_independent
             )
-
             logger.info(f"Type of result: {type(result)}")
 
-            # ✅ Lấy filter link nếu có
             filter_link = get_detail_link_by_question(query.question)
-
-            results.append({
-                "sql": sql_clean,
-                "result": result
-            })
-
-            # Format từng kết quả thành câu trả lời người dùng
             formatted_answer = sqlcoder.format_result_for_user(result, filter_link)
-            answers.append(formatted_answer)
 
-        # ✅ Ghép tất cả câu trả lời lại thành một chuỗi
+            # --- Gọi Groq để viết lại câu trả lời ---
+            try:
+                groq_answer = sqlcoder.generate_natural_answer_with_groq(query.question, formatted_answer)
+
+                answers.append(groq_answer)
+            except Exception as e:
+                logger.error(f"Groq API error: {e}")
+                answers.append(formatted_answer)
+
         final_answer = "\n\n".join(answers)
 
         # ✅ Lưu log hội thoại vào memory
