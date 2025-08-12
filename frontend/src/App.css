@@ -1,26 +1,73 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
-.App {
+body, html {
+  margin: 0;
+  padding: 0;
   font-family: 'Montserrat', sans-serif;
-  text-align: center;
-  background: linear-gradient(135deg, #fce4ec, #e1bee7);
+  min-height: 100%;
+  background: linear-gradient(135deg, #eaf6fb, #cceeff); /* xanh pastel rất nhạt */
+  overflow-x: hidden;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  padding-top: 60px;
-  animation: fadeIn 1s ease-in;
+  position: relative;
 }
 
-.App-header h1 {
-  color: #6a1b9a;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+/* Header */
+.App-header {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #0056b3; /* xanh đậm để nổi trên nền pastel */
+  padding: 20px;
+  background: transparent; /* bỏ màu nền, để hòa vào nền chính */
 }
 
-.App-header p {
-  font-size: 1.2rem;
-  color: #4a148c;
+/* Footer */
+.App-footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #0056b3;
+  padding: 12px;
+  background: transparent; /* pastel nên để trong suốt */
+  margin-top: auto;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Hiệu ứng tuyết rơi */
+.snow-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: white;
+  opacity: 0.8;
+  user-select: none;
+  animation-name: snowFall;
+  animation-timing-function: linear;
+}
+
+@keyframes snowFall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .App-header {
+    font-size: 1.2rem;
+  }
+  .App-footer {
+    font-size: 0.8rem;
+  }
 }
