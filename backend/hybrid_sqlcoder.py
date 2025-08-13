@@ -6,6 +6,7 @@ import unidecode
 from typing import List, Dict
 from dotenv import load_dotenv
 from groq import Groq
+from rapidfuzz import fuzz
 
 from utils.sql_planner import SQLPlanner
 from utils.column_mapper import extract_tables_and_columns, generate_column_mapping_hint
@@ -213,7 +214,7 @@ class HybridSQLCoder:
 
         api_key = os.getenv("GEMINI_API_KEY")
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel("models/gemini-2.5-flash", generation_config={"temperature": 0})
+        self.model = genai.GenerativeModel("models/gemini-1.5-flash", generation_config={"temperature": 0})
         self.memory = []  # list of (user_message, ai_message)
 
     def _init_groq(self):
@@ -267,78 +268,127 @@ class HybridSQLCoder:
         if result is not None:
             self.context["last_result"] = result
 
-    def get_ma_dia_chi_fuzzy(self, dia_chi_text: str) -> dict:
-        if not self.db_conn:
-            logger.warning("[WARN] DB connection is None. Không thể truy vấn mã địa lý.")
-            return {}
+#     def get_ma_dia_chi_fuzzy(self, dia_chi_text: str) -> dict:
+#         if not self.db_conn:
+#             logger.warning("[WARN] DB connection is None. Không thể truy vấn mã địa lý.")
+#             return {}
         
-        import unidecode
+#         import unidecode
 
-        # Bỏ dấu, lowercase, loại bỏ ký tự đặc biệt
-        text = unidecode.unidecode(dia_chi_text).lower()
-        text = re.sub(r"[^\w\s]", " ", text)
-        keywords = [kw.strip() for kw in text.split() if kw.strip()]
-        if not keywords:
-            return {}
+#         # Bỏ dấu, lowercase, loại bỏ ký tự đặc biệt
+#         text = unidecode.unidecode(dia_chi_text).lower()
+#         text = re.sub(r"[^\w\s]", " ", text)
+#         keywords = [kw.strip() for kw in text.split() if kw.strip()]
+#         if not keywords:
+#             return {}
 
-        # Tạo điều kiện WHERE bằng LIKE
-        conditions = []
-        params = []
-        for i, kw in enumerate(keywords):
-            conditions.append(f"LOWER(full_name) LIKE :{i+1}")
-            params.append(f"%{kw}%")
+#         # Tạo điều kiện WHERE bằng LIKE
+#         conditions = []
+#         params = []
+#         for i, kw in enumerate(keywords):
+#             conditions.append(f"LOWER(full_name) LIKE :{i+1}")
+#             params.append(f"%{kw}%")
         
-        where_clause = " AND ".join(conditions)
-        query = f"""
-    SELECT province AS tinhThanhPho, district AS quanHuyen 
-    FROM FB_LOCALITY 
-    WHERE {where_clause}
-    ORDER BY LENGTH(full_name) DESC
-    FETCH FIRST 1 ROWS ONLY
-"""
+#         where_clause = " AND ".join(conditions)
+#         query = f"""
+#     SELECT province AS tinhThanhPho, district AS quanHuyen 
+#     FROM FB_LOCALITY 
+#     WHERE {where_clause}
+#     ORDER BY LENGTH(full_name) DESC
+#     FETCH FIRST 1 ROWS ONLY
+# """
 
 
-        try:
-            with self.db_conn.cursor() as cursor:
-                cursor.execute(query, params)
-                row = cursor.fetchone()
-                if row:
-                    result = {
-                        "tinhThanhPho": row[0],
-                        "quanHuyen": row[1]
-                    }
-                    logger.info(f"[DEBUG] Mapping địa chỉ '{dia_chi_text}' -> {result}")
-                    return result
-        except Exception as e:
-            logger.error(f"Lỗi truy vấn mã địa lý: {e}")
-        return {}
+#         try:
+#             with self.db_conn.cursor() as cursor:
+#                 cursor.execute(query, params)
+#                 row = cursor.fetchone()
+#                 if row:
+#                     result = {
+#                         "tinhThanhPho": row[0],
+#                         "quanHuyen": row[1]
+#                     }
+#                     logger.info(f"[DEBUG] Mapping địa chỉ '{dia_chi_text}' -> {result}")
+#                     return result
+#         except Exception as e:
+#             logger.error(f"Lỗi truy vấn mã địa lý: {e}")
+#         return {}
 
     def _extract_dia_chi_from_question(self, question: str) -> str:
+        """Trích xuất cụm địa chỉ từ câu hỏi để phục vụ tra DB."""
         if not question:
             return ""
 
         import unidecode
         q_norm = unidecode.unidecode(question).lower()
+        q_norm = re.sub(r"[^\w\s]", " ", q_norm)  # bỏ ký tự đặc biệt
+        q_norm = re.sub(r"\s+", " ", q_norm).strip()
 
-        # Chuẩn hóa các dạng viết tắt
-        q_norm = re.sub(r"\bq\.?\s", "quan ", q_norm)  # Q Hoàng Mai, Q. Hoàng Mai → quan Hoàng Mai
-        q_norm = re.sub(r"\bh\.?\s", "huyen ", q_norm) # H Hóc Môn, H. Hóc Môn → huyen Hóc Môn
-        q_norm = re.sub(r"\btp\.?\s", "thanh pho ", q_norm) # TP, TP. → thanh pho
-        q_norm = re.sub(r"\btp\b", "thanh pho", q_norm)
-
-        # Regex nhận diện đầy đủ các loại địa chỉ
+        # Thay vì bắt buộc phải có từ 'quận', 'huyện', ta lấy tất cả từ sau các từ khóa vị trí nếu có
         patterns = [
-            r"(?:tai|o|thuoc|dia ban|khu vuc|tinh|thanh pho|quan|huyen|xa|phuong)\s+([^\.,;?\n]+)",
-            r"(quan|huyen|phuong|xa|thi xa|tp|thanh pho)\s+\w+(?:\s+\w+)?"
+            r"(?:tai|o|thuoc|dia ban|khu vuc)\s+(.+)",
+            r"(?:tinh|thanh pho|quan|huyen|xa|phuong)\s+(.+)"
         ]
+        for pat in patterns:
+            m = re.search(pat, q_norm)
+            if m:
+                return m.group(1).strip()
 
-        for pattern in patterns:
-            match = re.search(pattern, q_norm, re.IGNORECASE)
-            if match:
-                return match.group(0).strip()
+        # Nếu không match → lấy hết câu làm chuỗi tìm kiếm
+        return q_norm
 
-        # fallback: lấy 3 từ cuối
-        return " ".join(q_norm.strip().split()[-3:])
+    def get_ma_dia_chi_fuzzy(self, dia_chi_text: str) -> dict:
+        if not self.db_conn:
+            logger.warning("[WARN] DB connection is None. Không thể truy vấn mã địa lý.")
+            return {}
+
+        import unidecode
+        text = unidecode.unidecode(dia_chi_text or "").lower()
+        text = re.sub(r"[^\w\s]", " ", text)
+        text = re.sub(r"\s+", " ", text).strip()
+        tokens = text.split()
+        if not tokens:
+            return {}
+
+        try:
+            with self.db_conn.cursor() as cursor:
+                cursor.execute("""
+                    SELECT DISTINCT full_name, province, district
+                    FROM FB_LOCALITY
+                """)
+                rows = cursor.fetchall()
+
+            def normalize(s):
+                if not s:
+                    return ""
+                return re.sub(r"\s+", " ", unidecode.unidecode(str(s)).lower().strip())
+
+            matches = []
+            for full_name, province, district in rows:
+                fn_norm = normalize(full_name)
+                province_norm = normalize(province)
+                district_norm = normalize(district)
+
+                # So khớp cả huyện trước, tỉnh sau
+                if all(token in district_norm for token in tokens):
+                    matches.append({"tinhThanhPho": province, "quanHuyen": district, "score": 2})
+                elif all(token in province_norm for token in tokens):
+                    matches.append({"tinhThanhPho": province, "quanHuyen": district, "score": 1})
+                elif all(token in fn_norm for token in tokens):
+                    matches.append({"tinhThanhPho": province, "quanHuyen": district, "score": 0})
+
+            if matches:
+                matches.sort(key=lambda x: x["score"], reverse=True)
+                best = matches[0]
+                return {"tinhThanhPho": best["tinhThanhPho"], "quanHuyen": best["quanHuyen"]}
+
+            return {}
+
+        except Exception as e:
+            logger.error(f"Lỗi truy vấn mã địa lý: {e}")
+            return {}
+
+
 
     def _detect_new_filter(self, question: str) -> bool:
         # Nếu câu hỏi có từ khóa về phòng ban, tổ nhóm, trung tâm, địa bàn, nhóm, loại...
@@ -776,6 +826,7 @@ SQL:
             return _safe_join(lines)
 
         return "⚠️ Không xác định được loại câu hỏi."
+    
     def detect_query_type(self, question: str, result: dict):
         """Xác định loại câu hỏi: thống kê, thông tin, liệt kê"""
         q = (question or "").lower()
