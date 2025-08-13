@@ -336,3 +336,21 @@ body.dark-mode .user-msg {
 body.dark-mode .context-text {
   color: #011f47 !important; /* vẫn giữ nguyên màu xanh khi dark mode */
 }
+
+/* Dark mode cho link bot-msg */
+body.dark-mode .bot-msg a {
+  color: #7fbfff; /* xanh nhạt hơn, dễ nhìn trên nền tối */
+}
+
+body.dark-mode .bot-msg a:hover {
+  color: #aee1ff; /* highlight khi hover */
+}
+
+/* Dark mode cho nút Hiển thị thêm / Ẩn bớt */
+body.dark-mode .toggle-more-btn {
+  color: #7fbfff; /* giống màu link */
+}
+
+body.dark-mode .toggle-more-btn:hover {
+  color: #aee1ff;
+}
