@@ -83,7 +83,7 @@ async def process_query(query: QueryRequest):
 
             # --- Gọi Groq để viết lại câu trả lời ---
             try:
-                groq_answer = sqlcoder.generate_natural_answer_with_groq(query.question, formatted_answer)
+                groq_answer = sqlcoder.response(query.question, result, filter_link)
 
                 answers.append(groq_answer)
             except Exception as e:

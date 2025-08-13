@@ -1,8 +1,14 @@
 :root {
-  --primary-color: #003366; /* xanh than */
-  --primary-color-dark: #002244; /* xanh than đậm hơn khi hover */
-  --bg-light: #ffffff; /* nền trắng */
-  --bot-msg-bg: #e6f2ff; /* xanh nhạt pastel cho bot */
+  --primary-color: #011f47; /* Xanh MobiFone */
+  --primary-color-dark: #003366;
+  --bg-light: #ffffff;
+  --bot-msg-bg: #E8F3FF; /* Xanh nhạt hơn */
+  --text-color-light: #333; /* màu chữ chế độ sáng */
+  --text-color-dark: #eee;  /* màu chữ chế độ tối */
+}
+
+.minimize-btn:hover {
+  color: #E30613; /* Đỏ MobiFone khi hover */
 }
 
 .chat-container {
@@ -49,22 +55,27 @@
 }
 
 .chat-header {
-  padding: 12px 16px;
+  height: 60px; /* Cố định chiều cao header */
+  padding: 0 12px;
   background: var(--primary-color);
-  color: white;
-  font-size: 20px;
   display: flex;
+  align-items: center; /* Căn giữa logo theo chiều dọc */
   justify-content: space-between;
-  align-items: center;
-  position: relative;
+  gap: 10px;
 }
 
-.chat-header::before {
-  position: absolute;
-  top: 13px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 16px;
+.chat-header img.logo {
+  height: 150px; /* Logo to hơn */
+  max-width: 160px;
+  width: auto;
+  object-fit: contain;
+}
+
+.chat-header .status {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  color: #aee1ff;
 }
 
 .minimize-btn {
@@ -74,6 +85,14 @@
   font-size: 24px;
   cursor: pointer;
   margin-right: 8px;
+}
+
+.chat-header::before {
+  position: absolute;
+  top: 13px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
 }
 
 .chat-body {
@@ -240,6 +259,7 @@
   0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
   40% { transform: scale(1); opacity: 1; }
 }
+
 .recording-popup {
   position: fixed;
   bottom: 90px; /* nằm trên thanh input chat */
@@ -263,4 +283,56 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.theme-toggle-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 16px; /* nhỏ lại như yêu cầu trước */
+  padding: 6px; /* padding để khung không sát icon */
+  border-radius: 8px; /* bo góc khung */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  justify-content: center;
+}
+
+/* Khi hover hiện khung nền nhạt */
+.theme-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15); /* nền trắng mờ */
+  color: #fff; /* giữ màu trắng chữ khi hover */
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); /* hiệu ứng glow nhẹ */
+}
+
+
+/* Dark mode */
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: var(--text-color-dark);
+}
+
+body.dark-mode .chat-box {
+  background-color: #2c2c2c;
+}
+
+body.dark-mode .bot-msg {
+  background-color: #002b55; /* xanh đậm hơn */
+  color: #eee;
+}
+
+body.dark-mode .user-msg {
+  background-color: #ffffff; /* xanh nhẹ hơn */
+  color: rgb(0, 0, 0);
+}
+
+
+.context-text {
+  color: #011f47 !important; /* màu xanh MobiFone cố định */
+}
+
+body.dark-mode .context-text {
+  color: #011f47 !important; /* vẫn giữ nguyên màu xanh khi dark mode */
 }

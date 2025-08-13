@@ -1,8 +1,0 @@
-TABLE: PAKH_KY_THUAT 
-DESCRIPTION: Dữ liệu kỹ thuật liên quan đến phản ánh người dùng.
-COLUMNS:
-- ID NUMBER: mã định danh.
--	TRUNG_TAM VARCHAR2(7 BYTE), PHONG_XU_LY VARCHAR2(200 BYTE), TO_XU_LY VARCHAR2(200 BYTE): thông tin đơn vị xử lý.
-- THOI_GIAN_GHI_NHAN DATE, NAM NUMBER, QUY NUMBER, THANG NUMBER: thời gian ghi nhận 
--FB_GROUP NUMBER: nhóm nguyên nhân (có thể liên kết FB_GROUP.ID nếu có).
-- NGUYEN_NHAN VARCHAR2(200 BYTE):nguyên nhân kỹ thuật.

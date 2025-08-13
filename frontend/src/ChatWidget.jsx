@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import './ChatWidget.css';
-
+import '@fortawesome/fontawesome-free/css/all.min.css';
 const MAX_LINES = 3;
 
 const ChatWidget = () => {
@@ -12,6 +12,12 @@ const ChatWidget = () => {
   const [expandedMsgs, setExpandedMsgs] = useState(new Set());
   const [isIndependent, setIsIndependent] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleTheme = () => {
+        setIsDarkMode(!isDarkMode);
+        document.body.classList.toggle('dark-mode', !isDarkMode);
+      };
 
   // Quản lý popup thu âm
   const [isRecordingPopupOpen, setIsRecordingPopupOpen] = useState(false);
@@ -155,16 +161,34 @@ const ChatWidget = () => {
     <div className="chat-container">
       {!isOpen && (
         <button className="chat-toggle" onClick={toggleChat}>
-          💬
-        </button>
+  <i className="fa-solid fa-comments"></i>
+</button>
+
       )}
 
       {isOpen && (
         <div className="chat-box">
           <div className="chat-header">
-            <span>🤖</span>
-            <button onClick={toggleChat} className="minimize-btn">–</button>
-          </div>
+  {/* Logo MobiFone */}
+  <img
+    src="/assets/Logo Mobifone.png" // logo đã lưu trong public/assets
+    alt="MobiFone"
+    className="logo"
+  />
+{/* Nút chuyển sáng/tối */}
+  <button 
+    className="theme-toggle-btn" 
+    onClick={toggleTheme}
+    title={isDarkMode ? "Chế độ sáng" : "Chế độ tối"}
+  >
+    <i className={`fa-solid ${isDarkMode ? "fa-sun" : "fa-moon"}`}></i>
+  </button>
+
+
+  {/* Nút thu nhỏ */}
+  <button onClick={toggleChat} className="minimize-btn">–</button>
+</div>
+
 
           <div className="chat-body">
             {messages.map((msg, idx) => {
@@ -181,8 +205,13 @@ const ChatWidget = () => {
               return (
                 <div className={`message ${msg.sender}`} key={idx}>
                   <div className="avatar">
-                    {msg.sender === 'user' ? '👤' : '🤖'}
-                  </div>
+  {msg.sender === 'user' ? (
+    <i className="fa-regular fa-user"></i>
+  ) : (
+    <i className="fa-solid fa-robot"></i>
+  )}
+</div>
+
                   <div className={isBot ? 'bot-msg' : 'user-msg'}>
                     {typeof msg.text === 'string' ? (
                       <ReactMarkdown
@@ -221,7 +250,7 @@ const ChatWidget = () => {
           <div className="chat-input" style={{ display: 'flex', alignItems: 'center' }}>
             <input
               type="text"
-              placeholder="Nhập câu hỏi..."
+              placeholder="Nhập tin nhắn dưới 1000 ký tự nhé!"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => {
@@ -368,27 +397,28 @@ const ChatWidget = () => {
 
 
           <div className="context-options">
-            <label>
-              <input
-                type="radio"
-                name="context"
-                value="new"
-                checked={isIndependent}
-                onChange={() => setIsIndependent(true)}
-              />
-              Hỏi mới
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="context"
-                value="continue"
-                checked={!isIndependent}
-                onChange={() => setIsIndependent(false)}
-              />
-              Tiếp tục
-            </label>
-          </div>
+  <label className="context-label">
+    <input
+      type="radio"
+      name="context"
+      value="new"
+      checked={isIndependent}
+      onChange={() => setIsIndependent(true)}
+    />
+    <span className="context-text">Hỏi mới</span>
+  </label>
+  <label className="context-label">
+    <input
+      type="radio"
+      name="context"
+      value="continue"
+      checked={!isIndependent}
+      onChange={() => setIsIndependent(false)}
+    />
+    <span className="context-text">Tiếp tục</span>
+  </label>
+</div>
+
         </div>
       )}
     </div>

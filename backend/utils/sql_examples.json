@@ -1,7 +1,11 @@
 [
   {
-    "question": "thông tin phản ánh của số thuê bao 0906689650",
-    "sql": "SELECT SO_THUE_BAO, NOI_DUNG_PHAN_ANH FROM PAKH WHERE SO_THUE_BAO IN('906689650','0906689650');"
+    "question": "duc.vole nhận bn pa",
+    "sql": "SELECT SUM(SO_PA_NHAN) FROM PAKH_SLA_CA_NHAN WHERE CA_NHAN = 'duc.vole';"
+  },
+  {
+    "question": "tổng pa",
+    "sql": "SELECT COUNT(*) FROM PAKH"
   },
   {  "question": "phản ánh của số 0906689650",
     "sql": "SELECT SO_THUE_BAO, NOI_DUNG_PHAN_ANH FROM PAKH WHERE SO_THUE_BAO IN('906689650','0906689650');"
@@ -10,17 +14,10 @@
     "sql": "SELECT T2.NAME AS LOAI_PHAN_ANH FROM PAKH T1 JOIN FB_TYPE_NOC T2 ON T1.LOAI_PHAN_ANH = T2.COMP_TYPE_ID WHERE T1.SO_THUE_BAO IN ('765206236','0765206236');"
   },
   {
-    "question": "phản ánh của thuê bao 0765206236",
-    "sql": "SELECT SO_THUE_BAO, NOI_DUNG_PHAN_ANH FROM PAKH WHERE SO_THUE_BAO IN('765206236','0765206236');"
+    "question" : "các pa của khdn tại Hoàn kiếm hn",
+    "sql" : " SELECT p.ID, p.SO_THUE_BAO, p.NOI_DUNG_PHAN_ANH, p.TINH_THANH_PHO, p.QUAN_HUYEN, p.PHUONG_XA FROM PAKH p JOIN FB_LOCALITY fl ON p.TINH_THANH_PHO = fl.PROVINCE AND p.QUAN_HUYEN = fl.DISTRICT AND p.PHUONG_XA = fl.PRECINCT WHERE p.LOAI_THUE_BAO = '%KHDN%' AND fl.FULL_NAME LIKE '%Hà Nội%' and fl.FULL_NAME LIKE '%Hoàn Kiếm%';"
   },
-  {
-    "question": "các phản ánh của thuê bao 0765206236",
-    "sql": "SELECT * FROM PAKH WHERE SO_THUE_BAO IN ('765206236', '0765206236');"
-  },
-  {
-    "question": "các phản ánh của thuê bao 0906689650",
-    "sql": "SELECT * FROM PAKH WHERE SO_THUE_BAO IN ('906689650', '0906689650');"
-  },
+
   {
     "question": "Khu vực bị lỗi của thuê bao 0765206236 là gì?",
     "sql": "SELECL pn.KHU_VUC_BI_LOI FROM PAKH p JOIN PAKH_NOI_DUNG_PHAN_ANH pn ON p.ID = pn.ID_PAKH WHERE p.SO_THUE_BAO IN ('765206236','0765206236')"
@@ -52,10 +49,6 @@
   {
     "question": "các pa ở Thanh Xuân, Hà Nội",
     "sql" : "SELECT p.ID, p.SO_THUE_BAO, p.NOI_DUNG_PHAN_ANH, p.TINH_THANH_PHO, p.QUAN_HUYEN FROM PAKH p JOIN FB_LOCALITY fl  ON p.TINH_THANH_PHO = fl.PROVINCE  AND p.QUAN_HUYEN = fl.DISTRICT  AND p.PHUONG_XA = fl.PRECINCT  WHERE fl.FULL_NAME LIKE '%Tây Hồ%' AND fl.FULL_NAME LIKE '%Hà Nội%'; "
-  },
-  {
-    "question": "các phản ánh ở Thanh Xuân, Hà Nội",
-    "sql" : "SELECT p.ID, p.SO_THUE_BAO, p.NOI_DUNG_PHAN_ANH, p.TINH_THANH_PHO, p.QUAN_HUYEN FROM PAKH p JOIN FB_LOCALITY fl ON p.TINH_THANH_PHO = fl.PROVINCE AND p.QUAN_HUYEN = fl.DISTRICT AND p.PHUONG_XA = fl.PRECINCT WHERE fl.FULL_NAME LIKE '%Thanh Xuân%' AND fl.FULL_NAME LIKE '%Hà Nội%';"
   },
   {
     "question": "số lượng phản ánh ở Yên Hòa?",
@@ -91,16 +84,18 @@
     "sql": "SELECT CA_NHAN, SUM(SO_PA_NHAN) FROM PAKH_SLA_CA_NHAN WHERE CA_NHAN IN ('duc.vole', 'tuan.pham.ctv') GROUP BY CA_NHAN;"
   },
   {
-    "question": "các pa duc.vole nhận được",
-    "sql": "SELECT p.SO_THUE_BAO, p.NOI_DUNG_PHAN_ANH from PAKH p JOIN PAKH_CA_NHAN pcn ON pcn.ID = p.ID WHERE CA_NHAN = 'duc.vole';"
-  },
-  {
     "question": "Đơn vị xử lý phản ánh của thuê bao 0765206236 là đơn vị nào?" ,
     "sql": "SELECT SO_THUE_BAO, FD.NAME AS DON_VI_DANG_XU_LY FROM PAKH P JOIN FB_DEPARTMENT FD ON P.DON_VI = FD.DEP_ID WHERE P.SO_THUE_BAO IN ('765206236','0765206236')"
   },
 
 { "question": "Đơn vị nhận phản ánh của thuê bao 0765206236 là đơn vị nào?" ,
     "sql": "SELECT SO_THUE_BAO, FD.NAME AS DON_VI_NHAN FROM PAKH P JOIN FB_DEPARTMENT FD ON P.DON_VI_NHAN = FD.DEP_ID WHERE P.SO_THUE_BAO IN ('765206236','0765206236')"
+  },
+  {"question" : "phản ánh của số 0906689650 ghi nhận từ nguồn nào?",
+    "sql": "SELECT P.SO_THUE_BAO, ph.NAME FROM PAKH_HASHTAG ph JOIN PAKH_HASHTAG_MAPPING phm ON phm.HASHTAG_ID = ph.ID JOIN PAKH P ON P.ID = phm.PAKH_ID WHERE P.SO_THUE_BAO IN ('906689650','0906689650');"
+  },
+  {"question":"thuê bao 765206236 đã phản ánh bao nhiêu lần?",
+   "sql":"SELECT COUNT(*) AS So_Lan_Phan_Anh FROM PAKH WHERE SO_THUE_BAO IN('765206236','0765206236');"
   },
   {"question":"Thuê bao 765206236 đã phản ánh bao nhiêu lần cho mỗi hiện tượng?",
 "sql":"SELECT FH.NAME AS Hien_Tuong, COUNT(P.ID) AS So_Lan_Phan_Anh, FROM PAKH P JOIN FB_HIEN_TUONG FH ON P.HIEN_TUONG = FH.CODE WHERE  P.SO_THUE_BAO IN('765206236','0765206236') GROUP BY FH.NAME;"}

@@ -1,9 +1,0 @@
-TABLE: PAKH_HASHTAG_MAPPING
-DESCRIPTION: Bảng ánh xạ giữa phản ánh và hashtag.
-
-COLUMNS:
-- PAKH_ID NUMBER: ID của phản ánh (khóa ngoại tới PAKH.ID)
-- HASHTAG_ID NUMBER: ID của hashtag (khóa ngoại tới PAKH_HASHTAG.ID)
-
-RELATIONS:
-

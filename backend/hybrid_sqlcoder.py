@@ -81,6 +81,15 @@ def extract_form_detail_params_from_sql(sql: str, context: dict = None) -> Dict[
         for key in params:
             if key in context and context[key]:
                 params[key] = context[key]
+    if not params["level"]:
+        if "PAKH_CA_NHAN" in sql.upper():
+            params["level"] = "ca_nhan"
+        elif "PAKH_TO_NHOM" in sql.upper():
+            params["level"] = "to_nhom"
+        elif "PAKH_PHONG_BAN" in sql.upper():
+            params["level"] = "phong_ban"
+        elif "PAKH_TRUNG_TAM" in sql.upper():
+            params["level"] = "trung_tam"
     if not params["year"]:
         match = re.search(r"\b(20[2-3][0-9])\b", sql)
         if match:
@@ -100,15 +109,7 @@ def extract_form_detail_params_from_sql(sql: str, context: dict = None) -> Dict[
                 trang_thai = match.group(1).upper()
                 if trang_thai in trang_thai_map:
                     params["kpiName"] = trang_thai_map[trang_thai]
-    if not params["level"]:
-        if "PAKH_CA_NHAN" in sql.upper():
-            params["level"] = "ca_nhan"
-        elif "PAKH_TO_NHOM" in sql.upper():
-            params["level"] = "to_nhom"
-        elif "PAKH_PHONG_BAN" in sql.upper():
-            params["level"] = "phong_ban"
-        elif "PAKH_TRUNG_TAM" in sql.upper():
-            params["level"] = "trung_tam"
+    
     return params
 
 def extract_list_params_from_sql(sql: str, context: dict = None) -> Dict[str, str]:
@@ -212,7 +213,7 @@ class HybridSQLCoder:
 
         api_key = os.getenv("GEMINI_API_KEY")
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel("models/gemini-1.5-flash", generation_config={"temperature": 0})
+        self.model = genai.GenerativeModel("models/gemini-2.5-flash", generation_config={"temperature": 0})
         self.memory = []  # list of (user_message, ai_message)
 
     def _init_groq(self):
@@ -444,11 +445,15 @@ Hãy viết lại câu hỏi hiện tại thành câu hỏi đầy đủ, rõ ng
             try:
                 context_for_prompt = ""
                 if is_follow_up and all(self.context.get(k) for k in ["last_question", "last_sql", "last_result"]):
+                    filter_str = ""
+                    if self.context["filters"]:
+                        filter_str = "\nCác bộ lọc đã lưu từ trước: " + json.dumps(self.context["filters"], ensure_ascii=False)
                     context_for_prompt = f"""
                     # Ngữ cảnh hội thoại trước đó:
                     Câu hỏi: {self.context['last_question']}
                     SQL: {self.context['last_sql']}
                     Kết quả: {json.dumps(self.context['last_result'], ensure_ascii=False)}
+                    {filter_str}
                     """
                 question_resolved = self._resolve_follow_up_question(question, is_follow_up)
                 planner = SQLPlanner(self._invoke_model)
@@ -483,7 +488,7 @@ Sinh truy vấn SQL chính xác. Ưu tiên trả lời nhanh chóng, đơn giả
 
 # Hướng dẫn
 {self._generate_sum_hint()}
-- Chấp nhận các hình thức viết tắt, ví dụ p/a tương ứng với phản ánh, hn tương ứng Hà Nội, HCM tương ứng Hồ Chí Minh ...
+- Chấp nhận các hình thức viết tắt, ví dụ KHCN - Khách hàng cá nhân, KHDN - Khách hàng doanh nghiệp, pa - phản ánh, HCM - Thành phố Hồ Chí Minh.
 - Với số thuê bao người dùng, trong cơ sở dữ liệu đang có định dạng không có số 0 ở đầu, khi người dùng nhập câu hỏi BẮT BUỘC chấp nhận cả kiểu nhập CÓ SỐ 0 và KHÔNG có số 0.
 - Với những câu liệt kê, chỉ trả về cột PAKH.SO_THUE_BAO và PAKH.NOI_DUNG_PHAN_ANH, KHÔNG TRẢ CÁC CỘT KHÁC.
 - Nếu câu hỏi có yếu tố địa chỉ, luôn SELECT thêm cột mã địa lý (TINH_THANH_PHO, QUAN_HUYEN) hoặc PROVINCE, DISTRICT từ bảng địa chỉ (như FB_LOCALITY) để phục vụ mapping.
@@ -541,6 +546,12 @@ SQL:
                         self.context_filters = extracted_filter
                         logger.info(f"[CONTEXT] Lưu filter: {self.context_filters}")
 
+                        # 🔹 Parse các tham số chi tiết để lưu vào context["filters"]
+                        form_params = extract_form_detail_params_from_sql(sql_raw, self.context.get("filters", {}))
+                        # Bỏ các param rỗng
+                        form_params = {k: v for k, v in form_params.items() if v}
+                        self.context["filters"].update(form_params)
+                        logger.info(f"[CONTEXT] Cập nhật filters: {self.context['filters']}")
 
                 # Cache SQL
                 key = question.strip().lower()
@@ -557,7 +568,7 @@ SQL:
             return None
 
 
-    def _invoke_model(self, prompt_text: str, retries: int = 2) -> str:
+    def _invoke_model(self, prompt_text: str, retries: int = 1) -> str:
         attempt = 0
         while attempt < retries:
             try:
@@ -624,19 +635,7 @@ SQL:
 
         q = (self.context["last_question"] or "").lower()
 
-        # Xác định loại câu hỏi
-        is_list_query = any(kw in q for kw in [
-            "liệt kê", "danh sách", "list", "show","các", "các pa", "các phản ánh", "xem chi tiết", "chi tiết các phản ánh"
-        ])
-        is_statistical = any(kw in q for kw in [
-            "theo từng nhóm", "theo từng loại", "thống kê", 
-            "từng nhóm", "từng loại", "mỗi nhóm", "mỗi loại",
-            "bao nhiêu", "tổng số", "tổng cộng", "số lượng", 
-            "bao nhiêu phản ánh", "bn phản ánh", "bn pa", "bao nhiêu pa"
-        ]) or "group by" in q.lower() or "từng nhóm" in q.lower()
-
-        is_info_query = not is_list_query and not is_statistical and bool(rows)
-
+        is_statistical, is_info_query, is_list_query = self.detect_query_type(self.context["last_question"], target)
 
         # --- Xử lý thống kê ---
         if is_statistical:
@@ -660,6 +659,12 @@ SQL:
 
         # --- Truy vấn thông tin ---
         if is_info_query:
+            # Nếu chỉ có 1 cột → trả danh sách giá trị
+            if len(columns) == 1:
+                values = [str(row[0]) if row[0] is not None else "N/A" for row in rows]
+                return _safe_join(values)
+
+            # Nhiều cột → trả dạng "col: value"
             lines = []
             for row in rows:
                 formatted_row = ", ".join(
@@ -668,6 +673,7 @@ SQL:
                 )
                 lines.append(formatted_row)
             return _safe_join(lines)
+
 
         # --- Liệt kê chi tiết ---
         if is_list_query:
@@ -680,7 +686,7 @@ SQL:
                 )
                 lines.append(formatted_row)
 
-            if not filter_link and len(rows) > 1:
+            if not filter_link and len(rows) > 2:
                     context_common = {"year": self._extract_year_from_question() or "2024"}
                     has_xuly = any(keyword in self.context['last_sql'].lower() for keyword in [
                         'ca_nhan', 'phong_ban', 'to_nhom', 'trung_tam'
@@ -770,19 +776,68 @@ SQL:
             return _safe_join(lines)
 
         return "⚠️ Không xác định được loại câu hỏi."
-    def generate_natural_answer_with_groq(self, question, formatted_answer):
-        prompt = f"""
-        Câu hỏi: {question}
-        Kết quả truy vấn (có thể bao gồm link): {formatted_answer}
+    def detect_query_type(self, question: str, result: dict):
+        """Xác định loại câu hỏi: thống kê, thông tin, liệt kê"""
+        q = (question or "").lower()
 
-        Viết lại câu trả lời bằng tiếng Việt tự nhiên dựa trên câu hỏi, ngắn gọn và đầy đủ thông tin nhất, CHÚ Ý KHÔNG tự đưa ra những nhận xét ngoài lề
-        Giữ nguyên tất cả các đường link và định dạng Markdown, tuyệt đối không xóa hoặc thay đổi link.
-        """
-        resp = self.groq_client.chat.completions.create(
-            model="llama-3.1-8b-instant",
-            messages=[{"role": "user", "content": prompt}]
+        is_list_query = any(kw in q for kw in [
+            "liệt kê", "danh sách", "list", "show", "các pa", 
+            "các phản ánh", "xem chi tiết", "chi tiết các phản ánh", "pa ở"
+        ])
+        is_statistical = any(kw in q for kw in [
+            "theo từng nhóm", "theo từng loại", "thống kê", 
+            "từng nhóm", "từng loại", "mỗi nhóm", "mỗi loại",
+            "bao nhiêu", "tổng số", "tổng cộng", "số lượng", 
+            "bao nhiêu phản ánh", "bn phản ánh", "bn pa", "bao nhiêu pa"
+        ]) or "group by" in q or "từng nhóm" in q
+
+        # Xác định có dữ liệu hay không
+        rows = result.get("rows") or result.get("details", {}).get("rows")
+        is_info_query = not is_list_query and not is_statistical and bool(rows)
+
+        return is_statistical, is_info_query, is_list_query
+    def response(self, question: str, result: dict, filter_link: str = None) -> str:
+        self.context["last_question"] = question
+        formatted_answer = self.format_result_for_user(result, filter_link)
+
+        is_statistical, is_info_query, is_list_query = self.detect_query_type(
+            question, result
         )
-        return resp.choices[0].message.content.strip()
+
+        if getattr(self, "groq_client", None) \
+            and formatted_answer \
+            and "Không có dữ liệu" not in formatted_answer \
+            and (is_statistical or is_info_query):
+
+            try:
+                prompt = f"""
+Bạn là trợ lý trả lời câu hỏi dựa trên kết quả truy vấn.
+
+Câu hỏi: {question}
+Kết quả truy vấn: {formatted_answer}
+
+HƯỚNG DẪN NGHIÊM NGẶT:
+- Chỉ trả lời dựa trên dữ liệu trong "Kết quả truy vấn".
+- Phản hồi phải giữ nguyên toàn bộ giá trị trong {formatted_answer}, không được bỏ bớt hoặc suy luận thêm.
+- Nếu câu hỏi yêu cầu thống kê hoặc tổng hợp, chỉ việc diễn đạt lại nhưng vẫn phải nêu rõ số liệu chính xác từ {formatted_answer}.
+- Nếu không chắc chắn, hãy trả nguyên {formatted_answer} mà không thay đổi.
+"""
+
+                resp = self.groq_client.chat.completions.create(
+                    model="llama-3.1-8b-instant",
+                    messages=[
+                        {"role": "system", "content": "Bạn là trợ lý trả lời câu hỏi dựa trên kết quả truy vấn SQL."},
+                        {"role": "user", "content": prompt}
+                    ]
+                )
+                return resp.choices[0].message.content.strip()
+            except Exception as e:
+                import logging
+                logging.error(f"[Groq ERROR] {e}")
+                return formatted_answer
+
+        return formatted_answer
+
 
     def clear_memory(self):
         if self.engine == "openai":
@@ -801,26 +856,4 @@ SQL:
         self.last_context = {}
         logger.info("Đã xóa toàn bộ bộ nhớ và cache.")
 
-    def format_result_for_user(self, result: dict, filter_link: str = None) -> str:
-        # --- phần format cũ giữ nguyên ---
-        formatted_text = self._format_result_original(result, filter_link)  # đổi tên hàm format cũ thành _format_result_original
-
-        # --- gọi Groq rewrite ---
-        try:
-            return self.generate_natural_answer_with_groq(self.context.get("last_question", ""), formatted_text)
-        except Exception as e:
-            # fallback nếu Groq lỗi
-            import logging
-            logging.error(f"[Groq ERROR] {e}")
-            return formatted_text
-    def _format_result_original(self, result: dict, filter_link: str = None) -> str:
-        if "rows" in result and result["rows"]:
-            header = ", ".join(result["columns"])
-            content = os.linesep.join(
-                "- " + ", ".join(f"{col}: {val}" for col, val in zip(result["columns"], row))
-                for row in result["rows"][:5]
-            )
-            return f"{header}{os.linesep}{content}"
-        elif "error" in result:
-            return f"Lỗi: {result['error']}"
-        return "Không có dữ liệu."
+    

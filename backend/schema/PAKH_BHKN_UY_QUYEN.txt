@@ -1,8 +1,0 @@
-TABLE: PAKH_BHKN_UY_QUYEN
-DESCRIPTION: Lưu thông tin ủy quyền xử lý BHKN từ lãnh đạo trung tâm cho người nhận trong một khoảng thời gian.
-
-COLUMNS: 
-- LANH_DAO_TRUNG_TAM VARCHAR2(200 BYTE) NOT NULL ENABLE: Khóa chính
--	NGUOI_NHAN_UQ VARCHAR2(200 BYTE): Người nhận 
--	START_TIME DATE, END_TIME DATE : Thời gian ủy quyền
-
