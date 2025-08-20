@@ -1,6 +1,6 @@
 {
   "PAKH": {
-    "keywords": ["thông tin phản ánh", "chi tiết phản ánh", "thuê bao", "sdt", "khách hàng", "trạng thái xử lý"],
+    "keywords": ["thông tin phản ánh", "chi tiết phản ánh", "thuê bao", "sdt", "khách hàng", "trạng thái xử lý","pa"],
     "columns": {
       "SO_THUE_BAO": { "keywords": ["số điện thoại", "sdt", "số thuê bao", "thuê bao","số"] },
       "LOAI_THUE_BAO": { "keywords": ["loại thuê bao"] },
@@ -8,15 +8,10 @@
       "TINH_THANH_PHO": { "keywords": ["mã tỉnh thành phố"] },
       "QUAN_HUYEN": { "keywords": ["mã quận huyện"] },
       "PHUONG_XA": { "keywords": ["mã phường xã"] },
-      "TRANG_THAI": { "keywords": ["trạng thái xử lý", "status", "tình trạng"] },
       "THOI_GIAN_GHI_NHAN": { "keywords": ["thời gian ghi nhận", "ngày ghi nhận"] },
       "DON_VI_NHAN": { "keywords": ["đơn vị nhận"] },
       "DON_VI":{"keywords": ["đơn vị đang xử lý"]},
-      "PAKH_SERVICE": { "keywords": ["gọi","data","sms"] },
-      "NETWORK_TYPE": { "keywords": ["loại mạng","3G", "4G", "5G", "FTTH", "ADSL"] },
-      "FB_GROUP": { "keywords": ["mã nhóm phản ánh", "nhóm phản ánh"] },
-      "NGUYEN_NHAN": { "keywords": ["nguyên nhân"] },
-      "CHI_TIET_NN": {"keywords" : ["Mô tả chi tiết nguyên nhân"]}
+      "FB_GROUP": { "keywords": ["mã nhóm phản ánh", "nhóm phản ánh"] }
     }
   },
   "FB_TYPE_NOC": {
@@ -113,25 +108,30 @@
   "PAKH_CA_NHAN": {
     "keywords": ["nhân viên xử lý", "liệt kê"],
     "columns": {
-      "TRANG_THAI": { "keywords": ["trạng thái", "tình trạng xử lý"] }
+      "TRANG_THAI": { "keywords": ["trạng thái", "tình trạng xử lý", "từ chối"] }
     }
   },
   "PAKH_PHONG_BAN": {
     "keywords": ["phòng ban", "liệt kê phòng ban"],
     "columns": {
-      "TEN_PHONG_BAN": { "keywords": ["tên phòng ban"] }
+      "TEN_PHONG_BAN": { "keywords": ["tên phòng ban"] },
+      "TRANG_THAI": { "keywords": ["trạng thái", "tình trạng xử lý", "từ chối"] }
+
     }
   },
   "PAKH_TO_NHOM": {
     "keywords": ["tổ nhóm", "liệt kê tổ nhóm"],
     "columns": {
-      "TEN_TO_NHOM": { "keywords": ["tên tổ nhóm", "nhóm kỹ thuật"] }
+      "TEN_TO_NHOM": { "keywords": ["tên tổ nhóm", "nhóm kỹ thuật"] },
+      "TRANG_THAI": { "keywords": ["trạng thái", "tình trạng xử lý", "từ chối"] }
     }
   },
   "PAKH_TRUNG_TAM": {
     "keywords": ["trung tâm xử lý", "vùng điều phối"],
     "columns": {
-      "TEN_TRUNG_TAM": { "keywords": ["tên trung tâm"] }
+      "TEN_TRUNG_TAM": { "keywords": ["tên trung tâm"] },
+      "TRANG_THAI": { "keywords": ["trạng thái", "tình trạng xử lý", "từ chối"] }
+
     }
   }
 

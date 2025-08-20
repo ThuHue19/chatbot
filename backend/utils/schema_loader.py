@@ -1,5 +1,6 @@
 import os
 import json
+from rapidfuzz import fuzz, process
 
 SCHEMA_DIR = "schema"
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -17,6 +18,7 @@ def load_schema(table_name):
             data = json.load(f)
 
         lines = [f"# TABLE: {data.get('table', table_name)}"]
+
         if "select_instructions" in data:
             lines.append("\nSELECT_INSTRUCTIONS:")
             lines.append(f"{data['select_instructions']}")
@@ -36,7 +38,15 @@ def load_schema(table_name):
         if "note" in data:
             lines.append("\nNOTE:")
             lines.append(f"- {data['note']}")
-    
+
+        # ✅ Thêm dữ liệu mẫu nếu có
+        if "sample_data" in data and isinstance(data["sample_data"], list):
+            lines.append("\nSAMPLE DATA (Top 10 rows):")
+            for i, row in enumerate(data["sample_data"], 1):
+                # Định dạng dữ liệu mẫu thành bảng dễ đọc
+                sample_str = " | ".join(f"{k}: {v}" for k, v in row.items())
+                lines.append(f"{i}. {sample_str}")
+
         return "\n".join(lines)
 
     elif os.path.exists(txt_path):
@@ -45,24 +55,53 @@ def load_schema(table_name):
 
     return ""
 
+def extract_column_names(columns_data):
+    """Hỗ trợ cả 2 dạng columns: dict hoặc list"""
+    if isinstance(columns_data, dict):
+        return list(columns_data.keys())
+    elif isinstance(columns_data, list):
+        return [col["name"] for col in columns_data if "name" in col]
+    else:
+        return []
+
+def load_all_schemas() -> dict:
+    """
+    Đọc toàn bộ schema trong folder schema/
+    Trả về dict {table_name: [list_columns]}
+    """
+    schema_dict = {}
+    for file in os.listdir(SCHEMA_DIR):
+        if file.endswith(".json"):
+            table_name = file.replace(".json", "")
+            with open(os.path.join(SCHEMA_DIR, file), "r", encoding="utf-8") as f:
+                data = json.load(f)
+                columns_data = data.get("columns", [])
+                schema_dict[table_name] = extract_column_names(columns_data)
+    return schema_dict
+
+
 def extract_relevant_tables(question: str):
     question = question.lower()
     candidate_tables = set()
     
-    for table, keywords in TABLE_KEYWORDS.items():
-        if os.path.exists(os.path.join(SCHEMA_DIR, f"{table}.json")) or \
-           os.path.exists(os.path.join(SCHEMA_DIR, f"{table}.txt")):
-            for kw in keywords:
-                if kw.lower() in question:
-                    candidate_tables.add(table)
-                    break
+    for table, data in TABLE_KEYWORDS.items():
+        table_kw = data.get("keywords", [])
+        col_kw_map = data.get("columns", {})
 
-    # Bước 1: Tìm tất cả các bảng ứng cử viên dựa trên từ khóa chung
-    for table, keywords in TABLE_KEYWORDS.items():
-        for kw in keywords:
-            if kw.lower() in question:
+        # Check table-level keywords
+        if any(kw.lower() in question for kw in table_kw):
+            candidate_tables.add(table)
+            continue
+
+        # Check column-level keywords
+        for col, col_data in col_kw_map.items():
+            if any(kw.lower() in question for kw in col_data.get("keywords", [])):
                 candidate_tables.add(table)
                 break
+
+    # Nếu không tìm thấy match rõ ràng → trả rỗng
+    if not candidate_tables:
+        return []
 
     final_tables = set()
 

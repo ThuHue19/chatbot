@@ -1,0 +1,378 @@
+{
+  "table": "PAKH_PHONG_BAN",
+  "description": "Đánh giá hiệu quả xử lý phản ánh theo phòng ban.",
+  "columns": {
+    "ID": {
+      "type": "NUMBER",
+      "description": "Mã định danh"
+    },
+    "TRUNG_TAM": {
+      "type": "VARCHAR2(100 BYTE)",
+      "description": "Tên trung tâm xử lý phản ánh"
+    },
+    "PHONG_BAN": {
+      "type": "VARCHAR2(100 BYTE)",
+      "description": "Tên phòng ban phụ trách"
+    },
+    "MA_TINH": {
+      "type": "VARCHAR2(50 BYTE)",
+      "description": "Mã tỉnh"
+    },
+    "MA_HUYEN": {
+      "type": "VARCHAR2(100 BYTE)",
+      "description": "Mã huyện"
+    },
+    "NGAY": {
+      "type": "DATE",
+      "description": "Ngày ghi nhận"
+    },
+    "MA_LOAI_PA": {
+      "type": "VARCHAR2(50 BYTE)",
+      "description": "Mã loại phản ánh"
+    },
+    "FO_BO": {
+      "type": "VARCHAR2(20 BYTE)",
+      "description": "Lớp dịch vụ FO/BO"
+    },
+    "LOAI_THUE_BAO": {
+      "type": "VARCHAR2(50 BYTE)",
+      "description": "Loại thuê bao (KHDN, KHCN, VIP)"
+    },
+    "TRANG_THAI": {
+      "type": "VARCHAR2(100 BYTE)",
+      "description": "Trạng thái phản ánh"
+    },
+    "IS_TICKET": {
+      "type": "VARCHAR2(1 BYTE)",
+      "description": "Có sinh ticket hay không"
+    },
+    "NGUYEN_NHAN": {
+      "type": "VARCHAR2(1000 BYTE)",
+      "description": "Nguyên nhân phản ánh"
+    },
+    "CEN_CODE": {
+      "type": "NUMBER",
+      "description": "Mã trung tâm kỹ thuật"
+    },
+    "CA_TRUC": {
+      "type": "VARCHAR2(5 BYTE)",
+      "description": "Ca trực (SÁNG, CHIỀU, TỐI)"
+    },
+    "TL_TIEN_XLY": {
+      "type": "NUMBER",
+      "description": "Thời lượng chuẩn bị xử lý (phút)"
+    },
+    "TL_NOC_XLY": {
+      "type": "NUMBER",
+      "description": "Thời lượng NOC xử lý (phút)"
+    },
+    "TL_XU_LY": {
+      "type": "NUMBER",
+      "description": "Tỷ lệ xử lý"
+    },
+    "TONG_TL_XLY": {
+      "type": "NUMBER",
+      "description": "Tổng thời gian xử lý (phút)"
+    },
+    "DANH_GIA_DONG": {
+      "type": "VARCHAR2(8 BYTE)",
+      "description": "Đánh giá đóng xử lý"
+    },
+    "DANH_GIA_TIEN_XLY": {
+      "type": "VARCHAR2(8 BYTE)",
+      "description": "Đánh giá tiền xử lý"
+    },
+    "DANH_GIA_TONG_XLY": {
+      "type": "VARCHAR2(8 BYTE)",
+      "description": "Đánh giá tổng xử lý"
+    },
+    "DANH_GIA_NOC_XLY": {
+      "type": "VARCHAR2(8 BYTE)",
+      "description": "Đánh giá NOC xử lý"
+    },
+    "DANH_GIA_TTML_XLY": {
+      "type": "VARCHAR2(8 BYTE)",
+      "description": "Đánh giá TTML xử lý"
+    },
+    "FB_GROUP": {
+      "type": "NUMBER",
+      "description": "Nhóm phản ánh"
+    },
+    "LIEN_KET_SU_KIEN": {
+      "type": "VARCHAR2(50 BYTE)",
+      "description": "Liên kết sự kiện liên quan"
+    }
+  },
+  "sample_data": [
+    {
+      "ID": 36428174,
+      "TRUNG_TAM": "TT_NOC",
+      "PHONG_BAN": "NOCMN",
+      "MA_TINH": "HCM",
+      "MA_HUYEN": "BTH",
+      "NGAY": "2024-01-01",
+      "MA_LOAI_PA": "4840",
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "TRANG_THAI": "DANG_XU_LY",
+      "IS_TICKET": "N",
+      "NGUYEN_NHAN": null,
+      "CEN_CODE": 2,
+      "CA_TRUC": "TOI",
+      "TL_TIEN_XLY": null,
+      "TL_NOC_XLY": 6587,
+      "TL_XU_LY": 0,
+      "TONG_TL_XLY": 6587,
+      "DANH_GIA_DONG": null,
+      "DANH_GIA_TIEN_XLY": null,
+      "DANH_GIA_TONG_XLY": "DUNG_HAN",
+      "DANH_GIA_NOC_XLY": "DUNG_HAN",
+      "DANH_GIA_TTML_XLY": null,
+      "FB_GROUP": 716,
+      "LIEN_KET_SU_KIEN": null
+    },
+    {
+      "ID": 36424570,
+      "TRUNG_TAM": "TT_NOC",
+      "PHONG_BAN": "NOCMN",
+      "MA_TINH": "HCM",
+      "MA_HUYEN": "008",
+      "NGAY": "2024-01-01",
+      "MA_LOAI_PA": "4838",
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "TRANG_THAI": "DANG_XU_LY",
+      "IS_TICKET": "N",
+      "NGUYEN_NHAN": null,
+      "CEN_CODE": 2,
+      "CA_TRUC": "CHIEU",
+      "TL_TIEN_XLY": null,
+      "TL_NOC_XLY": 69286,
+      "TL_XU_LY": 0,
+      "TONG_TL_XLY": 69286,
+      "DANH_GIA_DONG": null,
+      "DANH_GIA_TIEN_XLY": null,
+      "DANH_GIA_TONG_XLY": "DUNG_HAN",
+      "DANH_GIA_NOC_XLY": "DUNG_HAN",
+      "DANH_GIA_TTML_XLY": null,
+      "FB_GROUP": 716,
+      "LIEN_KET_SU_KIEN": null
+    },
+    {
+      "ID": 36415738,
+      "TRUNG_TAM": "TT_NOC",
+      "PHONG_BAN": "NOCMB",
+      "MA_TINH": "VPH",
+      "MA_HUYEN": "PYE",
+      "NGAY": "2024-01-01",
+      "MA_LOAI_PA": "4840",
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "TRANG_THAI": "DANG_XU_LY",
+      "IS_TICKET": "N",
+      "NGUYEN_NHAN": null,
+      "CEN_CODE": 4,
+      "CA_TRUC": "SANG",
+      "TL_TIEN_XLY": null,
+      "TL_NOC_XLY": 102166,
+      "TL_XU_LY": 0,
+      "TONG_TL_XLY": 102166,
+      "DANH_GIA_DONG": null,
+      "DANH_GIA_TIEN_XLY": null,
+      "DANH_GIA_TONG_XLY": "DUNG_HAN",
+      "DANH_GIA_NOC_XLY": "DUNG_HAN",
+      "DANH_GIA_TTML_XLY": null,
+      "FB_GROUP": 716,
+      "LIEN_KET_SU_KIEN": null
+    },
+    {
+      "ID": 36422473,
+      "TRUNG_TAM": "TT_NOC",
+      "PHONG_BAN": "NOCMN",
+      "MA_TINH": "HCM",
+      "MA_HUYEN": "001",
+      "NGAY": "2024-01-01",
+      "MA_LOAI_PA": "4838",
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "TRANG_THAI": "DANG_XU_LY",
+      "IS_TICKET": "N",
+      "NGUYEN_NHAN": null,
+      "CEN_CODE": 2,
+      "CA_TRUC": "SANG",
+      "TL_TIEN_XLY": null,
+      "TL_NOC_XLY": 3536,
+      "TL_XU_LY": 0,
+      "TONG_TL_XLY": 3536,
+      "DANH_GIA_DONG": null,
+      "DANH_GIA_TIEN_XLY": null,
+      "DANH_GIA_TONG_XLY": "DUNG_HAN",
+      "DANH_GIA_NOC_XLY": "DUNG_HAN",
+      "DANH_GIA_TTML_XLY": null,
+      "FB_GROUP": 716,
+      "LIEN_KET_SU_KIEN": null
+    },
+    {
+      "ID": 36425485,
+      "TRUNG_TAM": "TT_NOC",
+      "PHONG_BAN": "NOCMB",
+      "MA_TINH": "THO",
+      "MA_HUYEN": "NCO",
+      "NGAY": "2024-01-01",
+      "MA_LOAI_PA": "4837",
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "TRANG_THAI": "DANG_XU_LY",
+      "IS_TICKET": "N",
+      "NGUYEN_NHAN": null,
+      "CEN_CODE": 6,
+      "CA_TRUC": "CHIEU",
+      "TL_TIEN_XLY": null,
+      "TL_NOC_XLY": 99701,
+      "TL_XU_LY": 0,
+      "TONG_TL_XLY": 99701,
+      "DANH_GIA_DONG": null,
+      "DANH_GIA_TIEN_XLY": null,
+      "DANH_GIA_TONG_XLY": "DUNG_HAN",
+      "DANH_GIA_NOC_XLY": "DUNG_HAN",
+      "DANH_GIA_TTML_XLY": null,
+      "FB_GROUP": 716,
+      "LIEN_KET_SU_KIEN": null
+    },
+    {
+      "ID": 36431337,
+      "TRUNG_TAM": "TT_NOC",
+      "PHONG_BAN": "NOCMB",
+      "MA_TINH": "HNO",
+      "MA_HUYEN": "DAN",
+      "NGAY": "2024-01-02",
+      "MA_LOAI_PA": "4840",
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "TRANG_THAI": "DANG_XU_LY",
+      "IS_TICKET": "N",
+      "NGUYEN_NHAN": null,
+      "CEN_CODE": 1,
+      "CA_TRUC": "SANG",
+      "TL_TIEN_XLY": null,
+      "TL_NOC_XLY": 2770,
+      "TL_XU_LY": 0,
+      "TONG_TL_XLY": 2770,
+      "DANH_GIA_DONG": null,
+      "DANH_GIA_TIEN_XLY": null,
+      "DANH_GIA_TONG_XLY": "DUNG_HAN",
+      "DANH_GIA_NOC_XLY": "DUNG_HAN",
+      "DANH_GIA_TTML_XLY": null,
+      "FB_GROUP": 716,
+      "LIEN_KET_SU_KIEN": null
+    },
+    {
+      "ID": 36431345,
+      "TRUNG_TAM": "TT_NOC",
+      "PHONG_BAN": "NOCMN",
+      "MA_TINH": "HCM",
+      "MA_HUYEN": "PNH",
+      "NGAY": "2024-01-02",
+      "MA_LOAI_PA": "4837",
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "TRANG_THAI": "DANG_XU_LY",
+      "IS_TICKET": "N",
+      "NGUYEN_NHAN": null,
+      "CEN_CODE": 2,
+      "CA_TRUC": "SANG",
+      "TL_TIEN_XLY": null,
+      "TL_NOC_XLY": 169452,
+      "TL_XU_LY": 0,
+      "TONG_TL_XLY": 169452,
+      "DANH_GIA_DONG": null,
+      "DANH_GIA_TIEN_XLY": null,
+      "DANH_GIA_TONG_XLY": "QUA_HAN",
+      "DANH_GIA_NOC_XLY": "QUA_HAN",
+      "DANH_GIA_TTML_XLY": null,
+      "FB_GROUP": 716,
+      "LIEN_KET_SU_KIEN": null
+    },
+    {
+      "ID": 36434727,
+      "TRUNG_TAM": "TT_NOC",
+      "PHONG_BAN": "NOCMB",
+      "MA_TINH": "HNO",
+      "MA_HUYEN": "HKI",
+      "NGAY": "2024-01-02",
+      "MA_LOAI_PA": "4887",
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "TRANG_THAI": "DANG_XU_LY",
+      "IS_TICKET": "N",
+      "NGUYEN_NHAN": null,
+      "CEN_CODE": 1,
+      "CA_TRUC": "CHIEU",
+      "TL_TIEN_XLY": null,
+      "TL_NOC_XLY": 89309,
+      "TL_XU_LY": 0,
+      "TONG_TL_XLY": 89309,
+      "DANH_GIA_DONG": null,
+      "DANH_GIA_TIEN_XLY": null,
+      "DANH_GIA_TONG_XLY": "DUNG_HAN",
+      "DANH_GIA_NOC_XLY": "DUNG_HAN",
+      "DANH_GIA_TTML_XLY": null,
+      "FB_GROUP": 716,
+      "LIEN_KET_SU_KIEN": null
+    },
+    {
+      "ID": 36434652,
+      "TRUNG_TAM": "TT_NOC",
+      "PHONG_BAN": "NOCMB",
+      "MA_TINH": "HNO",
+      "MA_HUYEN": "QOA",
+      "NGAY": "2024-01-02",
+      "MA_LOAI_PA": "4887",
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "TRANG_THAI": "DANG_XU_LY",
+      "IS_TICKET": "N",
+      "NGUYEN_NHAN": null,
+      "CEN_CODE": 1,
+      "CA_TRUC": "CHIEU",
+      "TL_TIEN_XLY": null,
+      "TL_NOC_XLY": 26729,
+      "TL_XU_LY": 0,
+      "TONG_TL_XLY": 26729,
+      "DANH_GIA_DONG": null,
+      "DANH_GIA_TIEN_XLY": null,
+      "DANH_GIA_TONG_XLY": "DUNG_HAN",
+      "DANH_GIA_NOC_XLY": "DUNG_HAN",
+      "DANH_GIA_TTML_XLY": null,
+      "FB_GROUP": 716,
+      "LIEN_KET_SU_KIEN": null
+    },
+    {
+      "ID": 36423188,
+      "TRUNG_TAM": "TT_NOC",
+      "PHONG_BAN": "NOCMB",
+      "MA_TINH": "HNO",
+      "MA_HUYEN": "GLA",
+      "NGAY": "2024-01-01",
+      "MA_LOAI_PA": "4837",
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "TRANG_THAI": "DANG_XU_LY",
+      "IS_TICKET": "N",
+      "NGUYEN_NHAN": null,
+      "CEN_CODE": 1,
+      "CA_TRUC": "SANG",
+      "TL_TIEN_XLY": null,
+      "TL_NOC_XLY": 69699,
+      "TL_XU_LY": 0,
+      "TONG_TL_XLY": 69699,
+      "DANH_GIA_DONG": null,
+      "DANH_GIA_TIEN_XLY": null,
+      "DANH_GIA_TONG_XLY": "DUNG_HAN",
+      "DANH_GIA_NOC_XLY": "DUNG_HAN",
+      "DANH_GIA_TTML_XLY": null,
+      "FB_GROUP": 716,
+      "LIEN_KET_SU_KIEN": null
+    }
+  ]
+}

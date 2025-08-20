@@ -1,0 +1,51 @@
+{
+  "table": "FB_TYPE",
+  "description": "Danh mục loại phản ánh, bao gồm mã, tên, mô tả và thời gian xử lý.",
+  "columns": {
+    "ID": {
+      "type": "NUMBER",
+      "description": "Mã định danh loại phản ánh"
+    },
+    "CODE": {
+      "type": "VARCHAR2(50 BYTE)",
+      "description": "Mã loại phản ánh"
+    },
+    "NAME": {
+      "type": "VARCHAR2(250 BYTE)",
+      "description": "Tên loại phản ánh"
+    },
+    "ORDERING": {
+      "type": "NUMBER(4,0)",
+      "description": "Thứ tự hiển thị"
+    },
+    "IS_ENABLE": {
+      "type": "VARCHAR2(50 BYTE)",
+      "description": "Trạng thái kích hoạt"
+    },
+    "DESCRIPTION": {
+      "type": "VARCHAR2(255 BYTE)",
+      "description": "Mô tả loại phản ánh"
+    },
+    "TIME_PROCESS": {
+      "type": "VARCHAR2(5 BYTE)",
+      "description": "Thời gian xử lý chuẩn (phút)"
+    },
+    "CREATED_BY": {
+      "type": "VARCHAR2(50 BYTE)",
+      "description": "Người tạo"
+    },
+    "CREATE_DATE": {
+      "type": "DATE",
+      "description": "Ngày tạo"
+    },
+    "MODIFIED_BY": {
+      "type": "VARCHAR2(50 BYTE)",
+      "description": "Người sửa đổi gần nhất"
+    },
+    "MODIFY_DATE": {
+      "type": "DATE",
+      "description": "Ngày sửa đổi gần nhất"
+    }
+  },
+  "sample_data": []
+}

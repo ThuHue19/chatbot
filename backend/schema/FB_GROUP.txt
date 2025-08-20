@@ -1,4 +1,0 @@
-TABLE: FB_GROUP 
-COLUMNS: 
-- GROUP_ID (NUMBER): mã nhóm phản ánh
-- NAME (VARCHAR2): tên nhóm phản ánh 

@@ -1,0 +1,56 @@
+{
+  "table": "FB_GROUP",
+  "description": "Danh mục nhóm phản ánh.",
+  "columns": {
+    "GROUP_ID": {
+      "type": "NUMBER",
+      "description": "Mã nhóm phản ánh"
+    },
+    "NAME": {
+      "type": "VARCHAR2",
+      "description": "Tên nhóm phản ánh"
+    }
+  },
+  "sample_data": [
+    {
+      "GROUP_ID": 713,
+      "NAME": "01. Khuyến mại"
+    },
+    {
+      "GROUP_ID": 715,
+      "NAME": "03. Tài khoản, tính cước và chuyển đổi dịch vụ"
+    },
+    {
+      "GROUP_ID": 717,
+      "NAME": "05. Dịch vụ ĐPT và GTGT"
+    },
+    {
+      "GROUP_ID": 719,
+      "NAME": "07. Quấy rối, tin nhắn quảng cáo, rác"
+    },
+    {
+      "GROUP_ID": 721,
+      "NAME": "09. Nghiệp vụ và thái độ của nhân viên"
+    },
+    {
+      "GROUP_ID": 723,
+      "NAME": "11. Phản ánh khác"
+    },
+    {
+      "GROUP_ID": 858,
+      "NAME": "FPT_TEST PA"
+    },
+    {
+      "GROUP_ID": 862,
+      "NAME": "18. Phản ánh qua Portal và app"
+    },
+    {
+      "GROUP_ID": 714,
+      "NAME": "02. Chăm sóc khách hàng"
+    },
+    {
+      "GROUP_ID": 716,
+      "NAME": "04. Mạng lưới, vùng phủ sóng"
+    }
+  ]
+}

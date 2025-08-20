@@ -1,0 +1,325 @@
+{
+  "table": "PAKH_SLA_TRUNG_TAM",
+  "description": "Báo cáo SLA phản ánh theo từng trung tâm kỹ thuật, dùng để đánh giá chất lượng xử lý phản ánh theo khu vực/vùng.",
+  "columns": [
+    {
+      "name": "NGAY",
+      "type": "DATE"
+    },
+    {
+      "name": "THANG",
+      "type": "VARCHAR2"
+    },
+    {
+      "name": "QUY",
+      "type": "VARCHAR2"
+    },
+    {
+      "name": "NAM",
+      "type": "VARCHAR2"
+    },
+    {
+      "name": "TRUNG_TAM",
+      "type": "VARCHAR2",
+      "description": "Trung tâm xử lý phản ánh"
+    },
+    {
+      "name": "MA_TINH",
+      "type": "VARCHAR2"
+    },
+    {
+      "name": "MA_LOAI_PA",
+      "type": "VARCHAR2"
+    },
+    {
+      "name": "CEN_CODE",
+      "type": "NUMBER"
+    },
+    {
+      "name": "FO_BO",
+      "type": "VARCHAR2"
+    },
+    {
+      "name": "LOAI_THUE_BAO",
+      "type": "VARCHAR2"
+    },
+    {
+      "name": "CA_TRUC",
+      "type": "VARCHAR2"
+    },
+    {
+      "name": "NGUYEN_NHAN",
+      "type": "VARCHAR2"
+    },
+    {
+      "name": "MA_HUYEN",
+      "type": "VARCHAR2"
+    },
+    {
+      "name": "FB_GROUP",
+      "type": "NUMBER"
+    }
+  ],
+  "aggregate_columns": [
+    {
+      "name": "SO_PA_NHAN",
+      "type": "NUMBER",
+      "description": "Số phản ánh tiếp nhận (đã nhận)"
+    },
+    {
+      "name": "SO_PA_DA_XL",
+      "type": "NUMBER",
+      "description": "Số phản ánh đã xử lý xong"
+    },
+    {
+      "name": "SO_PA_DANG_XL_DH",
+      "type": "NUMBER",
+      "description": "Đang xử lý đúng hạn"
+    },
+    {
+      "name": "SO_PA_DANG_XL_QH",
+      "type": "NUMBER",
+      "description": "Đang xử lý quá hạn"
+    },
+    {
+      "name": "SO_PA_TIEN_XL_DH",
+      "type": "NUMBER",
+      "description": "Chuẩn bị xử lý đúng hạn"
+    },
+    {
+      "name": "SO_PA_TIEN_XL_QH",
+      "type": "NUMBER",
+      "description": "Chuẩn bị xử lý quá hạn"
+    },
+    {
+      "name": "SO_PA_DA_CHUYEN",
+      "type": "NUMBER",
+      "description": "Số phản ánh đã chuyển tiếp"
+    },
+    {
+      "name": "SO_PA_XL_DH",
+      "type": "NUMBER",
+      "description": "Phản ánh xử lý đúng hạn"
+    },
+    {
+      "name": "SO_PA_DA_XL_DH",
+      "type": "NUMBER",
+      "description": "Đã xử lý xong đúng hạn"
+    },
+    {
+      "name": "SO_PA_DA_XL_QH",
+      "type": "NUMBER",
+      "description": "Đã xử lý xong quá hạn"
+    },
+    {
+      "name": "TONG_TG_XL",
+      "type": "NUMBER",
+      "description": "Tổng thời gian xử lý (phút)"
+    },
+    {
+      "name": "SO_PA_DH",
+      "type": "NUMBER",
+      "description": "Số phản ánh đúng hạn"
+    },
+    {
+      "name": "SO_PA_QH",
+      "type": "NUMBER",
+      "description": "Số phản ánh quá hạn"
+    },
+    {
+      "name": "SO_PA_TU_CHOI",
+      "type": "NUMBER",
+      "description": "Bị từ chối xử lý"
+    },
+    {
+      "name": "SO_PA_DONG_DH",
+      "type": "NUMBER",
+      "description": "Đã đóng đúng hạn"
+    },
+    {
+      "name": "SO_PA_CAN_DONG",
+      "type": "NUMBER",
+      "description": "Chờ đóng (xử lý xong chưa cập nhật)"
+    },
+    {
+      "name": "SO_PA_KHONG_DAT",
+      "type": "NUMBER",
+      "description": "Số phản ánh không đạt yêu cầu SLA"
+    }
+  ],
+  "notes": [
+    "Khi thống kê số lượng hoặc tổng số, cần luôn sử dụng SUM(<tên_cột>) trên các cột trong phần aggregate_columns thay vì COUNT(*) hay SUM(1).",
+    "Không có quan hệ JOIN trực tiếp giữa PAKH_SLA_TRUNG_TAM và PAKH, phải thông quan bảng PAKH_TRUNG_TAM nếu cần liên kết.",
+    "Khi muốn đếm số phản ánh → dùng SUM(SO_PA_NHAN).",
+    "Khi muốn đếm phản ánh quá hạn → dùng SUM(SO_PA_QH).",
+    "Muốn đếm phản ánh xử lý đúng hạn → dùng SUM(SO_PA_DA_XL_DH).",
+    "Muốn tính trung bình thời gian xử lý → dùng AVG(TONG_TG_XL).",
+    "Không dùng COUNT(*) hay cột TRANG_THAI, bảng đã tổng hợp sẵn.",
+    "Lọc theo cá nhân → WHERE CA_NHAN = '<tên>'",
+    "Lọc theo tháng/năm → WHERE THANG = '<tháng>' AND NAM = '<năm>'",
+    "Lọc theo ca trực nếu cần (CA_TRUC).",
+    "Tỷ lệ xử lý đúng hạn = (SO_PA_DA_XL_DH + SO_PA_DANG_XL_DH) / SO_PA_NHAN * 100"
+  ],
+  "sample_data": [
+    {
+      "NGAY": "2024-01-02",
+      "THANG": "01",
+      "QUY": "1",
+      "NAM": "2024",
+      "TRUNG_TAM": "TT_NOC",
+      "MA_TINH": "HCM",
+      "MA_LOAI_PA": "4838",
+      "CEN_CODE": 2,
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "CA_TRUC": "CHIEU",
+      "NGUYEN_NHAN": null,
+      "MA_HUYEN": "TPH",
+      "FB_GROUP": 716
+    },
+    {
+      "NGAY": "2024-01-02",
+      "THANG": "01",
+      "QUY": "1",
+      "NAM": "2024",
+      "TRUNG_TAM": "TT_NOC",
+      "MA_TINH": "BDI",
+      "MA_LOAI_PA": "4838",
+      "CEN_CODE": 3,
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "CA_TRUC": "CHIEU",
+      "NGUYEN_NHAN": null,
+      "MA_HUYEN": "PMY",
+      "FB_GROUP": 716
+    },
+    {
+      "NGAY": "2024-01-03",
+      "THANG": "01",
+      "QUY": "1",
+      "NAM": "2024",
+      "TRUNG_TAM": "TT_NOC",
+      "MA_TINH": "HNO",
+      "MA_LOAI_PA": "4838",
+      "CEN_CODE": 1,
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "CA_TRUC": "SANG",
+      "NGUYEN_NHAN": null,
+      "MA_HUYEN": "HKI",
+      "FB_GROUP": 716
+    },
+    {
+      "NGAY": "2024-01-02",
+      "THANG": "01",
+      "QUY": "1",
+      "NAM": "2024",
+      "TRUNG_TAM": "TT_NOC",
+      "MA_TINH": "HCM",
+      "MA_LOAI_PA": "4840",
+      "CEN_CODE": 2,
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "CA_TRUC": "SANG",
+      "NGUYEN_NHAN": null,
+      "MA_HUYEN": "012",
+      "FB_GROUP": 716
+    },
+    {
+      "NGAY": "2024-01-02",
+      "THANG": "01",
+      "QUY": "1",
+      "NAM": "2024",
+      "TRUNG_TAM": "TT_NOC",
+      "MA_TINH": "NAN",
+      "MA_LOAI_PA": "4840",
+      "CEN_CODE": 6,
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHDN",
+      "CA_TRUC": "CHIEU",
+      "NGUYEN_NHAN": null,
+      "MA_HUYEN": "NDA",
+      "FB_GROUP": 716
+    },
+    {
+      "NGAY": "2024-01-03",
+      "THANG": "01",
+      "QUY": "1",
+      "NAM": "2024",
+      "TRUNG_TAM": "TT_NOC",
+      "MA_TINH": "BRV",
+      "MA_LOAI_PA": "4840",
+      "CEN_CODE": 8,
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "CA_TRUC": "SANG",
+      "NGUYEN_NHAN": null,
+      "MA_HUYEN": "BRI",
+      "FB_GROUP": 716
+    },
+    {
+      "NGAY": "2024-01-03",
+      "THANG": "01",
+      "QUY": "1",
+      "NAM": "2024",
+      "TRUNG_TAM": "TT_NOC",
+      "MA_TINH": "TTH",
+      "MA_LOAI_PA": "4838",
+      "CEN_CODE": 3,
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "CA_TRUC": "SANG",
+      "NGUYEN_NHAN": null,
+      "MA_HUYEN": "HUE",
+      "FB_GROUP": 716
+    },
+    {
+      "NGAY": "2024-01-28",
+      "THANG": "01",
+      "QUY": "1",
+      "NAM": "2024",
+      "TRUNG_TAM": "TT_NOC",
+      "MA_TINH": "HCM",
+      "MA_LOAI_PA": "4838",
+      "CEN_CODE": 2,
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "CA_TRUC": "CHIEU",
+      "NGUYEN_NHAN": null,
+      "MA_HUYEN": "GVA",
+      "FB_GROUP": 716
+    },
+    {
+      "NGAY": "2024-01-05",
+      "THANG": "01",
+      "QUY": "1",
+      "NAM": "2024",
+      "TRUNG_TAM": "TT_NOC",
+      "MA_TINH": "DTH",
+      "MA_LOAI_PA": "4839",
+      "CEN_CODE": 9,
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "CA_TRUC": "CHIEU",
+      "NGUYEN_NHAN": null,
+      "MA_HUYEN": "CTH",
+      "FB_GROUP": 716
+    },
+    {
+      "NGAY": "2024-01-20",
+      "THANG": "01",
+      "QUY": "1",
+      "NAM": "2024",
+      "TRUNG_TAM": "TT_NOC",
+      "MA_TINH": "HCM",
+      "MA_LOAI_PA": "4840",
+      "CEN_CODE": 2,
+      "FO_BO": "FO",
+      "LOAI_THUE_BAO": "KHCN",
+      "CA_TRUC": "SANG",
+      "NGUYEN_NHAN": null,
+      "MA_HUYEN": "001",
+      "FB_GROUP": 716
+    }
+  ]
+}

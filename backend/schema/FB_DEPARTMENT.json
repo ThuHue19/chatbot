@@ -2,12 +2,99 @@
   "table": "FB_DEPARTMENT",
   "description": "Bảng chứa thông tin các đơn vị đang xử lý",
   "columns": {
-    "DEP_ID": { "type": "NUMBER", "description": "Mã đơn vị đang xử lý (khóa chính, không được để trống)" },
-    "NAME": { "type": "VARCHAR2(200 BYTE)", "description": "Tên đơn vị đang xử lý" },
-    "DESCRIPTION": { "type": "VARCHAR2(200 BYTE)", "description": "Mô tả chi tiết về đơn vị đang xử lý" },
-    "CENTER": { "type": "NUMBER", "description": "Mã trung tâm liên kết với đơn vị đang xử lý" },
-    "ORDERING": { "type": "NUMBER", "description": "Thứ tự hiển thị của đơn vị đang xử lý trong danh sách" }
+    "DEP_ID": {
+      "type": "NUMBER",
+      "description": "Mã đơn vị đang xử lý (khóa chính, không được để trống)"
+    },
+    "NAME": {
+      "type": "VARCHAR2(200 BYTE)",
+      "description": "Tên đơn vị đang xử lý"
+    },
+    "DESCRIPTION": {
+      "type": "VARCHAR2(200 BYTE)",
+      "description": "Mô tả chi tiết về đơn vị đang xử lý"
+    },
+    "CENTER": {
+      "type": "NUMBER",
+      "description": "Mã trung tâm liên kết với đơn vị đang xử lý"
+    },
+    "ORDERING": {
+      "type": "NUMBER",
+      "description": "Thứ tự hiển thị của đơn vị đang xử lý trong danh sách"
+    }
   },
   "note": "Bảng này hỗ trợ việc tổ chức và phân loại các đơn vị đang xử lý trong hệ thống quản lý. Trường ORDERING giúp xác định vị trí của đơn vị trong danh sách đơn vị đang xử lý hiển thị.",
-  "select_instructions": "Để truy xuất danh sách đơn vị đang xử lý theo thứ tự, sử dụng: SELECT * FROM FB_DEPARTMENT ORDER BY ORDERING ASC."
+  "select_instructions": "Để truy xuất danh sách đơn vị đang xử lý theo thứ tự, sử dụng: SELECT * FROM FB_DEPARTMENT ORDER BY ORDERING ASC.",
+  "sample_data": [
+    {
+      "DEP_ID": 647,
+      "NAME": "Đài 1090_C1",
+      "DESCRIPTION": "Đài 1090_C1",
+      "CENTER": null,
+      "ORDERING": 1
+    },
+    {
+      "DEP_ID": 1157,
+      "NAME": "Đài 1090_C2",
+      "DESCRIPTION": "Đài 1090_C2",
+      "CENTER": null,
+      "ORDERING": 2
+    },
+    {
+      "DEP_ID": 1142,
+      "NAME": "Đài 1090_C3",
+      "DESCRIPTION": "Đài 1090_C3",
+      "CENTER": null,
+      "ORDERING": 3
+    },
+    {
+      "DEP_ID": 1163,
+      "NAME": "Đài 1090_C5",
+      "DESCRIPTION": "Đài 1090_C5",
+      "CENTER": null,
+      "ORDERING": 4
+    },
+    {
+      "DEP_ID": 1452,
+      "NAME": "Đài 1090_C8",
+      "DESCRIPTION": "Đài 1090_C8",
+      "CENTER": null,
+      "ORDERING": 5
+    },
+    {
+      "DEP_ID": 1150,
+      "NAME": "Đài 1090_C9",
+      "DESCRIPTION": "Đài 1090_C9",
+      "CENTER": null,
+      "ORDERING": 6
+    },
+    {
+      "DEP_ID": 2466,
+      "NAME": "MLMT_Đài viễn thông Đà Nẵng",
+      "DESCRIPTION": "Đài viễn thông Đà Nẵng",
+      "CENTER": null,
+      "ORDERING": null
+    },
+    {
+      "DEP_ID": 2546,
+      "NAME": "MLMB_DVT Hà Nội 2",
+      "DESCRIPTION": "Đài Viễn Thông Hà Nội 2",
+      "CENTER": null,
+      "ORDERING": null
+    },
+    {
+      "DEP_ID": 2547,
+      "NAME": "MLMB_DVT Hải phòng",
+      "DESCRIPTION": "Đài Viễn THông Hải phòng",
+      "CENTER": null,
+      "ORDERING": null
+    },
+    {
+      "DEP_ID": 2566,
+      "NAME": "MLMB_DVT Thái Nguyên",
+      "DESCRIPTION": "Đài Viễn Thông Thái Nguyên",
+      "CENTER": null,
+      "ORDERING": null
+    }
+  ]
 }

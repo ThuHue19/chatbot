@@ -2,11 +2,85 @@
   "table": "FB_TYPE_NOC",
   "description": "Danh mục loại phản ánh thuộc hệ thống NOC, dùng để phân loại các phản ánh theo nhóm và loại.",
   "columns": {
-    "COMP_TYPE_ID": { "type": "NUMBER", "description": "Mã loại phản ánh" },
-    "GROUP_ID": { "type": "NUMBER", "description": "Mã nhóm phản ánh" },
-    "NAME": { "type": "VARCHAR2", "description": "Tên loại phản ánh" },
-    "CLASSIFICATION": { "type": "VARCHAR2", "description": "Phân loại phản ánh, mặc định là 'OTHERS'" }
+    "COMP_TYPE_ID": {
+      "type": "NUMBER",
+      "description": "Mã loại phản ánh"
+    },
+    "GROUP_ID": {
+      "type": "NUMBER",
+      "description": "Mã nhóm phản ánh"
+    },
+    "NAME": {
+      "type": "VARCHAR2",
+      "description": "Tên loại phản ánh"
+    },
+    "CLASSIFICATION": {
+      "type": "VARCHAR2",
+      "description": "Phân loại phản ánh, mặc định là 'OTHERS'"
+    }
   },
   "note": "Dữ liệu trong bảng này là danh mục tĩnh, không chứa số liệu thống kê. Có thể dùng để tham chiếu khi cần gán hoặc hiển thị tên loại phản ánh tương ứng với mã `COMP_TYPE_ID`",
-  "select_instructions": "Sử dụng bảng này để tra cứu tên loại phản ánh từ `NAME` hoặc xác định nhóm phản ánh qua `GROUP_ID`. Không sử dụng bảng này để thống kê số lượng phản ánh. Luôn ưu tiên trả ra tên thay vì mã, khi cần lọc theo loại phản ánh, có thể dùng `NAME LIKE '%<từ khóa>%'`."
+  "select_instructions": "Sử dụng bảng này để tra cứu tên loại phản ánh từ `NAME` hoặc xác định nhóm phản ánh qua `GROUP_ID`. Không sử dụng bảng này để thống kê số lượng phản ánh. Luôn ưu tiên trả ra tên thay vì mã, khi cần lọc theo loại phản ánh, có thể dùng `NAME LIKE '%<từ khóa>%'`.",
+  "sample_data": [
+    {
+      "COMP_TYPE_ID": 2668,
+      "GROUP_ID": 713,
+      "NAME": "02. KM tặng tiền hàng tháng",
+      "CLASSIFICATION": "OTHERS"
+    },
+    {
+      "COMP_TYPE_ID": 2670,
+      "GROUP_ID": 713,
+      "NAME": "04. KM gói thoại, gói combo trả trước",
+      "CLASSIFICATION": "OTHERS"
+    },
+    {
+      "COMP_TYPE_ID": 2672,
+      "GROUP_ID": 713,
+      "NAME": "06. KM dịch vụ GTGT",
+      "CLASSIFICATION": "OTHERS"
+    },
+    {
+      "COMP_TYPE_ID": 2674,
+      "GROUP_ID": 713,
+      "NAME": "08. KM gói data trả trước",
+      "CLASSIFICATION": "OTHERS"
+    },
+    {
+      "COMP_TYPE_ID": 2676,
+      "GROUP_ID": 713,
+      "NAME": "10. KM thanh toán trả sau",
+      "CLASSIFICATION": "OTHERS"
+    },
+    {
+      "COMP_TYPE_ID": 2678,
+      "GROUP_ID": 713,
+      "NAME": "12. KM khác",
+      "CLASSIFICATION": "OTHERS"
+    },
+    {
+      "COMP_TYPE_ID": 2667,
+      "GROUP_ID": 713,
+      "NAME": "01. KM nạp tiền trả trước",
+      "CLASSIFICATION": "OTHERS"
+    },
+    {
+      "COMP_TYPE_ID": 2669,
+      "GROUP_ID": 713,
+      "NAME": "03. KM kích hoạt",
+      "CLASSIFICATION": "OTHERS"
+    },
+    {
+      "COMP_TYPE_ID": 2671,
+      "GROUP_ID": 713,
+      "NAME": "05. KM gói thoại, gói combo trả sau",
+      "CLASSIFICATION": "OTHERS"
+    },
+    {
+      "COMP_TYPE_ID": 2673,
+      "GROUP_ID": 713,
+      "NAME": "07. KM SMS trả trước",
+      "CLASSIFICATION": "OTHERS"
+    }
+  ]
 }

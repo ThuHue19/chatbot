@@ -1,0 +1,2338 @@
+[
+  {
+    "dept_code": "DVT_DN_TVT_VT",
+    "dept_name": "TVT Vũng Tàu"
+  },
+  {
+    "dept_code": "DVT_TAY",
+    "dept_name": "ĐVT Tây"
+  },
+  {
+    "dept_code": "DVT_Tay_TVT5",
+    "dept_name": "TVT 5"
+  },
+  {
+    "dept_code": "DVT_Tay_TVT6",
+    "dept_name": "TVT 6"
+  },
+  {
+    "dept_code": "DVT_Tay_TVT7",
+    "dept_name": "TVT 7"
+  },
+  {
+    "dept_code": "DVT_Tay_TVT8",
+    "dept_name": "TVT 8"
+  },
+  {
+    "dept_code": "DVT_TG",
+    "dept_name": "ĐVT Tiền Giang"
+  },
+  {
+    "dept_code": "DVT_TG_TVT_BT",
+    "dept_name": "TVT Bến Tre"
+  },
+  {
+    "dept_code": "DVT_TG_TVT_DT",
+    "dept_name": "TVT Đồng Tháp"
+  },
+  {
+    "dept_code": "DVT_TG_TVT_TG",
+    "dept_name": "TVT Tiền Giang"
+  },
+  {
+    "dept_code": "DVT_TG_TVT_TV",
+    "dept_name": "TVT Trà Vinh"
+  },
+  {
+    "dept_code": "DVT_TG_TVT_VL",
+    "dept_name": "TVT Vĩnh Long"
+  },
+  {
+    "dept_code": "TTML_MN_BGD",
+    "dept_name": "TTML_MN_Ban giám đốc"
+  },
+  {
+    "dept_code": "TTML_MN_PHT",
+    "dept_name": "TTML_MN_Phòng QLCSHT"
+  },
+  {
+    "dept_code": "DVT_Dong_TVT1",
+    "dept_name": "TVT 1"
+  },
+  {
+    "dept_code": "TTML_MN_BGD_VP",
+    "dept_name": "TTML_MN_Văn phòng"
+  },
+  {
+    "dept_code": "DVT_BD_VP",
+    "dept_name": "DVT_BD_Văn phòng"
+  },
+  {
+    "dept_code": "DVT_BD_QLCL",
+    "dept_name": "DVT_BD_Tổ QLCL Mạng"
+  },
+  {
+    "dept_code": "DVT_CT_VP",
+    "dept_name": "DVT_CT_Văn phòng"
+  },
+  {
+    "dept_code": "DVT_CT_QLCL",
+    "dept_name": "DVT_CT_Tổ QLCL Mạng"
+  },
+  {
+    "dept_code": "DVT_Dong_VP",
+    "dept_name": "DVT_Dong_Văn phòng"
+  },
+  {
+    "dept_code": "DVT_DN_VP",
+    "dept_name": "DVT_DN_Văn phòng"
+  },
+  {
+    "dept_code": "DVT_DN_QLCL",
+    "dept_name": "DVT_DN_Tổ QLCL Mạng"
+  },
+  {
+    "dept_code": "DVT_Tay_VP",
+    "dept_name": "DVT_Tay_Văn phòng"
+  },
+  {
+    "dept_code": "DVT_TG_VP",
+    "dept_name": "DVT_TG_Văn phòng"
+  },
+  {
+    "dept_code": "DVT_TG_QLCL",
+    "dept_name": "DVT_TG_Tổ QLCL Mạng"
+  },
+  {
+    "dept_code": "NOCMT",
+    "dept_name": "NOC Miền Trung"
+  },
+  {
+    "dept_code": "UCTT_AD",
+    "dept_name": "Tổ UCTT An Đồn"
+  },
+  {
+    "dept_code": "UCTT_NVL",
+    "dept_name": "Tổ UCTT Nguyễn Văn Linh"
+  },
+  {
+    "dept_code": "CNC_MT",
+    "dept_name": "CNC Miền Trung"
+  },
+  {
+    "dept_code": "TTML_MT",
+    "dept_name": "TTML Miền Trung"
+  },
+  {
+    "dept_code": "TTML_MT_PVT",
+    "dept_name": "TTML_MT_Phòng vô tuyến"
+  },
+  {
+    "dept_code": "TTML_MT_PTD",
+    "dept_name": "TTML_MT_Phòng truyền dẫn"
+  },
+  {
+    "dept_code": "DVT_BD_TVT_KH",
+    "dept_name": "TVT Khánh Hòa"
+  },
+  {
+    "dept_code": "DVT_Binh_Dinh",
+    "dept_name": "ĐVT Bình Định"
+  },
+  {
+    "dept_code": "DVT_BD_TVT_BD",
+    "dept_name": "TVT Bình Định"
+  },
+  {
+    "dept_code": "DVT_BD_TVT_PY",
+    "dept_name": "TVT Phú Yên"
+  },
+  {
+    "dept_code": "DVT_BD_TVT_QN",
+    "dept_name": "TVT Quảng Ngãi"
+  },
+  {
+    "dept_code": "DVT_Da_Nang",
+    "dept_name": "ĐVT Đà Nẵng"
+  },
+  {
+    "dept_code": "DVT_DN_TVT_DN1",
+    "dept_name": "TVT Đà Nẵng 1"
+  },
+  {
+    "dept_code": "DVT_DN_TVT_DN2",
+    "dept_name": "TVT Đà Nẵng 2"
+  },
+  {
+    "dept_code": "DVT_DN_TVT_HUE",
+    "dept_name": "TVT Huế"
+  },
+  {
+    "dept_code": "DVT_DN_TVT_QT",
+    "dept_name": "TVT Quảng Trị"
+  },
+  {
+    "dept_code": "CTDV8_DVKT_VP",
+    "dept_name": "CTY DV8 DVKT VP"
+  },
+  {
+    "dept_code": "CTDV5_PCSKH",
+    "dept_name": "CTDV5 PCSKH"
+  },
+  {
+    "dept_code": "CTDV5_QN",
+    "dept_name": "CTDV5 QN"
+  },
+  {
+    "dept_code": "CTDV5_BG",
+    "dept_name": "CTDV5 BG"
+  },
+  {
+    "dept_code": "CTDV5_BC",
+    "dept_name": "CTDV5 BC"
+  },
+  {
+    "dept_code": "CTDV5_HG",
+    "dept_name": "CTDV5 HG"
+  },
+  {
+    "dept_code": "CTDV5_HP",
+    "dept_name": "CTDV5 HP"
+  },
+  {
+    "dept_code": "CTDV5_TQ",
+    "dept_name": "CTDV5 TQ"
+  },
+  {
+    "dept_code": "CTDV5_LS",
+    "dept_name": "CTDV5 LS"
+  },
+  {
+    "dept_code": "CTDV5_TB",
+    "dept_name": "CTDV5 TB"
+  },
+  {
+    "dept_code": "CTDV5_TN",
+    "dept_name": "CTDV5 TN"
+  },
+  {
+    "dept_code": "CTDV5_CB",
+    "dept_name": "CTDV5 CB"
+  },
+  {
+    "dept_code": "CTDV5_BN",
+    "dept_name": "CTDV5 BN"
+  },
+  {
+    "dept_code": "CTDV5_HY",
+    "dept_name": "CTDV5 HY"
+  },
+  {
+    "dept_code": "CTDV5_HD",
+    "dept_name": "CTDV5 HD"
+  },
+  {
+    "dept_code": "CTDV5_PCSKH_VP",
+    "dept_name": "CTDV5 PCSKH VANPHONG"
+  },
+  {
+    "dept_code": "CTDV5_QN_CSKH",
+    "dept_name": "CTDV5 QN CSKH"
+  },
+  {
+    "dept_code": "CTDV5_BG_CSKH",
+    "dept_name": "CTDV5 BG CSKH"
+  },
+  {
+    "dept_code": "CTDV5_BC_CSKH",
+    "dept_name": "CTDV5 BC CSKH"
+  },
+  {
+    "dept_code": "CTDV5_HG_CSKH",
+    "dept_name": "CTDV5 HG CSKH"
+  },
+  {
+    "dept_code": "CTDV5_HP_CSKH",
+    "dept_name": "CTDV5 HP CSKH"
+  },
+  {
+    "dept_code": "CTDV5_TQ_CSKH",
+    "dept_name": "CTDV5 TQ CSKH"
+  },
+  {
+    "dept_code": "CTDV5_LS_CSKH",
+    "dept_name": "CTDV5 LS CSKH"
+  },
+  {
+    "dept_code": "NOCMN",
+    "dept_name": "NOC Miền Nam"
+  },
+  {
+    "dept_code": "CTDV2_MBFHCM1_NPP",
+    "dept_name": "CTDV2_MBFHCM1_NPP"
+  },
+  {
+    "dept_code": "CTDV2_MBFHCM1_CHĐLC",
+    "dept_name": "CTDV2_MBFHCM1_CHĐLC"
+  },
+  {
+    "dept_code": "CTDV8_DVKT_HTKT",
+    "dept_name": "CTY DV8 DVKT HTKT"
+  },
+  {
+    "dept_code": "CTDV8_DVKT_GP",
+    "dept_name": "CTY DV8 DVKT GP"
+  },
+  {
+    "dept_code": "CTDV8_CSKH",
+    "dept_name": "CTY DV8 CSKH"
+  },
+  {
+    "dept_code": "CTDV8_CSKH_VP",
+    "dept_name": "CTY DV8 CSKH VP"
+  },
+  {
+    "dept_code": "CTDV8_CSKH_PAKH",
+    "dept_name": "CTY DV8 CSKH PAKH"
+  },
+  {
+    "dept_code": "CTDV8_CSKH_NVTLKH",
+    "dept_name": "CTY DV8 CSKH NVTLKH"
+  },
+  {
+    "dept_code": "CTDV8_BRVT",
+    "dept_name": "CTY DV8 BRVT"
+  },
+  {
+    "dept_code": "CTDV8_BD",
+    "dept_name": "CTY DV8 BD"
+  },
+  {
+    "dept_code": "CTDV8_BP",
+    "dept_name": "CTY DV8 BP"
+  },
+  {
+    "dept_code": "CTDV8_BT",
+    "dept_name": "CTY DV8 BT"
+  },
+  {
+    "dept_code": "CTDV8_DN",
+    "dept_name": "CTY DV8 DN"
+  },
+  {
+    "dept_code": "CTDV8_LD",
+    "dept_name": "CTY DV8 LD"
+  },
+  {
+    "dept_code": "CTDV8_LA",
+    "dept_name": "CTY DV8 LA"
+  },
+  {
+    "dept_code": "CTDV8_NT",
+    "dept_name": "CTY DV8 NT"
+  },
+  {
+    "dept_code": "CTDV8_TN",
+    "dept_name": "CTY DV8 TN"
+  },
+  {
+    "dept_code": "CTDV8_BD_VP",
+    "dept_name": "CTY DV8 BD VP"
+  },
+  {
+    "dept_code": "CTDV8_BP_VP",
+    "dept_name": "CTY DV8 BP VP"
+  },
+  {
+    "dept_code": "CTDV8_BRVT_VP",
+    "dept_name": "CTY DV8 BRVT VP"
+  },
+  {
+    "dept_code": "CTDV8_BT_VP",
+    "dept_name": "CTY DV8 BT VP"
+  },
+  {
+    "dept_code": "CTDV8_DN_VP",
+    "dept_name": "CTY DV8 DN VP"
+  },
+  {
+    "dept_code": "CTDV8_LA_VP",
+    "dept_name": "CTY DV8 LA VP"
+  },
+  {
+    "dept_code": "CTDV8_LD_VP",
+    "dept_name": "CTY DV8 LD VP"
+  },
+  {
+    "dept_code": "CTDV8_NT_VP",
+    "dept_name": "CTY DV8 NT VP"
+  },
+  {
+    "dept_code": "CTDV8_TN_VP",
+    "dept_name": "CTY DV8 TN VP"
+  },
+  {
+    "dept_code": "CTDV6_DVKT_MANG",
+    "dept_name": "CTY DV6 DVKT MANG"
+  },
+  {
+    "dept_code": "CTDV6_HT",
+    "dept_name": "CTY DV6 HT"
+  },
+  {
+    "dept_code": "CTDV6_QB",
+    "dept_name": "CTY DV6 QB"
+  },
+  {
+    "dept_code": "CTDV6_TH",
+    "dept_name": "CTY DV6 TH"
+  },
+  {
+    "dept_code": "CTDV6_HT_KHCN",
+    "dept_name": "CTY DV6 HT KHCN"
+  },
+  {
+    "dept_code": "CTDV6_HT_HT",
+    "dept_name": "CTY DV6 HT HT"
+  },
+  {
+    "dept_code": "CTDV6_HT_CL",
+    "dept_name": "CTY DV6 HT CL"
+  },
+  {
+    "dept_code": "CTDV6_HT_DT",
+    "dept_name": "CTY DV6 HT DT"
+  },
+  {
+    "dept_code": "CTDV6_HT_NX",
+    "dept_name": "CTY DV6 HT NX"
+  },
+  {
+    "dept_code": "CTDV6_HT_HS",
+    "dept_name": "CTY DV6 HT HS"
+  },
+  {
+    "dept_code": "CTDV6_HT_KA",
+    "dept_name": "CTY DV6 HT KA"
+  },
+  {
+    "dept_code": "CTDV6_HT_HL",
+    "dept_name": "CTY DV6 HT HL"
+  },
+  {
+    "dept_code": "CTDV6_HT_CX",
+    "dept_name": "CTY DV6 HT CX"
+  },
+  {
+    "dept_code": "CTDV6_HT_LH",
+    "dept_name": "CTY DV6 HT LH"
+  },
+  {
+    "dept_code": "CTDV6_HT_HK",
+    "dept_name": "CTY DV6 HT HK"
+  },
+  {
+    "dept_code": "CTDV6_HT_VQ",
+    "dept_name": "CTY DV6 HT VQ"
+  },
+  {
+    "dept_code": "CTDV6_QB_QBI",
+    "dept_name": "CTY DV6 QB QBI"
+  },
+  {
+    "dept_code": "CTDV6_TH_KHCN",
+    "dept_name": "CTY DV6 TH KHCN"
+  },
+  {
+    "dept_code": "CTDV6_TH_MFH",
+    "dept_name": "CTY DV6 TH MFH"
+  },
+  {
+    "dept_code": "CTDV6_TH_VP",
+    "dept_name": "CTY DV6 TH VP"
+  },
+  {
+    "dept_code": "CTDV6_NA",
+    "dept_name": "CTY DV6 NA"
+  },
+  {
+    "dept_code": "CTDV6_NA_NA",
+    "dept_name": "CTY DV6 NA NA"
+  },
+  {
+    "dept_code": "TTNOC_TH",
+    "dept_name": "TTNOC_Phòng TH"
+  },
+  {
+    "dept_code": "TTNOC_TH_VP",
+    "dept_name": "TTNOC_Phòng TH VP"
+  },
+  {
+    "dept_code": "CTDV7_DN",
+    "dept_name": "CTDV7_DN"
+  },
+  {
+    "dept_code": "CTDV7_DN_VP",
+    "dept_name": "CTDV7_DN_VP"
+  },
+  {
+    "dept_code": "CTDV9_PCSKH",
+    "dept_name": "CTDV9_PCSKH"
+  },
+  {
+    "dept_code": "CTDV9_PCSKH_VP",
+    "dept_name": "CTDV9_PCSKH_VP"
+  },
+  {
+    "dept_code": "Ban_QLDAHT1",
+    "dept_name": "Ban QLDAHT1"
+  },
+  {
+    "dept_code": "CTDV2_DVKT",
+    "dept_name": "CTDV2_DVKT"
+  },
+  {
+    "dept_code": "CTDV2_DVKT_VP",
+    "dept_name": "CTDV2_DVKT_VP"
+  },
+  {
+    "dept_code": "CTDV7_DVKT",
+    "dept_name": "CTDV7_DVKT"
+  },
+  {
+    "dept_code": "CTDV7_DVKT_VP",
+    "dept_name": "CTDV7_DVKT_VP"
+  },
+  {
+    "dept_code": "CTDV7_BGD",
+    "dept_name": "CTDV7_BGD"
+  },
+  {
+    "dept_code": "CTDV7_BGD_VP",
+    "dept_name": "CTDV7_BGD_VP"
+  },
+  {
+    "dept_code": "CTDV7_GL",
+    "dept_name": "CTDV7_GL"
+  },
+  {
+    "dept_code": "CTDV7_KT",
+    "dept_name": "CTDV7_KT"
+  },
+  {
+    "dept_code": "CTDV7_GL_VP",
+    "dept_name": "CTDV7_GL_VP"
+  },
+  {
+    "dept_code": "CTDV7_KT_VP",
+    "dept_name": "CTDV7_KT_VP"
+  },
+  {
+    "dept_code": "CTDV4_DVKT",
+    "dept_name": "CTDV4_DVKT"
+  },
+  {
+    "dept_code": "CTDV4_DVKT_VP",
+    "dept_name": "CTDV4_DVKT_VP"
+  },
+  {
+    "dept_code": "CTDV5_PDVKT",
+    "dept_name": "CTDV5 PDVKT"
+  },
+  {
+    "dept_code": "CTDV5_PDVKT_VP",
+    "dept_name": "CTDV5 PDVKT VANPHONG"
+  },
+  {
+    "dept_code": "TTML_MB_VanPhong",
+    "dept_name": "TTML_MB_VanPhong"
+  },
+  {
+    "dept_code": "TCTK_Khac",
+    "dept_name": "TT_TCTK_PhongKhac"
+  },
+  {
+    "dept_code": "TCTK_Khac_VP",
+    "dept_name": "TT_TCTK_PhongKhac"
+  },
+  {
+    "dept_code": "TTML_MN_BGD_BGD",
+    "dept_name": "TTML_MN_Ban Giam Doc"
+  },
+  {
+    "dept_code": "TTML_MB_BGD_BGD",
+    "dept_name": "TTML_MB_Ban Giam Doc"
+  },
+  {
+    "dept_code": "TTML_MT_BGD",
+    "dept_name": "TTML_MT_Ban giám đốc"
+  },
+  {
+    "dept_code": "TTML_MT_BGD_BGD",
+    "dept_name": "TTML_MT_Ban Giam Doc"
+  },
+  {
+    "dept_code": "TTNOC_BGD",
+    "dept_name": "TTNOC_Ban Giam Doc"
+  },
+  {
+    "dept_code": "TTNOC_BGD_BGD",
+    "dept_name": "TTNOC_Ban Giam Doc"
+  },
+  {
+    "dept_code": "Ban_TGD",
+    "dept_name": "Ban Tong Giam Doc"
+  },
+  {
+    "dept_code": "Ban_TGD_BTGD",
+    "dept_name": "Ban Tong Giam Doc"
+  },
+  {
+    "dept_code": "Ban_TGD_BTGD_BTGD",
+    "dept_name": "Ban Tong Giam Doc"
+  },
+  {
+    "dept_code": "CTDV4_DB",
+    "dept_name": "CTDV4_DB"
+  },
+  {
+    "dept_code": "CTDV4_DB VP",
+    "dept_name": "CTDV4_DB_VP"
+  },
+  {
+    "dept_code": "TT_MDS_CNHCM",
+    "dept_name": "TT MDS CNHCM"
+  },
+  {
+    "dept_code": "TT_MDS_CNHCM_VP",
+    "dept_name": "TT MDS CNHCM VP"
+  },
+  {
+    "dept_code": "TT_MDS_BGD_VP",
+    "dept_name": "TT MDS BGD VP"
+  },
+  {
+    "dept_code": "DVT_BDH_VP",
+    "dept_name": "DVT_BDH_Văn phòng"
+  },
+  {
+    "dept_code": "TT_MDS_BGD",
+    "dept_name": "TT MDS BGD"
+  },
+  {
+    "dept_code": "DVT_BDH_CLM",
+    "dept_name": "DVT_BDH_CLM"
+  },
+  {
+    "dept_code": "TT_MDS_PKTKT_CPĐT",
+    "dept_name": "Công tác Hỗ trợ SXKD và Quản lý Kế hoạch CP Đầu tư"
+  },
+  {
+    "dept_code": "TT_MDS_PKTKT_Core",
+    "dept_name": "Kỹ thuật và dịch vụ hệ thống core"
+  },
+  {
+    "dept_code": "TT_MDS_PKTKT_CNTT",
+    "dept_name": "Quản lý CNTT và Dịch vụ CSP"
+  },
+  {
+    "dept_code": "KTMB_BanHang-PTPhanMem",
+    "dept_name": "KTMB_BanHang-PTPhanMem"
+  },
+  {
+    "dept_code": "TCTK_PTDL",
+    "dept_name": "TT_TCTK_Phòng PTDL"
+  },
+  {
+    "dept_code": "TC_TTDT",
+    "dept_name": "TT_TCTK_TC_TTDT"
+  },
+  {
+    "dept_code": "TT_MDS_PKTKT_VHKT",
+    "dept_name": "Vận hành khai thác"
+  },
+  {
+    "dept_code": "TC_PTPM",
+    "dept_name": "TT_TCTK_TC_PTPM"
+  },
+  {
+    "dept_code": "KT_test",
+    "dept_name": "KT_test"
+  },
+  {
+    "dept_code": "TTNOC_KeToan",
+    "dept_name": "TTNOC_Phong KeToan"
+  },
+  {
+    "dept_code": "TCTK_DSTK",
+    "dept_name": "TT_TCTK_DSTK"
+  },
+  {
+    "dept_code": "TTML_MT_PHT",
+    "dept_name": "TTML_MT_Phòng hạ tầng"
+  },
+  {
+    "dept_code": "TTML_MT_PHT_VP",
+    "dept_name": "TTML_MT_Phòng hạ tầng_VP"
+  },
+  {
+    "dept_code": "TTML_MT_ PKT",
+    "dept_name": "TTML_MT_Phòng kế toán"
+  },
+  {
+    "dept_code": "TTML_MT_PKT",
+    "dept_name": "TTML_MT_Phòng kế toán"
+  },
+  {
+    "dept_code": "TTML_MN_PKT",
+    "dept_name": "TTML_MN_Phòng kế toán"
+  },
+  {
+    "dept_code": "BAO_HANH_MB",
+    "dept_name": "BAO_HANH_MB"
+  },
+  {
+    "dept_code": "BAO_HANH_MT",
+    "dept_name": "BAO_HANH_MT"
+  },
+  {
+    "dept_code": "BAO_HANH_MN",
+    "dept_name": "BAO_HANH_MN"
+  },
+  {
+    "dept_code": "TO_BAO_HANH_TTCNC_MB",
+    "dept_name": "TO_BAO_HANH_TTCNC_MB"
+  },
+  {
+    "dept_code": "TO_BAO_HANH_TTCNC_MT",
+    "dept_name": "TO_BAO_HANH_TTCNC_MT"
+  },
+  {
+    "dept_code": "TO_BAO_HANH_TTCNC_MN",
+    "dept_name": "TO_BAO_HANH_TTCNC_MN"
+  },
+  {
+    "dept_code": "KE_TOAN_MN",
+    "dept_name": "KE_TOAN_MN"
+  },
+  {
+    "dept_code": "TO_KE_TOAN_MN",
+    "dept_name": "TO_KE_TOAN_MN"
+  },
+  {
+    "dept_code": "KE_TOAN_MB",
+    "dept_name": "KE_TOAN_MB"
+  },
+  {
+    "dept_code": "KE_TOAN_MT",
+    "dept_name": "KE_TOAN_MT"
+  },
+  {
+    "dept_code": "TO_KE_TOAN_MB",
+    "dept_name": "TO_KE_TOAN_MB"
+  },
+  {
+    "dept_code": "TO_KE_TOAN_MT",
+    "dept_name": "TO_KE_TOAN_MT"
+  },
+  {
+    "dept_code": "UCTT_LHT",
+    "dept_name": "Tổ Lê Hữu Trác"
+  },
+  {
+    "dept_code": "DVT_PVT_MN",
+    "dept_name": "Kho Phòng Vô Tuyến"
+  },
+  {
+    "dept_code": "DVT_PVT_MN_KHO_PVT",
+    "dept_name": "Kho Phòng Vô Tuyến"
+  },
+  {
+    "dept_code": "DVT_TG_KHO_DAI_TG",
+    "dept_name": "DVT_TG_KHO_DAI_TG"
+  },
+  {
+    "dept_code": "DVT_CT_TVT_KHO_CTO_OS",
+    "dept_name": "KHO_CTO_OS"
+  },
+  {
+    "dept_code": "DVT_CT_TVT_KHO_HGG_OS",
+    "dept_name": "KHO_HGG_OS"
+  },
+  {
+    "dept_code": "DVT_CT_TVT_KHO_DAI",
+    "dept_name": "Kho Đài viễn thông Cần Thơ"
+  },
+  {
+    "dept_code": "TT_RD_VP",
+    "dept_name": "TT_R&D_VP"
+  },
+  {
+    "dept_code": "TT_RD_VP_ANM",
+    "dept_name": "TT_R&D_VP_ANM"
+  },
+  {
+    "dept_code": "TT_TVTK",
+    "dept_name": "TT_TVTK"
+  },
+  {
+    "dept_code": "TT_TVTK_TH",
+    "dept_name": "TT_TVTK_TH"
+  },
+  {
+    "dept_code": "TT_CNTT_VP",
+    "dept_name": "TTCNTT_VanPhong"
+  },
+  {
+    "dept_code": "TTCNTT_VP",
+    "dept_name": "TT_CNTT_VanPhong"
+  },
+  {
+    "dept_code": "KTMN_KhaiThac",
+    "dept_name": "KTMN_KhaiThac"
+  },
+  {
+    "dept_code": "KTMN_UngDung",
+    "dept_name": "KTMN_UngDung"
+  },
+  {
+    "dept_code": "TC_KTNV",
+    "dept_name": "TT_TCTK_TC_UngDung"
+  },
+  {
+    "dept_code": "TC_TC",
+    "dept_name": "TT_TCTK_TC_TC"
+  },
+  {
+    "dept_code": "Ban_KSNB",
+    "dept_name": "Ban KSNB"
+  },
+  {
+    "dept_code": "Ban_KSNB_VP",
+    "dept_name": "Ban KSNB VP"
+  },
+  {
+    "dept_code": "Ban_KSNB_VP_VP",
+    "dept_name": "Ban KSNB VP VP"
+  },
+  {
+    "dept_code": "KT_UngDung",
+    "dept_name": "TT_TCTK_KT_UngDung"
+  },
+  {
+    "dept_code": "TT_CNC_CNHN_DKTW",
+    "dept_name": "Tổ Đo Kiểm Tối ưu"
+  },
+  {
+    "dept_code": "DVT_DL_KHO_DAI_DL",
+    "dept_name": "Kho Đài viễn thông Đắc Lắc"
+  },
+  {
+    "dept_code": "DVT_DN_KHO_DAI_DN",
+    "dept_name": "Kho Đài viễn thông Đà Nẵng"
+  },
+  {
+    "dept_code": "TT_RD",
+    "dept_name": "TT_R&D"
+  },
+  {
+    "dept_code": "TT_TVTK_TH_ANM",
+    "dept_name": "TT_TVTK_TH_ANM"
+  },
+  {
+    "dept_code": "Ban_QLDAHT1_VP",
+    "dept_name": "Ban_QLDAHT1_VP"
+  },
+  {
+    "dept_code": "Ban_QLDAHT1_VP_ANM",
+    "dept_name": "Ban_QLDAHT1_VP_ANM"
+  },
+  {
+    "dept_code": "BU ANM",
+    "dept_name": "BU ANM"
+  },
+  {
+    "dept_code": "BU ANM_VP",
+    "dept_name": "BU ANM"
+  },
+  {
+    "dept_code": "BU ANM_VP_ANM",
+    "dept_name": "BU ANM"
+  },
+  {
+    "dept_code": "BU CLOUD",
+    "dept_name": "BU CLOUD"
+  },
+  {
+    "dept_code": "BU CLOUD_VP",
+    "dept_name": "BU CLOUD_VP"
+  },
+  {
+    "dept_code": "BU CLOUD_VP_ANM",
+    "dept_name": "BU_CLOUD_VP_ANM"
+  },
+  {
+    "dept_code": "BU THGT",
+    "dept_name": "BU THGT"
+  },
+  {
+    "dept_code": "BU THGT_VP",
+    "dept_name": "BU THGT_VP"
+  },
+  {
+    "dept_code": "BU THGT_VP_ANM",
+    "dept_name": "BU THGT_VP_ANM"
+  },
+  {
+    "dept_code": "PTDL_TKBC",
+    "dept_name": "TT_TCTK_PTDL_DamBaoDoanhThu"
+  },
+  {
+    "dept_code": "KT_QuanLyChatLuong",
+    "dept_name": "TT_TCTK_KT_QuanLyChatLuong"
+  },
+  {
+    "dept_code": "NOCMB_BaoHanhDTN",
+    "dept_name": "Bảo hành đối tác ngoài"
+  },
+  {
+    "dept_code": "NOCMB_BaoHanhTTDK",
+    "dept_name": "Bảo hành TTĐK"
+  },
+  {
+    "dept_code": "Ban_CNQLM_VP",
+    "dept_name": "Ban CNQLM VP"
+  },
+  {
+    "dept_code": "Ban_CNQLM_Vanphong",
+    "dept_name": "Ban CNQLM VP"
+  },
+  {
+    "dept_code": "Ban_CNTT_VP",
+    "dept_name": "Ban CNTT VP"
+  },
+  {
+    "dept_code": "Ban_CNTT_Vanphong",
+    "dept_name": "Ban CNTT VP"
+  },
+  {
+    "dept_code": "CTDV4_CSKH",
+    "dept_name": "CTDV4_CSKH"
+  },
+  {
+    "dept_code": "CTDV4_CSKH_VP",
+    "dept_name": "CTDV4_CSKH_VP"
+  },
+  {
+    "dept_code": "TT_VTQT_DSPTDV",
+    "dept_name": "Phòng Đối soát và phát triển dịch vụ"
+  },
+  {
+    "dept_code": "TT_VTQT_DSPTDV_VP",
+    "dept_name": "Tổ Văn Phòng - DSPTDV - TT VTQT"
+  },
+  {
+    "dept_code": "KT_MangTinHoc",
+    "dept_name": "TT_TCTK_KT_MangTinHoc(Off)"
+  },
+  {
+    "dept_code": "PTDL_ERP-PTTM",
+    "dept_name": "TT_TCTK_PTDL_PhanTichKinhDoanh"
+  },
+  {
+    "dept_code": "KT_AnNinhMang",
+    "dept_name": "TT_TCTK_KT_AnNinhMang(Off)"
+  },
+  {
+    "dept_code": "KT_DieuHanh",
+    "dept_name": "TT_TCTK_KT_DieuHanh"
+  },
+  {
+    "dept_code": "TTNOC_KeToan_VP",
+    "dept_name": "TTNOC_KeToan_VP"
+  },
+  {
+    "dept_code": "DSTK_UngDung",
+    "dept_name": "TT_TCTK_DSTK_UngDung"
+  },
+  {
+    "dept_code": "DSTK_DoiSoat",
+    "dept_name": "TT_TCTK_DSTK_DoiSoat"
+  },
+  {
+    "dept_code": "CTDV3_CSKH",
+    "dept_name": "CTY_DV1_CSKH"
+  },
+  {
+    "dept_code": "CTDV3_CSKH_c",
+    "dept_name": "CTDV3_CSKH_c"
+  },
+  {
+    "dept_code": "CTDV1_CSKH",
+    "dept_name": "CTY_DV1_CSKH"
+  },
+  {
+    "dept_code": "CTDV1_CSKH_c",
+    "dept_name": "CTDV1_CSKH_c"
+  },
+  {
+    "dept_code": "DVT_Dong_VHNT",
+    "dept_name": "Tổ vận hành nhà trạm, đài Đông"
+  },
+  {
+    "dept_code": "DVT_DN_TVT_BQN",
+    "dept_name": "TVT Bắc Quảng Nam"
+  },
+  {
+    "dept_code": "DVT_DN_TVT_NQN",
+    "dept_name": "TVT Nam Quảng Nam"
+  },
+  {
+    "dept_code": "TT_CNC_CNHN",
+    "dept_name": "Chi nhánh Hà Nội"
+  },
+  {
+    "dept_code": "NOCMB_KhoDaiBH",
+    "dept_name": "Kho Bảo hành sửa chữa"
+  },
+  {
+    "dept_code": "Ban_KTKTNB_VP",
+    "dept_name": "Ban KTKTNB VP"
+  },
+  {
+    "dept_code": "Ban_KTKTNB_VanPhong",
+    "dept_name": "Ban_KTKTNB_VanPhong"
+  },
+  {
+    "dept_code": "Ban_PTM_VP",
+    "dept_name": "Ban_PTM VP"
+  },
+  {
+    "dept_code": "Ban_PTM_VanPhong",
+    "dept_name": "Ban_PTM_VanPhong"
+  },
+  {
+    "dept_code": "TTML_MB_PKT",
+    "dept_name": "TTML_MB_Phòng kỹ thuạt"
+  },
+  {
+    "dept_code": "NOCMB",
+    "dept_name": "NOC Miền Bắc"
+  },
+  {
+    "dept_code": "CTDV5_TB_CSKH",
+    "dept_name": "CTDV5 TB CSKH"
+  },
+  {
+    "dept_code": "CTDV5_TN_CSKH",
+    "dept_name": "CTDV5 TN CSKH"
+  },
+  {
+    "dept_code": "CTDV5_CB_CSKH",
+    "dept_name": "CTDV5 CB CSKH"
+  },
+  {
+    "dept_code": "CTDV5_BN_CSKH",
+    "dept_name": "CTDV5 BN CSKH"
+  },
+  {
+    "dept_code": "CTDV5_HY_CSKH",
+    "dept_name": "CTDV5 HY CSKH"
+  },
+  {
+    "dept_code": "CTDV5_HD_CSKH",
+    "dept_name": "CTDV5 HD CSKH"
+  },
+  {
+    "dept_code": "CTDV5_QN_KHDN",
+    "dept_name": "CTDV5 QN KHDN"
+  },
+  {
+    "dept_code": "CTDV5_BG_KHDN",
+    "dept_name": "CTDV5 BG KHDN"
+  },
+  {
+    "dept_code": "CTDV5_BC_KHDN",
+    "dept_name": "CTDV5 BC KHDN"
+  },
+  {
+    "dept_code": "CTDV5_HG_KHDN",
+    "dept_name": "CTDV5 HG KHDN"
+  },
+  {
+    "dept_code": "CTDV5_HP_KHDN",
+    "dept_name": "CTDV5 HP KHDN"
+  },
+  {
+    "dept_code": "CTDV5_TQ_KHDN",
+    "dept_name": "CTDV5 TQ KHDN"
+  },
+  {
+    "dept_code": "CTDV5_LS_KHDN",
+    "dept_name": "CTDV5 LS KHDN"
+  },
+  {
+    "dept_code": "CTDV5_TB_KHDN",
+    "dept_name": "CTDV5 TB KHDN"
+  },
+  {
+    "dept_code": "CTDV5_TN_KHDN",
+    "dept_name": "CTDV5 TN KHDN"
+  },
+  {
+    "dept_code": "CTDV5_CB_KHDN",
+    "dept_name": "CTDV5 CB KHDN"
+  },
+  {
+    "dept_code": "CTDV5_BN_KHDN",
+    "dept_name": "CTDV5 BN KHDN"
+  },
+  {
+    "dept_code": "CTDV5_HY_KHDN",
+    "dept_name": "CTDV5 HY KHDN"
+  },
+  {
+    "dept_code": "CTDV5_HD_KHDN",
+    "dept_name": "CTDV5 HD KHDN"
+  },
+  {
+    "dept_code": "CTDV9_VL",
+    "dept_name": "CTDV9_VL"
+  },
+  {
+    "dept_code": "CTDV9_TV",
+    "dept_name": "CTDV9_TV"
+  },
+  {
+    "dept_code": "CTDV9_BGD",
+    "dept_name": "CTDV9_BGD"
+  },
+  {
+    "dept_code": "CTDV9_DVKT",
+    "dept_name": "CTDV9_DVKT"
+  },
+  {
+    "dept_code": "CTDV9_PKHCN",
+    "dept_name": "CTDV9_PKHCN"
+  },
+  {
+    "dept_code": "CTDV9_BL",
+    "dept_name": "CTDV9_BL"
+  },
+  {
+    "dept_code": "CTDV9_HG",
+    "dept_name": "CTDV9_HG"
+  },
+  {
+    "dept_code": "CTDV9_ST",
+    "dept_name": "CTDV9_ST"
+  },
+  {
+    "dept_code": "CTDV9_AG",
+    "dept_name": "CTDV9_AG"
+  },
+  {
+    "dept_code": "CTDV9_DT",
+    "dept_name": "CTDV9_DT"
+  },
+  {
+    "dept_code": "CTDV9_TG",
+    "dept_name": "CTDV9_TG"
+  },
+  {
+    "dept_code": "CTDV9_CM",
+    "dept_name": "CTDV9_CM"
+  },
+  {
+    "dept_code": "CTDV9_KG",
+    "dept_name": "CTDV9_KG"
+  },
+  {
+    "dept_code": "CTDV9_PQ",
+    "dept_name": "CTDV9_PQ"
+  },
+  {
+    "dept_code": "DVT_HN2_TVT1",
+    "dept_name": "TVT1"
+  },
+  {
+    "dept_code": "DVT_HN2_TVT2",
+    "dept_name": "TVT2"
+  },
+  {
+    "dept_code": "DVT_HN2_TVT3",
+    "dept_name": "TVT3"
+  },
+  {
+    "dept_code": "DVT_Hai_Phong",
+    "dept_name": "ĐVT Hải Phòng"
+  },
+  {
+    "dept_code": "DVT_HP_TVT_HD",
+    "dept_name": "TVT Hải Dương"
+  },
+  {
+    "dept_code": "DVT_HP_TVT_HP",
+    "dept_name": "TVT Hải Phòng"
+  },
+  {
+    "dept_code": "DVT_HP_TVT_HY",
+    "dept_name": "TVT Hưng Yên"
+  },
+  {
+    "dept_code": "DVT_HP_TVT_QN",
+    "dept_name": "TVT Quảng Ninh"
+  },
+  {
+    "dept_code": "DVT_HP_TVT_TB",
+    "dept_name": "TVT Thái Bình"
+  },
+  {
+    "dept_code": "DVT_Nam_Dinh",
+    "dept_name": "ĐVT Nam Định"
+  },
+  {
+    "dept_code": "DVT_ND_TVT_HN",
+    "dept_name": "TVT Hà Nam"
+  },
+  {
+    "dept_code": "PTDL_PTSL",
+    "dept_name": "TT_TCTK_PTDL_KhoaHocDuLieu"
+  },
+  {
+    "dept_code": "TCTK_BGD",
+    "dept_name": "TT_TCTK_BGD"
+  },
+  {
+    "dept_code": "TCTK_BGD_VP",
+    "dept_name": "TT_TCTK_BGD_VP"
+  },
+  {
+    "dept_code": "KTMB_KhaiThacIN",
+    "dept_name": "KTMB_KhaiThacIN"
+  },
+  {
+    "dept_code": "DVT_BD_KHO_DAI_BD",
+    "dept_name": "Kho Đài viễn thông Bình Định"
+  },
+  {
+    "dept_code": "DVT_DN_TVT_DN",
+    "dept_name": "TVT Đà Nẵng"
+  },
+  {
+    "dept_code": "PTDL_ĐBDT",
+    "dept_name": "TT_TCTK_PTDL_QuanTriDuLieu"
+  },
+  {
+    "dept_code": "TCTK_KTMN",
+    "dept_name": "TT_TCTK_Phòng KTMN"
+  },
+  {
+    "dept_code": "TCTK_TC",
+    "dept_name": "TT_TCTK_Phòng TC"
+  },
+  {
+    "dept_code": "KTMB_DichVuGoiCuoc",
+    "dept_name": "KTMB_DichVuGoiCuoc"
+  },
+  {
+    "dept_code": "CTDV4_NB",
+    "dept_name": "CTDV4_NB"
+  },
+  {
+    "dept_code": "CTDV4_NB VP",
+    "dept_name": "CTDV4_NB_VP"
+  },
+  {
+    "dept_code": "CTDV1_VP",
+    "dept_name": "CTY_DV1_VP"
+  },
+  {
+    "dept_code": "CTDV1_VP_PDVKT",
+    "dept_name": "CTDV1_VP_PDVKT"
+  },
+  {
+    "dept_code": "KT_HeThong-DB",
+    "dept_name": "TT_TCTK_KT_HeThong_AnToanThongTin"
+  },
+  {
+    "dept_code": "Ban_QLCL",
+    "dept_name": "Ban QLCL"
+  },
+  {
+    "dept_code": "Ban_QLCL_VP",
+    "dept_name": "Ban_QLCL_VP"
+  },
+  {
+    "dept_code": "Ban_QLCL_Vanphong",
+    "dept_name": "Ban QLCL VP"
+  },
+  {
+    "dept_code": "KTMN_HeThong",
+    "dept_name": "KTMN_HeThong"
+  },
+  {
+    "dept_code": "DSTK_PhanMem",
+    "dept_name": "TT_TCTK_DSTK_PhanMem"
+  },
+  {
+    "dept_code": "CTDV4_LCU",
+    "dept_name": "CTDV4_LCU"
+  },
+  {
+    "dept_code": "CTDV4_LCU_VP",
+    "dept_name": "CTDV4_LCU_VP"
+  },
+  {
+    "dept_code": "TO_BAO_HANH_DTN_MN",
+    "dept_name": "TO_BAO_HANH_DTN_MN"
+  },
+  {
+    "dept_code": "TO_BAO_HANH_SC_MN",
+    "dept_name": "TO_BAO_HANH_SC_MN"
+  },
+  {
+    "dept_code": "Ban_DVVT_VP",
+    "dept_name": "Ban_DVVT_VP"
+  },
+  {
+    "dept_code": "Ban_DVVT_VanPhong",
+    "dept_name": "Ban_DVVT_VanPhong"
+  },
+  {
+    "dept_code": "NOCMN_KHO_HCM_NODE3",
+    "dept_name": "Kho Hồ Chí Minh Node 3"
+  },
+  {
+    "dept_code": "DVT_Daklak",
+    "dept_name": "ĐVT Daklak"
+  },
+  {
+    "dept_code": "DVT_DL_TVT_DL",
+    "dept_name": "TVT DakLak"
+  },
+  {
+    "dept_code": "DVT_DL_TVT_DN",
+    "dept_name": "TVT DakNong"
+  },
+  {
+    "dept_code": "DVT_DL_TVT_GL",
+    "dept_name": "TVT Gia Lai"
+  },
+  {
+    "dept_code": "DVT_DL_TVT_KT",
+    "dept_name": "TVT Kon Tum"
+  },
+  {
+    "dept_code": "TTML_MT_PVT_VP",
+    "dept_name": "Văn phòng - Phòng vô tuyến"
+  },
+  {
+    "dept_code": "TTML_MT_PVT_TW",
+    "dept_name": "Tổ tối ưu"
+  },
+  {
+    "dept_code": "TTML_MT_PVT_CLDV",
+    "dept_name": "Tổ chất lượng dịch vụ"
+  },
+  {
+    "dept_code": "TTML_MT_PVT_GP",
+    "dept_name": "Tổ giải pháp"
+  },
+  {
+    "dept_code": "TTML_MT_PVT_QLM",
+    "dept_name": "Tổ quản lý mạng"
+  },
+  {
+    "dept_code": "TTML_MT_PVT_CNTT",
+    "dept_name": "Tổ công nghệ thông tin"
+  },
+  {
+    "dept_code": "TTML_MT_PTD_VP",
+    "dept_name": "Văn phòng - Phòng truyền dẫn"
+  },
+  {
+    "dept_code": "TTML_MT_PTD_BO",
+    "dept_name": "Tổ BO"
+  },
+  {
+    "dept_code": "TTML_MT_PTD_TW",
+    "dept_name": "Tổ tối ưu"
+  },
+  {
+    "dept_code": "DVT_DNA_VP",
+    "dept_name": "Văn phòng"
+  },
+  {
+    "dept_code": "DVT_DL_VP",
+    "dept_name": "Văn phòng - DVT Daklak"
+  },
+  {
+    "dept_code": "NOCMT_VanPhong",
+    "dept_name": "NOCMT - Văn phòng"
+  },
+  {
+    "dept_code": "TTML_MB_PTCHC",
+    "dept_name": "TTML_MB_Phòng tổ chức hành chính"
+  },
+  {
+    "dept_code": "TTML_MB_PTCHC_VP",
+    "dept_name": "TTML_MB_PTCHC_Văn phòng"
+  },
+  {
+    "dept_code": "CTDV9_BT",
+    "dept_name": "CTDV9_BT"
+  },
+  {
+    "dept_code": "CTDV9_CT",
+    "dept_name": "CTDV9_CT"
+  },
+  {
+    "dept_code": "CTDV9_BGD_VP",
+    "dept_name": "CTDV9_BGD_VP"
+  },
+  {
+    "dept_code": "CTDV9_DVKT_VP",
+    "dept_name": "CTDV9_DVKT_VP"
+  },
+  {
+    "dept_code": "CTDV9_PKHCN_VP",
+    "dept_name": "CTDV9_PKHCN_VP"
+  },
+  {
+    "dept_code": "CTDV9_BL_VP",
+    "dept_name": "CTDV9_BL_VP"
+  },
+  {
+    "dept_code": "CTDV9_HG_VP",
+    "dept_name": "CTDV9_HG_VP"
+  },
+  {
+    "dept_code": "CTDV9_ST_VP",
+    "dept_name": "CTDV9_ST_VP"
+  },
+  {
+    "dept_code": "CTDV9_AG_VP",
+    "dept_name": "CTDV9_AG_VP"
+  },
+  {
+    "dept_code": "CTDV9_DT_VP",
+    "dept_name": "CTDV9_DT_VP"
+  },
+  {
+    "dept_code": "CTDV9_TG_VP",
+    "dept_name": "CTDV9_TG_VP"
+  },
+  {
+    "dept_code": "CTDV9_CM_VP",
+    "dept_name": "CTDV9_CM_VP"
+  },
+  {
+    "dept_code": "CTDV9_KG_VP",
+    "dept_name": "CTDV9_KG_VP"
+  },
+  {
+    "dept_code": "CTDV9_PQ_VP",
+    "dept_name": "CTDV9_PQ_VP"
+  },
+  {
+    "dept_code": "CTDV9_VL_VP",
+    "dept_name": "CTDV9_VL_VP"
+  },
+  {
+    "dept_code": "CTDV9_TV_VP",
+    "dept_name": "CTDV9_TV_VP"
+  },
+  {
+    "dept_code": "CTDV9_BT_VP",
+    "dept_name": "CTDV9_BT_VP"
+  },
+  {
+    "dept_code": "CTDV9_CT_VP",
+    "dept_name": "CTDV9_CT_VP"
+  },
+  {
+    "dept_code": "Ban_KTKTNB",
+    "dept_name": "Ban KTKTNB"
+  },
+  {
+    "dept_code": "DVT_DL_QLM",
+    "dept_name": "Tổ QLM"
+  },
+  {
+    "dept_code": "CTDV2_BGD",
+    "dept_name": "CTDV2_BGD"
+  },
+  {
+    "dept_code": "CTDV2_CSKH",
+    "dept_name": "CTDV2_CSKH"
+  },
+  {
+    "dept_code": "CTDV2_HCM2",
+    "dept_name": "CTDV2_HCM2"
+  },
+  {
+    "dept_code": "CTDV2_MBFHCM1",
+    "dept_name": "CTDV2_MBFHCM1"
+  },
+  {
+    "dept_code": "CTDV2_MBFHCM2",
+    "dept_name": "CTDV2_MBFHCM2"
+  },
+  {
+    "dept_code": "CTDV2_CSKH_VP",
+    "dept_name": "CTDV2_CSKH_VP"
+  },
+  {
+    "dept_code": "CTDV2_CSKH_HTDV",
+    "dept_name": "CTDV2_CSKH_HTDV"
+  },
+  {
+    "dept_code": "CTDV2_CSKH_TLKH",
+    "dept_name": "CTDV2_CSKH_TLKH"
+  },
+  {
+    "dept_code": "CTDV2_BGD_VP",
+    "dept_name": "CTDV2_BGD_VP"
+  },
+  {
+    "dept_code": "CTDV2_HCM2_VP",
+    "dept_name": "CTDV2_HCM2_VP"
+  },
+  {
+    "dept_code": "CTDV2_HCM2_BHKV",
+    "dept_name": "CTDV2_HCM2_BHKV"
+  },
+  {
+    "dept_code": "CTDV2_HCM2_BHTT",
+    "dept_name": "CTDV2_HCM2_BHTT"
+  },
+  {
+    "dept_code": "CTDV2_HCM2_KHCL",
+    "dept_name": "CTDV2_HCM2_KHCL"
+  },
+  {
+    "dept_code": "CTDV2_HCM2_KHDN",
+    "dept_name": "CTDV2_HCM2_KHDN"
+  },
+  {
+    "dept_code": "CTDV2_HCM2_CSKH",
+    "dept_name": "CTDV2_HCM2_CSKH"
+  },
+  {
+    "dept_code": "CTDV2_MBFHCM2_KHDNKV7",
+    "dept_name": "CTDV2_MBFHCM2_KHDNKV7"
+  },
+  {
+    "dept_code": "CTDV2_MBFHCM1_VP",
+    "dept_name": "CTDV2_MBFHCM1_VP"
+  },
+  {
+    "dept_code": "CTDV2_MBFHCM1_CSKH",
+    "dept_name": "CTDV2_MBFHCM1_CSKH"
+  },
+  {
+    "dept_code": "CTDV2_MBFHCM1_KHCL",
+    "dept_name": "CTDV2_MBFHCM1_KHCL"
+  },
+  {
+    "dept_code": "CTDV2_MBFHCM1_KHDNKV1",
+    "dept_name": "CTDV2_MBFHCM1_KHDNKV1"
+  },
+  {
+    "dept_code": "CTDV2_MBFHCM1_KHDNKVTĐ",
+    "dept_name": "CTDV2_MBFHCM1_KHDNKVTĐ"
+  },
+  {
+    "dept_code": "Ban_DVVT",
+    "dept_name": "Ban_DVVT"
+  },
+  {
+    "dept_code": "NOCMT_QLML",
+    "dept_name": "Tổ Quản lý mạng lõi"
+  },
+  {
+    "dept_code": "TT_VTQT_KTKT_VP",
+    "dept_name": "Tổ Văn Phòng - KTKT - TT VTQT"
+  },
+  {
+    "dept_code": "TCTK_KT",
+    "dept_name": "TT_TCTK_Phòng KT"
+  },
+  {
+    "dept_code": "NOCMT_QLCL",
+    "dept_name": "NOCMT - Tổ quản lý chất lượng"
+  },
+  {
+    "dept_code": "NOCMT_CSHT",
+    "dept_name": "NOCMT - Tổ hạ tầng"
+  },
+  {
+    "dept_code": "NOCMT_QLTD",
+    "dept_name": "NOCMT - Tổ quản lý truyền dẫn"
+  },
+  {
+    "dept_code": "NOCMT_QLVT",
+    "dept_name": "NOCMT - Tổ quản lý vô tuyến"
+  },
+  {
+    "dept_code": "TTNOC_QLCL",
+    "dept_name": "TTNOC_Phòng QLCL"
+  },
+  {
+    "dept_code": "TTNOC_QLCL_VanPhong",
+    "dept_name": "TTNOC_QLCL_Văn phòng"
+  },
+  {
+    "dept_code": "TTML_MT_VanPhong",
+    "dept_name": "TTML_MT_VanPhong"
+  },
+  {
+    "dept_code": "TTML_MT_ToVanPhong",
+    "dept_name": "TTML_MT_ToVanPhong"
+  },
+  {
+    "dept_code": "TTNOC_KT",
+    "dept_name": "TTNOC_Kỹ Thuật"
+  },
+  {
+    "dept_code": "TTNOC_KT_ANM",
+    "dept_name": "TTNOC_KT_Tổ An Ninh Mạng"
+  },
+  {
+    "dept_code": "NOCMB_CHIPHI",
+    "dept_name": "NOCMB_Tổ chi phí"
+  },
+  {
+    "dept_code": "NOCMT_KTV",
+    "dept_name": "NOCMT - Tổ kỹ tác viên"
+  },
+  {
+    "dept_code": "TT_CNTT_GPTH",
+    "dept_name": "Phòng giải pháp tích hợp"
+  },
+  {
+    "dept_code": "TT_CNTT_GPTH_VP",
+    "dept_name": "TT_CNTT_GPTH_Tổ văn phòng"
+  },
+  {
+    "dept_code": "CNC_MT_SC",
+    "dept_name": "Tổ Sửa chữa thiết bị"
+  },
+  {
+    "dept_code": "CNC_MT_VP",
+    "dept_name": "Văn phòng"
+  },
+  {
+    "dept_code": "TTNOC_VAS",
+    "dept_name": "TTNOC_VAS"
+  },
+  {
+    "dept_code": "TTNOC_KT_VP",
+    "dept_name": "TTNOC_KT_Tổ Văn Phòng"
+  },
+  {
+    "dept_code": "TTNOC_VAS_VP",
+    "dept_name": "TTNOC_VAS_Tổ Văn Phòng"
+  },
+  {
+    "dept_code": "NOCMB_TrucCa",
+    "dept_name": "NOCMB_Trực ca"
+  },
+  {
+    "dept_code": "TT_VTQT_KTKT",
+    "dept_name": "Phòng Kỹ thuật khai thác"
+  },
+  {
+    "dept_code": "KT_VanPhong",
+    "dept_name": "TT_TCTK_KT_Văn phòng(Off)"
+  },
+  {
+    "dept_code": "TTML_MB_PVT_CNTT",
+    "dept_name": "TTML_MB_PVT_CNTT"
+  },
+  {
+    "dept_code": "DVT_Tay_QLCLM",
+    "dept_name": "DVT_Tay_QLCL Mạng"
+  },
+  {
+    "dept_code": "CNC_VP",
+    "dept_name": "CNC Văn phòng"
+  },
+  {
+    "dept_code": "CNC_TW",
+    "dept_name": "Phòng đo kiểm và tối ưu"
+  },
+  {
+    "dept_code": "CNC_KD",
+    "dept_name": "Phòng kiểm định và hỗ trợ kỹ thuật"
+  },
+  {
+    "dept_code": "CNC_SC",
+    "dept_name": "Phòng sửa chữa thiết bị"
+  },
+  {
+    "dept_code": "CNC_KD_VP",
+    "dept_name": "CNC_KD_Văn phòng"
+  },
+  {
+    "dept_code": "CNC_MB_DK",
+    "dept_name": "CNC_MB_Tổ đo kiểm tối ưu"
+  },
+  {
+    "dept_code": "CNC_MB_CNHN",
+    "dept_name": "CNC_MB_CN Hà Nội"
+  },
+  {
+    "dept_code": "CNC_MB_VP",
+    "dept_name": "CNC_MB_Văn phòng"
+  },
+  {
+    "dept_code": "CNC_MB_SCTB",
+    "dept_name": "CNC_MB_Tổ sửa chữa thiết bị"
+  },
+  {
+    "dept_code": "CNC_MN_VP",
+    "dept_name": "CNC_MN_Văn phòng"
+  },
+  {
+    "dept_code": "CNC_MN_CN_HCM",
+    "dept_name": "CNC_MN_CN_Hồ Chí Minh"
+  },
+  {
+    "dept_code": "CNC_MN_SCTB",
+    "dept_name": "CNC_MN_Tổ sửa chữa thiết bị"
+  },
+  {
+    "dept_code": "CNC_MN_DKTW",
+    "dept_name": "CNC_MN_Tổ đo kiểm tối ưu"
+  },
+  {
+    "dept_code": "KTMB",
+    "dept_name": "TT_TCTK_Phòng KTMB"
+  },
+  {
+    "dept_code": "KTMB_VanPhong",
+    "dept_name": "TT_TCTK_KTMB_Văn phòng"
+  },
+  {
+    "dept_code": "CNC_MT_TW",
+    "dept_name": "CNC_MT_Tổ đo kiểm tối ưu"
+  },
+  {
+    "dept_code": "CNC_SC_SX",
+    "dept_name": "Tổ sản xuất thiết bị"
+  },
+  {
+    "dept_code": "CNC_TW_VT",
+    "dept_name": "CNC_TW_Tổ vô tuyến"
+  },
+  {
+    "dept_code": "CNC_TW_CLDV",
+    "dept_name": "CNC_TW_Tổ chất lượng dịch vụ"
+  },
+  {
+    "dept_code": "CNC_VP_VanPhong",
+    "dept_name": "CNC_VP_Tổ văn phòng"
+  },
+  {
+    "dept_code": "NOCMN_FO_Q9",
+    "dept_name": "Tổ FO Q9"
+  },
+  {
+    "dept_code": "NOCMN_FO_C30",
+    "dept_name": "Tổ FO C30"
+  },
+  {
+    "dept_code": "NOCMN_FO_CT",
+    "dept_name": "Tổ FO CT"
+  },
+  {
+    "dept_code": "NOCMB_CSHT",
+    "dept_name": "NOCMB_Tổ hạ tầng"
+  },
+  {
+    "dept_code": "NOCMB_QLCL",
+    "dept_name": "NOCMB_Tổ quản lý chất lượng"
+  },
+  {
+    "dept_code": "NOCMB_QLTD",
+    "dept_name": "NOCMB_Tổ quản lý truyền dẫn"
+  },
+  {
+    "dept_code": "NOCMB_QLVT",
+    "dept_name": "NOCMB_Tổ quản lý vô tuyến"
+  },
+  {
+    "dept_code": "NOCMB_VASIN",
+    "dept_name": "NOCMB_Tổ VAS/IN"
+  },
+  {
+    "dept_code": "TTML_MB_BGD",
+    "dept_name": "TTML_MB_Ban giám đốc"
+  },
+  {
+    "dept_code": "DVT_HN1_VanPhong",
+    "dept_name": "DVT_HN1_Văn phòng"
+  },
+  {
+    "dept_code": "DVT_HN1_KyThuat",
+    "dept_name": "DVT_HN1_Tổ kỹ thuật"
+  },
+  {
+    "dept_code": "TT_NOC",
+    "dept_name": "TT NOC"
+  },
+  {
+    "dept_code": "UCTT_GB",
+    "dept_name": "Tổ UCTT Giáp Bát"
+  },
+  {
+    "dept_code": "UCTT_HP",
+    "dept_name": "Tổ UCTT Hải Phòng"
+  },
+  {
+    "dept_code": "UCTT_YH",
+    "dept_name": "Tổ UCTT Yên Hòa"
+  },
+  {
+    "dept_code": "TT_CNC",
+    "dept_name": "TT_CNC"
+  },
+  {
+    "dept_code": "CNC_MB",
+    "dept_name": "CNC Miền Bắc"
+  },
+  {
+    "dept_code": "TTML_MB",
+    "dept_name": "TTML Miền Bắc"
+  },
+  {
+    "dept_code": "TTML_MB_PVT",
+    "dept_name": "TTML_MB_Phòng vô tuyến"
+  },
+  {
+    "dept_code": "TTML_MB_PTD",
+    "dept_name": "TTML_MB_Phòng truyền dẫn"
+  },
+  {
+    "dept_code": "DVT_Ha_Noi_1",
+    "dept_name": "ĐVT Hà Nội 1"
+  },
+  {
+    "dept_code": "DVT_HN1_TVT1",
+    "dept_name": "TVT1"
+  },
+  {
+    "dept_code": "DVT_HN1_TVT2",
+    "dept_name": "TVT2"
+  },
+  {
+    "dept_code": "DVT_HN1_TVT3",
+    "dept_name": "TVT3"
+  },
+  {
+    "dept_code": "DVT_Ha_Noi_2",
+    "dept_name": "ĐVT Hà Nội 2"
+  },
+  {
+    "dept_code": "TTML_MB_PTD_VP",
+    "dept_name": "TTML_MB_PTD_Văn phòng"
+  },
+  {
+    "dept_code": "TTML_MB_PTD_HT",
+    "dept_name": "TTML_MB_PTD_Tổ CNPTM"
+  },
+  {
+    "dept_code": "TTML_MB_PTD_KT",
+    "dept_name": "TTML_MB_PTD_Tổ kỹ thuật"
+  },
+  {
+    "dept_code": "TTML_MB_PTD_VHM",
+    "dept_name": "TTML_MB_PTD_Tổ vận hành mạng"
+  },
+  {
+    "dept_code": "TTML_MB_PVT_VP",
+    "dept_name": "TTML_MB_PVT_Văn phòng"
+  },
+  {
+    "dept_code": "TTML_MB_PVT_TW",
+    "dept_name": "TTML_MB_PVT_Tổ tối ưu"
+  },
+  {
+    "dept_code": "TTML_MB_PVT_VHM",
+    "dept_name": "TTML_MB_PVT_Vận hành mạng"
+  },
+  {
+    "dept_code": "TTML_MN_PHT_VP",
+    "dept_name": "Văn phòng - P.QLCSHT"
+  },
+  {
+    "dept_code": "TTML_MN_PHT_QLCSHT",
+    "dept_name": "Tổ QL Cơ sở hạ tầng"
+  },
+  {
+    "dept_code": "TTML_MN_PHT_QLBDSC",
+    "dept_name": "Tổ QL Bảo dưỡng-Sửa chữa"
+  },
+  {
+    "dept_code": "TTML_MN_PTD_VP",
+    "dept_name": "Văn phòng - P.Truyền dẫn"
+  },
+  {
+    "dept_code": "TTML_MN_PTD_QHTKTD",
+    "dept_name": "Tổ Quy hoạch thiết kế truyền dẫn"
+  },
+  {
+    "dept_code": "TTML_MN_PTD_KTKTTD",
+    "dept_name": "Tổ Kỹ thuật khai thác truyền dẫn"
+  },
+  {
+    "dept_code": "TTML_MN_PVT_VP",
+    "dept_name": "Văn phòng - P.Vô tuyến"
+  },
+  {
+    "dept_code": "TTML_MN_PVT_TW",
+    "dept_name": "Tổ tối ưu"
+  },
+  {
+    "dept_code": "TTML_MN_PVT_QLM",
+    "dept_name": "Tổ quản lý mạng"
+  },
+  {
+    "dept_code": "TTML_MN_PVT_PTM",
+    "dept_name": "Tổ Phát triển mạng và Công nghệ thông tin"
+  },
+  {
+    "dept_code": "NOCMN_VanPhong",
+    "dept_name": "Văn phòng - NOCMN"
+  },
+  {
+    "dept_code": "NOCMN_QLML",
+    "dept_name": "Tổ Quản lý mạng lõi"
+  },
+  {
+    "dept_code": "UCTT_HCM",
+    "dept_name": "Tổ UCTT Hồ Chí Minh"
+  },
+  {
+    "dept_code": "UCTT_DN",
+    "dept_name": "Tổ UCTT Đồng Nai"
+  },
+  {
+    "dept_code": "NOCMN_VASIN",
+    "dept_name": "Tổ VAS/IN"
+  },
+  {
+    "dept_code": "NOCMN_QLMVT_1",
+    "dept_name": "Tổ quản lý mạng vô tuyến 1"
+  },
+  {
+    "dept_code": "NOCMN_QLMVT_2",
+    "dept_name": "Tổ quản lý mạng vô tuyến 2"
+  },
+  {
+    "dept_code": "NOCMN_QLMTD",
+    "dept_name": "Tổ quản lý mạng Truyền dẫn"
+  },
+  {
+    "dept_code": "NOCMN_QLCL",
+    "dept_name": "Tổ quản lý chất lượng"
+  },
+  {
+    "dept_code": "NOCMN_HA_TANG",
+    "dept_name": "Tổ hạ tầng"
+  },
+  {
+    "dept_code": "UCTT_BD",
+    "dept_name": "Tổ UCTT Bình Dương"
+  },
+  {
+    "dept_code": "UCTT_CT",
+    "dept_name": "Tổ UCTT Cần Thơ"
+  },
+  {
+    "dept_code": "UCTT_TG",
+    "dept_name": "Tổ UCTT Tiền Giang"
+  },
+  {
+    "dept_code": "CNC_MN",
+    "dept_name": "CNC Miền Nam"
+  },
+  {
+    "dept_code": "TTML_MN",
+    "dept_name": "TTML Miền Nam"
+  },
+  {
+    "dept_code": "TTML_MN_PVT",
+    "dept_name": "TTML_MN_Phòng vô tuyến"
+  },
+  {
+    "dept_code": "TTML_MN_PTD",
+    "dept_name": "TTML_MN_Phòng truyền dẫn"
+  },
+  {
+    "dept_code": "DVT_BD",
+    "dept_name": "ĐVT Bình Dương"
+  },
+  {
+    "dept_code": "DVT_BD_TVT_BDU",
+    "dept_name": "TVT Bình Dương"
+  },
+  {
+    "dept_code": "DVT_BD_TVT_BP",
+    "dept_name": "TVT Bình Phước"
+  },
+  {
+    "dept_code": "DVT_BD_TVT_LA",
+    "dept_name": "TVT Long An"
+  },
+  {
+    "dept_code": "TT_MDS_PTDV",
+    "dept_name": "TT MDS PTDV"
+  },
+  {
+    "dept_code": "TT_MDS_PKTKT",
+    "dept_name": "TT MDS PKTKT"
+  },
+  {
+    "dept_code": "TT_MDS_PTDV_VP",
+    "dept_name": "TT MDS PTDV VP"
+  },
+  {
+    "dept_code": "DVT_Dong_QLCLM",
+    "dept_name": "DVT_Dong_QLCL mạng"
+  },
+  {
+    "dept_code": "TT_MDS_PKTKT_VP",
+    "dept_name": "TT MDS PKTKT VP"
+  },
+  {
+    "dept_code": "CTDV6_DVKT",
+    "dept_name": "CTY DV6 DVKT"
+  },
+  {
+    "dept_code": "CTDV6_DVKT_VP",
+    "dept_name": "CTY DV6 DVKT VP"
+  },
+  {
+    "dept_code": "CTDV8_DVKT",
+    "dept_name": "CTY DV8 DVKT"
+  },
+  {
+    "dept_code": "DVT_ND_TVT_HB",
+    "dept_name": "TVT Hòa Bình"
+  },
+  {
+    "dept_code": "DVT_ND_TVT_ND",
+    "dept_name": "TVT Nam Định"
+  },
+  {
+    "dept_code": "DVT_ND_TVT_NB",
+    "dept_name": "TVT Ninh Bình"
+  },
+  {
+    "dept_code": "DVT_Nghe_An",
+    "dept_name": "ĐVT Nghệ An"
+  },
+  {
+    "dept_code": "DVT_NA_TVT_HT",
+    "dept_name": "TVT Hà Tĩnh"
+  },
+  {
+    "dept_code": "DVT_NA_TVT_QB",
+    "dept_name": "TVT Quảng Bình"
+  },
+  {
+    "dept_code": "DVT_NA_TVT_TH",
+    "dept_name": "TVT Thanh Hóa"
+  },
+  {
+    "dept_code": "DVT_NA_TVT_NA",
+    "dept_name": "TVT Nghệ An"
+  },
+  {
+    "dept_code": "DVT_Thai_Nguyen",
+    "dept_name": "ĐVT Thái Nguyên"
+  },
+  {
+    "dept_code": "DVT_TN_TVT_BC",
+    "dept_name": "TVT Bắc Cạn"
+  },
+  {
+    "dept_code": "DVT_TN_TVT_BG",
+    "dept_name": "TVT Bắc Giang"
+  },
+  {
+    "dept_code": "DVT_VP_TVT_VP",
+    "dept_name": "TVT Vĩnh Phúc"
+  },
+  {
+    "dept_code": "DVT_VP_TVT_YB",
+    "dept_name": "TVT Yên Bái"
+  },
+  {
+    "dept_code": "DVT_VP_TVT_SL",
+    "dept_name": "TVT Sơn La"
+  },
+  {
+    "dept_code": "Ban_CNTT",
+    "dept_name": "Ban CNTT"
+  },
+  {
+    "dept_code": "Ban_PTM",
+    "dept_name": "Ban PTM"
+  },
+  {
+    "dept_code": "Ban_CNQLM",
+    "dept_name": "Ban Công nghệ"
+  },
+  {
+    "dept_code": "TT_MDS",
+    "dept_name": "TT MDS"
+  },
+  {
+    "dept_code": "TT_TCTK",
+    "dept_name": "TT TCTK"
+  },
+  {
+    "dept_code": "TT_VTQT",
+    "dept_name": "TT VTQT"
+  },
+  {
+    "dept_code": "TT_CNTT",
+    "dept_name": "TT CNTT"
+  },
+  {
+    "dept_code": "CTDV1",
+    "dept_name": "CTY DV1"
+  },
+  {
+    "dept_code": "CTDV2",
+    "dept_name": "CTY DV2"
+  },
+  {
+    "dept_code": "CTDV3",
+    "dept_name": "CTY DV3"
+  },
+  {
+    "dept_code": "CTDV4",
+    "dept_name": "CTY DV4"
+  },
+  {
+    "dept_code": "CTDV5",
+    "dept_name": "CTY DV5"
+  },
+  {
+    "dept_code": "CTDV6",
+    "dept_name": "CTY DV6"
+  },
+  {
+    "dept_code": "CTDV7",
+    "dept_name": "CTY DV7"
+  },
+  {
+    "dept_code": "CTDV8",
+    "dept_name": "CTY DV8"
+  },
+  {
+    "dept_code": "CTDV9",
+    "dept_name": "CTY DV9"
+  },
+  {
+    "dept_code": "NOCMB_VanPhong",
+    "dept_name": "NOCMB_Văn phòng"
+  },
+  {
+    "dept_code": "NOCMB_QLML",
+    "dept_name": "Tổ Quản lý mạng lõi"
+  },
+  {
+    "dept_code": "DVT_BD_TVT_TN",
+    "dept_name": "TVT Tây Ninh"
+  },
+  {
+    "dept_code": "DVT_CT",
+    "dept_name": "ĐVT Cần Thơ"
+  },
+  {
+    "dept_code": "DVT_CT_TVT_AG",
+    "dept_name": "TVT An Giang"
+  },
+  {
+    "dept_code": "DVT_CT_TVT_BL",
+    "dept_name": "TVT Bạc Liêu"
+  },
+  {
+    "dept_code": "DVT_CT_TVT_CM",
+    "dept_name": "TVT Cà Mau"
+  },
+  {
+    "dept_code": "DVT_CT_TVT_CT",
+    "dept_name": "TVT Cần Thơ"
+  },
+  {
+    "dept_code": "DVT_CT_TVT_HG",
+    "dept_name": "TVT Hậu Giang"
+  },
+  {
+    "dept_code": "DVT_CT_TVT_KG",
+    "dept_name": "TVT Kiên Giang"
+  },
+  {
+    "dept_code": "DVT_CT_TVT_PQ",
+    "dept_name": "TVT Phú Quốc"
+  },
+  {
+    "dept_code": "DVT_CT_TVT_ST",
+    "dept_name": "TVT Sóc Trăng"
+  },
+  {
+    "dept_code": "DVT_HN2_VanPhong",
+    "dept_name": "DVT_HN2_Văn phòng"
+  },
+  {
+    "dept_code": "DVT_HN2_KyThuat",
+    "dept_name": "DVT_HN2_Kỹ thuật"
+  },
+  {
+    "dept_code": "DVT_HP_Vanphong",
+    "dept_name": "DVT_HP_Văn phòng"
+  },
+  {
+    "dept_code": "DVT_HP_KyThuat",
+    "dept_name": "DVT_HP_Tổ kỹ thuật"
+  },
+  {
+    "dept_code": "DVT_ND_VanPhong",
+    "dept_name": "DVT_NĐ_Văn phòng"
+  },
+  {
+    "dept_code": "DVT_ND_KyThuat",
+    "dept_name": "DVT_NĐ_Kỹ thuật"
+  },
+  {
+    "dept_code": "DVT_NA_VanPhong",
+    "dept_name": "DVT_NA_Văn phòng"
+  },
+  {
+    "dept_code": "DVT_NA_KyThuat",
+    "dept_name": "DVT_NA_Tổ kỹ thuật"
+  },
+  {
+    "dept_code": "DVT_TN_VanPhong",
+    "dept_name": "DVT_TN_Văn phòng"
+  },
+  {
+    "dept_code": "DVT_TN_KyThuat",
+    "dept_name": "DVT_TN_Tổ kỹ thuật"
+  },
+  {
+    "dept_code": "DVT_VP_VanPhong",
+    "dept_name": "DVT_VP_Văn phòng"
+  },
+  {
+    "dept_code": "DVT_VP_KyThuat",
+    "dept_name": "DVT_VP_Tổ kỹ Thuật"
+  },
+  {
+    "dept_code": "TTML_MB_CSHT",
+    "dept_name": "TTML_MB_Quản lý CSHT"
+  },
+  {
+    "dept_code": "TTML_MB_CSHT_VP",
+    "dept_name": "TTML_MB_CSHT_Văn phòng"
+  },
+  {
+    "dept_code": "TTML_MB_CSHT_HT",
+    "dept_name": "TTML_MB_CSHT_Tổ hạ tầng"
+  },
+  {
+    "dept_code": "DVT_DONG",
+    "dept_name": "ĐVT Đông"
+  },
+  {
+    "dept_code": "DVT_Dong_TVT2",
+    "dept_name": "TVT 2"
+  },
+  {
+    "dept_code": "DVT_Dong_TVT3",
+    "dept_name": "TVT 3"
+  },
+  {
+    "dept_code": "DVT_Dong_TVT4",
+    "dept_name": "TVT 4"
+  },
+  {
+    "dept_code": "DVT_DN",
+    "dept_name": "ĐVT Đồng Nai"
+  },
+  {
+    "dept_code": "DVT_DN_TVT_BL",
+    "dept_name": "TVT Bảo Lộc"
+  },
+  {
+    "dept_code": "DVT_TN_TVT_BN",
+    "dept_name": "TVT Bắc Ninh"
+  },
+  {
+    "dept_code": "DVT_TN_TVT_CB",
+    "dept_name": "TVT Cao Bằng"
+  },
+  {
+    "dept_code": "DVT_TN_TVT_HG",
+    "dept_name": "TVT Hà Giang"
+  },
+  {
+    "dept_code": "DVT_TN_TVT_LS",
+    "dept_name": "TVT Lạng Sơn"
+  },
+  {
+    "dept_code": "DVT_TN_TVT_TN",
+    "dept_name": "TVT Thái Nguyên"
+  },
+  {
+    "dept_code": "DVT_TN_TVT_TQ",
+    "dept_name": "TVT Tuyên Quang"
+  },
+  {
+    "dept_code": "DVT_Vinh_Phuc",
+    "dept_name": "ĐVT Vĩnh Phúc"
+  },
+  {
+    "dept_code": "DVT_VP_TVT_DB",
+    "dept_name": "TVT Điện Biên"
+  },
+  {
+    "dept_code": "DVT_VP_TVT_LC",
+    "dept_name": "TVT Lai Châu"
+  },
+  {
+    "dept_code": "DVT_VP_TVT_LCi",
+    "dept_name": "TVT Lào Cai"
+  },
+  {
+    "dept_code": "DVT_VP_TVT_PT",
+    "dept_name": "TVT Phú Thọ"
+  },
+  {
+    "dept_code": "DVT_DN_TVT_BH",
+    "dept_name": "TVT Biên Hòa"
+  },
+  {
+    "dept_code": "DVT_DN_TVT_BT",
+    "dept_name": "TVT Bình Thuận"
+  },
+  {
+    "dept_code": "DVT_DN_TVT_DL",
+    "dept_name": "TVT Đà Lạt"
+  },
+  {
+    "dept_code": "DVT_DN_TVT_LK",
+    "dept_name": "TVT Long Khánh"
+  },
+  {
+    "dept_code": "DVT_DN_TVT_NT",
+    "dept_name": "TVT Ninh Thuận"
+  }
+]

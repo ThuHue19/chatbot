@@ -1,0 +1,129 @@
+{
+  "table": "PAKH",
+  "description": "Bảng gốc lưu thông tin tất cả phản ánh của khách hàng. Đây là nguồn dữ liệu chính để sinh các bảng xử lý cấp tổ chức hoặc cá nhân.",
+  "columns": {
+    "ID": {
+      "type": "NUMBER",
+      "description": "Mã định danh duy nhất cho mỗi phản ánh"
+    },
+    "SO_THUE_BAO": {
+      "type": "VARCHAR2",
+      "description": "Số thuê bao hoặc số điện thoại khách hàng phản ánh"
+    },
+    "LOAI_THUE_BAO": {
+      "type": "VARCHAR2",
+      "description": "Loại thuê bao (trả trước, trả sau, cố định, internet...)"
+    },
+    "NOI_DUNG_PHAN_ANH": {
+      "type": "VARCHAR2",
+      "description": "Mô tả nội dung khách hàng phản ánh"
+    },
+    "TINH_THANH_PHO": {
+      "type": "VARCHAR2",
+      "description": "Tỉnh/Thành phố phát sinh phản ánh"
+    },
+    "QUAN_HUYEN": {
+      "type": "VARCHAR2",
+      "description": "Quận/Huyện phát sinh phản ánh"
+    },
+    "PHUONG_XA": {
+      "type": "VARCHAR2",
+      "description": "Phường/Xã phát sinh phản ánh"
+    }
+  },
+  "semi_structured_fields": {
+    "NOI_DUNG_PHAN_ANH": "Có thể chứa các thông tin như: vị trí lỗi, dịch vụ, thiết bị, gói cước, thời gian lỗi..."
+  },
+  "sample_data": [
+    {
+      "ID": 36587079,
+      "SO_THUE_BAO": "765206236",
+      "LOAI_THUE_BAO": "KHCN",
+      "NOI_DUNG_PHAN_ANH": "Đơn vị nhập: NHANLM1_TM\nđịa chỉ:439/76/6 TTH21 F Tân Thới Hiệp Quận 12 TPHCM\nđã có FB xử lý NOC_MN_Core 10/01/2024 23:35:56: VU.BUIDUC vu.buiduc - 10/01/2024 23:35:54: nhưng hiện KH vẫn sử dụng rất bất thường lúc được lúc không. KHYC kiểm tra lại. Kính chuyển A/C vui lòng kiểm tra hỗ trợ giúp. Em thanks!\nKhu vực bị lỗi:: 439/76/6 TTH21 F Tân Thới Hiệp Quận 12 TPHCM\nTình trạng lỗi:: truy cập mạng lúc được lúc không\nThời gian xảy ra lỗi:: thường xuyên\nDịch vụ phản ánh:: tất cả \nGói cước đang dùng:: c150k\nDung lượng gói cước còn lại:: 7000MB\nMáy điện thoại KH đang dùng:: xiaomi\nLoại sóng phản ánh và hiển thị:: 4G\nKiểm tra lỗi máy, lỗi sim:: đã thử \nChọn đúng SIM muốn truy cập mạng:: \nThông tin khác:: \n",
+      "TINH_THANH_PHO": "HCM",
+      "QUAN_HUYEN": "012",
+      "PHUONG_XA": "TTHI"
+    },
+    {
+      "ID": 36564053,
+      "SO_THUE_BAO": "777091582",
+      "LOAI_THUE_BAO": "KHCN",
+      "NOI_DUNG_PHAN_ANH": "Đơn vị nhập: VNSKY_TUNGPT\nVNSKY tiếp nhận phản ánh của KH 0777091582 sử dụng gói cước SKY59 không truy cập được mạng\nNhờ Team kiểm tra hỗ trợ KH. \n- KH số VNSKY:  0777091582 \n- Tình trạng: KH không hiển thị 4G\n- Gói cước: SKY59\n- Lưu lượng còn lại: 3072 MB\n- Trên máy hiển thị loại sóng: 4 vạch sóng mạng không có\n- Loại máy:  Samsung A9, Samsung s21\n- Địa chỉ:  Khu phố đông nhì,lái thiêu,thuận an bình dương\n- Liên hệ: 0777091582\nKhu vực bị lỗi:: Khu phố đông nhì,lái thiêu,thuận an bình dương\nTình trạng lỗi:: không truy cập được mạng\nThời gian xảy ra lỗi:: ca ngay\nDịch vụ phản ánh:: data\nGói cước đang dùng:: SKY59 \nDung lượng gói cước còn lại:: 3072 MB\nMáy điện thoại KH đang dùng:: Samsung A9\nLoại sóng phản ánh và hiển thị:: 4G\nKiểm tra lỗi máy, lỗi sim:: Samsung s21\nChọn đúng SIM muốn truy cập mạng:: \nThông tin khác:: \n",
+      "TINH_THANH_PHO": "BDU",
+      "QUAN_HUYEN": "TAN",
+      "PHUONG_XA": "LTHI"
+    },
+    {
+      "ID": 36711259,
+      "SO_THUE_BAO": "898982118",
+      "LOAI_THUE_BAO": "KHCN",
+      "NOI_DUNG_PHAN_ANH": "Đơn vị nhập: DOANNM_MB\nKHPA không truy cập mạng được ở địa chỉ Số 21/2A, tổ 6, khu phố 1, P Đông Hưng Thuận,Q 12, HCM. Em đã cung cấp do có thông báo 1 số khu vực đang mất điện nên ảnh hưởng trạm phát sóng nhưng KH không đồng ý yêu cầu ghi nhận chuyển bộ phận liên quan kiểm tra hỗ trợ bật máy phát điện để KH sử dụng. KH yêu cầu ghi nhận. Nhờ AC hỗ trợ giúp. Em cảm ơn!\nKHYC gọi ra 898982118\nKhu vực bị lỗi:: Số 21/2A, tổ 6, khu phố 1, P Đông Hưng Thuận,Q 12, HCM\nTình trạng lỗi:: Không truy cập mạng được\nThời gian xảy ra lỗi:: Từ 28/01/2024\nDịch vụ phản ánh:: Tất cả trang\nGói cước đang dùng:: MF150: dung luong data toc do cao con lai 4079 MB \nDung lượng gói cước còn lại:: MF150: dung luong data toc do cao con lai 4079 MB \nMáy điện thoại KH đang dùng:: 1 sim\nLoại sóng phản ánh và hiển thị:: 4G\nKiểm tra lỗi máy, lỗi sim:: Đã kiểm tra\nChọn đúng SIM muốn truy cập mạng:: \nThông tin khác:: \n",
+      "TINH_THANH_PHO": "HCM",
+      "QUAN_HUYEN": "012",
+      "PHUONG_XA": "DHTH"
+    },
+    {
+      "ID": 36711380,
+      "SO_THUE_BAO": "907034179",
+      "LOAI_THUE_BAO": "KHCN",
+      "NOI_DUNG_PHAN_ANH": "Đơn vị nhập: HIENLTD_TM\nKHPA không dùng đc 3g/4g, đ/c: 1306/45 Quang Trung, P.14, Gò Vấp  . AC k.tra giúp em, em tks!\nKhu vực bị lỗi:: 1306/45 Quang Trung, P.14, Gò Vấp\nTình trạng lỗi:: KHPA không dùng đc 3g/4g\nThời gian xảy ra lỗi:: dộtd xuất\nDịch vụ phản ánh:: data\nGói cước đang dùng:: MF159\nDung lượng gói cước còn lại:: 6291441\nMáy điện thoại KH đang dùng:: 2\nLoại sóng phản ánh và hiển thị:: 3g\nKiểm tra lỗi máy, lỗi sim:: rồi\nChọn đúng SIM muốn truy cập mạng:: rồi\nThông tin khác:: \n",
+      "TINH_THANH_PHO": "HCM",
+      "QUAN_HUYEN": "GVA",
+      "PHUONG_XA": "0014"
+    },
+    {
+      "ID": 36707737,
+      "SO_THUE_BAO": "937549403",
+      "LOAI_THUE_BAO": "KHCN",
+      "NOI_DUNG_PHAN_ANH": "Đơn vị nhập: NGANPTT1_MB\nkhp/a 28/1 khi khu vực KH bị mất điện là không dùng được 4g , đã làm theo nhiều cach nhưng không khắc phục , d.c : 4449 nguyễn cữu phú P.tân tạo A Q.bình tân , khyc mbf kiểm tra lại khu vực giúp nhờ anh chị hỏ trợ giúp e cảm ơn , slh :  937549403\nKhu vực bị lỗi:: 4449 nguyễn cữu phú P.tân tạo A Q.bình tân \nTình trạng lỗi:: không dùng được data\nThời gian xảy ra lỗi:: 28/1/2024\nDịch vụ phản ánh:: data\nGói cước đang dùng:: c120\nDung lượng gói cước còn lại:: 4133390kb\nMáy điện thoại KH đang dùng:: 1\nLoại sóng phản ánh và hiển thị:: 4g\nKiểm tra lỗi máy, lỗi sim:: esim\nChọn đúng SIM muốn truy cập mạng:: đúng sim\nThông tin khác:: \n",
+      "TINH_THANH_PHO": "HCM",
+      "QUAN_HUYEN": "BTA",
+      "PHUONG_XA": "TATA"
+    },
+    {
+      "ID": 36455056,
+      "SO_THUE_BAO": "766864979",
+      "LOAI_THUE_BAO": "KHCN",
+      "NOI_DUNG_PHAN_ANH": "Đơn vị nhập: C4_6153\nKhách hàng phản ánh không thực hiện được cuộc gọi cũng như không nhắn tin được, bên em đã hướng dẫn thao tác cài đặt thay đổi mã trung tâm nhắn tin cũng như lắp sim sáng máy khác vẫn không khắc phục được. Nhờ anh/chị kiểm tra hỗ trợ giúp khách hàng, cảm ơn anh/chị !\nKhu vực bị lỗi:: Xã hòa Tịnh, huyện Mang Thích, tỉnh Vĩnh Long\nTình trạng lỗi:: Không thực hiện được cuộc gọi cũng như tin nhắn\nThời gian xảy ra lỗi:: Đột xuất\nDịch vụ phản ánh:: thoại , sms\nGói cước đang dùng:: Không\nDung lượng gói cước còn lại:: Không\nMáy điện thoại KH đang dùng:: Nokia\nLoại sóng phản ánh và hiển thị:: 4G\nKiểm tra lỗi máy, lỗi sim:: Đã Thử\nChọn đúng SIM muốn truy cập mạng:: \nThông tin khác:: \n",
+      "TINH_THANH_PHO": "VLO",
+      "QUAN_HUYEN": "MTH",
+      "PHUONG_XA": "HTIN"
+    },
+    {
+      "ID": 36469968,
+      "SO_THUE_BAO": "939801272",
+      "LOAI_THUE_BAO": "KHCN",
+      "NOI_DUNG_PHAN_ANH": "Đơn vị nhập: TUYEN.NTTHANH.KD\nNhờ TTC hỗ trợ kiểm tra sim KH thường xuyên báo lỗi không gọi được, phải tắt gọi lại mấy lần mới được. Sim vẫn nhận được cuộc gọi bình thường. Trước đó Kh có sử dụng bằng esim báo lỗi, KH thay lại sim vật lí cũng còn lỗi báo không gọi được. Kh có mua máy mới để sử dụng nhưng khi sử dụng vẫn còn báo lỗi ạ! Nhờ TTC hỗ trợ giúp KH. E cảm ơn ạ!\nKhu vực bị lỗi:: Đồng Tháp\nTình trạng lỗi:: Kh thường xuyên không gọi đi được, vẫn nhận được cuộc gọi\nThời gian xảy ra lỗi:: thường xuyên\nDịch vụ phản ánh:: thoại\nGói cước đang dùng:: mf179. 21g12\nDung lượng gói cước còn lại:: 2GB\nMáy điện thoại KH đang dùng:: Iphone 14 pro\nLoại sóng phản ánh và hiển thị:: 44\nKiểm tra lỗi máy, lỗi sim:: Đã thay sim 28/12\nChọn đúng SIM muốn truy cập mạng:: KH sử dụng 1 sim\nThông tin khác:: \n",
+      "TINH_THANH_PHO": "DTH",
+      "QUAN_HUYEN": "CTH",
+      "PHUONG_XA": "CTHA"
+    },
+    {
+      "ID": 36467551,
+      "SO_THUE_BAO": "902189433",
+      "LOAI_THUE_BAO": "KHCN",
+      "NOI_DUNG_PHAN_ANH": "Đơn vị nhập: C1_GAMDT29_MFS\nKH đã có LS PA trước đó từ tháng 10/2023. KH cho biết đã qua cửa hàng Mobifone đổi SIM, tuy nhiên theo dõi trong qua trình sử dụng vẫn bị tình trạng khó truy cập mạng. KH di chuyển nhiều KV khác nhau đều như vậy. KH đề nghị XL triệt để tránh gián đoạn DV trong thời gian dài. chuyển ac hỗ trợ sớm. báo ol TC 1378\nKhu vực bị lỗi:: số 111 d ngõ 678, đường láng, láng thượng, đống đa, hà nội\nTình trạng lỗi:: KH khó truy cập mạng, thường xuyên bị ngắt kết nối \nThời gian xảy ra lỗi:: thường xuyên\nDịch vụ phản ánh:: data\nGói cước đang dùng:: MF150\nDung lượng gói cước còn lại:: còn\nMáy điện thoại KH đang dùng:: IPhone\nLoại sóng phản ánh và hiển thị:: 4G\nKiểm tra lỗi máy, lỗi sim:: đã thay sim qua máy khác kiểm tra \nChọn đúng SIM muốn truy cập mạng:: \nThông tin khác:: \n",
+      "TINH_THANH_PHO": "HNO",
+      "QUAN_HUYEN": "DDA",
+      "PHUONG_XA": "LTHU"
+    },
+    {
+      "ID": 36573199,
+      "SO_THUE_BAO": "931460420",
+      "LOAI_THUE_BAO": "KHCN",
+      "NOI_DUNG_PHAN_ANH": "Đơn vị nhập: C8_MBT_THUYNTT2\nKHPA không gọi đi được cho tất cả các sdt mạng viettel, tín hiệu: đỗ 1 chuông sau đó báo tút tút, KH đã gọi sang tổng đài Viettel xác minh số kh không bị mạng viettel chặn cuộc gọi  . Nhờ AC hỗ trợ giúp em . E cảm ơn .\nKhu vực bị lỗi:: 227/22, đường Lê Thị Dung, P. Bình Chuẩn, KP. Bình Phước A, TP. Thuận An, tỉnh Bình Dương\nTình trạng lỗi:: không gọi đi được các số mạng viettel, các mạng khác gọi bình thường\nThời gian xảy ra lỗi:: 15/01/2024\nDịch vụ phản ánh:: Thoại\nGói cước đang dùng:: KH phản ánh thoại\nDung lượng gói cước còn lại:: KH phản ánh thoại\nMáy điện thoại KH đang dùng:: Nokia 216\nLoại sóng phản ánh và hiển thị:: KH phản ánh thoại\nKiểm tra lỗi máy, lỗi sim:: KH đã kiểm tra\nChọn đúng SIM muốn truy cập mạng:: \nThông tin khác:: \n",
+      "TINH_THANH_PHO": "BDU",
+      "QUAN_HUYEN": "TAN",
+      "PHUONG_XA": "BCHU"
+    },
+    {
+      "ID": 36575047,
+      "SO_THUE_BAO": "939485413",
+      "LOAI_THUE_BAO": "KHCN",
+      "NOI_DUNG_PHAN_ANH": "Đơn vị nhập: C8_MBT_MINHTB\nKHPA nhận cuộc gọi không được , gọi đi vẫn được. KHYC MBF kiểm tra lại .mong AC hỗ trợ giúp em. em cảm ơn\nKhu vực bị lỗi:: C5/28 KDC thuận giao P. thuận giao tp. thuận an t. bình dương \nTình trạng lỗi:: KHPA nhận cuộc gọi không được , gọi đi vẫn được\nThời gian xảy ra lỗi:: từ ngày 15/01/2024\nDịch vụ phản ánh:: KHPA nhận cuộc gọi không được , gọi đi vẫn được\nGói cước đang dùng:: 6C90N\nDung lượng gói cước còn lại:: 2138650KB\nMáy điện thoại KH đang dùng:: realme\nLoại sóng phản ánh và hiển thị:: 4G\nKiểm tra lỗi máy, lỗi sim:: rồi\nChọn đúng SIM muốn truy cập mạng:: \nThông tin khác:: \n",
+      "TINH_THANH_PHO": "BDU",
+      "QUAN_HUYEN": "TAN",
+      "PHUONG_XA": "TGIA"
+    }
+  ]
+}

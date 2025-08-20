@@ -1,6 +1,6 @@
 [
   {
-    "question": "duc.vole nhận bn pa",
+    "question": "Đức Võ Lê nhận bn pa",
     "sql": "SELECT SUM(SO_PA_NHAN) FROM PAKH_SLA_CA_NHAN WHERE CA_NHAN = 'duc.vole';"
   },
   {
@@ -8,19 +8,30 @@
     "sql": "SELECT COUNT(*) FROM PAKH"
   },
   {  "question": "phản ánh của số 0906689650",
-    "sql": "SELECT SO_THUE_BAO, NOI_DUNG_PHAN_ANH FROM PAKH WHERE SO_THUE_BAO IN('906689650','0906689650');"
+    "sql": "SELECT SO_THUE_BAO, NOI_DUNG_PHAN_ANH, FB_DATE AS THOI_GIAN_GHI_NHAN FROM PAKH WHERE SO_THUE_BAO IN('906689650','0906689650');"
   },
   {"question": "LOẠI PHẢN ÁNH CỦA SỐ 0765206236",
     "sql": "SELECT T2.NAME AS LOAI_PHAN_ANH FROM PAKH T1 JOIN FB_TYPE_NOC T2 ON T1.LOAI_PHAN_ANH = T2.COMP_TYPE_ID WHERE T1.SO_THUE_BAO IN ('765206236','0765206236');"
   },
   {
-    "question" : "các pa của khdn tại Hoàn kiếm hn",
-    "sql" : " SELECT p.ID, p.SO_THUE_BAO, p.NOI_DUNG_PHAN_ANH, p.TINH_THANH_PHO, p.QUAN_HUYEN, p.PHUONG_XA FROM PAKH p JOIN FB_LOCALITY fl ON p.TINH_THANH_PHO = fl.PROVINCE AND p.QUAN_HUYEN = fl.DISTRICT AND p.PHUONG_XA = fl.PRECINCT WHERE p.LOAI_THUE_BAO = '%KHDN%' AND fl.FULL_NAME LIKE '%Hà Nội%' and fl.FULL_NAME LIKE '%Hoàn Kiếm%';"
+    "question": "các pa quanvuvanctv nhận đc là",
+    "sql": "SELECT PAKH.SO_THUE_BAO, PAKH.NOI_DUNG_PHAN_ANH, PAKH.FB_DATE AS THOI_GIAN_GHI_NHAN from PAKH_CA_NHAN JOIN PAKH on PAKH.ID = PAKH_CA_NHAN.ID where PAKH_CA_NHAN.CA_NHAN = 'duc.vole';"
   },
+  {
+    "question": "các phản ánh của thuê bao 0765206236 ở Hà Nội",
+    "sql": "SELECT ID, SO_THUE_BAO, NOI_DUNG_PHAN_ANH, TINH_THANH_PHO, QUAN_HUYEN, PHUONG_XA, FB_DATE AS THOI_GIAN_GHI_NHAN FROM PAKH WHERE SO_THUE_BAO IN ('765206236', '0765206236') AND TINH_THANH_PHO = 'Hà Nội';"
+  },
+  {
+    "question" : "các pa của khdn tại Hoàn kiếm hn",
+    "sql" : " SELECT p.ID, p.SO_THUE_BAO, p.NOI_DUNG_PHAN_ANH, p.TINH_THANH_PHO, p.QUAN_HUYEN, p.PHUONG_XA, p.FB_DATE AS THOI_GIAN_GHI_NHAN FROM PAKH p JOIN FB_LOCALITY fl ON p.TINH_THANH_PHO = fl.PROVINCE AND p.QUAN_HUYEN = fl.DISTRICT AND p.PHUONG_XA = fl.PRECINCT WHERE p.LOAI_THUE_BAO = '%KHDN%' AND fl.FULL_NAME LIKE '%Hà Nội%' and fl.FULL_NAME LIKE '%Hoàn Kiếm%';"
+  },
+  { "question": "lk các pa duc.vole từ chối",
+    "sql": "SELEC p.SO_THUE_BAO, p.NOI_DUNG_PHAN_ANH FROM PAKH p JOIN PAKH_CA_NHAN pc ON p.ID = pc.ID WHERE pc.CA_NHAN = 'duc.vole' AND pc.TRANG_THAI = 'TU_CHOI';"
 
+  },
   {
     "question": "Khu vực bị lỗi của thuê bao 0765206236 là gì?",
-    "sql": "SELECL pn.KHU_VUC_BI_LOI FROM PAKH p JOIN PAKH_NOI_DUNG_PHAN_ANH pn ON p.ID = pn.ID_PAKH WHERE p.SO_THUE_BAO IN ('765206236','0765206236')"
+    "sql": "SELECT pn.KHU_VUC_BI_LOI FROM PAKH p JOIN PAKH_NOI_DUNG_PHAN_ANH pn ON p.ID = pn.ID_PAKH WHERE p.SO_THUE_BAO IN ('765206236','0765206236')"
   },
   {
     "question":"thuê bao 0765206236 gặp tình trạng lỗi gì?",
@@ -48,7 +59,7 @@
   },
   {
     "question": "các pa ở Thanh Xuân, Hà Nội",
-    "sql" : "SELECT p.ID, p.SO_THUE_BAO, p.NOI_DUNG_PHAN_ANH, p.TINH_THANH_PHO, p.QUAN_HUYEN FROM PAKH p JOIN FB_LOCALITY fl  ON p.TINH_THANH_PHO = fl.PROVINCE  AND p.QUAN_HUYEN = fl.DISTRICT  AND p.PHUONG_XA = fl.PRECINCT  WHERE fl.FULL_NAME LIKE '%Tây Hồ%' AND fl.FULL_NAME LIKE '%Hà Nội%'; "
+    "sql" : "SELECT p.ID, p.SO_THUE_BAO, p.NOI_DUNG_PHAN_ANH, p.TINH_THANH_PHO, p.QUAN_HUYEN, p.FB_DATE FROM PAKH p JOIN FB_LOCALITY fl  ON p.TINH_THANH_PHO = fl.PROVINCE  AND p.QUAN_HUYEN = fl.DISTRICT  AND p.PHUONG_XA = fl.PRECINCT  WHERE fl.FULL_NAME LIKE '%Tây Hồ%' AND fl.FULL_NAME LIKE '%Hà Nội%'; "
   },
   {
     "question": "số lượng phản ánh ở Yên Hòa?",
@@ -57,7 +68,7 @@
   
   {
     "question": "số phản ánh mà mỗi tổ của phòng DVT Vĩnh Phúc nhận được là bao nhiêu?",
-    "sql": "SELECT TO_NHOM, SUM(SO_PA_NHAN) AS SO_PHAN_ANH FROM PAKH_SLA_TO_NHOM WHERE PHONG_BAN = 'DVT_Vinh_Phuc' GROUP BY TO_NHOM;"
+    "sql": "SELECT TO_NHOM, SUM(SO_PA_NHAN) AS SO_PHAN_ANH FROM PAKH_SLA_TO_NHOM pstn JOIN M_DEPARTMENT m ON m.DEPT_CODE = pstn.TO_NHOM WHERE m.DEPT_NAME = 'DVT Vĩnh Phúc' GROUP BY TO_NHOM;"
   },
   {
     "question": "tổng số phản ánh của phòng DVT Vĩnh Phúc?",
@@ -80,6 +91,10 @@
     "sql": "SELECT TO_NHOM, AVG(TONG_TG_XL) AS Thoi_Gian_Xu_Ly_Trung_Binh FROM PAKH_SLA_TO_NHOM WHERE TRUNG_TAM = 'DVT_mien_Bac' GROUP BY TO_NHOM;"
   },
   {
+    "question": "thời gian thuê bao 765206236 phản ánh",
+    "sql": "SELECT SO_THUE_BAO, FB_DATE AS THOI_GIAN_PHAN_ANH FROM PAKH WHERE SO_THUE_BAO IN ('765206236', '0765206236')"
+  },
+  {
     "question": "số phản ánh mà mỗi cá nhân duc.vole và tuan.pham.ctv nhận được là?",
     "sql": "SELECT CA_NHAN, SUM(SO_PA_NHAN) FROM PAKH_SLA_CA_NHAN WHERE CA_NHAN IN ('duc.vole', 'tuan.pham.ctv') GROUP BY CA_NHAN;"
   },
@@ -97,6 +112,10 @@
   {"question":"thuê bao 765206236 đã phản ánh bao nhiêu lần?",
    "sql":"SELECT COUNT(*) AS So_Lan_Phan_Anh FROM PAKH WHERE SO_THUE_BAO IN('765206236','0765206236');"
   },
+  {"question":"pa mất sóng nhiều hơn hay pa mất liên lạc nhiều hơn",
+"sql":"SELECT SUM(CASE WHEN LOWER(NOI_DUNG_PHAN_ANH) LIKE '%mất sóng%' THEN 1 ELSE 0 END) AS SO_PA_MAT_SONG, SUM(CASE WHEN LOWER(NOI_DUNG_PHAN_ANH) LIKE '%mất liên lạc%' THEN 1 ELSE 0 END) AS SO_PA_MAT_LIEN_LAC FROM PAKH"},
+  {"question": "so sánh hiệu suất xử lý pa của tổ TVT Ninh Bình và tổ TVT Hải Dương ",
+"sql": "SELECT TO_NHOM, (SUM(SO_PA_DA_XL_DH) + SUM(SO_PA_DANG_XL_DH)) * 100.0 / NULLIF(SUM(SO_PA_NHAN), 0) AS Hieu_Suat_Xu_Ly_PA FROM PAKH_SLA_TO_NHOM WHERE TO_NHOM IN ('DVT_ND_TVT_NB', 'DVT_HG_TVT_HD') GROUP BY TO_NHOM; "},
   {"question":"Thuê bao 765206236 đã phản ánh bao nhiêu lần cho mỗi hiện tượng?",
 "sql":"SELECT FH.NAME AS Hien_Tuong, COUNT(P.ID) AS So_Lan_Phan_Anh, FROM PAKH P JOIN FB_HIEN_TUONG FH ON P.HIEN_TUONG = FH.CODE WHERE  P.SO_THUE_BAO IN('765206236','0765206236') GROUP BY FH.NAME;"}
 ]

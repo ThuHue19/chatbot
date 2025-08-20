@@ -1,0 +1,196 @@
+{
+  "table": "FB_REASON",
+  "description": "Danh mục lý do phản ánh, được phân loại theo nhóm và vùng SLA.",
+  "columns": {
+    "ID": {
+      "type": "NUMBER",
+      "description": "Mã định danh lý do"
+    },
+    "NAME": {
+      "type": "VARCHAR2(250 BYTE)",
+      "description": "Tên lý do phản ánh"
+    },
+    "IS_ENABLE": {
+      "type": "VARCHAR2(1 BYTE)",
+      "description": "Trạng thái kích hoạt (Y/N)"
+    },
+    "PARENT_ID": {
+      "type": "NUMBER",
+      "description": "Mã lý do cha (0 nếu là lý do gốc)"
+    },
+    "ORDERING": {
+      "type": "NUMBER(4,0)",
+      "description": "Thứ tự hiển thị"
+    },
+    "CREATED_BY": {
+      "type": "VARCHAR2(50 BYTE)",
+      "description": "Người tạo"
+    },
+    "CREATE_DATE": {
+      "type": "DATE",
+      "description": "Ngày tạo"
+    },
+    "MODIFIED_BY": {
+      "type": "VARCHAR2(50 BYTE)",
+      "description": "Người sửa đổi gần nhất"
+    },
+    "MODIFY_DATE": {
+      "type": "DATE",
+      "description": "Ngày sửa đổi gần nhất"
+    },
+    "FB_GROUP_ID": {
+      "type": "NUMBER",
+      "description": "Mã nhóm phản ánh liên quan"
+    },
+    "SLA_REGION": {
+      "type": "VARCHAR2(20 BYTE)",
+      "description": "Vùng SLA áp dụng"
+    },
+    "REASON_GROUP": {
+      "type": "VARCHAR2(200 BYTE)",
+      "description": "Nhóm lý do"
+    }
+  },
+  "sample_data": [
+    {
+      "ID": 5,
+      "NAME": "1. Lỗi thiết bị đầu cuối",
+      "IS_ENABLE": "Y",
+      "PARENT_ID": 0,
+      "ORDERING": 1,
+      "CREATED_BY": "admin",
+      "CREATE_DATE": "2023-04-21",
+      "MODIFIED_BY": null,
+      "MODIFY_DATE": null,
+      "FB_GROUP_ID": 869,
+      "SLA_REGION": null,
+      "REASON_GROUP": "PAKH dịch vụ MobiFiber"
+    },
+    {
+      "ID": 6,
+      "NAME": "2. Lỗi cáp",
+      "IS_ENABLE": "Y",
+      "PARENT_ID": 0,
+      "ORDERING": 2,
+      "CREATED_BY": "admin",
+      "CREATE_DATE": "2023-04-21",
+      "MODIFIED_BY": null,
+      "MODIFY_DATE": null,
+      "FB_GROUP_ID": 869,
+      "SLA_REGION": null,
+      "REASON_GROUP": "PAKH dịch vụ MobiFiber"
+    },
+    {
+      "ID": 7,
+      "NAME": "3. Lỗi hệ thống",
+      "IS_ENABLE": "Y",
+      "PARENT_ID": 0,
+      "ORDERING": 3,
+      "CREATED_BY": "admin",
+      "CREATE_DATE": "2023-04-21",
+      "MODIFIED_BY": null,
+      "MODIFY_DATE": null,
+      "FB_GROUP_ID": 869,
+      "SLA_REGION": null,
+      "REASON_GROUP": "PAKH dịch vụ MobiFiber"
+    },
+    {
+      "ID": 8,
+      "NAME": "4. Lỗi server truy cập",
+      "IS_ENABLE": "Y",
+      "PARENT_ID": 0,
+      "ORDERING": 4,
+      "CREATED_BY": "admin",
+      "CREATE_DATE": "2023-04-21",
+      "MODIFIED_BY": null,
+      "MODIFY_DATE": null,
+      "FB_GROUP_ID": 869,
+      "SLA_REGION": null,
+      "REASON_GROUP": "PAKH dịch vụ MobiFiber"
+    },
+    {
+      "ID": 9,
+      "NAME": "5. Lỗi tư vấn-hỗ trợ",
+      "IS_ENABLE": "Y",
+      "PARENT_ID": 0,
+      "ORDERING": 5,
+      "CREATED_BY": "admin",
+      "CREATE_DATE": "2023-04-21",
+      "MODIFIED_BY": null,
+      "MODIFY_DATE": null,
+      "FB_GROUP_ID": 869,
+      "SLA_REGION": null,
+      "REASON_GROUP": "PAKH dịch vụ MobiFiber"
+    },
+    {
+      "ID": 10,
+      "NAME": "6. Khách hàng",
+      "IS_ENABLE": "Y",
+      "PARENT_ID": 0,
+      "ORDERING": 6,
+      "CREATED_BY": "admin",
+      "CREATE_DATE": "2023-04-21",
+      "MODIFIED_BY": null,
+      "MODIFY_DATE": null,
+      "FB_GROUP_ID": 869,
+      "SLA_REGION": null,
+      "REASON_GROUP": "PAKH dịch vụ MobiFiber"
+    },
+    {
+      "ID": 11,
+      "NAME": "7. Khác",
+      "IS_ENABLE": "Y",
+      "PARENT_ID": 0,
+      "ORDERING": 7,
+      "CREATED_BY": "admin",
+      "CREATE_DATE": "2023-04-21",
+      "MODIFIED_BY": null,
+      "MODIFY_DATE": null,
+      "FB_GROUP_ID": 869,
+      "SLA_REGION": null,
+      "REASON_GROUP": "PAKH dịch vụ MobiFiber"
+    },
+    {
+      "ID": 12,
+      "NAME": "1.1 Lỗi modem hỏng/treo",
+      "IS_ENABLE": "Y",
+      "PARENT_ID": 5,
+      "ORDERING": 1,
+      "CREATED_BY": "admin",
+      "CREATE_DATE": "2023-04-21",
+      "MODIFIED_BY": null,
+      "MODIFY_DATE": null,
+      "FB_GROUP_ID": 869,
+      "SLA_REGION": null,
+      "REASON_GROUP": "PAKH dịch vụ MobiFiber"
+    },
+    {
+      "ID": 13,
+      "NAME": "1.2 Lỗi thiết bị ONT (MC) hỏng/treo",
+      "IS_ENABLE": "Y",
+      "PARENT_ID": 5,
+      "ORDERING": 2,
+      "CREATED_BY": "admin",
+      "CREATE_DATE": "2023-04-21",
+      "MODIFIED_BY": null,
+      "MODIFY_DATE": null,
+      "FB_GROUP_ID": 869,
+      "SLA_REGION": null,
+      "REASON_GROUP": "PAKH dịch vụ MobiFiber"
+    },
+    {
+      "ID": 14,
+      "NAME": "1.3 Lỗi thiết bị Modem phía KH mất/sai cấu hình, firmware,…",
+      "IS_ENABLE": "Y",
+      "PARENT_ID": 5,
+      "ORDERING": 3,
+      "CREATED_BY": "admin",
+      "CREATE_DATE": "2023-04-21",
+      "MODIFIED_BY": null,
+      "MODIFY_DATE": null,
+      "FB_GROUP_ID": 869,
+      "SLA_REGION": null,
+      "REASON_GROUP": "PAKH dịch vụ MobiFiber"
+    }
+  ]
+}

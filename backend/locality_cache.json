@@ -1,0 +1,3482 @@
+{
+  "Yên Thủy": {
+    "district_code": "YTH",
+    "province_code": "HBI",
+    "district_name": "Yên Thủy",
+    "province_name": "Hòa Bình"
+  },
+  "Hòa Bình": {
+    "district_code": null,
+    "province_code": "HBI",
+    "district_name": null,
+    "province_name": "Hòa Bình"
+  },
+  "Nông Sơn": {
+    "district_code": "NSO",
+    "province_code": "QNA",
+    "district_name": "Nông Sơn",
+    "province_name": "Quảng Nam"
+  },
+  "Quảng Nam": {
+    "district_code": null,
+    "province_code": "QNA",
+    "district_name": null,
+    "province_name": "Quảng Nam"
+  },
+  "Bình Phước": {
+    "district_code": null,
+    "province_code": "BPH",
+    "district_name": null,
+    "province_name": "Bình Phước"
+  },
+  "Long Thành": {
+    "district_code": "LTH",
+    "province_code": "DNI",
+    "district_name": "Long Thành",
+    "province_name": "Đồng Nai"
+  },
+  "Đồng Nai": {
+    "district_code": null,
+    "province_code": "DNI",
+    "district_name": null,
+    "province_name": "Đồng Nai"
+  },
+  "Mỏ Cày Bắc": {
+    "district_code": "MCB",
+    "province_code": "BTR",
+    "district_name": "Mỏ Cày Bắc",
+    "province_name": "Bến Tre"
+  },
+  "Bến Tre": {
+    "district_code": null,
+    "province_code": "BTR",
+    "district_name": null,
+    "province_name": "Bến Tre"
+  },
+  "Mỏ Cày Nam": {
+    "district_code": "MCN",
+    "province_code": "BTR",
+    "district_name": "Mỏ Cày Nam",
+    "province_name": "Bến Tre"
+  },
+  "Giồng Riềng": {
+    "district_code": "GRI",
+    "province_code": "KGI",
+    "district_name": "Giồng Riềng",
+    "province_name": "Kiên Giang"
+  },
+  "Kiên Giang": {
+    "district_code": null,
+    "province_code": "KGI",
+    "district_name": null,
+    "province_name": "Kiên Giang"
+  },
+  "Bạc Liêu": {
+    "district_code": null,
+    "province_code": "BLI",
+    "district_name": null,
+    "province_name": "Bạc Liêu"
+  },
+  "Bù Gia Mập": {
+    "district_code": "BGM",
+    "province_code": "BPH",
+    "district_name": "Bù Gia Mập",
+    "province_name": "Bình Phước"
+  },
+  "Lệ Thủy": {
+    "district_code": "LTH",
+    "province_code": "QBI",
+    "district_name": "Lệ Thủy",
+    "province_name": "Quảng Bình"
+  },
+  "Quảng Bình": {
+    "district_code": null,
+    "province_code": "QBI",
+    "district_name": null,
+    "province_name": "Quảng Bình"
+  },
+  "Việt Yên": {
+    "district_code": "VYE",
+    "province_code": "BGI",
+    "district_name": "Việt Yên",
+    "province_name": "Bắc Giang"
+  },
+  "Bắc Giang": {
+    "district_code": null,
+    "province_code": "BGI",
+    "district_name": null,
+    "province_name": "Bắc Giang"
+  },
+  "Ngọc Hiển": {
+    "district_code": "NHI",
+    "province_code": "CMA",
+    "district_name": "Ngọc Hiển",
+    "province_name": "Cà Mau"
+  },
+  "Cà Mau": {
+    "district_code": null,
+    "province_code": "CMA",
+    "district_name": null,
+    "province_name": "Cà Mau"
+  },
+  "Lương Sơn": {
+    "district_code": "LSN",
+    "province_code": "HBI",
+    "district_name": "Lương Sơn",
+    "province_name": "Hòa Bình"
+  },
+  "Trần Văn Thời": {
+    "district_code": "TVT",
+    "province_code": "CMA",
+    "district_name": "Trần Văn Thời",
+    "province_name": "Cà Mau"
+  },
+  "Trần Đề": {
+    "district_code": "TDE",
+    "province_code": "STR",
+    "district_name": "Trần Đề",
+    "province_name": "Sóc Trăng"
+  },
+  "Sóc Trăng": {
+    "district_code": null,
+    "province_code": "STR",
+    "district_name": null,
+    "province_name": "Sóc Trăng"
+  },
+  "Phước Long": {
+    "district_code": "PLO",
+    "province_code": "BLI",
+    "district_name": "Phước Long",
+    "province_name": "Bạc Liêu"
+  },
+  "Quan Sơn": {
+    "district_code": "QSO",
+    "province_code": "THO",
+    "district_name": "Quan Sơn",
+    "province_name": "Thanh Hóa"
+  },
+  "Thanh Hóa": {
+    "district_code": null,
+    "province_code": "THO",
+    "district_name": null,
+    "province_name": "Thanh Hóa"
+  },
+  "Hàm Tân": {
+    "district_code": "HTA",
+    "province_code": "BTH",
+    "district_name": "Hàm Tân",
+    "province_name": "Bình Thuận"
+  },
+  "Bình Thuận": {
+    "district_code": null,
+    "province_code": "BTH",
+    "district_name": null,
+    "province_name": "Bình Thuận"
+  },
+  "Hậu Lộc": {
+    "district_code": "HLO",
+    "province_code": "THO",
+    "district_name": "Hậu Lộc",
+    "province_name": "Thanh Hóa"
+  },
+  "Đầm Dơi": {
+    "district_code": "DDO",
+    "province_code": "CMA",
+    "district_name": "Đầm Dơi",
+    "province_name": "Cà Mau"
+  },
+  "An Minh": {
+    "district_code": "AMI",
+    "province_code": "KGI",
+    "district_name": "An Minh",
+    "province_name": "Kiên Giang"
+  },
+  "Thanh Ba": {
+    "district_code": "TBA",
+    "province_code": "PTH",
+    "district_name": "Thanh Ba",
+    "province_name": "Phú Thọ"
+  },
+  "Phú Thọ": {
+    "district_code": null,
+    "province_code": "PTH",
+    "district_name": null,
+    "province_name": "Phú Thọ"
+  },
+  "Cái Nước": {
+    "district_code": "CNU",
+    "province_code": "CMA",
+    "district_name": "Cái Nước",
+    "province_name": "Cà Mau"
+  },
+  "Lục Nam": {
+    "district_code": "LNA",
+    "province_code": "BGI",
+    "district_name": "Lục Nam",
+    "province_name": "Bắc Giang"
+  },
+  "Chư Pứh": {
+    "district_code": "CPU",
+    "province_code": "GLA",
+    "district_name": "Chư Pứh",
+    "province_name": "Gia Lai"
+  },
+  "Gia Lai": {
+    "district_code": null,
+    "province_code": "GLA",
+    "district_name": null,
+    "province_name": "Gia Lai"
+  },
+  "Chư Sê": {
+    "district_code": "CSE",
+    "province_code": "GLA",
+    "district_name": "Chư Sê",
+    "province_name": "Gia Lai"
+  },
+  "Tuyên Hoá": {
+    "district_code": "THO",
+    "province_code": "QBI",
+    "district_name": "Tuyên Hoá",
+    "province_name": "Quảng Bình"
+  },
+  "ĐắkLắk": {
+    "district_code": null,
+    "province_code": "DLA",
+    "district_name": null,
+    "province_name": "ĐắkLắk"
+  },
+  "Kông ChRo": {
+    "district_code": "KCH",
+    "province_code": "GLA",
+    "district_name": "Kông ChRo",
+    "province_name": "Gia Lai"
+  },
+  "Ba Đình": {
+    "district_code": "BDI",
+    "province_code": "HNO",
+    "district_name": "Ba Đình",
+    "province_name": "Hà Nội"
+  },
+  "Hà Nội": {
+    "district_code": null,
+    "province_code": "HNO",
+    "district_name": null,
+    "province_name": "Hà Nội"
+  },
+  "Lai Châu": {
+    "district_code": null,
+    "province_code": "LCH",
+    "district_name": null,
+    "province_name": "Lai Châu"
+  },
+  "Mộ Đức": {
+    "district_code": "MDU",
+    "province_code": "QNG",
+    "district_name": "Mộ Đức",
+    "province_name": "Quảng Ngãi"
+  },
+  "Quảng Ngãi": {
+    "district_code": null,
+    "province_code": "QNG",
+    "district_name": null,
+    "province_name": "Quảng Ngãi"
+  },
+  "Tiên Du": {
+    "district_code": "TDU",
+    "province_code": "BNI",
+    "district_name": "Tiên Du",
+    "province_name": "Bắc Ninh"
+  },
+  "Bắc Ninh": {
+    "district_code": null,
+    "province_code": "BNI",
+    "district_name": null,
+    "province_name": "Bắc Ninh"
+  },
+  "Giang Thành": {
+    "district_code": "GTH",
+    "province_code": "KGI",
+    "district_name": "Giang Thành",
+    "province_name": "Kiên Giang"
+  },
+  "Hà Tĩnh": {
+    "district_code": null,
+    "province_code": "HTI",
+    "district_name": null,
+    "province_name": "Hà Tĩnh"
+  },
+  "Quang Bình": {
+    "district_code": "QBI",
+    "province_code": "HGA",
+    "district_name": "Quang Bình",
+    "province_name": "Hà Giang"
+  },
+  "Hà Giang": {
+    "district_code": null,
+    "province_code": "HGA",
+    "district_name": null,
+    "province_name": "Hà Giang"
+  },
+  "Yên Bái": {
+    "district_code": null,
+    "province_code": "YBA",
+    "district_name": null,
+    "province_name": "Yên Bái"
+  },
+  "Lục Yên": {
+    "district_code": "LYE",
+    "province_code": "YBA",
+    "district_name": "Lục Yên",
+    "province_name": "Yên Bái"
+  },
+  "Đồng Tháp": {
+    "district_code": null,
+    "province_code": "DTH",
+    "district_name": null,
+    "province_name": "Đồng Tháp"
+  },
+  "Quảng Ninh": {
+    "district_code": null,
+    "province_code": "QNI",
+    "district_name": null,
+    "province_name": "Quảng Ninh"
+  },
+  "Đam Rông": {
+    "district_code": "DRO",
+    "province_code": "LDO",
+    "district_name": "Đam Rông",
+    "province_name": "Lâm Đồng"
+  },
+  "Lâm Đồng": {
+    "district_code": null,
+    "province_code": "LDO",
+    "district_name": null,
+    "province_name": "Lâm Đồng"
+  },
+  "Ba Vì": {
+    "district_code": "BVI",
+    "province_code": "HNO",
+    "district_name": "Ba Vì",
+    "province_name": "Hà Nội"
+  },
+  "Hoằng Hóa": {
+    "district_code": "HHO",
+    "province_code": "THO",
+    "district_name": "Hoằng Hóa",
+    "province_name": "Thanh Hóa"
+  },
+  "Bố Trạch": {
+    "district_code": "BTR",
+    "province_code": "QBI",
+    "district_name": "Bố Trạch",
+    "province_name": "Quảng Bình"
+  },
+  "Châu Thành": {
+    "district_code": "CTH",
+    "province_code": "LAN",
+    "district_name": "Châu Thành",
+    "province_name": "Long An"
+  },
+  "Thái Thụy": {
+    "district_code": "TTH",
+    "province_code": "TBI",
+    "district_name": "Thái Thụy",
+    "province_name": "Thái Bình"
+  },
+  "Thái Bình": {
+    "district_code": null,
+    "province_code": "TBI",
+    "district_name": null,
+    "province_name": "Thái Bình"
+  },
+  "Hưng Hà": {
+    "district_code": "HHA",
+    "province_code": "TBI",
+    "district_name": "Hưng Hà",
+    "province_name": "Thái Bình"
+  },
+  "Hoàng Mai": {
+    "district_code": "HMA",
+    "province_code": "HNO",
+    "district_name": "Hoàng Mai",
+    "province_name": "Hà Nội"
+  },
+  "Đắk G Long": {
+    "district_code": "DGL",
+    "province_code": "DNO",
+    "district_name": "Đắk G Long",
+    "province_name": "Đắk Nông"
+  },
+  "Đắk Nông": {
+    "district_code": null,
+    "province_code": "DNO",
+    "district_name": null,
+    "province_name": "Đắk Nông"
+  },
+  "Hồng Ngự": {
+    "district_code": "HNG",
+    "province_code": "DTH",
+    "district_name": "Hồng Ngự",
+    "province_name": "Đồng Tháp"
+  },
+  "Đắc Song": {
+    "district_code": "DSO",
+    "province_code": "DNO",
+    "district_name": "Đắc Song",
+    "province_name": "Đắk Nông"
+  },
+  "Mê Linh": {
+    "district_code": "MLI",
+    "province_code": "HNO",
+    "district_name": "Mê Linh",
+    "province_name": "Hà Nội"
+  },
+  "Phú Ninh": {
+    "district_code": "PNI",
+    "province_code": "QNA",
+    "district_name": "Phú Ninh",
+    "province_name": "Quảng Nam"
+  },
+  "Ninh Thuận": {
+    "district_code": null,
+    "province_code": "NTH",
+    "district_name": null,
+    "province_name": "Ninh Thuận"
+  },
+  "An Giang": {
+    "district_code": null,
+    "province_code": "AGI",
+    "district_name": null,
+    "province_name": "An Giang"
+  },
+  "Yên Thành": {
+    "district_code": "YTH",
+    "province_code": "NAN",
+    "district_name": "Yên Thành",
+    "province_name": "Nghệ An"
+  },
+  "Nghệ An": {
+    "district_code": null,
+    "province_code": "NAN",
+    "district_name": null,
+    "province_name": "Nghệ An"
+  },
+  "Đắk Mil": {
+    "district_code": "DMI",
+    "province_code": "DNO",
+    "district_name": "Đắk Mil",
+    "province_name": "Đắk Nông"
+  },
+  "Đắc R'Lấp": {
+    "district_code": "DRL",
+    "province_code": "DNO",
+    "district_name": "Đắc R'Lấp",
+    "province_name": "Đắk Nông"
+  },
+  "Tháp Mười": {
+    "district_code": "TMU",
+    "province_code": "DTH",
+    "district_name": "Tháp Mười",
+    "province_name": "Đồng Tháp"
+  },
+  "Tuyên Quang": {
+    "district_code": null,
+    "province_code": "TQU",
+    "district_name": null,
+    "province_name": "Tuyên Quang"
+  },
+  "Quốc Oai": {
+    "district_code": "QOA",
+    "province_code": "HNO",
+    "district_name": "Quốc Oai",
+    "province_name": "Hà Nội"
+  },
+  "Bình Dương": {
+    "district_code": null,
+    "province_code": "BDU",
+    "district_name": null,
+    "province_name": "Bình Dương"
+  },
+  "Thuận Nam": {
+    "district_code": "TNA",
+    "province_code": "NTH",
+    "district_name": "Thuận Nam",
+    "province_name": "Ninh Thuận"
+  },
+  "Thạnh Phú": {
+    "district_code": "TPH",
+    "province_code": "BTR",
+    "district_name": "Thạnh Phú",
+    "province_name": "Bến Tre"
+  },
+  "Quế Sơn": {
+    "district_code": "QSO",
+    "province_code": "QNA",
+    "district_name": "Quế Sơn",
+    "province_name": "Quảng Nam"
+  },
+  "Hoàn Kiếm": {
+    "district_code": "HKI",
+    "province_code": "HNO",
+    "district_name": "Hoàn Kiếm",
+    "province_name": "Hà Nội"
+  },
+  "KBang": {
+    "district_code": "KBN",
+    "province_code": "GLA",
+    "district_name": "KBang",
+    "province_name": "Gia Lai"
+  },
+  "Quỳnh Phụ": {
+    "district_code": "QPH",
+    "province_code": "TBI",
+    "district_name": "Quỳnh Phụ",
+    "province_name": "Thái Bình"
+  },
+  "Điện Biên": {
+    "district_code": null,
+    "province_code": "DBI",
+    "district_name": null,
+    "province_name": "Điện Biên"
+  },
+  "Bát Xát": {
+    "district_code": "BXA",
+    "province_code": "LCA",
+    "district_name": "Bát Xát",
+    "province_name": "Lào Cai"
+  },
+  "Lào Cai": {
+    "district_code": null,
+    "province_code": "LCA",
+    "district_name": null,
+    "province_name": "Lào Cai"
+  },
+  "Ngọc Lặc": {
+    "district_code": "NLA",
+    "province_code": "THO",
+    "district_name": "Ngọc Lặc",
+    "province_name": "Thanh Hóa"
+  },
+  "Bình Sơn": {
+    "district_code": "BSO",
+    "province_code": "QNG",
+    "district_name": "Bình Sơn",
+    "province_name": "Quảng Ngãi"
+  },
+  "Bá Thước": {
+    "district_code": "BTH",
+    "province_code": "THO",
+    "district_name": "Bá Thước",
+    "province_name": "Thanh Hóa"
+  },
+  "Tây Hòa": {
+    "district_code": "THO",
+    "province_code": "PYE",
+    "district_name": "Tây Hòa",
+    "province_name": "Phú Yên"
+  },
+  "Phú Yên": {
+    "district_code": null,
+    "province_code": "PYE",
+    "district_name": null,
+    "province_name": "Phú Yên"
+  },
+  "Ia Grai": {
+    "district_code": "IGR",
+    "province_code": "GLA",
+    "district_name": "Ia Grai",
+    "province_name": "Gia Lai"
+  },
+  "QuảngTrị": {
+    "district_code": null,
+    "province_code": "QTR",
+    "district_name": null,
+    "province_name": "QuảngTrị"
+  },
+  "Thừa Thiên Huế": {
+    "district_code": null,
+    "province_code": "TTH",
+    "district_name": null,
+    "province_name": "Thừa Thiên Huế"
+  },
+  "Nga Sơn": {
+    "district_code": "NSO",
+    "province_code": "THO",
+    "district_name": "Nga Sơn",
+    "province_name": "Thanh Hóa"
+  },
+  "Như Thanh": {
+    "district_code": "NTH",
+    "province_code": "THO",
+    "district_name": "Như Thanh",
+    "province_name": "Thanh Hóa"
+  },
+  "Quan Hóa": {
+    "district_code": "QHO",
+    "province_code": "THO",
+    "district_name": "Quan Hóa",
+    "province_name": "Thanh Hóa"
+  },
+  "Quảng Xương": {
+    "district_code": "QXU",
+    "province_code": "THO",
+    "district_name": "Quảng Xương",
+    "province_name": "Thanh Hóa"
+  },
+  "Tĩnh Gia": {
+    "district_code": "TGI",
+    "province_code": "THO",
+    "district_name": "Tĩnh Gia",
+    "province_name": "Thanh Hóa"
+  },
+  "Thiệu Hóa": {
+    "district_code": "THA",
+    "province_code": "THO",
+    "district_name": "Thiệu Hóa",
+    "province_name": "Thanh Hóa"
+  },
+  "Nam Sách": {
+    "district_code": "NSA",
+    "province_code": "HDU",
+    "district_name": "Nam Sách",
+    "province_name": "Hải Dương"
+  },
+  "Hải Dương": {
+    "district_code": null,
+    "province_code": "HDU",
+    "district_name": null,
+    "province_name": "Hải Dương"
+  },
+  "Thanh Hà": {
+    "district_code": "THA",
+    "province_code": "HDU",
+    "district_name": "Thanh Hà",
+    "province_name": "Hải Dương"
+  },
+  "Bắc Mê": {
+    "district_code": "BME",
+    "province_code": "HGA",
+    "district_name": "Bắc Mê",
+    "province_name": "Hà Giang"
+  },
+  "Bắc Quang": {
+    "district_code": "BQU",
+    "province_code": "HGA",
+    "district_name": "Bắc Quang",
+    "province_name": "Hà Giang"
+  },
+  "Đồng Văn": {
+    "district_code": "DVA",
+    "province_code": "HGA",
+    "district_name": "Đồng Văn",
+    "province_name": "Hà Giang"
+  },
+  "Hoàng Su Phì": {
+    "district_code": "HSP",
+    "province_code": "HGA",
+    "district_name": "Hoàng Su Phì",
+    "province_name": "Hà Giang"
+  },
+  "Mèo Vạc": {
+    "district_code": "MVA",
+    "province_code": "HGA",
+    "district_name": "Mèo Vạc",
+    "province_name": "Hà Giang"
+  },
+  "Quản Bạ": {
+    "district_code": "QBA",
+    "province_code": "HGA",
+    "district_name": "Quản Bạ",
+    "province_name": "Hà Giang"
+  },
+  "Vị Xuyên": {
+    "district_code": "VXU",
+    "province_code": "HGA",
+    "district_name": "Vị Xuyên",
+    "province_name": "Hà Giang"
+  },
+  "Xín Mần": {
+    "district_code": "XMA",
+    "province_code": "HGA",
+    "district_name": "Xín Mần",
+    "province_name": "Hà Giang"
+  },
+  "Yên Minh": {
+    "district_code": "YMI",
+    "province_code": "HGA",
+    "district_name": "Yên Minh",
+    "province_name": "Hà Giang"
+  },
+  "Châu Thành A": {
+    "district_code": "CTA",
+    "province_code": "HGI",
+    "district_name": "Châu Thành A",
+    "province_name": "Hậu Giang"
+  },
+  "Hậu Giang": {
+    "district_code": null,
+    "province_code": "HGI",
+    "district_name": null,
+    "province_name": "Hậu Giang"
+  },
+  "Phụng Hiệp": {
+    "district_code": "PHI",
+    "province_code": "HGI",
+    "district_name": "Phụng Hiệp",
+    "province_name": "Hậu Giang"
+  },
+  "Hà Nam": {
+    "district_code": null,
+    "province_code": "HNA",
+    "district_name": null,
+    "province_name": "Hà Nam"
+  },
+  "Kim Bảng": {
+    "district_code": "KBA",
+    "province_code": "HNA",
+    "district_name": "Kim Bảng",
+    "province_name": "Hà Nam"
+  },
+  "Hải An": {
+    "district_code": "HAN",
+    "province_code": "HPH",
+    "district_name": "Hải An",
+    "province_name": "Hải Phòng"
+  },
+  "Hải Phòng": {
+    "district_code": null,
+    "province_code": "HPH",
+    "district_name": null,
+    "province_name": "Hải Phòng"
+  },
+  "Tịnh Biên": {
+    "district_code": "TBI",
+    "province_code": "AGI",
+    "district_name": "Tịnh Biên",
+    "province_name": "An Giang"
+  },
+  "Thoại Sơn": {
+    "district_code": "TSO",
+    "province_code": "AGI",
+    "district_name": "Thoại Sơn",
+    "province_name": "An Giang"
+  },
+  "Tri Tôn": {
+    "district_code": "TTO",
+    "province_code": "AGI",
+    "district_name": "Tri Tôn",
+    "province_name": "An Giang"
+  },
+  "KrôngBuk": {
+    "district_code": "KBU",
+    "province_code": "DLA",
+    "district_name": "KrôngBuk",
+    "province_name": "ĐắkLắk"
+  },
+  "Krông Ba": {
+    "district_code": "KBA",
+    "province_code": "GLA",
+    "district_name": "Krông Ba",
+    "province_name": "Gia Lai"
+  },
+  "Ứng Hòa": {
+    "district_code": "UHO",
+    "province_code": "HNO",
+    "district_name": "Ứng Hòa",
+    "province_name": "Hà Nội"
+  },
+  "Côn Đảo": {
+    "district_code": "CDA",
+    "province_code": "BRV",
+    "district_name": "Côn Đảo",
+    "province_name": "Bà Rịa - Vũng Tàu"
+  },
+  "Bà Rịa - Vũng Tàu": {
+    "district_code": null,
+    "province_code": "BRV",
+    "district_name": null,
+    "province_name": "Bà Rịa - Vũng Tàu"
+  },
+  "Ý Yên": {
+    "district_code": "YYE",
+    "province_code": "NDI",
+    "district_name": "Ý Yên",
+    "province_name": "Nam Định"
+  },
+  "Nam Định": {
+    "district_code": null,
+    "province_code": "NDI",
+    "district_name": null,
+    "province_name": "Nam Định"
+  },
+  "An Lão": {
+    "district_code": "ALA",
+    "province_code": "HPH",
+    "district_name": "An Lão",
+    "province_name": "Hải Phòng"
+  },
+  "Bình Định": {
+    "district_code": null,
+    "province_code": "BDI",
+    "district_name": null,
+    "province_name": "Bình Định"
+  },
+  "Hoài Ân": {
+    "district_code": "HAN",
+    "province_code": "BDI",
+    "district_name": "Hoài Ân",
+    "province_name": "Bình Định"
+  },
+  "Hoài Nhơn": {
+    "district_code": "HNH",
+    "province_code": "BDI",
+    "district_name": "Hoài Nhơn",
+    "province_name": "Bình Định"
+  },
+  "Phù Cát": {
+    "district_code": "PCA",
+    "province_code": "BDI",
+    "district_name": "Phù Cát",
+    "province_name": "Bình Định"
+  },
+  "Phù Mỹ": {
+    "district_code": "PMY",
+    "province_code": "BDI",
+    "district_name": "Phù Mỹ",
+    "province_name": "Bình Định"
+  },
+  "Tuy Phước": {
+    "district_code": "TPH",
+    "province_code": "BDI",
+    "district_name": "Tuy Phước",
+    "province_name": "Bình Định"
+  },
+  "Vân Canh": {
+    "district_code": "VCA",
+    "province_code": "BDI",
+    "district_name": "Vân Canh",
+    "province_name": "Bình Định"
+  },
+  "Bình Giang": {
+    "district_code": "BGI",
+    "province_code": "HDU",
+    "district_name": "Bình Giang",
+    "province_name": "Hải Dương"
+  },
+  "Cẩm Giàng": {
+    "district_code": "CGI",
+    "province_code": "HDU",
+    "district_name": "Cẩm Giàng",
+    "province_name": "Hải Dương"
+  },
+  "Chí Linh": {
+    "district_code": "CLI",
+    "province_code": "HDU",
+    "district_name": "Chí Linh",
+    "province_name": "Hải Dương"
+  },
+  "Gia Lộc": {
+    "district_code": "GLO",
+    "province_code": "HDU",
+    "district_name": "Gia Lộc",
+    "province_name": "Hải Dương"
+  },
+  "Kinh Môn": {
+    "district_code": "KMO",
+    "province_code": "HDU",
+    "district_name": "Kinh Môn",
+    "province_name": "Hải Dương"
+  },
+  "Kim Thành": {
+    "district_code": "KTH",
+    "province_code": "HDU",
+    "district_name": "Kim Thành",
+    "province_name": "Hải Dương"
+  },
+  "Ninh Giang": {
+    "district_code": "NGI",
+    "province_code": "HDU",
+    "district_name": "Ninh Giang",
+    "province_name": "Hải Dương"
+  },
+  "Tứ Kỳ": {
+    "district_code": "TKY",
+    "province_code": "HDU",
+    "district_name": "Tứ Kỳ",
+    "province_name": "Hải Dương"
+  },
+  "Thanh Miện": {
+    "district_code": "TMI",
+    "province_code": "HDU",
+    "district_name": "Thanh Miện",
+    "province_name": "Hải Dương"
+  },
+  "Triệu Sơn": {
+    "district_code": "TSO",
+    "province_code": "THO",
+    "district_name": "Triệu Sơn",
+    "province_name": "Thanh Hóa"
+  },
+  "Thạch Thành": {
+    "district_code": "TTH",
+    "province_code": "THO",
+    "district_name": "Thạch Thành",
+    "province_name": "Thanh Hóa"
+  },
+  "Thường Xuân": {
+    "district_code": "TXA",
+    "province_code": "THO",
+    "district_name": "Thường Xuân",
+    "province_name": "Thanh Hóa"
+  },
+  "Thọ Xuân": {
+    "district_code": "TXU",
+    "province_code": "THO",
+    "district_name": "Thọ Xuân",
+    "province_name": "Thanh Hóa"
+  },
+  "Vĩnh Lộc": {
+    "district_code": "VLO",
+    "province_code": "THO",
+    "district_name": "Vĩnh Lộc",
+    "province_name": "Thanh Hóa"
+  },
+  "Yên Định": {
+    "district_code": "YDI",
+    "province_code": "THO",
+    "district_name": "Yên Định",
+    "province_name": "Thanh Hóa"
+  },
+  "Thái Nguyên": {
+    "district_code": null,
+    "province_code": "TNG",
+    "district_name": null,
+    "province_name": "Thái Nguyên"
+  },
+  "Bến Cầu": {
+    "district_code": "BCA",
+    "province_code": "TNI",
+    "district_name": "Bến Cầu",
+    "province_name": "Tây Ninh"
+  },
+  "Tây Ninh": {
+    "district_code": null,
+    "province_code": "TNI",
+    "district_name": null,
+    "province_name": "Tây Ninh"
+  },
+  "Cầu Kè": {
+    "district_code": "CKE",
+    "province_code": "TVI",
+    "district_name": "Cầu Kè",
+    "province_name": "Trà Vinh"
+  },
+  "Trà Vinh": {
+    "district_code": null,
+    "province_code": "TVI",
+    "district_name": null,
+    "province_name": "Trà Vinh"
+  },
+  "Càng Long": {
+    "district_code": "CLO",
+    "province_code": "TVI",
+    "district_name": "Càng Long",
+    "province_name": "Trà Vinh"
+  },
+  "Cầu Ngang": {
+    "district_code": "CNG",
+    "province_code": "TVI",
+    "district_name": "Cầu Ngang",
+    "province_name": "Trà Vinh"
+  },
+  "Duyên Hải": {
+    "district_code": "DHA",
+    "province_code": "TVI",
+    "district_name": "Duyên Hải",
+    "province_name": "Trà Vinh"
+  },
+  "Trà Cú": {
+    "district_code": "TCU",
+    "province_code": "TVI",
+    "district_name": "Trà Cú",
+    "province_name": "Trà Vinh"
+  },
+  "Bình Tân": {
+    "district_code": "BTA",
+    "province_code": "VLO",
+    "district_name": "Bình Tân",
+    "province_name": "Vĩnh Long"
+  },
+  "Vĩnh Long": {
+    "district_code": null,
+    "province_code": "VLO",
+    "district_name": null,
+    "province_name": "Vĩnh Long"
+  },
+  "Long Hồ": {
+    "district_code": "LHO",
+    "province_code": "VLO",
+    "district_name": "Long Hồ",
+    "province_name": "Vĩnh Long"
+  },
+  "Mang Thít": {
+    "district_code": "MTH",
+    "province_code": "VLO",
+    "district_name": "Mang Thít",
+    "province_name": "Vĩnh Long"
+  },
+  "Tam Bình": {
+    "district_code": "TBI",
+    "province_code": "VLO",
+    "district_name": "Tam Bình",
+    "province_name": "Vĩnh Long"
+  },
+  "Vũng Liêm": {
+    "district_code": "VLI",
+    "province_code": "VLO",
+    "district_name": "Vũng Liêm",
+    "province_name": "Vĩnh Long"
+  },
+  "Vĩnh Phúc": {
+    "district_code": null,
+    "province_code": "VPH",
+    "district_name": null,
+    "province_name": "Vĩnh Phúc"
+  },
+  "Yên Bình": {
+    "district_code": "YBI",
+    "province_code": "YBA",
+    "district_name": "Yên Bình",
+    "province_name": "Yên Bái"
+  },
+  "An Phú": {
+    "district_code": "APH",
+    "province_code": "AGI",
+    "district_name": "An Phú",
+    "province_name": "An Giang"
+  },
+  "Chợ Mới": {
+    "district_code": "CMO",
+    "province_code": "BKA",
+    "district_name": "Chợ Mới",
+    "province_name": "Bắc Kạn"
+  },
+  "Châu Phú": {
+    "district_code": "CPH",
+    "province_code": "AGI",
+    "district_name": "Châu Phú",
+    "province_name": "An Giang"
+  },
+  "Phú Tân": {
+    "district_code": "PTA",
+    "province_code": "AGI",
+    "district_name": "Phú Tân",
+    "province_name": "An Giang"
+  },
+  "Quỳnh Lưu": {
+    "district_code": "QLU",
+    "province_code": "NAN",
+    "district_name": "Quỳnh Lưu",
+    "province_name": "Nghệ An"
+  },
+  "Cẩm Thủy": {
+    "district_code": "CTH",
+    "province_code": "THO",
+    "district_name": "Cẩm Thủy",
+    "province_name": "Thanh Hóa"
+  },
+  "Đông Sơn": {
+    "district_code": "DSO",
+    "province_code": "THO",
+    "district_name": "Đông Sơn",
+    "province_name": "Thanh Hóa"
+  },
+  "Hà Trung": {
+    "district_code": "HTR",
+    "province_code": "THO",
+    "district_name": "Hà Trung",
+    "province_name": "Thanh Hóa"
+  },
+  "Mường Lát": {
+    "district_code": "MLA",
+    "province_code": "THO",
+    "district_name": "Mường Lát",
+    "province_name": "Thanh Hóa"
+  },
+  "Nông Cống": {
+    "district_code": "NCO",
+    "province_code": "THO",
+    "district_name": "Nông Cống",
+    "province_name": "Thanh Hóa"
+  },
+  "Tây Sơn": {
+    "district_code": "TSO",
+    "province_code": "BDI",
+    "district_name": "Tây Sơn",
+    "province_name": "Bình Định"
+  },
+  "Dầu Tiếng": {
+    "district_code": "DTI",
+    "province_code": "BDU",
+    "district_name": "Dầu Tiếng",
+    "province_name": "Bình Dương"
+  },
+  "Phú Giáo": {
+    "district_code": "PGI",
+    "province_code": "BDU",
+    "district_name": "Phú Giáo",
+    "province_name": "Bình Dương"
+  },
+  "Hiệp Hòa": {
+    "district_code": "HHO",
+    "province_code": "BGI",
+    "district_name": "Hiệp Hòa",
+    "province_name": "Bắc Giang"
+  },
+  "Lạng Giang": {
+    "district_code": "LGI",
+    "province_code": "BGI",
+    "district_name": "Lạng Giang",
+    "province_name": "Bắc Giang"
+  },
+  "Mai Châu": {
+    "district_code": "MCH",
+    "province_code": "HBI",
+    "district_name": "Mai Châu",
+    "province_name": "Hòa Bình"
+  },
+  "Can Lộc": {
+    "district_code": "CLO",
+    "province_code": "HTI",
+    "district_name": "Can Lộc",
+    "province_name": "Hà Tĩnh"
+  },
+  "Hương Sơn": {
+    "district_code": "HSO",
+    "province_code": "HTI",
+    "district_name": "Hương Sơn",
+    "province_name": "Hà Tĩnh"
+  },
+  "Lộc Hà": {
+    "district_code": "LHA",
+    "province_code": "HTI",
+    "district_name": "Lộc Hà",
+    "province_name": "Hà Tĩnh"
+  },
+  "Ân Thi": {
+    "district_code": "ATH",
+    "province_code": "HYE",
+    "district_name": "Ân Thi",
+    "province_name": "Hưng Yên"
+  },
+  "Hưng Yên": {
+    "district_code": null,
+    "province_code": "HYE",
+    "district_name": null,
+    "province_name": "Hưng Yên"
+  },
+  "Khoái Châu": {
+    "district_code": "KCH",
+    "province_code": "HYE",
+    "district_name": "Khoái Châu",
+    "province_name": "Hưng Yên"
+  },
+  "Kim Động": {
+    "district_code": "KDO",
+    "province_code": "HYE",
+    "district_name": "Kim Động",
+    "province_name": "Hưng Yên"
+  },
+  "Phù Cừ": {
+    "district_code": "PCU",
+    "province_code": "HYE",
+    "district_name": "Phù Cừ",
+    "province_name": "Hưng Yên"
+  },
+  "Tiên Lữ": {
+    "district_code": "TLU",
+    "province_code": "HYE",
+    "district_name": "Tiên Lữ",
+    "province_name": "Hưng Yên"
+  },
+  "Văn Giang": {
+    "district_code": "VGI",
+    "province_code": "HYE",
+    "district_name": "Văn Giang",
+    "province_name": "Hưng Yên"
+  },
+  "Văn Lâm": {
+    "district_code": "VLA",
+    "province_code": "HYE",
+    "district_name": "Văn Lâm",
+    "province_name": "Hưng Yên"
+  },
+  "Yên Mỹ": {
+    "district_code": "YMY",
+    "province_code": "HYE",
+    "district_name": "Yên Mỹ",
+    "province_name": "Hưng Yên"
+  },
+  "An Biên": {
+    "district_code": "ABI",
+    "province_code": "KGI",
+    "district_name": "An Biên",
+    "province_name": "Kiên Giang"
+  },
+  "Lục Ngạn": {
+    "district_code": "LNG",
+    "province_code": "BGI",
+    "district_name": "Lục Ngạn",
+    "province_name": "Bắc Giang"
+  },
+  "Sơn Động": {
+    "district_code": "SDO",
+    "province_code": "BGI",
+    "district_name": "Sơn Động",
+    "province_name": "Bắc Giang"
+  },
+  "Tân Yên": {
+    "district_code": "TYE",
+    "province_code": "BGI",
+    "district_name": "Tân Yên",
+    "province_name": "Bắc Giang"
+  },
+  "Yên Dũng": {
+    "district_code": "YDU",
+    "province_code": "BGI",
+    "district_name": "Yên Dũng",
+    "province_name": "Bắc Giang"
+  },
+  "Yên Thế": {
+    "district_code": "YTH",
+    "province_code": "BGI",
+    "district_name": "Yên Thế",
+    "province_name": "Bắc Giang"
+  },
+  "Ba Bể": {
+    "district_code": "BBE",
+    "province_code": "BKA",
+    "district_name": "Ba Bể",
+    "province_name": "Bắc Kạn"
+  },
+  "Bắc Kạn": {
+    "district_code": null,
+    "province_code": "BKA",
+    "district_name": null,
+    "province_name": "Bắc Kạn"
+  },
+  "Bạch Thông": {
+    "district_code": "BTH",
+    "province_code": "BKA",
+    "district_name": "Bạch Thông",
+    "province_name": "Bắc Kạn"
+  },
+  "Chợ Đồn": {
+    "district_code": "CDO",
+    "province_code": "BKA",
+    "district_name": "Chợ Đồn",
+    "province_name": "Bắc Kạn"
+  },
+  "Na Rì": {
+    "district_code": "NRI",
+    "province_code": "BKA",
+    "district_name": "Na Rì",
+    "province_name": "Bắc Kạn"
+  },
+  "Đức Hòa": {
+    "district_code": "DHO",
+    "province_code": "LAN",
+    "district_name": "Đức Hòa",
+    "province_name": "Long An"
+  },
+  "Long An": {
+    "district_code": null,
+    "province_code": "LAN",
+    "district_name": null,
+    "province_name": "Long An"
+  },
+  "Đức Huệ": {
+    "district_code": "DHU",
+    "province_code": "LAN",
+    "district_name": "Đức Huệ",
+    "province_name": "Long An"
+  },
+  "Thạnh Hóa": {
+    "district_code": "THO",
+    "province_code": "LAN",
+    "district_name": "Thạnh Hóa",
+    "province_name": "Long An"
+  },
+  "Tân Thạnh": {
+    "district_code": "TTA",
+    "province_code": "LAN",
+    "district_name": "Tân Thạnh",
+    "province_name": "Long An"
+  },
+  "Tân Trụ": {
+    "district_code": "TTR",
+    "province_code": "LAN",
+    "district_name": "Tân Trụ",
+    "province_name": "Long An"
+  },
+  "Vĩnh Hưng": {
+    "district_code": "VHU",
+    "province_code": "LAN",
+    "district_name": "Vĩnh Hưng",
+    "province_name": "Long An"
+  },
+  "Si Ma Cai": {
+    "district_code": "SMC",
+    "province_code": "LCA",
+    "district_name": "Si Ma Cai",
+    "province_name": "Lào Cai"
+  },
+  "Bảo Lâm": {
+    "district_code": "BLM",
+    "province_code": "CBA",
+    "district_name": "Bảo Lâm",
+    "province_name": "Cao Bằng"
+  },
+  "Cát Tiên": {
+    "district_code": "CTI",
+    "province_code": "LDO",
+    "district_name": "Cát Tiên",
+    "province_name": "Lâm Đồng"
+  },
+  "Đạ Huoai": {
+    "district_code": "DHU",
+    "province_code": "LDO",
+    "district_name": "Đạ Huoai",
+    "province_name": "Lâm Đồng"
+  },
+  "Di Linh": {
+    "district_code": "DLI",
+    "province_code": "LDO",
+    "district_name": "Di Linh",
+    "province_name": "Lâm Đồng"
+  },
+  "Đức Trọng": {
+    "district_code": "DTR",
+    "province_code": "LDO",
+    "district_name": "Đức Trọng",
+    "province_name": "Lâm Đồng"
+  },
+  "Lạc Dương": {
+    "district_code": "LDU",
+    "province_code": "LDO",
+    "district_name": "Lạc Dương",
+    "province_name": "Lâm Đồng"
+  },
+  "Lâm Hà": {
+    "district_code": "LHA",
+    "province_code": "LDO",
+    "district_name": "Lâm Hà",
+    "province_name": "Lâm Đồng"
+  },
+  "Bình Gia": {
+    "district_code": "BGI",
+    "province_code": "LSO",
+    "district_name": "Bình Gia",
+    "province_name": "Lạng Sơn"
+  },
+  "Lạng Sơn": {
+    "district_code": null,
+    "province_code": "LSO",
+    "district_name": null,
+    "province_name": "Lạng Sơn"
+  },
+  "Bắc Sơn": {
+    "district_code": "BSO",
+    "province_code": "LSO",
+    "district_name": "Bắc Sơn",
+    "province_name": "Lạng Sơn"
+  },
+  "Ngân Sơn": {
+    "district_code": "NSO",
+    "province_code": "BKA",
+    "district_name": "Ngân Sơn",
+    "province_name": "Bắc Kạn"
+  },
+  "Pác Nặm": {
+    "district_code": "PNA",
+    "province_code": "BKA",
+    "district_name": "Pác Nặm",
+    "province_name": "Bắc Kạn"
+  },
+  "Đông Hải": {
+    "district_code": "DHA",
+    "province_code": "BLI",
+    "district_name": "Đông Hải",
+    "province_name": "Bạc Liêu"
+  },
+  "Gò Quao": {
+    "district_code": "GQU",
+    "province_code": "KGI",
+    "district_name": "Gò Quao",
+    "province_name": "Kiên Giang"
+  },
+  "Hòn Đất": {
+    "district_code": "HDA",
+    "province_code": "KGI",
+    "district_name": "Hòn Đất",
+    "province_name": "Kiên Giang"
+  },
+  "Kiên Lương": {
+    "district_code": "KLU",
+    "province_code": "KGI",
+    "district_name": "Kiên Lương",
+    "province_name": "Kiên Giang"
+  },
+  "Phú Quốc": {
+    "district_code": "PQU",
+    "province_code": "KGI",
+    "district_name": "Phú Quốc",
+    "province_name": "Kiên Giang"
+  },
+  "Tân Hiệp": {
+    "district_code": "THI",
+    "province_code": "KGI",
+    "district_name": "Tân Hiệp",
+    "province_name": "Kiên Giang"
+  },
+  "Vĩnh Thuận": {
+    "district_code": "VTH",
+    "province_code": "KGI",
+    "district_name": "Vĩnh Thuận",
+    "province_name": "Kiên Giang"
+  },
+  "Khánh Hòa": {
+    "district_code": null,
+    "province_code": "KHO",
+    "district_name": null,
+    "province_name": "Khánh Hòa"
+  },
+  "Diên Khánh": {
+    "district_code": "DKH",
+    "province_code": "KHO",
+    "district_name": "Diên Khánh",
+    "province_name": "Khánh Hòa"
+  },
+  "Đắk Hà": {
+    "district_code": "DHA",
+    "province_code": "KON",
+    "district_name": "Đắk Hà",
+    "province_name": "Tỉnh KonTum"
+  },
+  "Tỉnh KonTum": {
+    "district_code": null,
+    "province_code": "KON",
+    "district_name": null,
+    "province_name": "Tỉnh KonTum"
+  },
+  "Đắk Tô": {
+    "district_code": "DTO",
+    "province_code": "KON",
+    "district_name": "Đắk Tô",
+    "province_name": "Tỉnh KonTum"
+  },
+  "Kon Rẫy": {
+    "district_code": "KON",
+    "province_code": "KON",
+    "district_name": "Kon Rẫy",
+    "province_name": "Tỉnh KonTum"
+  },
+  "KonPlong": {
+    "district_code": "KOP",
+    "province_code": "KON",
+    "district_name": "KonPlong",
+    "province_name": "Tỉnh KonTum"
+  },
+  "Ngọc Hồi": {
+    "district_code": "NHO",
+    "province_code": "KON",
+    "district_name": "Ngọc Hồi",
+    "province_name": "Tỉnh KonTum"
+  },
+  "Hồng Dân": {
+    "district_code": "HDA",
+    "province_code": "BLI",
+    "district_name": "Hồng Dân",
+    "province_name": "Bạc Liêu"
+  },
+  "Vĩnh Lợi": {
+    "district_code": "VLO",
+    "province_code": "BLI",
+    "district_name": "Vĩnh Lợi",
+    "province_name": "Bạc Liêu"
+  },
+  "Lương Tài": {
+    "district_code": "LTA",
+    "province_code": "BNI",
+    "district_name": "Lương Tài",
+    "province_name": "Bắc Ninh"
+  },
+  "Quế Võ": {
+    "district_code": "QVO",
+    "province_code": "BNI",
+    "district_name": "Quế Võ",
+    "province_name": "Bắc Ninh"
+  },
+  "Thuận Thành": {
+    "district_code": "TTH",
+    "province_code": "BNI",
+    "district_name": "Thuận Thành",
+    "province_name": "Bắc Ninh"
+  },
+  "Yên Phong": {
+    "district_code": "YPH",
+    "province_code": "BNI",
+    "district_name": "Yên Phong",
+    "province_name": "Bắc Ninh"
+  },
+  "Bù Đăng": {
+    "district_code": "BDA",
+    "province_code": "BPH",
+    "district_name": "Bù Đăng",
+    "province_name": "Bình Phước"
+  },
+  "Dương Minh Châu": {
+    "district_code": "DMC",
+    "province_code": "TNI",
+    "district_name": "Dương Minh Châu",
+    "province_name": "Tây Ninh"
+  },
+  "Hòa Thành": {
+    "district_code": "HTH",
+    "province_code": "TNI",
+    "district_name": "Hòa Thành",
+    "province_name": "Tây Ninh"
+  },
+  "Thanh Liêm": {
+    "district_code": "TLI",
+    "province_code": "HNA",
+    "district_name": "Thanh Liêm",
+    "province_name": "Hà Nam"
+  },
+  "Đông Anh": {
+    "district_code": "DAN",
+    "province_code": "HNO",
+    "district_name": "Đông Anh",
+    "province_name": "Hà Nội"
+  },
+  "Đống Đa": {
+    "district_code": "DDA",
+    "province_code": "HNO",
+    "district_name": "Đống Đa",
+    "province_name": "Hà Nội"
+  },
+  "Gia Lâm": {
+    "district_code": "GLA",
+    "province_code": "HNO",
+    "district_name": "Gia Lâm",
+    "province_name": "Hà Nội"
+  },
+  "Hai Bà Trưng": {
+    "district_code": "HBT",
+    "province_code": "HNO",
+    "district_name": "Hai Bà Trưng",
+    "province_name": "Hà Nội"
+  },
+  "Hà Đông": {
+    "district_code": "HDO",
+    "province_code": "HNO",
+    "district_name": "Hà Đông",
+    "province_name": "Hà Nội"
+  },
+  "Long Biên": {
+    "district_code": "LBI",
+    "province_code": "HNO",
+    "district_name": "Long Biên",
+    "province_name": "Hà Nội"
+  },
+  "Sóc Sơn": {
+    "district_code": "SSO",
+    "province_code": "HNO",
+    "district_name": "Sóc Sơn",
+    "province_name": "Hà Nội"
+  },
+  "Thanh Trì": {
+    "district_code": "TTR",
+    "province_code": "HNO",
+    "district_name": "Thanh Trì",
+    "province_name": "Hà Nội"
+  },
+  "Thanh Xuân": {
+    "district_code": "TXU",
+    "province_code": "HNO",
+    "district_name": "Thanh Xuân",
+    "province_name": "Hà Nội"
+  },
+  "An Dương": {
+    "district_code": "ADU",
+    "province_code": "HPH",
+    "district_name": "An Dương",
+    "province_name": "Hải Phòng"
+  },
+  "Hồng Bàng": {
+    "district_code": "HBA",
+    "province_code": "HPH",
+    "district_name": "Hồng Bàng",
+    "province_name": "Hải Phòng"
+  },
+  "Kiến An": {
+    "district_code": "KAN",
+    "province_code": "HPH",
+    "district_name": "Kiến An",
+    "province_name": "Hải Phòng"
+  },
+  "Vĩnh Bảo": {
+    "district_code": "VBA",
+    "province_code": "HPH",
+    "district_name": "Vĩnh Bảo",
+    "province_name": "Hải Phòng"
+  },
+  "Vị Thủy": {
+    "district_code": "VTH",
+    "province_code": "HGI",
+    "district_name": "Vị Thủy",
+    "province_name": "Hậu Giang"
+  },
+  "Bình Lục": {
+    "district_code": "BLU",
+    "province_code": "HNA",
+    "district_name": "Bình Lục",
+    "province_name": "Hà Nam"
+  },
+  "Lý Nhân": {
+    "district_code": "LNH",
+    "province_code": "HNA",
+    "district_name": "Lý Nhân",
+    "province_name": "Hà Nam"
+  },
+  "Tân Biên": {
+    "district_code": "TBI",
+    "province_code": "TNI",
+    "district_name": "Tân Biên",
+    "province_name": "Tây Ninh"
+  },
+  "A Lưới": {
+    "district_code": "ALU",
+    "province_code": "TTH",
+    "district_name": "A Lưới",
+    "province_name": "Thừa Thiên Huế"
+  },
+  "Phú Vang": {
+    "district_code": "PVA",
+    "province_code": "TTH",
+    "district_name": "Phú Vang",
+    "province_name": "Thừa Thiên Huế"
+  },
+  "Cẩm Xuyên": {
+    "district_code": "CXU",
+    "province_code": "HTI",
+    "district_name": "Cẩm Xuyên",
+    "province_name": "Hà Tĩnh"
+  },
+  "Bù Đốp": {
+    "district_code": "BDO",
+    "province_code": "BPH",
+    "district_name": "Bù Đốp",
+    "province_name": "Bình Phước"
+  },
+  "Hớn Quản": {
+    "district_code": "HQU",
+    "province_code": "BPH",
+    "district_name": "Hớn Quản",
+    "province_name": "Bình Phước"
+  },
+  "Đồng Phú": {
+    "district_code": "DPH",
+    "province_code": "BPH",
+    "district_name": "Đồng Phú",
+    "province_name": "Bình Phước"
+  },
+  "Lộc Ninh": {
+    "district_code": "LNI",
+    "province_code": "BPH",
+    "district_name": "Lộc Ninh",
+    "province_name": "Bình Phước"
+  },
+  "Châu Đức": {
+    "district_code": "CDU",
+    "province_code": "BRV",
+    "district_name": "Châu Đức",
+    "province_name": "Bà Rịa - Vũng Tàu"
+  },
+  "Đất Đỏ": {
+    "district_code": "DDO",
+    "province_code": "BRV",
+    "district_name": "Đất Đỏ",
+    "province_name": "Bà Rịa - Vũng Tàu"
+  },
+  "Long Điền": {
+    "district_code": "LDI",
+    "province_code": "BRV",
+    "district_name": "Long Điền",
+    "province_name": "Bà Rịa - Vũng Tàu"
+  },
+  "Cầu Giấy": {
+    "district_code": "CGI",
+    "province_code": "HNO",
+    "district_name": "Cầu Giấy",
+    "province_name": "Hà Nội"
+  },
+  "Tây Hồ": {
+    "district_code": "THO",
+    "province_code": "HNO",
+    "district_name": "Tây Hồ",
+    "province_name": "Hà Nội"
+  },
+  "Lê Chân": {
+    "district_code": "LCH",
+    "province_code": "HPH",
+    "district_name": "Lê Chân",
+    "province_name": "Hải Phòng"
+  },
+  "Ngô Quyền": {
+    "district_code": "NQU",
+    "province_code": "HPH",
+    "district_name": "Ngô Quyền",
+    "province_name": "Hải Phòng"
+  },
+  "Tiểu Cần": {
+    "district_code": "TCA",
+    "province_code": "TVI",
+    "district_name": "Tiểu Cần",
+    "province_name": "Trà Vinh"
+  },
+  "Mù Cang Chải": {
+    "district_code": "MCC",
+    "province_code": "YBA",
+    "district_name": "Mù Cang Chải",
+    "province_name": "Yên Bái"
+  },
+  "Hương Khê": {
+    "district_code": "HKH",
+    "province_code": "HTI",
+    "district_name": "Hương Khê",
+    "province_name": "Hà Tĩnh"
+  },
+  "Kỳ Anh": {
+    "district_code": "KAN",
+    "province_code": "HTI",
+    "district_name": "Kỳ Anh",
+    "province_name": "Hà Tĩnh"
+  },
+  "Nghi Xuân": {
+    "district_code": "NXU",
+    "province_code": "HTI",
+    "district_name": "Nghi Xuân",
+    "province_name": "Hà Tĩnh"
+  },
+  "Thạch Hà": {
+    "district_code": "THA",
+    "province_code": "HTI",
+    "district_name": "Thạch Hà",
+    "province_name": "Hà Tĩnh"
+  },
+  "Mỹ Hào": {
+    "district_code": "MHA",
+    "province_code": "HYE",
+    "district_name": "Mỹ Hào",
+    "province_name": "Hưng Yên"
+  },
+  "Thủy Nguyên": {
+    "district_code": "TNG",
+    "province_code": "HPH",
+    "district_name": "Thủy Nguyên",
+    "province_name": "Hải Phòng"
+  },
+  "Vũ Thư": {
+    "district_code": "VTH",
+    "province_code": "TBI",
+    "district_name": "Vũ Thư",
+    "province_name": "Thái Bình"
+  },
+  "Cam Lâm": {
+    "district_code": "CLA",
+    "province_code": "KHO",
+    "district_name": "Cam Lâm",
+    "province_name": "Khánh Hòa"
+  },
+  "Khánh Vĩnh": {
+    "district_code": "KVI",
+    "province_code": "KHO",
+    "district_name": "Khánh Vĩnh",
+    "province_name": "Khánh Hòa"
+  },
+  "Vạn Ninh": {
+    "district_code": "VNI",
+    "province_code": "KHO",
+    "district_name": "Vạn Ninh",
+    "province_name": "Khánh Hòa"
+  },
+  "ĐắkGLây": {
+    "district_code": "DAK",
+    "province_code": "KON",
+    "district_name": "ĐắkGLây",
+    "province_name": "Tỉnh KonTum"
+  },
+  "Bến Lức": {
+    "district_code": "BLU",
+    "province_code": "LAN",
+    "district_name": "Bến Lức",
+    "province_name": "Long An"
+  },
+  "Cần Đước": {
+    "district_code": "CDU",
+    "province_code": "LAN",
+    "district_name": "Cần Đước",
+    "province_name": "Long An"
+  },
+  "Cần Giuộc": {
+    "district_code": "CGI",
+    "province_code": "LAN",
+    "district_name": "Cần Giuộc",
+    "province_name": "Long An"
+  },
+  "Chơn Thành": {
+    "district_code": "CTH",
+    "province_code": "BPH",
+    "district_name": "Chơn Thành",
+    "province_name": "Bình Phước"
+  },
+  "Chi Lăng": {
+    "district_code": "CLA",
+    "province_code": "LSO",
+    "district_name": "Chi Lăng",
+    "province_name": "Lạng Sơn"
+  },
+  "Cao Lộc": {
+    "district_code": "CLO",
+    "province_code": "LSO",
+    "district_name": "Cao Lộc",
+    "province_name": "Lạng Sơn"
+  },
+  "Đình Lập": {
+    "district_code": "DLA",
+    "province_code": "LSO",
+    "district_name": "Đình Lập",
+    "province_name": "Lạng Sơn"
+  },
+  "Hữu Lũng": {
+    "district_code": "HLU",
+    "province_code": "LSO",
+    "district_name": "Hữu Lũng",
+    "province_name": "Lạng Sơn"
+  },
+  "Lộc Bình": {
+    "district_code": "LBI",
+    "province_code": "LSO",
+    "district_name": "Lộc Bình",
+    "province_name": "Lạng Sơn"
+  },
+  "Tràng Định": {
+    "district_code": "TDI",
+    "province_code": "LSO",
+    "district_name": "Tràng Định",
+    "province_name": "Lạng Sơn"
+  },
+  "Văn Lãng": {
+    "district_code": "VLA",
+    "province_code": "LSO",
+    "district_name": "Văn Lãng",
+    "province_name": "Lạng Sơn"
+  },
+  "Văn Quan": {
+    "district_code": "VQU",
+    "province_code": "LSO",
+    "district_name": "Văn Quan",
+    "province_name": "Lạng Sơn"
+  },
+  "Anh Sơn": {
+    "district_code": "ASO",
+    "province_code": "NAN",
+    "district_name": "Anh Sơn",
+    "province_name": "Nghệ An"
+  },
+  "Con Cuông": {
+    "district_code": "CCU",
+    "province_code": "NAN",
+    "district_name": "Con Cuông",
+    "province_name": "Nghệ An"
+  },
+  "Diễn Châu": {
+    "district_code": "DCH",
+    "province_code": "NAN",
+    "district_name": "Diễn Châu",
+    "province_name": "Nghệ An"
+  },
+  "Đô Lương": {
+    "district_code": "DLU",
+    "province_code": "NAN",
+    "district_name": "Đô Lương",
+    "province_name": "Nghệ An"
+  },
+  "Hưng Nguyên": {
+    "district_code": "HNG",
+    "province_code": "NAN",
+    "district_name": "Hưng Nguyên",
+    "province_name": "Nghệ An"
+  },
+  "Nam Đàn": {
+    "district_code": "NDA",
+    "province_code": "NAN",
+    "district_name": "Nam Đàn",
+    "province_name": "Nghệ An"
+  },
+  "Nghĩa Đàn": {
+    "district_code": "NDN",
+    "province_code": "NAN",
+    "district_name": "Nghĩa Đàn",
+    "province_name": "Nghệ An"
+  },
+  "Cao Bằng": {
+    "district_code": null,
+    "province_code": "CBA",
+    "district_name": null,
+    "province_name": "Cao Bằng"
+  },
+  "Điện Biên Đông": {
+    "district_code": "DBD",
+    "province_code": "DBI",
+    "district_name": "Điện Biên Đông",
+    "province_name": "Điện Biên"
+  },
+  "Tuần Giáo": {
+    "district_code": "TGI",
+    "province_code": "DBI",
+    "district_name": "Tuần Giáo",
+    "province_name": "Điện Biên"
+  },
+  "Hải Châu": {
+    "district_code": "HCH",
+    "province_code": "DNA",
+    "district_name": "Hải Châu",
+    "province_name": "Đà Nẵng"
+  },
+  "Đà Nẵng": {
+    "district_code": null,
+    "province_code": "DNA",
+    "district_name": null,
+    "province_name": "Đà Nẵng"
+  },
+  "Đà Bắc": {
+    "district_code": "DBA",
+    "province_code": "HBI",
+    "district_name": "Đà Bắc",
+    "province_name": "Hòa Bình"
+  },
+  "Kim Bôi": {
+    "district_code": "KBO",
+    "province_code": "HBI",
+    "district_name": "Kim Bôi",
+    "province_name": "Hòa Bình"
+  },
+  "Lạc Sơn": {
+    "district_code": "LSO",
+    "province_code": "HBI",
+    "district_name": "Lạc Sơn",
+    "province_name": "Hòa Bình"
+  },
+  "Tân Lạc": {
+    "district_code": "TLA",
+    "province_code": "HBI",
+    "district_name": "Tân Lạc",
+    "province_name": "Hòa Bình"
+  },
+  "Duy Tiên": {
+    "district_code": "DTI",
+    "province_code": "HNA",
+    "district_name": "Duy Tiên",
+    "province_name": "Hà Nam"
+  },
+  "Cát Hải": {
+    "district_code": "CHA",
+    "province_code": "HPH",
+    "district_name": "Cát Hải",
+    "province_name": "Hải Phòng"
+  },
+  "Kiến Thụy": {
+    "district_code": "KTH",
+    "province_code": "HPH",
+    "district_name": "Kiến Thụy",
+    "province_name": "Hải Phòng"
+  },
+  "Tiên Lãng": {
+    "district_code": "TLA",
+    "province_code": "HPH",
+    "district_name": "Tiên Lãng",
+    "province_name": "Hải Phòng"
+  },
+  "Tiên Yên": {
+    "district_code": "TYE",
+    "province_code": "QNI",
+    "district_name": "Tiên Yên",
+    "province_name": "Quảng Ninh"
+  },
+  "Mộc Hóa": {
+    "district_code": "MHO",
+    "province_code": "LAN",
+    "district_name": "Mộc Hóa",
+    "province_name": "Long An"
+  },
+  "Tân Hưng": {
+    "district_code": "THU",
+    "province_code": "LAN",
+    "district_name": "Tân Hưng",
+    "province_name": "Long An"
+  },
+  "Bắc Bình": {
+    "district_code": "BBI",
+    "province_code": "BTH",
+    "district_name": "Bắc Bình",
+    "province_name": "Bình Thuận"
+  },
+  "Đức Linh": {
+    "district_code": "DLI",
+    "province_code": "BTH",
+    "district_name": "Đức Linh",
+    "province_name": "Bình Thuận"
+  },
+  "Hàm Thuận Bắc": {
+    "district_code": "HTB",
+    "province_code": "BTH",
+    "district_name": "Hàm Thuận Bắc",
+    "province_name": "Bình Thuận"
+  },
+  "Hàm Thuận Nam": {
+    "district_code": "HTN",
+    "province_code": "BTH",
+    "district_name": "Hàm Thuận Nam",
+    "province_name": "Bình Thuận"
+  },
+  "Tánh Linh": {
+    "district_code": "TLI",
+    "province_code": "BTH",
+    "district_name": "Tánh Linh",
+    "province_name": "Bình Thuận"
+  },
+  "Bình Đại": {
+    "district_code": "BDA",
+    "province_code": "BTR",
+    "district_name": "Bình Đại",
+    "province_name": "Bến Tre"
+  },
+  "Ba Tri": {
+    "district_code": "BTI",
+    "province_code": "BTR",
+    "district_name": "Ba Tri",
+    "province_name": "Bến Tre"
+  },
+  "Nghi Lộc": {
+    "district_code": "NLO",
+    "province_code": "NAN",
+    "district_name": "Nghi Lộc",
+    "province_name": "Nghệ An"
+  },
+  "Chợ Lách": {
+    "district_code": "CLA",
+    "province_code": "BTR",
+    "district_name": "Chợ Lách",
+    "province_name": "Bến Tre"
+  },
+  "Giồng Trôm": {
+    "district_code": "GTR",
+    "province_code": "BTR",
+    "district_name": "Giồng Trôm",
+    "province_name": "Bến Tre"
+  },
+  "Bảo Lạc": {
+    "district_code": "BLA",
+    "province_code": "CBA",
+    "district_name": "Bảo Lạc",
+    "province_name": "Cao Bằng"
+  },
+  "Hòa An": {
+    "district_code": "HAN",
+    "province_code": "CBA",
+    "district_name": "Hòa An",
+    "province_name": "Cao Bằng"
+  },
+  "Hạ Lang": {
+    "district_code": "HLA",
+    "province_code": "CBA",
+    "district_name": "Hạ Lang",
+    "province_name": "Cao Bằng"
+  },
+  "Hà Quảng": {
+    "district_code": "HQU",
+    "province_code": "CBA",
+    "district_name": "Hà Quảng",
+    "province_name": "Cao Bằng"
+  },
+  "Nguyên Bình": {
+    "district_code": "NBI",
+    "province_code": "CBA",
+    "district_name": "Nguyên Bình",
+    "province_name": "Cao Bằng"
+  },
+  "Thạch An": {
+    "district_code": "TAN",
+    "province_code": "CBA",
+    "district_name": "Thạch An",
+    "province_name": "Cao Bằng"
+  },
+  "Trùng Khánh": {
+    "district_code": "TKH",
+    "province_code": "CBA",
+    "district_name": "Trùng Khánh",
+    "province_name": "Cao Bằng"
+  },
+  "Trà Lĩnh": {
+    "district_code": "TLI",
+    "province_code": "CBA",
+    "district_name": "Trà Lĩnh",
+    "province_name": "Cao Bằng"
+  },
+  "Thông Nông": {
+    "district_code": "TNO",
+    "province_code": "CBA",
+    "district_name": "Thông Nông",
+    "province_name": "Cao Bằng"
+  },
+  "Thanh Sơn": {
+    "district_code": "TSO",
+    "province_code": "PTH",
+    "district_name": "Thanh Sơn",
+    "province_name": "Phú Thọ"
+  },
+  "Yên Lập": {
+    "district_code": "YLA",
+    "province_code": "PTH",
+    "district_name": "Yên Lập",
+    "province_name": "Phú Thọ"
+  },
+  "Đông Hòa": {
+    "district_code": "DHO",
+    "province_code": "PYE",
+    "district_name": "Đông Hòa",
+    "province_name": "Phú Yên"
+  },
+  "Phú Hoà": {
+    "district_code": "PHO",
+    "province_code": "PYE",
+    "district_name": "Phú Hoà",
+    "province_name": "Phú Yên"
+  },
+  "Sông Hinh": {
+    "district_code": "SHI",
+    "province_code": "PYE",
+    "district_name": "Sông Hinh",
+    "province_name": "Phú Yên"
+  },
+  "Sơn Hoà": {
+    "district_code": "SHO",
+    "province_code": "PYE",
+    "district_name": "Sơn Hoà",
+    "province_name": "Phú Yên"
+  },
+  "Tuy An": {
+    "district_code": "TAN",
+    "province_code": "PYE",
+    "district_name": "Tuy An",
+    "province_name": "Phú Yên"
+  },
+  "Minh Hóa": {
+    "district_code": "MHO",
+    "province_code": "QBI",
+    "district_name": "Minh Hóa",
+    "province_name": "Quảng Bình"
+  },
+  "Thống Nhất": {
+    "district_code": "TNH",
+    "province_code": "DNI",
+    "district_name": "Thống Nhất",
+    "province_name": "Đồng Nai"
+  },
+  "Quảng Trạch": {
+    "district_code": "QTR",
+    "province_code": "QBI",
+    "district_name": "Quảng Trạch",
+    "province_name": "Quảng Bình"
+  },
+  "Gia Viễn": {
+    "district_code": "GVI",
+    "province_code": "NBI",
+    "district_name": "Gia Viễn",
+    "province_name": "Ninh Bình"
+  },
+  "Ninh Bình": {
+    "district_code": null,
+    "province_code": "NBI",
+    "district_name": null,
+    "province_name": "Ninh Bình"
+  },
+  "Đông Giang": {
+    "district_code": "DGI",
+    "province_code": "QNA",
+    "district_name": "Đông Giang",
+    "province_name": "Quảng Nam"
+  },
+  "Duy Xuyên": {
+    "district_code": "DXU",
+    "province_code": "QNA",
+    "district_name": "Duy Xuyên",
+    "province_name": "Quảng Nam"
+  },
+  "Hiệp Đức": {
+    "district_code": "HDU",
+    "province_code": "QNA",
+    "district_name": "Hiệp Đức",
+    "province_name": "Quảng Nam"
+  },
+  "Xuyên Mộc": {
+    "district_code": "XMO",
+    "province_code": "BRV",
+    "district_name": "Xuyên Mộc",
+    "province_name": "Bà Rịa - Vũng Tàu"
+  },
+  "Tuy Phong": {
+    "district_code": "TPH",
+    "province_code": "BTH",
+    "district_name": "Tuy Phong",
+    "province_name": "Bình Thuận"
+  },
+  "Kỳ Sơn": {
+    "district_code": "KSO",
+    "province_code": "HBI",
+    "district_name": "Kỳ Sơn",
+    "province_name": "Hòa Bình"
+  },
+  "Năm Căn": {
+    "district_code": "NCA",
+    "province_code": "CMA",
+    "district_name": "Năm Căn",
+    "province_name": "Cà Mau"
+  },
+  "U Minh": {
+    "district_code": "UMI",
+    "province_code": "CMA",
+    "district_name": "U Minh",
+    "province_name": "Cà Mau"
+  },
+  "Lập Thạch": {
+    "district_code": "LTH",
+    "province_code": "VPH",
+    "district_name": "Lập Thạch",
+    "province_name": "Vĩnh Phúc"
+  },
+  "Cư Kuin": {
+    "district_code": "CKU",
+    "province_code": "DLA",
+    "district_name": "Cư Kuin",
+    "province_name": "ĐắkLắk"
+  },
+  "Cư M'gar": {
+    "district_code": "CMG",
+    "province_code": "DLA",
+    "district_name": "Cư M'gar",
+    "province_name": "ĐắkLắk"
+  },
+  "Ea Kar": {
+    "district_code": "EKA",
+    "province_code": "DLA",
+    "district_name": "Ea Kar",
+    "province_name": "ĐắkLắk"
+  },
+  "Núi Thành": {
+    "district_code": "NTH",
+    "province_code": "QNA",
+    "district_name": "Núi Thành",
+    "province_name": "Quảng Nam"
+  },
+  "Phước Sơn": {
+    "district_code": "PSO",
+    "province_code": "QNA",
+    "district_name": "Phước Sơn",
+    "province_name": "Quảng Nam"
+  },
+  "Thăng Bình": {
+    "district_code": "TBI",
+    "province_code": "QNA",
+    "district_name": "Thăng Bình",
+    "province_name": "Quảng Nam"
+  },
+  "Ba Tơ": {
+    "district_code": "BTO",
+    "province_code": "QNG",
+    "district_name": "Ba Tơ",
+    "province_name": "Quảng Ngãi"
+  },
+  "Đức Phổ": {
+    "district_code": "DPH",
+    "province_code": "QNG",
+    "district_name": "Đức Phổ",
+    "province_name": "Quảng Ngãi"
+  },
+  "Minh Long": {
+    "district_code": "MLO",
+    "province_code": "QNG",
+    "district_name": "Minh Long",
+    "province_name": "Quảng Ngãi"
+  },
+  "Nghĩa Hành": {
+    "district_code": "NHA",
+    "province_code": "QNG",
+    "district_name": "Nghĩa Hành",
+    "province_name": "Quảng Ngãi"
+  },
+  "Sơn Hà": {
+    "district_code": "SHA",
+    "province_code": "QNG",
+    "district_name": "Sơn Hà",
+    "province_name": "Quảng Ngãi"
+  },
+  "Sơn Tịnh": {
+    "district_code": "STI",
+    "province_code": "QNG",
+    "district_name": "Sơn Tịnh",
+    "province_name": "Quảng Ngãi"
+  },
+  "Trà Bồng": {
+    "district_code": "TBO",
+    "province_code": "QNG",
+    "district_name": "Trà Bồng",
+    "province_name": "Quảng Ngãi"
+  },
+  "Tư Nghĩa": {
+    "district_code": "TNG",
+    "province_code": "QNG",
+    "district_name": "Tư Nghĩa",
+    "province_name": "Quảng Ngãi"
+  },
+  "Bình Liêu": {
+    "district_code": "BLI",
+    "province_code": "QNI",
+    "district_name": "Bình Liêu",
+    "province_name": "Quảng Ninh"
+  },
+  "Hàm Yên": {
+    "district_code": "HYE",
+    "province_code": "TQU",
+    "district_name": "Hàm Yên",
+    "province_name": "Tuyên Quang"
+  },
+  "Thanh Chương": {
+    "district_code": "TCH",
+    "province_code": "NAN",
+    "district_name": "Thanh Chương",
+    "province_name": "Nghệ An"
+  },
+  "Tân Kỳ": {
+    "district_code": "TKY",
+    "province_code": "NAN",
+    "district_name": "Tân Kỳ",
+    "province_name": "Nghệ An"
+  },
+  "Kim Sơn": {
+    "district_code": "KSO",
+    "province_code": "NBI",
+    "district_name": "Kim Sơn",
+    "province_name": "Ninh Bình"
+  },
+  "Yên Khánh": {
+    "district_code": "YKH",
+    "province_code": "NBI",
+    "district_name": "Yên Khánh",
+    "province_name": "Ninh Bình"
+  },
+  "Hải Hậu": {
+    "district_code": "HHA",
+    "province_code": "NDI",
+    "district_name": "Hải Hậu",
+    "province_name": "Nam Định"
+  },
+  "Nam Trực": {
+    "district_code": "NTR",
+    "province_code": "NDI",
+    "district_name": "Nam Trực",
+    "province_name": "Nam Định"
+  },
+  "Xuân Trường": {
+    "district_code": "XTR",
+    "province_code": "NDI",
+    "district_name": "Xuân Trường",
+    "province_name": "Nam Định"
+  },
+  "Bác ái": {
+    "district_code": "BAI",
+    "province_code": "NTH",
+    "district_name": "Bác ái",
+    "province_name": "Ninh Thuận"
+  },
+  "Ninh Hải": {
+    "district_code": "NHA",
+    "province_code": "NTH",
+    "district_name": "Ninh Hải",
+    "province_name": "Ninh Thuận"
+  },
+  "Ea Súp": {
+    "district_code": "ESU",
+    "province_code": "DLA",
+    "district_name": "Ea Súp",
+    "province_name": "ĐắkLắk"
+  },
+  "Krông Bông": {
+    "district_code": "KBO",
+    "province_code": "DLA",
+    "district_name": "Krông Bông",
+    "province_name": "ĐắkLắk"
+  },
+  "Krông Năng": {
+    "district_code": "KNA",
+    "province_code": "DLA",
+    "district_name": "Krông Năng",
+    "province_name": "ĐắkLắk"
+  },
+  "Krông Pắc": {
+    "district_code": "KPA",
+    "province_code": "DLA",
+    "district_name": "Krông Pắc",
+    "province_name": "ĐắkLắk"
+  },
+  "Lắc": {
+    "district_code": "LAC",
+    "province_code": "DLA",
+    "district_name": "Lắc",
+    "province_name": "ĐắkLắk"
+  },
+  "M'Drắc": {
+    "district_code": "MDR",
+    "province_code": "DLA",
+    "district_name": "M'Drắc",
+    "province_name": "ĐắkLắk"
+  },
+  "Sơn Trà": {
+    "district_code": "STR",
+    "province_code": "DNA",
+    "district_name": "Sơn Trà",
+    "province_name": "Đà Nẵng"
+  },
+  "Thanh Khê": {
+    "district_code": "TKH",
+    "province_code": "DNA",
+    "district_name": "Thanh Khê",
+    "province_name": "Đà Nẵng"
+  },
+  "Cẩm Mỹ": {
+    "district_code": "CMY",
+    "province_code": "DNI",
+    "district_name": "Cẩm Mỹ",
+    "province_name": "Đồng Nai"
+  },
+  "Yên Mô": {
+    "district_code": "YMO",
+    "province_code": "NBI",
+    "district_name": "Yên Mô",
+    "province_name": "Ninh Bình"
+  },
+  "Nghĩa Hưng": {
+    "district_code": "NHU",
+    "province_code": "NDI",
+    "district_name": "Nghĩa Hưng",
+    "province_name": "Nam Định"
+  },
+  "Vụ Bản": {
+    "district_code": "VBA",
+    "province_code": "NDI",
+    "district_name": "Vụ Bản",
+    "province_name": "Nam Định"
+  },
+  "Ninh Phước": {
+    "district_code": "NPH",
+    "province_code": "NTH",
+    "district_name": "Ninh Phước",
+    "province_name": "Ninh Thuận"
+  },
+  "Ninh Sơn": {
+    "district_code": "NSO",
+    "province_code": "NTH",
+    "district_name": "Ninh Sơn",
+    "province_name": "Ninh Thuận"
+  },
+  "Thuận Bắc": {
+    "district_code": "TBA",
+    "province_code": "NTH",
+    "district_name": "Thuận Bắc",
+    "province_name": "Ninh Thuận"
+  },
+  "Lâm Thao": {
+    "district_code": "LTH",
+    "province_code": "PTH",
+    "district_name": "Lâm Thao",
+    "province_name": "Phú Thọ"
+  },
+  "Gia Bình": {
+    "district_code": "GBI",
+    "province_code": "BNI",
+    "district_name": "Gia Bình",
+    "province_name": "Bắc Ninh"
+  },
+  "Đơn Dương": {
+    "district_code": "DDU",
+    "province_code": "LDO",
+    "district_name": "Đơn Dương",
+    "province_name": "Lâm Đồng"
+  },
+  "Đạ Tẻh": {
+    "district_code": "DTE",
+    "province_code": "LDO",
+    "district_name": "Đạ Tẻh",
+    "province_name": "Lâm Đồng"
+  },
+  "Long Mỹ": {
+    "district_code": "LMY",
+    "province_code": "HGI",
+    "district_name": "Long Mỹ",
+    "province_name": "Hậu Giang"
+  },
+  "Lấp Vò": {
+    "district_code": "LVO",
+    "province_code": "DTH",
+    "district_name": "Lấp Vò",
+    "province_name": "Đồng Tháp"
+  },
+  "Vĩnh Tường": {
+    "district_code": "VTU",
+    "province_code": "VPH",
+    "district_name": "Vĩnh Tường",
+    "province_name": "Vĩnh Phúc"
+  },
+  "Lai Vung": {
+    "district_code": "LVU",
+    "province_code": "DTH",
+    "district_name": "Lai Vung",
+    "province_name": "Đồng Tháp"
+  },
+  "Thanh Bình": {
+    "district_code": "TBI",
+    "province_code": "DTH",
+    "district_name": "Thanh Bình",
+    "province_name": "Đồng Tháp"
+  },
+  "Tân Hồng": {
+    "district_code": "THO",
+    "province_code": "DTH",
+    "district_name": "Tân Hồng",
+    "province_name": "Đồng Tháp"
+  },
+  "Tam Nông": {
+    "district_code": "TNO",
+    "province_code": "PTH",
+    "district_name": "Tam Nông",
+    "province_name": "Phú Thọ"
+  },
+  "Chư Păh": {
+    "district_code": "CPA",
+    "province_code": "GLA",
+    "district_name": "Chư Păh",
+    "province_name": "Gia Lai"
+  },
+  "Chư Prông": {
+    "district_code": "CPR",
+    "province_code": "GLA",
+    "district_name": "Chư Prông",
+    "province_name": "Gia Lai"
+  },
+  "Đức Cơ": {
+    "district_code": "DCO",
+    "province_code": "GLA",
+    "district_name": "Đức Cơ",
+    "province_name": "Gia Lai"
+  },
+  "Vân Đồn": {
+    "district_code": "VDO",
+    "province_code": "QNI",
+    "district_name": "Vân Đồn",
+    "province_name": "Quảng Ninh"
+  },
+  "Hải Lăng": {
+    "district_code": "HLA",
+    "province_code": "QTR",
+    "district_name": "Hải Lăng",
+    "province_name": "QuảngTrị"
+  },
+  "Triệu Phong": {
+    "district_code": "TPH",
+    "province_code": "QTR",
+    "district_name": "Triệu Phong",
+    "province_name": "QuảngTrị"
+  },
+  "Vĩnh Linh": {
+    "district_code": "VLI",
+    "province_code": "QTR",
+    "district_name": "Vĩnh Linh",
+    "province_name": "QuảngTrị"
+  },
+  "Sơn La": {
+    "district_code": null,
+    "province_code": "SLA",
+    "district_name": null,
+    "province_name": "Sơn La"
+  },
+  "Kế Sách": {
+    "district_code": "KSA",
+    "province_code": "STR",
+    "district_name": "Kế Sách",
+    "province_name": "Sóc Trăng"
+  },
+  "Long Phú": {
+    "district_code": "LPH",
+    "province_code": "STR",
+    "district_name": "Long Phú",
+    "province_name": "Sóc Trăng"
+  },
+  "Mỹ Tú": {
+    "district_code": "MTU",
+    "province_code": "STR",
+    "district_name": "Mỹ Tú",
+    "province_name": "Sóc Trăng"
+  },
+  "Mỹ Xuyên": {
+    "district_code": "MXU",
+    "province_code": "STR",
+    "district_name": "Mỹ Xuyên",
+    "province_name": "Sóc Trăng"
+  },
+  "Chiêm Hóa": {
+    "district_code": "CHO",
+    "province_code": "TQU",
+    "district_name": "Chiêm Hóa",
+    "province_name": "Tuyên Quang"
+  },
+  "Đại Từ": {
+    "district_code": "DTU",
+    "province_code": "TNG",
+    "district_name": "Đại Từ",
+    "province_name": "Thái Nguyên"
+  },
+  "Phú Lương": {
+    "district_code": "PLU",
+    "province_code": "TNG",
+    "district_name": "Phú Lương",
+    "province_name": "Thái Nguyên"
+  },
+  "Gò Dầu": {
+    "district_code": "GDA",
+    "province_code": "TNI",
+    "district_name": "Gò Dầu",
+    "province_name": "Tây Ninh"
+  },
+  "Trảng Bàng": {
+    "district_code": "TBA",
+    "province_code": "TNI",
+    "district_name": "Trảng Bàng",
+    "province_name": "Tây Ninh"
+  },
+  "Tân Châu": {
+    "district_code": "TCH",
+    "province_code": "TNI",
+    "district_name": "Tân Châu",
+    "province_name": "Tây Ninh"
+  },
+  "Sơn Dương": {
+    "district_code": "SDU",
+    "province_code": "TQU",
+    "district_name": "Sơn Dương",
+    "province_name": "Tuyên Quang"
+  },
+  "Krông Ana": {
+    "district_code": "KAN",
+    "province_code": "DLA",
+    "district_name": "Krông Ana",
+    "province_name": "ĐắkLắk"
+  },
+  "Krông Nô": {
+    "district_code": "KNO",
+    "province_code": "DNO",
+    "district_name": "Krông Nô",
+    "province_name": "Đắk Nông"
+  },
+  "Định Quán": {
+    "district_code": "DQU",
+    "province_code": "DNI",
+    "district_name": "Định Quán",
+    "province_name": "Đồng Nai"
+  },
+  "Đầm Hà": {
+    "district_code": "DHA",
+    "province_code": "QNI",
+    "district_name": "Đầm Hà",
+    "province_name": "Quảng Ninh"
+  },
+  "Đông Triều": {
+    "district_code": "DTR",
+    "province_code": "QNI",
+    "district_name": "Đông Triều",
+    "province_name": "Quảng Ninh"
+  },
+  "Hoành Bồ": {
+    "district_code": "HBO",
+    "province_code": "QNI",
+    "district_name": "Hoành Bồ",
+    "province_name": "Quảng Ninh"
+  },
+  "Cù Lao Dung": {
+    "district_code": "CLD",
+    "province_code": "STR",
+    "district_name": "Cù Lao Dung",
+    "province_name": "Sóc Trăng"
+  },
+  "Thường Tín": {
+    "district_code": "TTI",
+    "province_code": "HNO",
+    "district_name": "Thường Tín",
+    "province_name": "Hà Nội"
+  },
+  "Thới Bình": {
+    "district_code": "TBI",
+    "province_code": "CMA",
+    "district_name": "Thới Bình",
+    "province_name": "Cà Mau"
+  },
+  "Mường áng": {
+    "district_code": "MAN",
+    "province_code": "DBI",
+    "district_name": "Mường áng",
+    "province_name": "Điện Biên"
+  },
+  "Buôn Đôn": {
+    "district_code": "BDO",
+    "province_code": "DLA",
+    "district_name": "Buôn Đôn",
+    "province_name": "ĐắkLắk"
+  },
+  "Ea H'leo": {
+    "district_code": "EHL",
+    "province_code": "DLA",
+    "district_name": "Ea H'leo",
+    "province_name": "ĐắkLắk"
+  },
+  "Cẩm Khê": {
+    "district_code": "CKH",
+    "province_code": "PTH",
+    "district_name": "Cẩm Khê",
+    "province_name": "Phú Thọ"
+  },
+  "Phù Ninh": {
+    "district_code": "PNI",
+    "province_code": "PTH",
+    "district_name": "Phù Ninh",
+    "province_name": "Phú Thọ"
+  },
+  "Nhơn Trạch": {
+    "district_code": "NTR",
+    "province_code": "DNI",
+    "district_name": "Nhơn Trạch",
+    "province_name": "Đồng Nai"
+  },
+  "Trảng Bom": {
+    "district_code": "TBO",
+    "province_code": "DNI",
+    "district_name": "Trảng Bom",
+    "province_name": "Đồng Nai"
+  },
+  "Tân Phú": {
+    "district_code": "TPH",
+    "province_code": "DNI",
+    "district_name": "Tân Phú",
+    "province_name": "Đồng Nai"
+  },
+  "Vĩnh Cửu": {
+    "district_code": "VCU",
+    "province_code": "DNI",
+    "district_name": "Vĩnh Cửu",
+    "province_name": "Đồng Nai"
+  },
+  "Xuân Lộc": {
+    "district_code": "XLO",
+    "province_code": "DNI",
+    "district_name": "Xuân Lộc",
+    "province_name": "Đồng Nai"
+  },
+  "Tuy Đức": {
+    "district_code": "TDU",
+    "province_code": "DNO",
+    "district_name": "Tuy Đức",
+    "province_name": "Đắk Nông"
+  },
+  "Cao Lãnh": {
+    "district_code": "CLA",
+    "province_code": "DTH",
+    "district_name": "Cao Lãnh",
+    "province_name": "Đồng Tháp"
+  },
+  "Tam Dương": {
+    "district_code": "TDU",
+    "province_code": "VPH",
+    "district_name": "Tam Dương",
+    "province_name": "Vĩnh Phúc"
+  },
+  "Yên Lạc": {
+    "district_code": "YLA",
+    "province_code": "VPH",
+    "district_name": "Yên Lạc",
+    "province_name": "Vĩnh Phúc"
+  },
+  "Đông Hưng": {
+    "district_code": "DHU",
+    "province_code": "TBI",
+    "district_name": "Đông Hưng",
+    "province_name": "Thái Bình"
+  },
+  "Kiến Xương": {
+    "district_code": "KXU",
+    "province_code": "TBI",
+    "district_name": "Kiến Xương",
+    "province_name": "Thái Bình"
+  },
+  "Tiền Hải": {
+    "district_code": "THA",
+    "province_code": "TBI",
+    "district_name": "Tiền Hải",
+    "province_name": "Thái Bình"
+  },
+  "Cái Bè": {
+    "district_code": "CBE",
+    "province_code": "TGI",
+    "district_name": "Cái Bè",
+    "province_name": "Tiền Giang"
+  },
+  "Tiền Giang": {
+    "district_code": null,
+    "province_code": "TGI",
+    "district_name": null,
+    "province_name": "Tiền Giang"
+  },
+  "Chợ Gạo": {
+    "district_code": "CGA",
+    "province_code": "TGI",
+    "district_name": "Chợ Gạo",
+    "province_name": "Tiền Giang"
+  },
+  "Cai Lậy": {
+    "district_code": "CLA",
+    "province_code": "TGI",
+    "district_name": "Cai Lậy",
+    "province_name": "Tiền Giang"
+  },
+  "Gò Công Đông": {
+    "district_code": "GCD",
+    "province_code": "TGI",
+    "district_name": "Gò Công Đông",
+    "province_name": "Tiền Giang"
+  },
+  "Gò Công Tây": {
+    "district_code": "GCT",
+    "province_code": "TGI",
+    "district_name": "Gò Công Tây",
+    "province_name": "Tiền Giang"
+  },
+  "Tân Phước": {
+    "district_code": "TPH",
+    "province_code": "TGI",
+    "district_name": "Tân Phước",
+    "province_name": "Tiền Giang"
+  },
+  "Cẩm Lệ": {
+    "district_code": "CLE",
+    "province_code": "DNA",
+    "district_name": "Cẩm Lệ",
+    "province_name": "Đà Nẵng"
+  },
+  "Hòa Vang": {
+    "district_code": "HVA",
+    "province_code": "DNA",
+    "district_name": "Hòa Vang",
+    "province_name": "Đà Nẵng"
+  },
+  "Liên Chiểu": {
+    "district_code": "LCH",
+    "province_code": "DNA",
+    "district_name": "Liên Chiểu",
+    "province_name": "Đà Nẵng"
+  },
+  "Mường Khương": {
+    "district_code": "MKH",
+    "province_code": "LCA",
+    "district_name": "Mường Khương",
+    "province_name": "Lào Cai"
+  },
+  "Đại Lộc": {
+    "district_code": "DLO",
+    "province_code": "QNA",
+    "district_name": "Đại Lộc",
+    "province_name": "Quảng Nam"
+  },
+  "Nam Trà My": {
+    "district_code": "NTM",
+    "province_code": "QNA",
+    "district_name": "Nam Trà My",
+    "province_name": "Quảng Nam"
+  },
+  "Tây Giang": {
+    "district_code": "TGI",
+    "province_code": "QNA",
+    "district_name": "Tây Giang",
+    "province_name": "Quảng Nam"
+  },
+  "Đắk Đoa": {
+    "district_code": "DDO",
+    "province_code": "GLA",
+    "district_name": "Đắk Đoa",
+    "province_name": "Gia Lai"
+  },
+  "Đắk Pơ": {
+    "district_code": "DPO",
+    "province_code": "GLA",
+    "district_name": "Đắk Pơ",
+    "province_name": "Gia Lai"
+  },
+  "IaPa": {
+    "district_code": "IBA",
+    "province_code": "GLA",
+    "district_name": "IaPa",
+    "province_name": "Gia Lai"
+  },
+  "Phú Thiện": {
+    "district_code": "PTH",
+    "province_code": "GLA",
+    "district_name": "Phú Thiện",
+    "province_name": "Gia Lai"
+  },
+  "Lang Chánh": {
+    "district_code": "LCH",
+    "province_code": "THO",
+    "district_name": "Lang Chánh",
+    "province_name": "Thanh Hóa"
+  },
+  "Như Xuân": {
+    "district_code": "NXU",
+    "province_code": "THO",
+    "district_name": "Như Xuân",
+    "province_name": "Thanh Hóa"
+  },
+  "Cư Jut": {
+    "district_code": "CJU",
+    "province_code": "DNO",
+    "district_name": "Cư Jut",
+    "province_name": "Đắk Nông"
+  },
+  "Tiên Phước": {
+    "district_code": "TPH",
+    "province_code": "QNA",
+    "district_name": "Tiên Phước",
+    "province_name": "Quảng Nam"
+  },
+  "Ba Chẽ": {
+    "district_code": "BCH",
+    "province_code": "QNI",
+    "district_name": "Ba Chẽ",
+    "province_name": "Quảng Ninh"
+  },
+  "Bắc Yên": {
+    "district_code": "BYE",
+    "province_code": "SLA",
+    "district_name": "Bắc Yên",
+    "province_name": "Sơn La"
+  },
+  "Trường Sa": {
+    "district_code": "TSA",
+    "province_code": "KHO",
+    "district_name": "Trường Sa",
+    "province_name": "Khánh Hòa"
+  },
+  "Chương Mỹ": {
+    "district_code": "CMY",
+    "province_code": "HNO",
+    "district_name": "Chương Mỹ",
+    "province_name": "Hà Nội"
+  },
+  "U Minh Thượng": {
+    "district_code": "UMT",
+    "province_code": "KGI",
+    "district_name": "U Minh Thượng",
+    "province_name": "Kiên Giang"
+  },
+  "Tân Phú Đông": {
+    "district_code": "TPD",
+    "province_code": "TGI",
+    "district_name": "Tân Phú Đông",
+    "province_name": "Tiền Giang"
+  },
+  "Trạm Tấu": {
+    "district_code": "TTA",
+    "province_code": "YBA",
+    "district_name": "Trạm Tấu",
+    "province_name": "Yên Bái"
+  },
+  "Phúc Thọ": {
+    "district_code": "PTH",
+    "province_code": "HNO",
+    "district_name": "Phúc Thọ",
+    "province_name": "Hà Nội"
+  },
+  "Đan Phượng": {
+    "district_code": "DPH",
+    "province_code": "HNO",
+    "district_name": "Đan Phượng",
+    "province_name": "Hà Nội"
+  },
+  "Sông Lô": {
+    "district_code": "SLO",
+    "province_code": "VPH",
+    "district_name": "Sông Lô",
+    "province_name": "Vĩnh Phúc"
+  },
+  "Trấn Yên": {
+    "district_code": "TYE",
+    "province_code": "YBA",
+    "district_name": "Trấn Yên",
+    "province_name": "Yên Bái"
+  },
+  "Thạch Thất": {
+    "district_code": "TTH",
+    "province_code": "HNO",
+    "district_name": "Thạch Thất",
+    "province_name": "Hà Nội"
+  },
+  "Kiên Hải": {
+    "district_code": "KHA",
+    "province_code": "KGI",
+    "district_name": "Kiên Hải",
+    "province_name": "Kiên Giang"
+  },
+  "Trà Ôn": {
+    "district_code": "TON",
+    "province_code": "VLO",
+    "district_name": "Trà Ôn",
+    "province_name": "Vĩnh Long"
+  },
+  "Sa Thầy": {
+    "district_code": "STH",
+    "province_code": "KON",
+    "district_name": "Sa Thầy",
+    "province_name": "Tỉnh KonTum"
+  },
+  "Tương Dương": {
+    "district_code": "TDU",
+    "province_code": "NAN",
+    "district_name": "Tương Dương",
+    "province_name": "Nghệ An"
+  },
+  "Lạc Thủy": {
+    "district_code": "LTH",
+    "province_code": "HBI",
+    "district_name": "Lạc Thủy",
+    "province_name": "Hòa Bình"
+  },
+  "Thủ Thừa": {
+    "district_code": "TTH",
+    "province_code": "LAN",
+    "district_name": "Thủ Thừa",
+    "province_name": "Long An"
+  },
+  "Bảo Yên": {
+    "district_code": "BYE",
+    "province_code": "LCA",
+    "district_name": "Bảo Yên",
+    "province_name": "Lào Cai"
+  },
+  "Đức Thọ": {
+    "district_code": "DTH",
+    "province_code": "HTI",
+    "district_name": "Đức Thọ",
+    "province_name": "Hà Tĩnh"
+  },
+  "Vĩnh Thạnh": {
+    "district_code": "VTH",
+    "province_code": "BDI",
+    "district_name": "Vĩnh Thạnh",
+    "province_name": "Bình Định"
+  },
+  "Phú Quý": {
+    "district_code": "PQU",
+    "province_code": "BTH",
+    "district_name": "Phú Quý",
+    "province_name": "Bình Thuận"
+  },
+  "Hạ Hòa": {
+    "district_code": "HHO",
+    "province_code": "PTH",
+    "district_name": "Hạ Hòa",
+    "province_name": "Phú Thọ"
+  },
+  "Nam Giang": {
+    "district_code": "NGI",
+    "province_code": "QNA",
+    "district_name": "Nam Giang",
+    "province_name": "Quảng Nam"
+  },
+  "Nho Quan": {
+    "district_code": "NQU",
+    "province_code": "NBI",
+    "district_name": "Nho Quan",
+    "province_name": "Ninh Bình"
+  },
+  "Giao Thủy": {
+    "district_code": "GTH",
+    "province_code": "NDI",
+    "district_name": "Giao Thủy",
+    "province_name": "Nam Định"
+  },
+  "Trực Ninh": {
+    "district_code": "TNI",
+    "province_code": "NDI",
+    "district_name": "Trực Ninh",
+    "province_name": "Nam Định"
+  },
+  "Ngũ Hành Sơn": {
+    "district_code": "NHS",
+    "province_code": "DNA",
+    "district_name": "Ngũ Hành Sơn",
+    "province_name": "Đà Nẵng"
+  },
+  "Cô Tô": {
+    "district_code": "CTO",
+    "province_code": "QNI",
+    "district_name": "Cô Tô",
+    "province_name": "Quảng Ninh"
+  },
+  "Mường La": {
+    "district_code": "MLA",
+    "province_code": "SLA",
+    "district_name": "Mường La",
+    "province_name": "Sơn La"
+  },
+  "Dương Kinh": {
+    "district_code": "DKI",
+    "province_code": "HPH",
+    "district_name": "Dương Kinh",
+    "province_name": "Hải Phòng"
+  },
+  "Thanh Thủy": {
+    "district_code": "TTH",
+    "province_code": "PTH",
+    "district_name": "Thanh Thủy",
+    "province_name": "Phú Thọ"
+  },
+  "Đồng Xuân": {
+    "district_code": "DXU",
+    "province_code": "PYE",
+    "district_name": "Đồng Xuân",
+    "province_name": "Phú Yên"
+  },
+  "Thạnh Trị": {
+    "district_code": "TTR",
+    "province_code": "STR",
+    "district_name": "Thạnh Trị",
+    "province_name": "Sóc Trăng"
+  },
+  "Phú Bình": {
+    "district_code": "PBI",
+    "province_code": "TNG",
+    "district_name": "Phú Bình",
+    "province_name": "Thái Nguyên"
+  },
+  "Đồng Hỷ": {
+    "district_code": "DHY",
+    "province_code": "TNG",
+    "district_name": "Đồng Hỷ",
+    "province_name": "Thái Nguyên"
+  },
+  "Bảo Thắng": {
+    "district_code": "BTH",
+    "province_code": "LCA",
+    "district_name": "Bảo Thắng",
+    "province_name": "Lào Cai"
+  },
+  "Hoa Lư": {
+    "district_code": "HLU",
+    "province_code": "NBI",
+    "district_name": "Hoa Lư",
+    "province_name": "Ninh Bình"
+  },
+  "Văn Yên": {
+    "district_code": "VYE",
+    "province_code": "YBA",
+    "district_name": "Văn Yên",
+    "province_name": "Yên Bái"
+  },
+  "Lý Sơn": {
+    "district_code": "LSO",
+    "province_code": "QNG",
+    "district_name": "Lý Sơn",
+    "province_name": "Quảng Ngãi"
+  },
+  "Bình Xuyên": {
+    "district_code": "BXU",
+    "province_code": "VPH",
+    "district_name": "Bình Xuyên",
+    "province_name": "Vĩnh Phúc"
+  },
+  "Khánh Sơn": {
+    "district_code": "KSO",
+    "province_code": "KHO",
+    "district_name": "Khánh Sơn",
+    "province_name": "Khánh Hòa"
+  },
+  "Mang Yang": {
+    "district_code": "MYA",
+    "province_code": "GLA",
+    "district_name": "Mang Yang",
+    "province_name": "Gia Lai"
+  },
+  "Văn Bàn": {
+    "district_code": "VBA",
+    "province_code": "LCA",
+    "district_name": "Văn Bàn",
+    "province_name": "Lào Cai"
+  },
+  "Vũ Quang": {
+    "district_code": "VQU",
+    "province_code": "HTI",
+    "district_name": "Vũ Quang",
+    "province_name": "Hà Tĩnh"
+  },
+  "Mai Sơn": {
+    "district_code": "MSO",
+    "province_code": "SLA",
+    "district_name": "Mai Sơn",
+    "province_name": "Sơn La"
+  },
+  "Võ Nhai": {
+    "district_code": "VNH",
+    "province_code": "TNG",
+    "district_name": "Võ Nhai",
+    "province_name": "Thái Nguyên"
+  },
+  "Na Hang": {
+    "district_code": "NHA",
+    "province_code": "TQU",
+    "district_name": "Na Hang",
+    "province_name": "Tuyên Quang"
+  },
+  "Yên Sơn": {
+    "district_code": "YSO",
+    "province_code": "TQU",
+    "district_name": "Yên Sơn",
+    "province_name": "Tuyên Quang"
+  },
+  "Văn Chấn": {
+    "district_code": "VCH",
+    "province_code": "YBA",
+    "district_name": "Văn Chấn",
+    "province_name": "Yên Bái"
+  },
+  "Hoài Đức": {
+    "district_code": "HDU",
+    "province_code": "HNO",
+    "district_name": "Hoài Đức",
+    "province_name": "Hà Nội"
+  },
+  "Mỹ Đức": {
+    "district_code": "MDU",
+    "province_code": "HNO",
+    "district_name": "Mỹ Đức",
+    "province_name": "Hà Nội"
+  },
+  "Tây Trà": {
+    "district_code": "TTR",
+    "province_code": "QNG",
+    "district_name": "Tây Trà",
+    "province_name": "Quảng Ngãi"
+  },
+  "Mường Ảng": {
+    "district_code": "MAN",
+    "province_code": "DBI",
+    "district_name": "Mường Ảng",
+    "province_name": "Điện Biên"
+  },
+  "Thanh Oai": {
+    "district_code": "TOA",
+    "province_code": "HNO",
+    "district_name": "Thanh Oai",
+    "province_name": "Hà Nội"
+  },
+  "Phú Xuyên": {
+    "district_code": "PXU",
+    "province_code": "HNO",
+    "district_name": "Phú Xuyên",
+    "province_name": "Hà Nội"
+  },
+  "Quỳnh Nhai": {
+    "district_code": "QNH",
+    "province_code": "SLA",
+    "district_name": "Quỳnh Nhai",
+    "province_name": "Sơn La"
+  },
+  "Bắc Hà": {
+    "district_code": "BHA",
+    "province_code": "LCA",
+    "district_name": "Bắc Hà",
+    "province_name": "Lào Cai"
+  },
+  "Phù Yên": {
+    "district_code": "PYE",
+    "province_code": "SLA",
+    "district_name": "Phù Yên",
+    "province_name": "Sơn La"
+  },
+  "Sa Pa": {
+    "district_code": "SPA",
+    "province_code": "LCA",
+    "district_name": "Sa Pa",
+    "province_name": "Lào Cai"
+  },
+  "Đoan Hùng": {
+    "district_code": "DHU",
+    "province_code": "PTH",
+    "district_name": "Đoan Hùng",
+    "province_name": "Phú Thọ"
+  },
+  "Mỹ Lộc": {
+    "district_code": "MLO",
+    "province_code": "NDI",
+    "district_name": "Mỹ Lộc",
+    "province_name": "Nam Định"
+  },
+  "Sơn Tây": {
+    "district_code": "STA",
+    "province_code": "QNG",
+    "district_name": "Sơn Tây",
+    "province_name": "Quảng Ngãi"
+  },
+  "M'Đrắk": {
+    "district_code": "MDR",
+    "province_code": "DLA",
+    "district_name": "M'Đrắk",
+    "province_name": "ĐắkLắk"
+  },
+  "Quỳ Châu": {
+    "district_code": "QCH",
+    "province_code": "NAN",
+    "district_name": "Quỳ Châu",
+    "province_name": "Nghệ An"
+  },
+  "Quế Phong": {
+    "district_code": "QPH",
+    "province_code": "NAN",
+    "district_name": "Quế Phong",
+    "province_name": "Nghệ An"
+  },
+  "Quỳ Hợp": {
+    "district_code": "QHO",
+    "province_code": "NAN",
+    "district_name": "Quỳ Hợp",
+    "province_name": "Nghệ An"
+  },
+  "Sông Mã": {
+    "district_code": "SMA",
+    "province_code": "SLA",
+    "district_name": "Sông Mã",
+    "province_name": "Sơn La"
+  },
+  "Thuận Châu": {
+    "district_code": "TCH",
+    "province_code": "SLA",
+    "district_name": "Thuận Châu",
+    "province_name": "Sơn La"
+  },
+  "Hải Hà": {
+    "district_code": "HHA",
+    "province_code": "QNI",
+    "district_name": "Hải Hà",
+    "province_name": "Quảng Ninh"
+  },
+  "Định Hóa": {
+    "district_code": "DHO",
+    "province_code": "TNG",
+    "district_name": "Định Hóa",
+    "province_name": "Thái Nguyên"
+  },
+  "Yên Châu": {
+    "district_code": "YCH",
+    "province_code": "SLA",
+    "district_name": "Yên Châu",
+    "province_name": "Sơn La"
+  },
+  "Tam Đường": {
+    "district_code": "TDU",
+    "province_code": "LCH",
+    "district_name": "Tam Đường",
+    "province_name": "Lai Châu"
+  },
+  "Tu Mơ Rông": {
+    "district_code": "TMR",
+    "province_code": "KON",
+    "district_name": "Tu Mơ Rông",
+    "province_name": "Tỉnh KonTum"
+  },
+  "Mường Nhé": {
+    "district_code": "MNH",
+    "province_code": "DBI",
+    "district_name": "Mường Nhé",
+    "province_name": "Điện Biên"
+  },
+  "Tủa Chùa": {
+    "district_code": "TCH",
+    "province_code": "DBI",
+    "district_name": "Tủa Chùa",
+    "province_name": "Điện Biên"
+  },
+  "Cao Phong": {
+    "district_code": "CPH",
+    "province_code": "HBI",
+    "district_name": "Cao Phong",
+    "province_name": "Hòa Bình"
+  },
+  "Bắc Trà My": {
+    "district_code": "BTM",
+    "province_code": "QNA",
+    "district_name": "Bắc Trà My",
+    "province_name": "Quảng Nam"
+  },
+  "Tân Thành": {
+    "district_code": "TAT",
+    "province_code": "BRV",
+    "district_name": "Tân Thành",
+    "province_name": "Bà Rịa - Vũng Tàu"
+  },
+  "Ia H'drai": {
+    "district_code": "IHD",
+    "province_code": "KON",
+    "district_name": "Ia H'drai",
+    "province_name": "Tỉnh KonTum"
+  },
+  "Lâm Bình": {
+    "district_code": "LBI",
+    "province_code": "TQU",
+    "district_name": "Lâm Bình",
+    "province_name": "Tuyên Quang"
+  },
+  "Phú Riềng": {
+    "district_code": "PRI",
+    "province_code": "BPH",
+    "district_name": "Phú Riềng",
+    "province_name": "Bình Phước"
+  },
+  "Nậm Nhùn": {
+    "district_code": "NNH",
+    "province_code": "LCH",
+    "district_name": "Nậm Nhùn",
+    "province_name": "Lai Châu"
+  },
+  "Mường Lay": {
+    "district_code": "MLY",
+    "province_code": "SLA",
+    "district_name": "Mường Lay",
+    "province_name": "Sơn La"
+  }
+}

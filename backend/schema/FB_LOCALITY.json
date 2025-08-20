@@ -2,15 +2,141 @@
   "table": "FB_LOCALITY",
   "description": "Chứa thông tin chi tiết về các khu vực, bao gồm mã khu vực và tên đầy đủ.",
   "columns": {
-    "PAY_AREA_CODE": { "type": "VARCHAR2", "description": "Mã khu vực thanh toán, được ghép từ mã tỉnh, huyện và xã" },
-    "PARENT_CODE": { "type": "VARCHAR2", "description": "Mã cấp cha, được ghép từ mã tỉnh và mã huyện" },
-    "PROVINCE": { "type": "VARCHAR2", "description": "Mã tỉnh/thành phố (ví dụ: 'BG')" },
-    "DISTRICT": { "type": "VARCHAR2", "description": "Mã quận/huyện (ví dụ: 'TY')" },
-    "PRECINCT": { "type": "VARCHAR2", "description": "Mã phường/xã (ví dụ: 'XLG')" },
-    "NAME": { "type": "VARCHAR2", "description": "Tên phường/xã (ví dụ: 'Xã Phúc Sơn')" },
-    "FULL_NAME": { "type": "VARCHAR2", "description": "Tên đầy đủ của khu vực, bao gồm xã, huyện và tỉnh (ví dụ: 'Xã Lan Giới H.Tân Yên T.Bắc Giang')" },
-    "CEN_CODE": { "type": "NUMBER", "description": "Mã trung tâm kỹ thuật tương ứng" }
+    "PAY_AREA_CODE": {
+      "type": "VARCHAR2",
+      "description": "Mã khu vực thanh toán, được ghép từ mã tỉnh, huyện và xã"
+    },
+    "PARENT_CODE": {
+      "type": "VARCHAR2",
+      "description": "Mã cấp cha, được ghép từ mã tỉnh và mã huyện"
+    },
+    "PROVINCE": {
+      "type": "VARCHAR2",
+      "description": "Mã tỉnh/thành phố (ví dụ: 'BG')"
+    },
+    "DISTRICT": {
+      "type": "VARCHAR2",
+      "description": "Mã quận/huyện (ví dụ: 'TY')"
+    },
+    "PRECINCT": {
+      "type": "VARCHAR2",
+      "description": "Mã phường/xã (ví dụ: 'XLG')"
+    },
+    "NAME": {
+      "type": "VARCHAR2",
+      "description": "Tên phường/xã (ví dụ: 'Xã Phúc Sơn')"
+    },
+    "FULL_NAME": {
+      "type": "VARCHAR2",
+      "description": "Tên đầy đủ của khu vực, bao gồm xã, huyện và tỉnh (ví dụ: 'Xã Lan Giới H.Tân Yên T.Bắc Giang')"
+    },
+    "CEN_CODE": {
+      "type": "NUMBER",
+      "description": "Mã trung tâm kỹ thuật tương ứng"
+    }
   },
   "note": "Chỉ nên sử dụng cột FULL_NAME để lọc theo địa danh vì các cột PROVINCE, DISTRICT, PRECINCT chỉ chứa mã. Ví dụ, để lọc địa danh 'Tân Yên, Bắc Giang', hãy dùng điều kiện: `FULL_NAME LIKE '%Tân Yên%' AND FULL_NAME LIKE '%Bắc Giang%'`. Không JOIN bảng này với các bảng phản ánh để truy vấn thống kê, trừ khi có liên kết rõ ràng qua mã khu vực.",
-  "select_instructions": "Khi lọc theo tên địa danh, LUÔN sử dụng điều kiện trên cột `FULL_NAME`. Ví dụ: `WHERE FULL_NAME LIKE '%Tân Yên%' AND FULL_NAME LIKE '%Bắc Giang%'`. Không sử dụng các cột mã (PROVINCE, DISTRICT, PRECINCT) để lọc theo tên địa phương vì đây là mã hóa, không phải tên thật."
+  "select_instructions": "Khi lọc theo tên địa danh, LUÔN sử dụng điều kiện trên cột `FULL_NAME`. Ví dụ: `WHERE FULL_NAME LIKE '%Tân Yên%' AND FULL_NAME LIKE '%Bắc Giang%'`. Không sử dụng các cột mã (PROVINCE, DISTRICT, PRECINCT) để lọc theo tên địa phương vì đây là mã hóa, không phải tên thật.",
+  "sample_data": [
+    {
+      "PAY_AREA_CODE": "HBIYTHNLUO",
+      "PARENT_CODE": "HBIYTH",
+      "PROVINCE": "HBI",
+      "DISTRICT": "YTH",
+      "PRECINCT": "NLUO",
+      "NAME": "Xã Ngọc Lương",
+      "FULL_NAME": "Xã Ngọc Lương H.Yên Thủy T.Hòa Bình",
+      "CEN_CODE": 4
+    },
+    {
+      "PAY_AREA_CODE": "QNANSOQNIN",
+      "PARENT_CODE": "QNANSO",
+      "PROVINCE": "QNA",
+      "DISTRICT": "NSO",
+      "PRECINCT": "QNIN",
+      "NAME": "Xã Quế Ninh",
+      "FULL_NAME": "Xã Quế Ninh H.Nông Sơn T.Quảng Nam",
+      "CEN_CODE": 3
+    },
+    {
+      "PAY_AREA_CODE": "BPHBGM",
+      "PARENT_CODE": "BPH",
+      "PROVINCE": "BPH",
+      "DISTRICT": "BGM",
+      "PRECINCT": null,
+      "NAME": "H.Bù Gia Mập",
+      "FULL_NAME": "H.Bù Gia Mập T.Bình Phước",
+      "CEN_CODE": 8
+    },
+    {
+      "PAY_AREA_CODE": "DNILTHTPHU",
+      "PARENT_CODE": "DNILTH",
+      "PROVINCE": "DNI",
+      "DISTRICT": "LTH",
+      "PRECINCT": "TPHU",
+      "NAME": "Xã Tam Phước",
+      "FULL_NAME": "Xã Tam Phước H.Long Thành T.Đồng Nai",
+      "CEN_CODE": 8
+    },
+    {
+      "PAY_AREA_CODE": "BTRMCBHLOC",
+      "PARENT_CODE": "BTRMCB",
+      "PROVINCE": "BTR",
+      "DISTRICT": "MCB",
+      "PRECINCT": "HLOC",
+      "NAME": "Xã Hòa Lộc",
+      "FULL_NAME": "Xã Hòa Lộc H.Mỏ Cày Bắc T.Bến Tre",
+      "CEN_CODE": 9
+    },
+    {
+      "PAY_AREA_CODE": "BTRMCBPHMY",
+      "PARENT_CODE": "BTRMCB",
+      "PROVINCE": "BTR",
+      "DISTRICT": "MCB",
+      "PRECINCT": "PHMY",
+      "NAME": "Xã Phú Mỹ",
+      "FULL_NAME": "Xã Phú Mỹ H.Mỏ Cày Bắc T.Bến Tre",
+      "CEN_CODE": 9
+    },
+    {
+      "PAY_AREA_CODE": "BTRMCBTTTA",
+      "PARENT_CODE": "BTRMCB",
+      "PROVINCE": "BTR",
+      "DISTRICT": "MCB",
+      "PRECINCT": "TTTA",
+      "NAME": "Xã Tân Thanh Tây",
+      "FULL_NAME": "Xã Tân Thanh Tây H.Mỏ Cày Bắc T.Bến Tre",
+      "CEN_CODE": 9
+    },
+    {
+      "PAY_AREA_CODE": "BTRMCNATHA",
+      "PARENT_CODE": "BTRMCN",
+      "PROVINCE": "BTR",
+      "DISTRICT": "MCN",
+      "PRECINCT": "ATHA",
+      "NAME": "Xã An Thạnh",
+      "FULL_NAME": "Xã An Thạnh H.Mỏ Cày Nam T.Bến Tre",
+      "CEN_CODE": 9
+    },
+    {
+      "PAY_AREA_CODE": "BTRMCNTTHA",
+      "PARENT_CODE": "BTRMCN",
+      "PROVINCE": "BTR",
+      "DISTRICT": "MCN",
+      "PRECINCT": "TTHA",
+      "NAME": "Xã Thành Thới A",
+      "FULL_NAME": "Xã Thành Thới A H.Mỏ Cày Nam T.Bến Tre",
+      "CEN_CODE": 9
+    },
+    {
+      "PAY_AREA_CODE": "KGIGRIVPHU",
+      "PARENT_CODE": "KGIGRI",
+      "PROVINCE": "KGI",
+      "DISTRICT": "GRI",
+      "PRECINCT": "VPHU",
+      "NAME": "Xã Vĩnh Phú",
+      "FULL_NAME": "Xã Vĩnh Phú H.Giồng Riềng T.Kiên Giang",
+      "CEN_CODE": 9
+    }
+  ]
 }

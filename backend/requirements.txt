@@ -1,7 +1,20 @@
-fastapi 
-uvicorn 
+
 oracledb 
-pandas 
-numpy 
-requests 
+pandas  
+  
 python-dotenv
+
+
+# Utils
+numpy
+scikit-learn
+unidecode
+
+# Web & DB
+fastapi
+uvicorn
+loguru==0.7.2
+langchain
+
+langchain_openai
+react-scripts

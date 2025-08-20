@@ -2,22 +2,225 @@
   "table": "PAKH_NOI_DUNG_PHAN_ANH",
   "description": "Chứa thông tin chi tiết được tách từ nội dung phản ánh của khách hàng trong bảng PAKH. Mỗi dòng tương ứng với một phần nội dung phản ánh có cấu trúc (đơn vị nhập, khu vực lỗi, dịch vụ, gói cước,...).",
   "columns": {
-    "ID": { "type": "NUMBER", "description": "Khóa chính tự động tăng. Mỗi bản ghi phản ánh tách riêng." },
-    "ID_PAKH": { "type": "NUMBER", "description": "Khóa ngoại liên kết với bảng PAKH." },
-    "DON_VI_NHAP": { "type": "VARCHAR2(4000)", "description": "Tên đơn vị hoặc bộ phận nhập phản ánh." },
-    "KHU_VUC_BI_LOI": { "type": "VARCHAR2(4000)", "description": "Khu vực, địa chỉ, hoặc vùng mà khách hàng phản ánh lỗi dịch vụ." },
-    "TINH_TRANG_LOI": { "type": "VARCHAR2(4000)", "description": "Miêu tả trạng thái hoặc sự cố xảy ra (ví dụ: mất sóng, mạng chậm, không gọi được)." },
-    "THOI_GIAN_XAY_RA_LOI": { "type": "VARCHAR2(4000)", "description": "Khoảng thời gian xảy ra lỗi, có thể là chuỗi mô tả như \"từ tối qua\", \"thường xuyên\", \"sáng ngày 5/6\"..." },
-    "DICH_VU_PHAN_ANH": { "type": "VARCHAR2(4000)", "description": "Loại dịch vụ bị ảnh hưởng (data, thoại, SMS, FTTH...)." },
-    "GOI_CUOC_DANG_DUNG": { "type": "VARCHAR2(4000)", "description": "Gói cước mà khách hàng đang sử dụng tại thời điểm lỗi (VD90, ST150, C150K...)." },
-    "DUNG_LUONG_GOI_CON_LAI": { "type": "VARCHAR2(4000)", "description": "Dung lượng còn lại trong gói cước (số MB, GB, hoặc dạng chuỗi mô tả)." },
-    "MAY_KH_DANG_DUNG": { "type": "VARCHAR2(1000)", "description": "Thiết bị mà khách hàng đang sử dụng (iPhone, Samsung, Xiaomi...)." },
-    "LOAI_SONG": { "type": "VARCHAR2(1000)", "description": "Loại sóng hiển thị hoặc phản ánh (3G, 4G, 5G...)." },
-    "KTRA_LOI_MAY_SIM": { "type": "VARCHAR2(1000)", "description": "Ghi nhận kết quả kiểm tra thiết bị và SIM (đã thử đổi máy, thử lại SIM, lắp sang máy khác...)." },
-    "CHON_SIM": { "type": "VARCHAR2(1000)", "description": "Thông tin về việc chọn đúng SIM truy cập (đặc biệt với máy 2 SIM)." },
-    "THONG_TIN_KHAC": { "type": "VARCHAR2(4000)", "description": "Thông tin bổ sung không thuộc các nhóm trên, ví dụ: yêu cầu kỹ thuật, lịch sử lỗi cũ, mô tả thêm từ KH." }
+    "ID": {
+      "type": "NUMBER",
+      "description": "Khóa chính tự động tăng. Mỗi bản ghi phản ánh tách riêng."
+    },
+    "ID_PAKH": {
+      "type": "NUMBER",
+      "description": "Khóa ngoại liên kết với bảng PAKH."
+    },
+    "DON_VI_NHAP": {
+      "type": "VARCHAR2(4000)",
+      "description": "Tên đơn vị hoặc bộ phận nhập phản ánh."
+    },
+    "KHU_VUC_BI_LOI": {
+      "type": "VARCHAR2(4000)",
+      "description": "Khu vực, địa chỉ, hoặc vùng mà khách hàng phản ánh lỗi dịch vụ."
+    },
+    "TINH_TRANG_LOI": {
+      "type": "VARCHAR2(4000)",
+      "description": "Miêu tả trạng thái hoặc sự cố xảy ra (ví dụ: mất sóng, mạng chậm, không gọi được)."
+    },
+    "THOI_GIAN_XAY_RA_LOI": {
+      "type": "VARCHAR2(4000)",
+      "description": "Khoảng thời gian xảy ra lỗi, có thể là chuỗi mô tả như \"từ tối qua\", \"thường xuyên\", \"sáng ngày 5/6\"..."
+    },
+    "DICH_VU_PHAN_ANH": {
+      "type": "VARCHAR2(4000)",
+      "description": "Loại dịch vụ bị ảnh hưởng (data, thoại, SMS, FTTH...)."
+    },
+    "GOI_CUOC_DANG_DUNG": {
+      "type": "VARCHAR2(4000)",
+      "description": "Gói cước mà khách hàng đang sử dụng tại thời điểm lỗi (VD90, ST150, C150K...)."
+    },
+    "DUNG_LUONG_GOI_CON_LAI": {
+      "type": "VARCHAR2(4000)",
+      "description": "Dung lượng còn lại trong gói cước (số MB, GB, hoặc dạng chuỗi mô tả)."
+    },
+    "MAY_KH_DANG_DUNG": {
+      "type": "VARCHAR2(1000)",
+      "description": "Thiết bị mà khách hàng đang sử dụng (iPhone, Samsung, Xiaomi...)."
+    },
+    "LOAI_SONG": {
+      "type": "VARCHAR2(1000)",
+      "description": "Loại sóng hiển thị hoặc phản ánh (3G, 4G, 5G...)."
+    },
+    "KTRA_LOI_MAY_SIM": {
+      "type": "VARCHAR2(1000)",
+      "description": "Ghi nhận kết quả kiểm tra thiết bị và SIM (đã thử đổi máy, thử lại SIM, lắp sang máy khác...)."
+    },
+    "CHON_SIM": {
+      "type": "VARCHAR2(1000)",
+      "description": "Thông tin về việc chọn đúng SIM truy cập (đặc biệt với máy 2 SIM)."
+    },
+    "THONG_TIN_KHAC": {
+      "type": "VARCHAR2(4000)",
+      "description": "Thông tin bổ sung không thuộc các nhóm trên, ví dụ: yêu cầu kỹ thuật, lịch sử lỗi cũ, mô tả thêm từ KH."
+    }
   },
   "note": "Bảng này là bảng trung gian giúp chuẩn hóa nội dung phản ánh dạng bán cấu trúc từ bảng `PAKH`. Một bản ghi trong `PAKH` có thể sinh ra nhiều dòng trong `PAKH_NOI_DUNG_PHAN_ANH` nếu có nhiều phần phản ánh.",
-  "select_instructions": "Khi truy vấn thông tin chi tiết về phản ánh (như Dịch vụ, Gói cước, Loại sóng,...) cùng với thông tin từ bảng PAKH (ví dụ: Số thuê bao), LUÔN LUÔN JOIN bảng này với bảng PAKH thông qua khóa ngoại PAKH_NOI_DUNG_PHAN_ANH.ID_PAKH = PAKH.ID. Cụ thể, khi hỏi về 'Dịch vụ phản ánh', hãy sử dụng cột DICH_VU_PHAN_ANH."
+  "select_instructions": "Khi truy vấn thông tin chi tiết về phản ánh (như Dịch vụ, Gói cước, Loại sóng,...) cùng với thông tin từ bảng PAKH (ví dụ: Số thuê bao), LUÔN LUÔN JOIN bảng này với bảng PAKH thông qua khóa ngoại PAKH_NOI_DUNG_PHAN_ANH.ID_PAKH = PAKH.ID. Cụ thể, khi hỏi về 'Dịch vụ phản ánh', hãy sử dụng cột DICH_VU_PHAN_ANH.",
+  "sample_data": [
+    {
+      "ID": 20,
+      "ID_PAKH": 36710166,
+      "DON_VI_NHAP": "DIEUNT_MB\nKH không lên mạng được ,1507/14 A pham thế hiển, P 6, quận 8, HCM.kh đã tắt máy khởi động lại, và đồng bộ sim nhưng không vào mạng được. KC90: dung luong data toc do cao con lai 1019 MB, nhờ ac hỗ trợ giúp,  e cám ơn",
+      "KHU_VUC_BI_LOI": "1507/14 A pham thế hiển, P 6, quận 8, HCM",
+      "TINH_TRANG_LOI": "KH không lên mạng được",
+      "THOI_GIAN_XAY_RA_LOI": "28/1/2024",
+      "DICH_VU_PHAN_ANH": "data",
+      "GOI_CUOC_DANG_DUNG": "KC90: dung luong data toc do cao con lai 1019 MB",
+      "DUNG_LUONG_GOI_CON_LAI": "KC90: dung luong data toc do cao con lai 1019 MB",
+      "MAY_KH_DANG_DUNG": "1 sim",
+      "LOAI_SONG": "không có",
+      "KTRA_LOI_MAY_SIM": "kh đã tắt máy khởi động lại, và đồng bộ sim nhưng không vào mạng được",
+      "CHON_SIM": null,
+      "THONG_TIN_KHAC": null
+    },
+    {
+      "ID": 21,
+      "ID_PAKH": 36723645,
+      "DON_VI_NHAP": "C8_MP_TRANGNTM1\nkhpa ở khu vực: đường D1, phường phú tân, TP Thủ Dầu một Bình Dương, bật 4G lên ko có hiển 4g chỉ hiển thị chữ H ko vào mạng đươc, a/c vui lòng kiểm tra và hỗ trợ giúp em. em cảm ơn.",
+      "KHU_VUC_BI_LOI": "đường D1, phường phú tân, TP Thủ Dầu một Bình Dương",
+      "TINH_TRANG_LOI": "bật 4G lên ko có hiển 4g chỉ hiển thị chữ H ko vào mạng đuôc",
+      "THOI_GIAN_XAY_RA_LOI": "29/01/2024",
+      "DICH_VU_PHAN_ANH": "bật 4G lên ko có hiển 4g chỉ hiển thị chữ H ko vào mạng đuôc",
+      "GOI_CUOC_DANG_DUNG": "ts4g",
+      "DUNG_LUONG_GOI_CON_LAI": "5GB",
+      "MAY_KH_DANG_DUNG": "oppo",
+      "LOAI_SONG": "4G",
+      "KTRA_LOI_MAY_SIM": "đã kiem tra",
+      "CHON_SIM": "đã chọn đúng",
+      "THONG_TIN_KHAC": null
+    },
+    {
+      "ID": 22,
+      "ID_PAKH": 36625305,
+      "DON_VI_NHAP": "C1_NHUNGVT25_MFS\nKh phản ánh không truy cập được mạng.\nKh đang truy cập tất cả các trang không được, đã đòng bộ, kh chưa thay sang máy khác, các số cùng khu vực không rõ. chuyển ac hỗ trợ.",
+      "KHU_VUC_BI_LOI": "79 Hữu Nghị bắc Lý Tp Đồng Hới Quảng Bình",
+      "TINH_TRANG_LOI": "không truy cập được",
+      "THOI_GIAN_XAY_RA_LOI": "20/1",
+      "DICH_VU_PHAN_ANH": "data",
+      "GOI_CUOC_DANG_DUNG": "g1",
+      "DUNG_LUONG_GOI_CON_LAI": "1.5gb",
+      "MAY_KH_DANG_DUNG": "iphone",
+      "LOAI_SONG": "4g",
+      "KTRA_LOI_MAY_SIM": "không",
+      "CHON_SIM": null,
+      "THONG_TIN_KHAC": null
+    },
+    {
+      "ID": 23,
+      "ID_PAKH": 36625938,
+      "DON_VI_NHAP": "CUONGHV_MB\nKHPA không sử đụng được dữ liệu di động,KH di chuyển nhiều khu vực đều bị, KHPA nhiều lần và đã thực hiện nhiều cách ĐTV hướng dẫn thống nhất vẫn không sử dụng được, nhờ ac ktra hỗ trợ giúp e,em cám ơn",
+      "KHU_VUC_BI_LOI": "25/3H ĐƯỜNG TAM ĐÔNG 25, ẤP TAM ĐÔNG, XÃ THỚI TAM THÔN, HÓC MÔN, HCM",
+      "TINH_TRANG_LOI": "không sử dụng được DLDĐ",
+      "THOI_GIAN_XAY_RA_LOI": "từ 18/01/2023",
+      "DICH_VU_PHAN_ANH": "tất cả",
+      "GOI_CUOC_DANG_DUNG": "KC120",
+      "DUNG_LUONG_GOI_CON_LAI": "1.5 GB",
+      "MAY_KH_DANG_DUNG": "2 sim",
+      "LOAI_SONG": "4G",
+      "KTRA_LOI_MAY_SIM": "đã thay nhiều máy",
+      "CHON_SIM": "đúng sim",
+      "THONG_TIN_KHAC": null
+    },
+    {
+      "ID": 24,
+      "ID_PAKH": 36622223,
+      "DON_VI_NHAP": "TIENNTN_MB\nKH pa ko truy cập dc mạng, dtv đã hướng dẫn theo thống nhất nhưng vẫn ko cải thiện, hiện kh ở d/c : \nbệnh viện từ dũ, 284 Đ. Cống Quỳnh, Phường Phạm Ngũ Lão, Quận 1, Thành phố Hồ Chí Minh",
+      "KHU_VUC_BI_LOI": "bệnh viện từ dũ, 284 Đ. Cống Quỳnh, Phường Phạm Ngũ Lão, Quận 1, Thành phố Hồ Chí Minh",
+      "TINH_TRANG_LOI": "ko truy cập đc mạng",
+      "THOI_GIAN_XAY_RA_LOI": "20/1",
+      "DICH_VU_PHAN_ANH": "data",
+      "GOI_CUOC_DANG_DUNG": "PT70",
+      "DUNG_LUONG_GOI_CON_LAI": "823mb",
+      "MAY_KH_DANG_DUNG": "1",
+      "LOAI_SONG": "4g",
+      "KTRA_LOI_MAY_SIM": "rồi",
+      "CHON_SIM": null,
+      "THONG_TIN_KHAC": null
+    },
+    {
+      "ID": 25,
+      "ID_PAKH": 36646030,
+      "DON_VI_NHAP": "C4_7558\nFB khẩn c kiều phản ánh sử dụng mạng không được. Đã có nhân viên xử lý tác động đồng bộ. KH đã thử tắt máy khởi động lại, chọn mạng ưu tiên, đã lắp sang máy khác và đã xóa ứng dụng trên máy KHYC ghi nhận kiểm tra. Anh/ chị hỗ trợ giúp e, Em cám ơn! địa chỉ 543/19 ấp phú thọ xã trường xuân huyện thơi lai tp cần thơ",
+      "KHU_VUC_BI_LOI": "543/19 ấp phú thọ xã trường xuân huyện thơi lai tp cần thơ",
+      "TINH_TRANG_LOI": "hiện mạng E ko kết nối ko vào được",
+      "THOI_GIAN_XAY_RA_LOI": "mới bị hôm nay từ lúc dk",
+      "DICH_VU_PHAN_ANH": "tất cả các trang ko vào được hiện mạng E",
+      "GOI_CUOC_DANG_DUNG": "d5",
+      "DUNG_LUONG_GOI_CON_LAI": "1gb",
+      "MAY_KH_DANG_DUNG": "iphone lắp 1 sim",
+      "LOAI_SONG": "4g",
+      "KTRA_LOI_MAY_SIM": "sim máy bình thường",
+      "CHON_SIM": "bật đúng sim",
+      "THONG_TIN_KHAC": "khyc kt"
+    },
+    {
+      "ID": 26,
+      "ID_PAKH": 36505291,
+      "DON_VI_NHAP": "NHIPTL_MB\nKHPA truy cập mạng chậm, tất cả các trang đều chậm, Số KH đã được đồng bộ data, tắt máy mở lại, lắp sim máy khác, xóa LS truy cập nhưng vẫn không được. KHYC hỗ trợ sớm. AC vui lòng hỗ trợ kiểm tra, em cảm ơn!\nĐC: 432b/41b dương bá trạc, phường 1, quận 8, HCM",
+      "KHU_VUC_BI_LOI": "432b/41b dương bá trạc, phường 1, quận 8, HCM",
+      "TINH_TRANG_LOI": "truy cập mạng chậm, tất cả các trang đều chậm",
+      "THOI_GIAN_XAY_RA_LOI": "1/1/2024",
+      "DICH_VU_PHAN_ANH": "DATA",
+      "GOI_CUOC_DANG_DUNG": "C120",
+      "DUNG_LUONG_GOI_CON_LAI": "D10",
+      "MAY_KH_DANG_DUNG": "IPHONE 13 PRO MAX",
+      "LOAI_SONG": "3G",
+      "KTRA_LOI_MAY_SIM": "đã thử",
+      "CHON_SIM": null,
+      "THONG_TIN_KHAC": null
+    },
+    {
+      "ID": 27,
+      "ID_PAKH": 36533798,
+      "DON_VI_NHAP": "C4_7497\nfb khẩn khyc gọi lại Anh Tiễn phản ánh bật dữ liệu hiện LTE nhưng sử dụng các ứng dụng đều chậm dù được đông bộ gprs vẫn lỗi khyc ghi nhận kiểm tra cho kh.a/c vui lòng hỗ trợ giúp em,e cám ơn\n38c nguyễn văn linh phường hưng lợi quận ninh kiều tp cần",
+      "KHU_VUC_BI_LOI": "38c nguyễn văn linh phường hưng lợi quận ninh kiều tp cần",
+      "TINH_TRANG_LOI": "LTE",
+      "THOI_GIAN_XAY_RA_LOI": "rất lâu",
+      "DICH_VU_PHAN_ANH": "tất cả",
+      "GOI_CUOC_DANG_DUNG": "C190",
+      "DUNG_LUONG_GOI_CON_LAI": "3724 MB HSD 22/01/2024 12:16:19",
+      "MAY_KH_DANG_DUNG": "1 sim",
+      "LOAI_SONG": "4G",
+      "KTRA_LOI_MAY_SIM": "chưa thử",
+      "CHON_SIM": null,
+      "THONG_TIN_KHAC": null
+    },
+    {
+      "ID": 28,
+      "ID_PAKH": 36470620,
+      "DON_VI_NHAP": "C3_MT_CHIPTP\nEm kiểm tra : Thời điểm KH gọi tổng đài dịch vụ đang bình thường , đã thay đổi ưu tiên bật 3G /4G, tắt nguồn máy khởi động lại nhưng vẫn không truy cập được. KH báo các số khác cùng khu vực cũng bị tình trạng như KH ( 935091952) . Nhờ A/C hỗ trợ sớm cho KH giúp. ds554\"",
+      "KHU_VUC_BI_LOI": "113 Nguyễn Chí Thanh, Hải Châu 1, Hải Châu, Đà Nẵng",
+      "TINH_TRANG_LOI": "mạng chậm",
+      "THOI_GIAN_XAY_RA_LOI": "5/1/2023",
+      "DICH_VU_PHAN_ANH": "data",
+      "GOI_CUOC_DANG_DUNG": "c90n",
+      "DUNG_LUONG_GOI_CON_LAI": "1.9GB",
+      "MAY_KH_DANG_DUNG": "1 sim",
+      "LOAI_SONG": "2G",
+      "KTRA_LOI_MAY_SIM": "chưa thay máy",
+      "CHON_SIM": null,
+      "THONG_TIN_KHAC": null
+    },
+    {
+      "ID": 38,
+      "ID_PAKH": 36541583,
+      "DON_VI_NHAP": "QUANGDDV_MB\nKHPA SIM BỊ MẤT SÓNG, ĐÃ THỬ NHIỀU MÁY, THAY SIM NHIỀU LẦN VẪN BỊ, KHYC XL GẤP,AC HỖ TRỢ GIÚP E,EM CÁM ƠN\nKHYC XL GẤP\n585 Đ. Nguyễn Ảnh Thủ HIỆP THANH, Q12, Thành phố Hồ Chí Minh\nSLL: 777775785",
+      "KHU_VUC_BI_LOI": "585 Đ. Nguyễn Ảnh ThủBà Điểm, Hóc Môn, Thành phố Hồ Chí Minh",
+      "TINH_TRANG_LOI": "MẤT SÓNG",
+      "THOI_GIAN_XAY_RA_LOI": "THƯỜNG XUYÊN",
+      "DICH_VU_PHAN_ANH": "SÓNG",
+      "GOI_CUOC_DANG_DUNG": "0",
+      "DUNG_LUONG_GOI_CON_LAI": "0",
+      "MAY_KH_DANG_DUNG": "1",
+      "LOAI_SONG": "0",
+      "KTRA_LOI_MAY_SIM": "0",
+      "CHON_SIM": null,
+      "THONG_TIN_KHAC": null
+    }
+  ]
 }
-

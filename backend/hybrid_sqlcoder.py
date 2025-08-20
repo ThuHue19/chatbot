@@ -3,24 +3,93 @@ import re
 import logging
 import json
 import unidecode
-from typing import List, Dict
+from typing import List, Dict, Optional
 from dotenv import load_dotenv
-from groq import Groq
+from difflib import get_close_matches
+from rapidfuzz import process, fuzz
 
 from utils.sql_planner import SQLPlanner
-from utils.column_mapper import extract_tables_and_columns, generate_column_mapping_hint
+from utils.column_mapper import generate_column_mapping_hint
 from utils.schema_loader import TABLE_KEYWORDS, extract_relevant_tables
 from utils.relation_loader import load_relations
-from db_utils import get_connection
+from db_utils import get_connection, execute_sql, load_locality_cache_json, load_dept_cache_json
+
 
 # --- Setup môi trường & logger ---
 load_dotenv()
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
+LOCALITY_CACHE = load_locality_cache_json()
+DEPT_CACHE_FILE = load_dept_cache_json()
+
+logger.info(f"✅ Đã load {len(LOCALITY_CACHE)} bản ghi địa chỉ từ cache.")
+logger.info(f"✅ Đã load {len(DEPT_CACHE_FILE)} bản ghi tổ nhóm, phòng ban từ cache.")
 
 LLM_ENGINE = os.getenv("LLM_ENGINE", "openai").lower()
 conn = get_connection()
+def get_ma_dia_chi_from_cache(dia_chi_text: str) -> dict:
+    """
+    Map địa chỉ user nhập sang mã tỉnh/quận dựa trên LOCALITY_CACHE.
+    """
+    if not dia_chi_text:
+        return {}
 
+    # Chuẩn hóa và tách các từ khóa
+    tokens = [t.strip() for t in re.split(r"[,\n]", dia_chi_text) if t.strip()]
+    for token in tokens:
+        if token in LOCALITY_CACHE:
+            item = LOCALITY_CACHE[token]
+            return {
+                "tinhThanhPho": item.get("province_code", ""),
+                "quanHuyen": item.get("district_code", "")
+            }
+    # Nếu không tìm thấy
+    return {}
+
+dept_keywords = ["tổ", "nhóm", "phòng", "ban", "tổ nhóm", "phòng ban","đài"]
+canhan_keywords = ["cá nhân", "nhân viên", "người xử lý", "anh", "cô"]
+
+def summarize_rows(columns, rows, max_rows=20):
+    """
+    Nếu rows nhiều hơn max_rows thì trả về thống kê/tóm tắt,
+    ngược lại trả về full rows.
+    """
+    if len(rows) <= max_rows:
+        return {"columns": columns, "rows": rows}
+
+    # Tóm tắt: đếm số bản ghi, lấy vài ví dụ
+    summary = {
+        "total_records": len(rows),
+        "sample_rows": [dict(zip(columns, r)) for r in rows[:3]]
+    }
+
+    # Nếu có cột CA_NHAN / TO_NHOM → gom nhóm luôn
+    if "CA_NHAN" in columns:
+        idx = columns.index("CA_NHAN")
+        counter = {}
+        for r in rows:
+            key = r[idx]
+            counter[key] = counter.get(key, 0) + 1
+        summary["count_by_canhan"] = counter
+
+    if "TO_NHOM" in columns:
+        idx = columns.index("TO_NHOM")
+        counter = {}
+        for r in rows:
+            key = r[idx]
+            counter[key] = counter.get(key, 0) + 1
+        summary["count_by_tonhom"] = counter
+
+    return {"summary": summary}
+
+# Hàm kiểm tra xuất hiện chính xác
+def contains_keyword(text: str, keywords: list) -> bool:
+    text_lower = text.lower()
+    for kw in keywords:
+        # \b để match nguyên từ, không nhận các từ chứa
+        if re.search(rf"\b{re.escape(kw)}\b", text_lower):
+            return True
+    return False
 FORM_DETAIL_PARAMS = [
     "type", "trungTam", "phongBan", "toNhom", "caNhan", "loaiPa", "loaiThueBao",
     "nguyenNhan", "caTruc", "fo_bo", "tinh", "ctdv", "day", "today", "week",
@@ -30,17 +99,108 @@ LIST_PARAMS = [
     "tab", "id", "year", "tinhThanhPho", "quanHuyen", "is_ticket", "phong", "to", "caTruc",
     "dept_xuly", "dept", "ttTicket", "nhomPa", "loaiPa", "fo_bo", "loaiThueBao", "is_dongpa", "ctdv"
 ]
+def normalize_canhan(value: str) -> str:
+    """Chuẩn hóa tên để so sánh fuzzy (bỏ dấu, bỏ ký tự đặc biệt, viết liền)"""
+    if not value:
+        return ""
+    # Bỏ dấu, chuyển thường
+    value = unidecode.unidecode(str(value)).lower()
+    # Xóa ký tự không phải chữ/số
+    value = re.sub(r'[^a-z0-9]', '', value)
+    return value
 
-def normalize(text):
-    return unidecode.unidecode(text).replace(' ', '_').replace('-', '_').lower()
+def fuzzy_match_canhan(user_input: str, db_values: List[str], threshold: float = 70) -> Optional[str]:
+    """
+    Fuzzy match tên cá nhân từ user_input với danh sách ca_nhan (db_values).
+    Trả về chuỗi gốc nếu tìm được match.
+    threshold: % độ tương đồng tối thiểu (0-100)
+    """
+    if not user_input or not db_values:
+        return None
+
+    norm_input = normalize_canhan(user_input)
+
+    # Map normalized -> original
+    norm_map = {normalize_canhan(v): v for v in db_values}
+
+    # Tính score từng ứng viên
+    candidates = []
+    for norm_val, orig in norm_map.items():
+        score = fuzz.partial_ratio(norm_input, norm_val)
+        candidates.append((orig, score))
+
+    # Lấy match tốt nhất
+    best_match = max(candidates, key=lambda x: x[1], default=(None, 0))
+    if best_match[1] >= threshold:
+        return best_match[0]
+    return None
+def resolve_canhan(user_input: str) -> Optional[str]:
+    try:
+        with get_connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute("SELECT DISTINCT ca_nhan FROM PAKH_SLA_CA_NHAN")
+                ca_nhans = [row[0] for row in cursor.fetchall()]
+                match = fuzzy_match_canhan(user_input, ca_nhans)
+                
+                if match:
+                    logger.info(f"👤 Fuzzy match cá nhân: '{user_input}' → '{match}'")
+                return match
+    except Exception as e:
+        logger.error(f"Lỗi trong resolve_canhan: {e}")
+        return None
+import unicodedata
+def normalize_text(text: str) -> str:
+    text = text.lower()
+    text = unicodedata.normalize("NFD", text)  # bỏ dấu
+    text = re.sub(r"[\u0300-\u036f]", "", text)
+    text = re.sub(r"[^a-z0-9\s]", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
+def load_dept_cache_json_separated():
+    all_depts = load_dept_cache_json()  # list dict
+    to_nhom_list = [d for d in all_depts if "TVT" in d["dept_name"] or "TVT" in d["dept_code"].lower()]
+    phong_ban_list = [d for d in all_depts if d not in to_nhom_list]
+    return to_nhom_list, phong_ban_list
+
+def fuzzy_match_department(user_input: str, kind: str = "all", cutoff: float = 0.7):
+    """
+    kind = "to_nhom", "phong_ban", hoặc "all"
+    """
+    to_nhom_list, phong_ban_list = load_dept_cache_json_separated()
+
+    if kind == "to_nhom":
+        departments = to_nhom_list
+    elif kind == "phong_ban":
+        departments = phong_ban_list
+    else:
+        departments = to_nhom_list + phong_ban_list
+
+    if not departments:
+        return None, None, 0
+
+    norm_input = normalize_text(user_input)
+    dept_map = {normalize_text(d["dept_name"]): (d["dept_code"], d["dept_name"]) for d in departments}
+
+    best_match, score, _ = process.extractOne(norm_input, dept_map.keys(), scorer=fuzz.WRatio)
+    if score >= cutoff * 100:
+        dept_code, dept_name = dept_map[best_match]
+        return dept_code, dept_name, score
+    return None, None, 0
+
+def load_known_places(db_conn):
+    cursor = db_conn.cursor()
+    cursor.execute("SELECT full_name FROM FB_LOCALITY")
+    rows = cursor.fetchall()
+    return {normalize_text(r[0]) for r in rows if r[0]}
+    
 def _clean_sql_for_param_extraction(sql: str) -> str:
     """Loại bỏ LOWER(), UPPER(), TRIM()... quanh tên cột để regex bắt dễ hơn"""
+    sql = str(sql or "")
     sql_clean = re.sub(r"\bLOWER\s*\(\s*([A-Z_]+)\s*\)", r"\1", sql, flags=re.IGNORECASE)
     sql_clean = re.sub(r"\bUPPER\s*\(\s*([A-Z_]+)\s*\)", r"\1", sql_clean, flags=re.IGNORECASE)
     sql_clean = re.sub(r"\bTRIM\s*\(\s*([A-Z_]+)\s*\)", r"\1", sql_clean, flags=re.IGNORECASE)
     return sql_clean
 
-def extract_form_detail_params_from_sql(sql: str, context: dict = None) -> Dict[str, str]:
+def extract_form_detail_params_from_sql(sql: str, context: dict = None, get_ma_dia_chi_fuzzy=None) -> dict:
     sql = _clean_sql_for_param_extraction(sql)
     default_values = {k: "" for k in FORM_DETAIL_PARAMS}
     default_values.update({
@@ -51,6 +211,8 @@ def extract_form_detail_params_from_sql(sql: str, context: dict = None) -> Dict[
         "quarter": "undefined",
     })
     params = default_values.copy()
+
+    # --- Extract bằng regex bình thường ---
     regex_map = {
         "trungTam": r"TRUNG_TAM\s*=\s*'([^']+)'",
         "phongBan": r"PHONG_BAN\s*=\s*'([^']+)'",
@@ -77,42 +239,70 @@ def extract_form_detail_params_from_sql(sql: str, context: dict = None) -> Dict[
         match = re.search(regex, sql, re.IGNORECASE)
         if match:
             params[key] = match.group(1)
+
+    # --- Override bằng context nếu có ---
     if context:
         for key in params:
             if key in context and context[key]:
                 params[key] = context[key]
+
+    # --- Xác định level ---
+    sql_upper = sql.upper()
     if not params["level"]:
-        if "PAKH_CA_NHAN" in sql.upper():
+        if "PAKH_CA_NHAN" in sql_upper:
             params["level"] = "ca_nhan"
-        elif "PAKH_TO_NHOM" in sql.upper():
+        elif "PAKH_TO_NHOM" in sql_upper:
             params["level"] = "to_nhom"
-        elif "PAKH_PHONG_BAN" in sql.upper():
+        elif "PAKH_PHONG_BAN" in sql_upper:
             params["level"] = "phong_ban"
-        elif "PAKH_TRUNG_TAM" in sql.upper():
+        elif "PAKH_TRUNG_TAM" in sql_upper:
             params["level"] = "trung_tam"
+
+    # --- Xác định năm ---
     if not params["year"]:
         match = re.search(r"\b(20[2-3][0-9])\b", sql)
         if match:
             params["year"] = match.group(1)
         elif context and "year" in context and context["year"]:
             params["year"] = context["year"]
+
+    # --- Xác định KPI ---
     if not params["kpiName"]:
-            trang_thai_map = {
-                "TU_CHOI": "soPaTuChoi",
-                "DONG": "soPaDong",
-                "DANG_XU_LY": "soPaDangXlDh",
-                "DA_XU_LY": "soPaDaXlyDh",
-                "HOAN_THANH": "soPaHoanThanh",
-            }
-            match = re.search(r"TRANG_THAI\s*=\s*'([^']+)'", sql, re.IGNORECASE)
-            if match:
-                trang_thai = match.group(1).upper()
-                if trang_thai in trang_thai_map:
-                    params["kpiName"] = trang_thai_map[trang_thai]
-    
+        trang_thai_map = {
+            "TU_CHOI": "soPaTuChoi",
+            "DONG": "soPaDong",
+            "DANG_XU_LY": "soPaDangXlDh",
+            "DA_XU_LY": "soPaDaXlyDh",
+            "HOAN_THANH": "soPaHoanThanh",
+        }
+        match = re.search(r"TRANG_THAI\s*=\s*'([^']+)'", sql, re.IGNORECASE)
+        if match:
+            trang_thai = match.group(1).upper()
+            if trang_thai in trang_thai_map:
+                params["kpiName"] = trang_thai_map[trang_thai]
+
+    # --- Xác định caTruc ---
+    if not params["caTruc"]:
+        ca_truc_map = {"SANG": "SANG", "CHIEU": "CHIEU", "TOI": "TOI"}
+        match = re.search(r"CA_TRUC\s*=\s*'([^']+)'", sql, re.IGNORECASE)
+        if match:
+            ca_truc = match.group(1).upper()
+            if ca_truc in ca_truc_map:
+                params["caTruc"] = ca_truc_map[ca_truc]
+
+    # --- Loại thuê bao ---
+    if not params["loaiThueBao"]:
+        loai_thue_bao_map = {"KHDN": "KHDN", "KHCN": "KHCN", "VIP": "VIP"}
+        match = re.search(r"LOAI_THUE_BAO\s*=\s*'([^']+)'", sql, re.IGNORECASE)
+        if match:
+            loai_thue_bao = match.group(1).upper()
+            if loai_thue_bao in loai_thue_bao_map:
+                params["loaiThueBao"] = loai_thue_bao_map[loai_thue_bao]
+
     return params
 
-def extract_list_params_from_sql(sql: str, context: dict = None) -> Dict[str, str]:
+
+def extract_list_params_from_sql(sql: str, context: dict = None, get_ma_dia_chi_fuzzy=None) -> dict:
     sql = _clean_sql_for_param_extraction(sql)
     default_values = {k: "" for k in LIST_PARAMS}
     default_values.update({
@@ -121,6 +311,8 @@ def extract_list_params_from_sql(sql: str, context: dict = None) -> Dict[str, st
         "is_dongpa": "DANG_XU_LY%2CDA_XU_LY",
     })
     params = default_values.copy()
+
+    # --- Extract bằng regex ---
     regex_map = {
         "tab": r"tab\s*=\s*'([^']+)'",
         "id": r"id\s*=\s*'([^']+)'",
@@ -145,11 +337,16 @@ def extract_list_params_from_sql(sql: str, context: dict = None) -> Dict[str, st
         match = re.search(regex, sql, re.IGNORECASE)
         if match:
             params[key] = match.group(1)
+
+    
+    # --- Override bằng context nếu có ---
     if context:
         for key in params:
             if key in context and context[key]:
                 params[key] = context[key]
+
     return params
+
 
 def build_filter_url(base: str, params: Dict[str, str]) -> str:
     query = "&".join(f"{k}={v}" for k, v in params.items())
@@ -171,15 +368,13 @@ class SchemaCache:
 # --- Lớp chính HybridSQLCoder ---
 class HybridSQLCoder:
     def __init__(self, db_conn=None):
+        self.db_conn = db_conn
         self.engine = LLM_ENGINE
         self.sql_cache = {}
         self.schema_cache = SchemaCache()
-        self.sql_cache = {}
         self.context = {}
         self.context_filters = None
-        self.groq_client = None
-        self._init_groq()
-
+        self.known_places = load_known_places(self.db_conn) if self.db_conn else set()
         self.relations, self.concat_mappings = load_relations()
         self.context = {
             "filters": {},
@@ -216,25 +411,14 @@ class HybridSQLCoder:
         self.model = genai.GenerativeModel("models/gemini-2.5-flash", generation_config={"temperature": 0})
         self.memory = []  # list of (user_message, ai_message)
 
-    def _init_groq(self):
-        api_key = os.getenv("GROQ_API_KEY")
-        if not api_key:
-            raise ValueError("Thiếu GROQ_API_KEY trong file .env")
-        self.groq_client = Groq(api_key=api_key)
-        
+    
     def _fallback_to_gemini(self):
         logger.warning("OpenAI gặp lỗi, chuyển sang Gemini.")
         self._init_gemini()
         self.engine = "gemini"
     def _extract_where_conditions(self, sql: str) -> str:
-        """
-        Trích xuất phần điều kiện WHERE từ câu SQL.
-        Trả về chuỗi điều kiện (không bao gồm chữ WHERE).
-        """
-        # Bỏ ; ở cuối để tránh match sai
-        sql = sql.strip().rstrip(";")
-        
-        # Tìm WHERE ... (đến hết hoặc trước GROUP/ORDER)
+        """Trích xuất phần điều kiện WHERE từ câu SQL (không gồm chữ WHERE)."""
+        sql = str(sql or "").strip().rstrip(";")
         match = re.search(r"\bWHERE\b\s+(.*?)(?:\bGROUP\b|\bORDER\b|$)", sql, re.IGNORECASE | re.DOTALL)
         if match:
             return match.group(1).strip()
@@ -244,11 +428,12 @@ class HybridSQLCoder:
         if self.engine == "openai" and hasattr(self.memory, "chat_memory"):
             return [
                 msg.content for msg in reversed(self.memory.chat_memory.messages)
-                if msg.type == "human"
+                if getattr(msg, "type", "") == "human"
             ][:n][::-1]
         elif self.engine == "gemini":
             return [user for user, _ in self.memory[-n:]][::-1]
         return []
+
     def reset_context(self):
         self.context = {
             "filters": {},
@@ -266,88 +451,55 @@ class HybridSQLCoder:
             self.context["last_sql"] = sql
         if result is not None:
             self.context["last_result"] = result
-
+    def encode(self, text: str) -> str:
+        return str(normalize_text(text) or "")
     def get_ma_dia_chi_fuzzy(self, dia_chi_text: str) -> dict:
-        if not self.db_conn:
-            logger.warning("[WARN] DB connection is None. Không thể truy vấn mã địa lý.")
-            return {}
-        
-        import unidecode
-
-        # Bỏ dấu, lowercase, loại bỏ ký tự đặc biệt
-        text = unidecode.unidecode(dia_chi_text).lower()
-        text = re.sub(r"[^\w\s]", " ", text)
-        keywords = [kw.strip() for kw in text.split() if kw.strip()]
-        if not keywords:
+        """Map địa chỉ user nhập sang mã tỉnh/quận trong DB."""
+        if not self.db_conn or not dia_chi_text:
             return {}
 
-        # Tạo điều kiện WHERE bằng LIKE
-        conditions = []
-        params = []
-        for i, kw in enumerate(keywords):
-            conditions.append(f"LOWER(full_name) LIKE :{i+1}")
-            params.append(f"%{kw}%")
-        
-        where_clause = " AND ".join(conditions)
-        query = f"""
-    SELECT province AS tinhThanhPho, district AS quanHuyen 
-    FROM FB_LOCALITY 
-    WHERE {where_clause}
-    ORDER BY LENGTH(full_name) DESC
-    FETCH FIRST 1 ROWS ONLY
-"""
+        norm_text = normalize_text(dia_chi_text)
+        # tách theo dấu phẩy hoặc khoảng trắng
+        parts = [p.strip() for p in re.split(r"[,\n]", dia_chi_text) if p.strip()]
+
+        # Load danh sách FULL_NAME từ DB (có thể cache để tối ưu)
+        cursor = self.db_conn.cursor()
+        cursor.execute("SELECT province, district, full_name FROM FB_LOCALITY")
+        rows = cursor.fetchall()
+        cursor.close()
+
+        best_match = {"tinhThanhPho": None, "quanHuyen": None}
+        max_score = 0
+
+        for province, district, full_name in rows:
+            norm_full = normalize_text(full_name)
+            # score = số từ trùng khớp giữa input và full_name
+            input_tokens = set(norm_text.split())
+            full_tokens = set(norm_full.split())
+            score = len(input_tokens & full_tokens) / max(len(full_tokens), 1)
+            if score > max_score:
+                max_score = score
+                best_match["tinhThanhPho"] = province
+                best_match["quanHuyen"] = district
+
+        if max_score < 0.3:  # nếu quá ít token trùng, coi như không tìm thấy
+            return {}
+
+        return best_match
 
 
-        try:
-            with self.db_conn.cursor() as cursor:
-                cursor.execute(query, params)
-                row = cursor.fetchone()
-                if row:
-                    result = {
-                        "tinhThanhPho": row[0],
-                        "quanHuyen": row[1]
-                    }
-                    logger.info(f"[DEBUG] Mapping địa chỉ '{dia_chi_text}' -> {result}")
-                    return result
-        except Exception as e:
-            logger.error(f"Lỗi truy vấn mã địa lý: {e}")
-        return {}
 
-    def _extract_dia_chi_from_question(self, question: str) -> str:
-        if not question:
-            return ""
+    from difflib import get_close_matches
 
-        import unidecode
-        q_norm = unidecode.unidecode(question).lower()
-
-        # Chuẩn hóa các dạng viết tắt
-        q_norm = re.sub(r"\bq\.?\s", "quan ", q_norm)  # Q Hoàng Mai, Q. Hoàng Mai → quan Hoàng Mai
-        q_norm = re.sub(r"\bh\.?\s", "huyen ", q_norm) # H Hóc Môn, H. Hóc Môn → huyen Hóc Môn
-        q_norm = re.sub(r"\btp\.?\s", "thanh pho ", q_norm) # TP, TP. → thanh pho
-        q_norm = re.sub(r"\btp\b", "thanh pho", q_norm)
-
-        # Regex nhận diện đầy đủ các loại địa chỉ
-        patterns = [
-            r"(?:tai|o|thuoc|dia ban|khu vuc|tinh|thanh pho|quan|huyen|xa|phuong)\s+([^\.,;?\n]+)",
-            r"(quan|huyen|phuong|xa|thi xa|tp|thanh pho)\s+\w+(?:\s+\w+)?"
-        ]
-
-        for pattern in patterns:
-            match = re.search(pattern, q_norm, re.IGNORECASE)
-            if match:
-                return match.group(0).strip()
-
-        # fallback: lấy 3 từ cuối
-        return " ".join(q_norm.strip().split()[-3:])
-
-    def _detect_new_filter(self, question: str) -> bool:
-        # Nếu câu hỏi có từ khóa về phòng ban, tổ nhóm, trung tâm, địa bàn, nhóm, loại...
-        keywords = [
-            "phòng", "phòng ban", "tổ", "tổ nhóm", "trung tâm", "địa bàn", "tỉnh", "huyện",
-            "nhóm phản ánh", "loại phản ánh", "cá nhân", "số thuê bao", "mã tỉnh", "mã huyện"
-        ]
-        q = question.lower()
-        return any(kw in q for kw in keywords)
+    @staticmethod
+    def fuzzy_match_diachi(user_input: str, db_fullnames: List[str], cutoff=0.8):
+        """Map địa chỉ user nhập sang FULL_NAME trong DB (static method tránh tự bơm self)."""
+        norm_input = normalize_text(user_input)
+        norm_map = {normalize_text(v): v for v in db_fullnames}
+        matches = get_close_matches(norm_input, norm_map.keys(), n=1, cutoff=cutoff)
+        if matches:
+            return norm_map[matches[0]]
+        return None
 
     def _resolve_follow_up_question(self, question: str, is_follow_up: bool = False) -> str:
         if not is_follow_up:
@@ -363,13 +515,6 @@ Hãy viết lại câu hỏi hiện tại thành câu hỏi đầy đủ, rõ ng
 """
         resolved = self._invoke_model(prompt)
         return resolved.strip() if resolved else question
-
-    def _detect_new_filter(self, question: str) -> bool:
-        keywords = [
-            "phòng", "phòng ban", "tổ", "tổ nhóm", "trung tâm", "địa bàn", "tỉnh", "huyện",
-            "nhóm phản ánh", "loại phản ánh", "cá nhân", "số thuê bao", "mã tỉnh", "mã huyện"
-        ]
-        return any(kw in question.lower() for kw in keywords)
 
     def _format_relations_for_prompt(self):
         return os.linesep.join(
@@ -395,7 +540,6 @@ Hãy viết lại câu hỏi hiện tại thành câu hỏi đầy đủ, rõ ng
             "- Lấy tên cá nhân trong cột CA_NHAN"
         ]
         return os.linesep.join(hints)
-
     def _load_sql_examples(self, file_path: str) -> List[Dict[str, str]]:
         if os.path.exists(file_path):
             with open(file_path, "r", encoding="utf-8") as f:
@@ -404,11 +548,11 @@ Hãy viết lại câu hỏi hiện tại thành câu hỏi đầy đủ, rõ ng
         return []
 
     def _select_relevant_examples(self, question: str, num_examples: int = 3) -> str:
-        question_lower = question.lower()
+        question_lower = str(question or "").lower()
         question_words = set(question_lower.split())
         scored_examples = []
-        for example in self.sql_examples:
-            score = len(question_words.intersection(set(example["question"].lower().split())))
+        for example in self.sql_examples or []:
+            score = len(question_words.intersection(set(str(example.get("question", "")).lower().split())))
             if score > 0:
                 scored_examples.append((score, example))
         scored_examples.sort(key=lambda x: x[0], reverse=True)
@@ -420,26 +564,24 @@ Hãy viết lại câu hỏi hiện tại thành câu hỏi đầy đủ, rõ ng
                 example_str += f"Câu hỏi: {ex['question']}\nSQL:\n```sql\n{ex['sql']}\n```\n\n"
             example_str += "---EXAMPLES END---\n\n"
         return example_str
-
     # --- Sinh SQL ---
     def generate_sql(self, question: str, is_follow_up: bool = False, previous_error: str = None,
-                 retries: int = 2, force_no_cache: bool = False, reset: bool = False):
-    # Reset nếu là câu hỏi mới
-        if reset and not is_follow_up:  # <-- chỉ reset khi không phải tiếp tục
+                     retries: int = 2, force_no_cache: bool = False, reset: bool = False):
+        # Reset nếu là câu hỏi mới độc lập
+        if reset and not is_follow_up:
             self.reset_context()
 
         # Lưu câu hỏi ngay
         self.update_context(question=question)
 
-        key = question.strip().lower()
+        key = str(question or "").strip().lower()
         if self.context.get("subjects"):
-            key += "__" + "__".join(sorted(sub.lower() for sub in self.context["subjects"]))
+            key += "__" + "__".join(sorted(str(sub).lower() for sub in self.context["subjects"]))
 
         # Cache
         if not force_no_cache and key in self.sql_cache:
             logger.info(f"[CACHE] Sử dụng SQL cache cho: {question}")
             return self.sql_cache[key]
-
 
         for attempt in range(retries):
             try:
@@ -449,12 +591,18 @@ Hãy viết lại câu hỏi hiện tại thành câu hỏi đầy đủ, rõ ng
                     if self.context["filters"]:
                         filter_str = "\nCác bộ lọc đã lưu từ trước: " + json.dumps(self.context["filters"], ensure_ascii=False)
                     context_for_prompt = f"""
-                    # Ngữ cảnh hội thoại trước đó:
-                    Câu hỏi: {self.context['last_question']}
-                    SQL: {self.context['last_sql']}
-                    Kết quả: {json.dumps(self.context['last_result'], ensure_ascii=False)}
-                    {filter_str}
-                    """
+# Ngữ cảnh hội thoại trước đó:
+Câu hỏi: {self.context['last_question']}
+SQL: {self.context['last_sql']}
+Kết quả: {json.dumps(self.context['last_result'], ensure_ascii=False)}
+{filter_str}
+Câu hỏi mới: {question}
+# Hướng dẫn 
+- Nếu người dùng dùng từ "đó", "tiếp", "liệt kê đi", "thêm chi tiết", hãy coi đó là tiếp nối của câu trước và phải lọc dựa trên kết quả/SQL trước.
+- Nếu người dùng nhập câu hỏi mới đầy đủ (có đủ chủ thể, bộ lọc),  hãy coi là câu độc lập.
+
+"""
+
                 question_resolved = self._resolve_follow_up_question(question, is_follow_up)
                 planner = SQLPlanner(self._invoke_model)
                 plan_result = planner.plan(question_resolved)
@@ -467,11 +615,9 @@ Hãy viết lại câu hỏi hiện tại thành câu hỏi đầy đủ, rõ ng
                 schema_text = os.linesep + os.linesep.join(
                     self.schema_cache.get_schema(tbl) for tbl in relevant_tables if tbl
                 )
-                if not schema_text:
-                    raise ValueError("Không tìm thấy schema phù hợp.")
 
                 column_mapping_hint = generate_column_mapping_hint(question_resolved)
-                
+
                 prompt_text = f"""
 {context_for_prompt}
 Bạn là trợ lý sinh truy vấn SQL cho CSDL Oracle.
@@ -488,18 +634,15 @@ Sinh truy vấn SQL chính xác. Ưu tiên trả lời nhanh chóng, đơn giả
 
 # Hướng dẫn
 {self._generate_sum_hint()}
-- Chấp nhận các hình thức viết tắt, ví dụ KHCN - Khách hàng cá nhân, KHDN - Khách hàng doanh nghiệp, pa - phản ánh, HCM - Thành phố Hồ Chí Minh.
+- Chấp nhận các hình thức viết tắt, ví dụ KHCN - Khách hàng cá nhân, KHDN - Khách hàng doanh nghiệp, pa hay p/a - phản ánh, HCM - Thành phố Hồ Chí Minh.
 - Với số thuê bao người dùng, trong cơ sở dữ liệu đang có định dạng không có số 0 ở đầu, khi người dùng nhập câu hỏi BẮT BUỘC chấp nhận cả kiểu nhập CÓ SỐ 0 và KHÔNG có số 0.
 - Với những câu liệt kê, chỉ trả về cột PAKH.SO_THUE_BAO và PAKH.NOI_DUNG_PHAN_ANH, KHÔNG TRẢ CÁC CỘT KHÁC.
-- Nếu câu hỏi có yếu tố địa chỉ, luôn SELECT thêm cột mã địa lý (TINH_THANH_PHO, QUAN_HUYEN) hoặc PROVINCE, DISTRICT từ bảng địa chỉ (như FB_LOCALITY) để phục vụ mapping.
-- ƯU TIÊN xem mức độ tương thích với từ khóa trong table_keywords.json để truy vấn và trả ra đúng cột được hỏi, không trả lời thiếu hay thừa thông tin, nếu người dùng hỏi về nội dung SIM, gói cước, mạng yếu,... thì thông tin sẽ được lưu trong bảng `PAKH_NOI_DUNG_PHAN_ANH`, KHÔNG PHẢI bảng `PAKH`.
+- TUYỆT ĐỐI KHÔNG được truy vấn trực tiếp các cột địa chỉ như TINH_THANH_PHO, QUAN_HUYEN, PHUONG_XA bằng LIKE. Phải luôn JOIN với bảng FB_LOCALITY để lấy FULL_NAME  like (và join đủ 3 cột khi trả ra tên).
 - Với những câu hỏi về số lượng bao nhiêu BẮT BUỘC dùng các bảng PAKH_SLA_* vì các bảng này đã chứa các số liệu tổng hợp, KHÔNG CẦN VÀ KHÔNG ĐƯỢC PHÉP JOIN với bảng PAKH hoặc PAKH_CA_NHAN.
 - Khi người dùng tiếp tục hỏi “liệt kê các phản ánh đó” → phải chuyển sang JOIN PAKH_CA_NHAN và PAKH qua ID để lấy đầy đủ thông tin từ bảng PAKH, và bắt buộc trả ra danh sách thông tin phản ánh từ bảng PAKH. 
 - Với các trường mã như `LOAI_PHAN_ANH`, `FB_GROUP`, `HIEN_TUONG`, `NGUYEN_NHAN`, `DON_VI_NHAN` cần JOIN bảng tương ứng (FB_TYPE, FB_GROUP, FB_HIEN_TUONG, FB_REASON, FB_DEPARTMENT) để trả ra tên (`NAME`) thay vì trả ra mã.
-- LƯU Ý: cột `TRANG_THAI` chỉ tồn tại trong các bảng `PAKH_CA_NHAN`, `PAKH_PHONG_BAN`, `PAKH_TO_NHOM`, `PAKH_TRUNG_TAM` với giá trị hợp lệ là các mã viết hoa không dấu: 'TU_CHOI' (từ chối), 'HOAN_THANH' (hoàn thành), 'DONG' (đóng),'DANG_XU_LY' (đang xử lý), 'DA_XU_LY' (đã xử lý) → Nếu người dùng viết tiếng Việt như 'Từ chối', hãy ánh xạ sang 'TU_CHOI'.
-- TUYỆT ĐỐI KHÔNG được truy vấn trực tiếp các cột địa chỉ như TINH_THANH_PHO, QUAN_HUYEN, PHUONG_XA bằng LIKE. Phải luôn JOIN với bảng FB_LOCALITY để lấy FULL_NAME. Với các cột `PAKH.TINH_THANH_PHO`, `PAKH_QUAN_HUYEN`, `PAKH_PHUONG_XA`, phải nối lại và JOIN với bảng FB_LOCALITY thông qua quan hệ như trong RELATIONS, và khi hỏi thì thay vì trả về 3 cột mã trong PAKH, hãy trả ra FULL_NAME trong FB_LOCALITY và phải join đủ 3 cột.
-- Ưu tiên dùng bảng `PAKH_NOI_DUNG_PHAN_ANH` nếu cần truy vấn các trường bán cấu trúc đã chuẩn hóa. Khi hỏi khu vực bị lỗi của phản ánh, ưu tiên truy vấn cột KHU_VUC_BI_LOI của bảng PAKH_NOI_DUNG_PHAN_ANH, ngoài ra có thể trả về tên địa danh đầy đủ truy vấn từ các cột trong PAKH nhưng đã liên kết với FB_LOCALITY để lấy tên thay vì mã khu vực. Hỏi gì trả lời đó, đừng đưa ra thừa thông tin.
- {previous_error if previous_error else ''}
+- LƯU Ý: cột `TRANG_THAI` chỉ tồn tại trong các bảng `PAKH_CA_NHAN`, `PAKH_PHONG_BAN`, `PAKH_TO_NHOM`, `PAKH_TRUNG_TAM` với giá trị hợp lệ là: 'TU_CHOI','HOAN_THANH','DONG','DANG_XU_LY','DA_XU_LY'.
+{previous_error if previous_error else ''}
 - Nếu có lỗi trước đó, sửa lỗi và tạo lại câu SQL chính xác.
 - Nếu chỉ hỏi "bao nhiêu" mà không đề cập "liệt kê", **chỉ cần trả về kết quả tính**.
 - Nếu câu hỏi tiếp nối, ưu tiên context: {self.context["filters"]}
@@ -508,10 +651,10 @@ Sinh truy vấn SQL chính xác. Ưu tiên trả lời nhanh chóng, đơn giả
 {self._format_relations_for_prompt()}
 
 # Quan trọng
-- TUYỆT ĐỐI KHÔNG BỊA RA tên bảng hoặc tên cột KHÔNG có trong SCHEMA.
-- Luôn ưu tiên dùng đúng SELECT gợi ý trong SCHEMA nếu có.
+- TUYỆT ĐỐI KHÔNG BỊA TÊN BẢNG, TÊN CỘT KHÔNG CÓ TRONG SCHEMA
+- Ưu tiên dùng đúng SELECT gợi ý trong SCHEMA nếu có.
 - Nếu không đủ thông tin để trả lời, hãy thông báo rõ thay vì đoán.
-- TUYỆT ĐỐI KHÔNG JOIN quá nhiều bảng khi câu hỏi không yêu cầu nhiều thông tin như vậy
+- Hạn chế JOIN không cần thiết.
 
 Câu hỏi:
 {question_resolved}
@@ -520,7 +663,6 @@ SQL:
 """
                 sql_raw = self._invoke_model(prompt_text)
                 self.update_context(sql=sql_raw)
-                
                 return sql_raw
 
             except Exception as e:
@@ -529,44 +671,6 @@ SQL:
                     previous_error = str(e)
                     continue
                 raise
-    def generate_and_execute_sql(self, question: str, is_follow_up: bool = False, previous_error: str = None,
-                             retries: int = 2, force_no_cache: bool = False, execute_fn=None,  reset: bool = False):
-        sql_raw = self.generate_sql(question, is_follow_up, previous_error, retries, force_no_cache)
-
-        if execute_fn:
-            try:
-                result = execute_fn(sql_raw)
-
-                # Lưu kết quả vào context
-                self.update_context(result=result)
-                # Nếu chạy thành công và có dữ liệu thì lưu điều kiện WHERE
-                if result and isinstance(result, dict):
-                    extracted_filter = self._extract_where_conditions(sql_raw)
-                    if extracted_filter:
-                        self.context_filters = extracted_filter
-                        logger.info(f"[CONTEXT] Lưu filter: {self.context_filters}")
-
-                        # 🔹 Parse các tham số chi tiết để lưu vào context["filters"]
-                        form_params = extract_form_detail_params_from_sql(sql_raw, self.context.get("filters", {}))
-                        # Bỏ các param rỗng
-                        form_params = {k: v for k, v in form_params.items() if v}
-                        self.context["filters"].update(form_params)
-                        logger.info(f"[CONTEXT] Cập nhật filters: {self.context['filters']}")
-
-                # Cache SQL
-                key = question.strip().lower()
-                if self.context.get("subjects"):
-                    key += "__" + "__".join(sorted(sub.lower() for sub in self.context["subjects"]))
-                self.sql_cache[key] = sql_raw
-
-                return result
-            except Exception as e:
-                logger.error(f"Lỗi execute SQL: {e}")
-                return {"error": str(e)}
-        else:
-            logger.warning("Chưa truyền execute_fn vào generate_and_execute_sql.")
-            return None
-
 
     def _invoke_model(self, prompt_text: str, retries: int = 1) -> str:
         attempt = 0
@@ -578,10 +682,10 @@ SQL:
 
                     sql_prompt = PromptTemplate(input_variables=["input"], template="{input}")
                     sql_chain = LLMChain(llm=self.llm, prompt=sql_prompt)
-                    return sql_chain.run(prompt_text).strip()
+                    return str(sql_chain.run(prompt_text)).strip()
 
                 elif self.engine == "gemini":
-                    return self.model.generate_content(prompt_text).text.strip()
+                    return str(self.model.generate_content(prompt_text).text).strip()
 
             except Exception as e:
                 error_msg = str(e).lower()
@@ -594,249 +698,200 @@ SQL:
                         return self._invoke_model(prompt_text)
                 else:
                     raise
-
     def _postprocess_sql(self, sql_raw: str, schema_text: str) -> str:
-        return sql_raw.strip()
+        sql = str(sql_raw or "").strip()
+        if "fb_locality" in sql.lower():
+            # ép select thêm province, district nếu chưa có
+            if not re.search(r"\bprovince\b", sql, re.IGNORECASE):
+                sql = sql.replace("SELECT", "SELECT l.PROVINCE, l.DISTRICT,", 1)
+        return sql
 
     def _extract_year_from_question(self):
-        if self.context["last_question"]:
-            match = re.search(r"\b(20[2-3][0-9])\b", self.context["last_question"], re.IGNORECASE)
+        if self.context.get("last_question"):
+            match = re.search(r"\b(20[2-3][0-9])\b", str(self.context["last_question"]), re.IGNORECASE)
             if match:
                 return match.group(1)
         return None
-
-    def format_result_for_user(self, result: dict, filter_link: str = None) -> str:
-        logger.info(f"[DEBUG] last_question: {self.context.get('last_question')}")
-        logger.info(f"[DEBUG] last_sql: {self.context.get('last_sql')}")
-        logger.info(f"[DEBUG] last_result: {self.context.get('last_result')}")
-        logger.info(f"[DEBUG] filters: {self.context.get('filters')}")
-
-        def _safe_join(items):
-            return os.linesep.join("" if item is None else str(item) for item in items)
-
-        # --- Fix toán tử ưu tiên ---
-        target = result.get("details") or (result if "rows" in result else None)
-
-        # --- Debug để xem target thực tế là gì ---
-        logger.info(f"[DEBUG] target type: {type(target)}, target: {target}")
-
-        if not target or not target.get("rows"):
-            if "error" in result:
-                return f"❌ Lỗi SQL: {result['error']}"
-            elif "message" in result:
-                return f"✅ {result['message']}"
-            return "⚠️ Không có dữ liệu."
-
-        columns = target["columns"]
-        rows = target["rows"]
-
-        logger.info(f"[DEBUG] columns: {columns}")
-        logger.info(f"[DEBUG] rows: {rows}")
-
-        q = (self.context["last_question"] or "").lower()
-
-        is_statistical, is_info_query, is_list_query = self.detect_query_type(self.context["last_question"], target)
-
-        # --- Xử lý thống kê ---
-        if is_statistical:
-            logger.info("[DEBUG] Đang xử lý dạng thống kê")
-            lines = []
-            if len(columns) == 1 and len(rows) == 1:
-                val = rows[0][0]
-                logger.info(f"[DEBUG] Giá trị thống kê đơn: {val}")
-                return str(val if val is not None else 0)
-
-            for row in rows:
-                safe_parts = []
-                for col, val in zip(columns, row):
-                    col_str = str(col) if col is not None else ""
-                    val_str = str(val) if val is not None else "0"
-                    safe_parts.append(f"{col_str}: {val_str}")
-                lines.append(", ".join(safe_parts) if safe_parts else "")
-
-            logger.info(f"[DEBUG] lines trước khi join: {lines}")
-            return _safe_join(lines)
-
-        # --- Truy vấn thông tin ---
-        if is_info_query:
-            # Nếu chỉ có 1 cột → trả danh sách giá trị
-            if len(columns) == 1:
-                values = [str(row[0]) if row[0] is not None else "N/A" for row in rows]
-                return _safe_join(values)
-
-            # Nhiều cột → trả dạng "col: value"
-            lines = []
-            for row in rows:
-                formatted_row = ", ".join(
-                    f"{col}: {str(val) if val is not None else 'N/A'}"
-                    for col, val in zip(columns, row)
-                )
-                lines.append(formatted_row)
-            return _safe_join(lines)
+    import re
 
 
-        # --- Liệt kê chi tiết ---
-        if is_list_query:
-            row_limit = 1
-            lines = []
-            for row in rows[:row_limit]:
-                formatted_row = "- " + ", ".join(
-                    f"{col}: {str(val) if val is not None else 'N/A'}"
-                    for col, val in zip(columns, row)
-                )
-                lines.append(formatted_row)
+    def response(self, question: str, execute_fn=None, is_independent: bool = False, force_no_cache: bool = False):
+        if is_independent:
+            self.reset_context()
 
-            if not filter_link and len(rows) > 2:
-                    context_common = {"year": self._extract_year_from_question() or "2024"}
-                    has_xuly = any(keyword in self.context['last_sql'].lower() for keyword in [
-                        'ca_nhan', 'phong_ban', 'to_nhom', 'trung_tam'
-                    ])
-                    has_diachi = (
-                        any(re.search(rf"\b{key}\b", self.context['last_sql'], re.IGNORECASE)
-                            for key in ["TINH_THANH_PHO", "QUAN_HUYEN", "MA_TINH", "MA_HUYEN"]) or
-                        "FB_LOCALITY" in self.context['last_sql'].upper()
-                    )
+        if execute_fn is None:
+            execute_fn = self.execute_sql
 
-                    if has_xuly:
-                        context_form = context_common.copy()
-                        # KHÔNG set cứng caNhan từ câu hỏi nữa, để extract_form_detail_params_from_sql lo
-                        params = extract_form_detail_params_from_sql(self.context['last_sql'], context_form)            
-                        base_url = "http://14.160.91.174:8180/smartw/feedback/form/detail.htm"
-                        filter_link = build_filter_url(base_url, params)
-                    else:
-                        base_url = "http://14.160.91.174:8180/smartw/feedback/list.htm"
-                        ma_diachi = {}
+        # --- Chỉ fuzzy match cá nhân nếu câu hỏi có từ khóa liên quan ---
+        dept_keywords_to_nhom = ["tổ", "nhóm"]
+        dept_keywords_phong_ban = ["phòng ban", "ban"]
 
-                        ma_col_mapping = {
-                            "tinhThanhPho": ["ma_tinh", "province", "tinh_thanh_pho"],
-                            "quanHuyen": ["ma_huyen", "district", "quan_huyen"],
+        dept_code, dept_name, score = None, None, 0
+
+        # Kiểm tra tổ nhóm
+        if contains_keyword(question, dept_keywords_to_nhom):
+            dept_code, dept_name, score = fuzzy_match_department(question, kind="to_nhom")
+
+        # Kiểm tra phòng ban
+        elif contains_keyword(question, dept_keywords_phong_ban):
+            dept_code, dept_name, score = fuzzy_match_department(question, kind="phong_ban")
+
+        if dept_code:
+            logger.info(f"🔎 Fuzzy match: '{question}' → {dept_name} ({dept_code}), score={score}")
+            question += f" (Mã phòng ban tương ứng: {dept_code})"
+
+        canhan_code = None
+        if contains_keyword(question, canhan_keywords):
+            canhan_code = resolve_canhan(question)
+            if canhan_code:
+                question += f" (CA_NHAN: {canhan_code})"
+
+        try:
+            # --- Sinh SQL ---
+            sql_raw = self.generate_sql(
+                question, is_follow_up=not is_independent, force_no_cache=force_no_cache
+            )
+            sql_clean = re.sub(r"```sql|```", "", sql_raw, flags=re.IGNORECASE).strip()
+
+            # --- Thực thi SQL ---
+            try:
+                result = execute_fn(sql_clean)
+            except Exception as e:
+                # Nếu SQL lỗi hoàn toàn → fallback
+                prompt = f"Câu hỏi: {question}\nTrả lời ngắn gọn, đúng ngôn ngữ câu hỏi:"
+                return self._invoke_model(prompt)
+
+            # --- Xử lý kết quả ---
+            target = result.get("details") or (result if "rows" in result else None)
+            if not target or not target.get("rows"):
+                return "Xin phép được thông tin tới Anh/Chị: hiện tại không tìm thấy dữ liệu phù hợp."
+
+            columns, rows_full = target["columns"], target["rows"]
+            is_statistical, is_info_query, is_list_query = self.detect_query_type(question, target)
+
+            formatted_result = {}
+            filter_link = None
+
+            if is_statistical:
+                try:
+                    # Nếu nhiều dòng → convert thành dict {col0: col1, ...}
+                    if len(rows_full) > 1 and len(columns) >= 2:
+                        formatted_result = {
+                            "statistical": True,
+                            "data": {row[0]: row[1] for row in rows_full}
                         }
+                    else:
+                        val = rows_full[0][0] if rows_full else 0
+                        if isinstance(val, (int, float)):
+                            formatted_result = {"total": val}
+                        else:
+                            try:
+                                formatted_result = {"total": float(val)}
+                            except Exception:
+                                formatted_result = {"statistical": True, "value": str(val)}
+                except Exception:
+                    formatted_result = {"statistical": True, "message": "⚠️ Không có dữ liệu thống kê."}
 
-                        for key, aliases in ma_col_mapping.items():
-                            for alias in aliases:
-                                if alias in map(str.lower, columns):
-                                    idx = next(i for i, col in enumerate(columns) if col.lower() == alias)
-                                    ma_diachi[key] = rows[0][idx]
-                                    logger.info(f"[DEBUG] Dùng trực tiếp mã {key} = {ma_diachi[key]} từ kết quả truy vấn")
-                                    break
 
-                        full_name_idx = next(
-                            (i for i, col in enumerate(columns) if col.upper() in ["FULL_NAME", "DIA_DIEM_PHAN_ANH"]),
-                            None
+            elif is_list_query:
+                # lấy preview vài dòng + đếm tổng
+                row_preview = rows_full[:3]
+                sql_upper = sql_clean.upper()
+                has_handler = any(keyword.upper() in sql_upper for keyword in ['CA_NHAN', 'PHONG_BAN', 'TO_NHOM', 'TRUNG_TAM'])
+                year_in_question = self._extract_year_from_question()
+
+                # Xác định năm mặc định
+                if has_handler:
+                    default_year = year_in_question or "2024"
+                else:
+                    default_year = "2024"
+                    if "FB_DATE" in columns:
+                        fb_date_value = rows_full[0][columns.index("FB_DATE")]
+                        if fb_date_value:
+                            default_year = str(fb_date_value)[:4]
+
+                context_common = {"year": default_year}
+
+                try:
+                    if has_handler:
+                        params = extract_form_detail_params_from_sql(
+                            sql_clean, context_common, get_ma_dia_chi_fuzzy=get_ma_dia_chi_from_cache
                         )
+                        base_url = "http://14.160.91.174:8180/smartw/feedback/form/detail.htm"
+                    else:
+                        params = extract_list_params_from_sql(
+                            sql_clean, context_common, get_ma_dia_chi_fuzzy=get_ma_dia_chi_from_cache
+                        )
+                        base_url = "http://14.160.91.174:8180/smartw/feedback/list.htm"
 
-                        if not ma_diachi.get("tinhThanhPho") or not ma_diachi.get("quanHuyen"):
-                            if full_name_idx is not None:
-                                dia_chi = rows[0][full_name_idx]
-                                logger.info(f"[DEBUG] Địa chỉ trong kết quả (full_name): {dia_chi}")
-                                try:
-                                    query = """
-                                        SELECT province AS tinhThanhPho, district AS quanHuyen
-                                        FROM FB_LOCALITY
-                                        WHERE full_name = :1
-                                        FETCH FIRST 1 ROWS ONLY
-                                    """
-                                    with self.db_conn.cursor() as cursor:
-                                        cursor.execute(query, [dia_chi])
-                                        result_fine = cursor.fetchone()
-                                        if result_fine:
-                                            col_names = [desc[0].lower() for desc in cursor.description]
-                                            for idx, col in enumerate(col_names):
-                                                if col in ["tinhthanhpho", "quanhuyen"]:
-                                                    ma_diachi[col] = result_fine[idx]
-                                            logger.info(f"[DEBUG] Mapping FULL_NAME → mã địa lý: {ma_diachi}")
-                                except Exception as e:
-                                    logger.error(f"[ERROR] Truy vấn mã địa lý từ FULL_NAME lỗi: {e}")
-                            else:
-                                logger.warning("[DEBUG] Không tìm thấy cột địa chỉ phù hợp trong kết quả.")
+                    filter_link = build_filter_url(base_url, params)
+                    logger.info(f"[LINK] Link build thành công: {filter_link}")
+                except Exception as e:
+                    logger.error(f"[ERROR] Xây dựng link thất bại: {e}")
+                    filter_link = None
 
-                        if not ma_diachi.get("tinhThanhPho") or not ma_diachi.get("quanHuyen"):
-                            dia_chi_cau_hoi = self._extract_dia_chi_from_question(self.context["last_question"] or "")
-                            logger.info(f"[DEBUG] Địa chỉ từ câu hỏi: {dia_chi_cau_hoi}")
-                            fuzzy_result = self.get_ma_dia_chi_fuzzy(dia_chi_cau_hoi)
-                            if fuzzy_result:
-                                logger.info(f"[DEBUG] Mapping địa chỉ từ câu hỏi → mã địa lý: {fuzzy_result}")
-                                ma_diachi.update(fuzzy_result)
+                formatted_result = summarize_rows(columns, rows_full)
+                formatted_result["count"] = len(rows_full)
+                if filter_link:
+                        formatted_result["link"] = f"[truy cập tại đây]({filter_link})"
 
-                        if ma_diachi:
-                            context_common.update(ma_diachi)
 
-                        if "tinhthanhpho" in context_common:
-                            context_common["tinhThanhPho"] = context_common.pop("tinhthanhpho")
-                        if "quanhuyen" in context_common:
-                            context_common["quanHuyen"] = context_common.pop("quanhuyen")
+            else:
+                # Trường hợp khác → show 1 record đầu tiên
+                formatted_result = {"columns": columns, "rows": rows_full[:1], "count": len(rows_full)}
 
-                        params = extract_list_params_from_sql(self.context['last_sql'], context_common)
-                        logger.info(f"[DEBUG] context_common: {context_common}")
-                        logger.info(f"[DEBUG] params for build_filter_url: {params}")
-                        filter_link = build_filter_url(base_url, params) 
+            # --- Luôn sinh phản hồi tự nhiên ---
+            prompt = f"""
+    Câu hỏi: {question}
+    Kết quả truy vấn (JSON):
+    {json.dumps(formatted_result, ensure_ascii=False)}
 
-            if filter_link:
-                lines.append(f"\n🔗 [Xem toàn bộ danh sách tại đây]({filter_link})")
-            return _safe_join(lines)
+    Yêu cầu:
+    - Trả lời cùng NGÔN NGỮ với câu hỏi.
+    - Trả lời lịch sự, có xưng hô phù hợp.
+    - KHI ĐÃ CÓ DỮ LIỆU TRUY VẤN ĐƯỢC THÌ PHẢI TRẢ LỜI BÁM SÁT VÀO DỮ LIỆU, TUYỆT ĐỐI KHÔNG TỰ BỊA ĐẶT THÊM
+    - Nếu có 'count', hãy nêu rõ số lượng bản ghi.
+    - Nếu có 'link', cuối câu thêm: "🔗 {formatted_result.get('link')}".
+    """
+            answer = self._invoke_model(prompt)
+            self.update_context(sql=sql_clean, result=result, question=question)
+            return answer
 
-        return "⚠️ Không xác định được loại câu hỏi."
+        except Exception as e:
+            # fallback cuối cùng
+            prompt = f"""
+    Người dùng hỏi: {question}
+
+    Yêu cầu:
+    - Trả lời đúng ngôn ngữ câu hỏi.
+    - Trả lời lịch sự, có xưng hô phù hợp.
+    - BÁM SÁT dữ liệu (nếu có).
+    """
+            return self._invoke_model(prompt)
+
+
+
     def detect_query_type(self, question: str, result: dict):
-        """Xác định loại câu hỏi: thống kê, thông tin, liệt kê"""
-        q = (question or "").lower()
+        q = str(question or "").lower()
+        rows = result.get("rows") or result.get("details", {}).get("rows")
+
+        # Nếu kết quả chỉ có 1 cột và tên cột chứa "COUNT" → chắc chắn là thống kê
+        if rows and len(rows[0]) == 1 and "count" in (result.get("columns", [""])[0].lower()):
+            return True, False, False  # statistical
 
         is_list_query = any(kw in q for kw in [
-            "liệt kê", "danh sách", "list", "show", "các pa", 
-            "các phản ánh", "xem chi tiết", "chi tiết các phản ánh", "pa ở"
+            "liệt kê", "danh sách", "list", "show", "các pa",
+            "các phản ánh", "xem chi tiết", "chi tiết các phản ánh", "pa ở","lk"
         ])
         is_statistical = any(kw in q for kw in [
-            "theo từng nhóm", "theo từng loại", "thống kê", 
+            "theo từng nhóm", "theo từng loại", "thống kê",
             "từng nhóm", "từng loại", "mỗi nhóm", "mỗi loại",
-            "bao nhiêu", "tổng số", "tổng cộng", "số lượng", 
+            "bao nhiêu", "tổng số", "tổng cộng", "số lượng",
             "bao nhiêu phản ánh", "bn phản ánh", "bn pa", "bao nhiêu pa"
-        ]) or "group by" in q or "từng nhóm" in q
+        ]) or "group by" in q
 
-        # Xác định có dữ liệu hay không
-        rows = result.get("rows") or result.get("details", {}).get("rows")
         is_info_query = not is_list_query and not is_statistical and bool(rows)
-
         return is_statistical, is_info_query, is_list_query
-    def response(self, question: str, result: dict, filter_link: str = None) -> str:
-        self.context["last_question"] = question
-        formatted_answer = self.format_result_for_user(result, filter_link)
-
-        is_statistical, is_info_query, is_list_query = self.detect_query_type(
-            question, result
-        )
-
-        if getattr(self, "groq_client", None) \
-            and formatted_answer \
-            and "Không có dữ liệu" not in formatted_answer \
-            and (is_statistical or is_info_query):
-
-            try:
-                prompt = f"""
-Bạn là trợ lý trả lời câu hỏi dựa trên kết quả truy vấn.
-
-Câu hỏi: {question}
-Kết quả truy vấn: {formatted_answer}
-
-HƯỚNG DẪN NGHIÊM NGẶT:
-- Chỉ trả lời dựa trên dữ liệu trong "Kết quả truy vấn".
-- Phản hồi phải giữ nguyên toàn bộ giá trị trong {formatted_answer}, không được bỏ bớt hoặc suy luận thêm.
-- Nếu câu hỏi yêu cầu thống kê hoặc tổng hợp, chỉ việc diễn đạt lại nhưng vẫn phải nêu rõ số liệu chính xác từ {formatted_answer}.
-- Nếu không chắc chắn, hãy trả nguyên {formatted_answer} mà không thay đổi.
-"""
-
-                resp = self.groq_client.chat.completions.create(
-                    model="llama-3.1-8b-instant",
-                    messages=[
-                        {"role": "system", "content": "Bạn là trợ lý trả lời câu hỏi dựa trên kết quả truy vấn SQL."},
-                        {"role": "user", "content": prompt}
-                    ]
-                )
-                return resp.choices[0].message.content.strip()
-            except Exception as e:
-                import logging
-                logging.error(f"[Groq ERROR] {e}")
-                return formatted_answer
-
-        return formatted_answer
 
 
     def clear_memory(self):
@@ -845,6 +900,7 @@ HƯỚNG DẪN NGHIÊM NGẶT:
         else:
             self.memory = []
         logger.info("Đã xóa bộ nhớ hội thoại.")
+
     def clear_cache(self):
         self.sql_cache.clear()
         self.schema_cache.clear()
@@ -855,5 +911,3 @@ HƯỚNG DẪN NGHIÊM NGẶT:
         self.clear_memory()
         self.last_context = {}
         logger.info("Đã xóa toàn bộ bộ nhớ và cache.")
-
-    
